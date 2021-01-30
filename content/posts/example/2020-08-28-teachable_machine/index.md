@@ -6,7 +6,7 @@ excerpt: "Android App에서 Teachable Machine을 사용해 보자"
 tags: [machine_learning, AI]
 
 path: "/2020-08-28-teachable_machine"
-featuredImage: "./assets/img/teachable_machine/teachable_machine.JPG"
+featuredImage: "./teachable_machine.JPG"
 created: 2020-08-28
 updated: 2020-08-29
 
@@ -16,20 +16,20 @@ updated: 2020-08-29
 # \[ Teachable Machine \]  
 Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.  
 
-![](./assets/img/teachable_machine/teachable_machine.JPG)  
+![](teachable_machine.JPG)  
 [https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){:target="_blank"}
 
 이미지 인식, 음성 인식, pose 인식 프로젝트를 사용할 수 있다.  
 
 ## < 데이터 입력 >  
-![]({{site.page_url}}/assets/img/teachable_machine/upload.JPG)  
+![](upload.JPG)  
 이런 식으로 Web-cam으로 Teachable Machine 자체에서 학습할 이미지를 찍을 수도 있고, 이미지를 업로드할 수도 있다.  이미지를 올리고 해당하는 자세가 무엇인지 Labeling만 해주면 된다.  
 여기서 끝낼 것이 아니라 나중에 학습시킬 데이터를 더 추가할 거라면 Google Drive에 저장해두는 것을 추천한다.  
 
 ## < 학습 & Export >  
-![]({{site.page_url}}/assets/img/teachable_machine/training.JPG)  
+![](training.JPG)  
 데이터를 모두 가져왔다면 Train을 눌러서 학습시키자. Training이 완료되면 Export 하여 Javascript에서 사용할 수 있는 Json으로 다운로드할 수 있다. Android (Java)에서 사용하고 싶다면 Tensorflow Lite로 다운로드 해서 사용하면 된다.  
-![]({{site.page_url}}/assets/img/teachable_machine/export.JPG)  
+![](export.JPG)  
 이번 프로젝트에서는 학습한 결과를 Android 앱에서 사용할 것이기 때문에 Tensorflow Lite 탭을 클릭해 Floating point, Quantized 모두 다운로드한다.  
 
 # [ 문제 및 대안 ]
@@ -57,7 +57,7 @@ git config core.sparseCheckout true
 ```
 
 ### 3. clone 하려는 remote url 연결  
-![]({{site.page_url}}/assets/img/teachable_machine/remote.JPG)  
+![](remote.JPG)  
 
 ```bash
 git remote add -f origin https://github.com/tensorflow/examples.git
@@ -66,7 +66,7 @@ git remote add -f origin https://github.com/tensorflow/examples.git
 ### 4. sparseCheckout 작성  
 
 내가 clone 하길 원하는 폴더를 입력해 준다. (최상위 폴더는 제외하고 입력한다.)  
-![]({{site.page_url}}/assets/img/teachable_machine/sparse_checkout.JPG)  
+![](sparse_checkout.JPG)  
   
 ```bash
 echo lite/examples/image_classification/android > .git/info/sparse-checkout
@@ -87,7 +87,7 @@ git pull origin master
 * 앞에서 다운받은 floating point, Quantized 모두 압축 풀어서 한 폴더에 저장한다.  
 * label.txt는 동일하기 때문에 하나만 있으면 된다. (필자는 일어서서 하는 운동이란 의미로 stand라는 폴더에 저장해두었다.)  
 * 이제 해당 폴더를 ...\app\src\main\assets에 옮겨준다.  
-![]({{site.page_url}}/assets/img/teachable_machine/exported_data.JPG)  
+![](exported_data.JPG)  
 
 여러 Classifier (ClassifierFloatEfficientNet, ClassifierFloatMobileNet, ClassifierQuantizedEfficientNet, ClassifierQuantizedMobileNet) 중 한 Class의 getModelPath와 getLabelPath 메서드에서 해당하는 경로를 return 하면 된다. (이때 assets를 기준으로 경로를 설정하면 된다.)  
 
