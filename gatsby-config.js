@@ -1,18 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `nehalem-starter`,
-    siteUrl: `https://nehalem.netlify.com`,
-    description: `A Gatsby starter for nehalem`,
+    title: `googy-blog`,
+    siteUrl: `https://goo-gy.github.io`,
+    description: `Daily Develop`,
     topics: [],
     menu: [
       {
         name: 'Home',
         path: '/'
       },
-      {
-        name: 'Example',
-        path: '/page'
-      },
+      // {
+      //   name: 'Example',
+      //   path: '/page'
+      // },
     ],
     footerMenu: [
       {
@@ -22,17 +22,16 @@ module.exports = {
     ],
     search: true,
     author: {
-      name: `nehalem`,
-      description: `I'm <strong>nehalem</strong>, a Gatsby theme by 
-        <a href="https://nehalist.io" rel="noopener" target="_blank">nehalist.io</a>. If you like what you see feel free to give a 
-        <a href="https://github.com/nehalist/gatsby-theme-nehalem" rel="noopener" target="_blank">star on GitHub!</a>`,
+      name: `googy`,
+      description: `I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!`,
       social: {
         facebook: ``,
         twitter: `https://twitter.com/nehalist`,
         linkedin: `https://www.linkedin.com/in/kevin-hirczy-7a9377106/`,
         instagram: ``,
         youtube: ``,
-        github: `https://github.com/nehalist`,
+        github: `https://github.com/goo-gy`,
         twitch: ``
       }
     }
@@ -51,6 +50,21 @@ module.exports = {
           icon: `${__dirname}/content/assets/images/logo.png`
         }
       }
-    }
+    },
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
   ]
+
 };

@@ -3,7 +3,7 @@ import {DefaultTheme} from '@nehalist/gatsby-theme-nehalem';
 const Theme: DefaultTheme = {
   layout: {
     backgroundColor: `#fafafa`,
-    primaryColor: `#a4cbb8`,
+    primaryColor: `rgba(130,240,220,0.9)`,
     linkColor: `#a4cbb8`,
   },
   breakpoints: {
@@ -23,7 +23,7 @@ const Theme: DefaultTheme = {
     },
     header: {
       height: `440px`,
-      background: `linear-gradient(-45deg, #44596e, #a4cbb8) repeat scroll 0 0 transparent`,
+      background: `linear-gradient(140deg, #87e09e, #74abe8) repeat scroll 0 0 transparent`,
     },
   },
 };

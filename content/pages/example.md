@@ -4,8 +4,6 @@ path: "/page"
 excerpt: A sample page.
 ---
 
-## Dicta tela magis
+## Examples
 
-Lorem markdownum greges licet est sedesque, et equos enim. Super magniloquo
-culpa, aut matrem fatur esse putes, patientia. Sacer cum esse, notavi, factus
-sororum tantummodo, ad, si requiem enixa.
+블로그를 테스트하기 위한 페이지 입니다.
