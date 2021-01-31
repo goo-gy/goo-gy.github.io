@@ -173,8 +173,8 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
 /static/25b080c61dbf7999141f5a2a293a950b/9352a/teachable_machine.jpg 1600w,
 /static/25b080c61dbf7999141f5a2a293a950b/4fb49/teachable_machine.jpg 1920w" src="/static/25b080c61dbf7999141f5a2a293a950b/f2cbb/teachable_machine.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><p>진행하는 Project에서 사람의 자세를 판단할 수 있는 기능이 필요했는데, Machine Learning을 직접 구현하는 대신 Teachable Machine을 사용하면 이를 쉽게 해결할 수 있었다. </p>
 <h1 id="-teachable-machine-" style="position:relative;"><a href="#-teachable-machine-" aria-label=" teachable machine  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Teachable Machine ]</h1>
-<p>Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.  </p>
-<p><span
+<p>Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.<br>
+<span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
     >
@@ -197,7 +197,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
         loading="lazy"
       />
     </span><br>
-<a href="https://teachablemachine.withgoogle.com/">https://teachablemachine.withgoogle.com/</a>{:target="_blank"}</p>
+<a href="https://teachablemachine.withgoogle.com/">https://teachablemachine.withgoogle.com/</a></p>
 <p>이미지 인식, 음성 인식, pose 인식 프로젝트를 사용할 수 있다.  </p>
 <h2 id="-데이터-입력-" style="position:relative;"><a href="#-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9E%85%EB%A0%A5-" aria-label=" 데이터 입력  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; 데이터 입력 ></h2>
 <p><span
@@ -264,8 +264,8 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
         loading="lazy"
       />
   </a>
-    </span>  </p>
-<p>데이터를 모두 가져왔다면 Train을 눌러서 학습시키자. Training이 완료되면 Export 하여 Javascript에서 사용할 수 있는 Json으로 다운로드할 수 있다. Android (Java)에서 사용하고 싶다면 Tensorflow Lite로 다운로드 해서 사용하면 된다.<br>
+    </span><br>
+데이터를 모두 가져왔다면 Train을 눌러서 학습시키자. Training이 완료되면 Export 하여 Javascript에서 사용할 수 있는 Json으로 다운로드할 수 있다. Android (Java)에서 사용하고 싶다면 Tensorflow Lite로 다운로드 해서 사용하면 된다.<br>
 <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
@@ -300,12 +300,12 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
 이번 프로젝트에서는 학습한 결과를 Android 앱에서 사용할 것이기 때문에 Tensorflow Lite 탭을 클릭해 Floating point, Quantized 모두 다운로드한다.  </p>
 <h1 id="문제-및-대안" style="position:relative;"><a href="#%EB%AC%B8%EC%A0%9C-%EB%B0%8F-%EB%8C%80%EC%95%88" aria-label="문제 및 대안 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 문제 및 대안 ]</h1>
 <p>자세를 구분하는 기능을 필요로 했기 때문에 Teachable Machine의 Pose 인식을 활용하려고 했지만, Pose 인식은 Android에서 사용할 수 있는 Tensorflow Lite를 지원하지 않았다. 그래서 Pose 인식 대신 Image 인식을 사용하기로 했다.<br>
-<a href="https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android">https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android</a>{:target="_blank"}<br>
+<a href="https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android">https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android</a><br>
 Teachable machine pose를 사용하는 Android 예제도 Demo라고 나와 있다. ( 글 쓴 날짜 기준 2020-08-28 )  </p>
 <h1 id="안드로이드에서-사용하기" style="position:relative;"><a href="#%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="안드로이드에서 사용하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 안드로이드에서 사용하기 ]</h1>
 <h2 id="-예제-clone-" style="position:relative;"><a href="#-%EC%98%88%EC%A0%9C-clone-" aria-label=" 예제 clone  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; 예제 clone ></h2>
 <p>Image 인식을 사용하므로 image_classification 예제를 변형하여 앱을 만들 것이다.  </p>
-<p><a href="https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android">https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android</a>{:target="_blank"}  </p>
+<p><a href="https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android">https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android</a>  </p>
 <h3 id="1-부분적으로-clone-하기" style="position:relative;"><a href="#1-%EB%B6%80%EB%B6%84%EC%A0%81%EC%9C%BC%EB%A1%9C-clone-%ED%95%98%EA%B8%B0" aria-label="1 부분적으로 clone 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 부분적으로 clone 하기</h3>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init <span class="token punctuation">[</span>project-name<span class="token punctuation">]</span>
 <span class="token builtin class-name">cd</span> <span class="token punctuation">[</span>project-name<span class="token punctuation">]</span></code></pre></div>
