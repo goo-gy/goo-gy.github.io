@@ -14,7 +14,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "deploy": "gatsby build && gh-pages -d public -b master"
   },
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",
@@ -23,5 +24,8 @@
     "gatsby-remark-images": "^3.10.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
