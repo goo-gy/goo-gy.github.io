@@ -15,18 +15,18 @@ updated: 2019-10-30
   **키카오톡 오픈빌더**를 통해서 카카오 챗봇을 제작할 수 있습니다.  
   ![](kakao_chatbot_openbuilder_login.png)  
 
-  **[카카오톡 오픈빌더](https://i.kakao.com/login){:target="_blank"}**에 접속해 왼쪽의 **카카오톡 채널 챗봇 만들기**를 선택하여 로그인하고 신청합니다. (신청 후 일정 기간이 지나면 승인됩니다.)
+  [카카오톡 오픈빌더](https://i.kakao.com/login)에 접속해 왼쪽의 **카카오톡 채널 챗봇 만들기**를 선택하여 로그인하고 신청합니다. (신청 후 일정 기간이 지나면 승인됩니다.)
 
 ## \[ 채널 \]  
   챗봇을 사용하려면 챗봇을 연결할 **채널**이 필요합니다.  
   ![](kakao_chatbot_make_channel.png)  
 
-  **[카카오톡 관리자 센터](https://center-pf.kakao.com/){:target="_blank"}**에 접속해 채널을 생성해 줍니다.
+  [카카오톡 관리자 센터](https://center-pf.kakao.com/)에 접속해 채널을 생성해 줍니다.
   
 ## \[ 챗봇 만들기 \]  
   ![](kakao_chatbot_make_bot.png)  
 
-  승인이 되었다면 **[카카오톡 오픈빌더](https://i.kakao.com/openbuilder){:target="_blank"}**에 접속하여 **+**를 눌러 카카오 챗봇을 만들어 줍니다.  
+  승인이 되었다면 [카카오톡 오픈빌더](https://i.kakao.com/openbuilder)에 접속하여 **+**를 눌러 카카오 챗봇을 만들어 줍니다.  
   
   
 ## \[ 시나리오 \]  
@@ -119,8 +119,8 @@ updated: 2019-10-30
   * **스킬 파라미터**  
     스킬에서 **파라미터**를 입력으로 받아 처리한다면 하나의 스킬을 가지고 여러 블록에서 사용할 수 있습니다.  
   
-  스킬을 위한 **Request, Reponse**에 대한 자세한 내용은 카카오의 \[**[응답 타입별 JSON 포맷](https://i.kakao.com/docs/skill-response-format){:target="_blank"}\]** 문서를 참고하시면 좋을 것 같습니다.  
+  스킬을 위한 **Request, Reponse**에 대한 자세한 내용은 카카오의 \[[응답 타입별 JSON 포맷](https://i.kakao.com/docs/skill-response-format)\] 문서를 참고하시면 좋을 것 같습니다.  
 
 ## \[ MORE \]  
   지금까지 기본적인 기능을 제공할 수 있는 카카오톡 챗봇을 제작해보았습니다.  
-  카카오 오픈빌더에는 더 많은 기능들이 있으니 더 공부하실 분은 **\[[오픈 빌더 가이드](https://i.kakao.com/docs/getting-started-overview){:target="_blank"}\]**를 참조하시길 바랍니다.  
+  카카오 오픈빌더에는 더 많은 기능들이 있으니 더 공부하실 분은 \[[오픈 빌더 가이드](https://i.kakao.com/docs/getting-started-overview)\]를 참조하시길 바랍니다.  

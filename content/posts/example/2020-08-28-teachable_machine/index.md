@@ -15,14 +15,14 @@ updated: 2020-08-29
 
 # \[ Teachable Machine \]  
 Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.  
-
 ![](teachable_machine.JPG)  
-[https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){:target="_blank"}
+[https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/)
 
 이미지 인식, 음성 인식, pose 인식 프로젝트를 사용할 수 있다.  
 
 ## < 데이터 입력 >  
 ![](upload.JPG)  
+
 이런 식으로 Web-cam으로 Teachable Machine 자체에서 학습할 이미지를 찍을 수도 있고, 이미지를 업로드할 수도 있다.  이미지를 올리고 해당하는 자세가 무엇인지 Labeling만 해주면 된다.  
 여기서 끝낼 것이 아니라 나중에 학습시킬 데이터를 더 추가할 거라면 Google Drive에 저장해두는 것을 추천한다.  
 
@@ -34,7 +34,7 @@ Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.
 
 # [ 문제 및 대안 ]
 자세를 구분하는 기능을 필요로 했기 때문에 Teachable Machine의 Pose 인식을 활용하려고 했지만, Pose 인식은 Android에서 사용할 수 있는 Tensorflow Lite를 지원하지 않았다. 그래서 Pose 인식 대신 Image 인식을 사용하기로 했다.  
-[https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android](https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android){:target="_blank"}  
+[https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android](https://github.com/tensorflow/examples/tree/master/lite/examples/posenet/android)  
 Teachable machine pose를 사용하는 Android 예제도 Demo라고 나와 있다. ( 글 쓴 날짜 기준 2020-08-28 )  
 
 # [ 안드로이드에서 사용하기 ]  
@@ -42,7 +42,7 @@ Teachable machine pose를 사용하는 Android 예제도 Demo라고 나와 있�
 ## < 예제 clone >  
 Image 인식을 사용하므로 image_classification 예제를 변형하여 앱을 만들 것이다.  
 
-[https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android](https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android){:target="_blank"}  
+[https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android](https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/android)  
 
 ### 1. 부분적으로 clone 하기  
 
