@@ -9,12 +9,16 @@ module.exports = {
         name: 'Home',
         path: '/'
       },
-      // {
-      //   name: 'Example',
-      //   path: '/page'
-      // },
+      {
+        name: 'Project',
+        path: '/project'
+      },
     ],
     footerMenu: [
+      {
+        name: 'Project',
+        path: '/project'
+      },
       {
         name: 'Example',
         path: '/page'
@@ -27,8 +31,8 @@ module.exports = {
       If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!`,
       social: {
         facebook: ``,
-        twitter: `https://twitter.com/nehalist`,
-        linkedin: `https://www.linkedin.com/in/kevin-hirczy-7a9377106/`,
+        twitter: ``,
+        linkedin: ``,
         instagram: ``,
         youtube: ``,
         github: `https://github.com/goo-gy`,
@@ -54,5 +58,4 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
   ]
-
 };

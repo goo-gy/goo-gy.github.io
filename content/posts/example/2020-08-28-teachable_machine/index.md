@@ -38,6 +38,7 @@ Teachable Machine은 Google에서 제공하는 머신러닝 서비스이다.
 Teachable machine pose를 사용하는 Android 예제도 Demo라고 나와 있다. ( 글 쓴 날짜 기준 2020-08-28 )  
 
 # [ 안드로이드에서 사용하기 ]  
+
 ## < 예제 clone >  
 Image 인식을 사용하므로 image_classification 예제를 변형하여 앱을 만들 것이다.  
 
