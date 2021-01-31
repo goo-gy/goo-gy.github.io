@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">카카오 챗봇 제작하기 - googy-blog</title><meta data-react-helmet="true" name="description" content="카카오 챗봇을 만들어보자"/><meta data-react-helmet="true" property="og:title" content="카카오 챗봇 제작하기 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="카카오 챗봇을 만들어보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2019-10-30-kakao-chatbot"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="카카오 챗봇 제작하기 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="카카오 챗봇을 만들어보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, kakao, chatbot"/><meta data-react-helmet="true" name="article:published_time" content="2019-10-30T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-10-30T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="kakao"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "kakao, chatbot",
+          "headline": "카카오 챗봇 제작하기 - googy-blog",
+          "url": "https://goo-gy.github.io/2019-10-30-kakao-chatbot",
+          "datePublished": "2019-10-30T00:00:00.000Z",
+          "dateModified": "2019-10-30T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "카카오 챗봇을 만들어보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=ad7a20dd6840767906116efbf27011c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad7a20dd6840767906116efbf27011c7"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-7a7417a086300d6612fd.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-cc9810edb3a3d14d9afb.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-d5c831629f7c9432a052.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2019-10-30-kakao-chatbot/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/project">Project</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/kakao">kakao</a><time dateTime="2019-10-30T00:00:00.000Z">30 October, 2019</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">카카오 챗봇 제작하기</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:63.49999999999999%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACyElEQVQ4y22SS2hUZxTHZ+vSlaArcWdA0oUYk5iYOkYTrY+IFQqCKEhRC4ogFKo7l9JNSwsu2o2urCiKb6GkikYko3ExSS3RcZLMzczkvu/c9/157pdbisUD/3vP+c7j+3/nnNLonv3sGTtIeecuegeG6BP0Fugb+JLeLUP/w1b139y/lZ7+QaUPbhtmZGSUnkNnKLVaTQzDwLZtLIHjurgFbNtRPl3XCywJ2kpvtlpomkaj0WB+oUF7scGV8RlKFJIkCVEUYzsOnucpGIaJaVpYloVp6GJb6IarCnqeW+REBGEEWcL1FzVKaZoSBIFCHPo4loFlLOG7Fp7rKJY5e9uJsE0Na6mKaXnygjzHx/d9vE6HLA65NvGeUn5LHAVoVsjZ+xnf3oHv7sHhG/D4Xc49IowhdZ5AfTfU+kA7Jzk2oThCIdKRoqQxf+QME2GYCLM5I2L01zpfXJhg48Upvr9tUJ0zJS4hiV3MN8NMXFvD5K31NJ+vxqn/hCd1QskNglC17ebkPKUsyyQpoK5HHPy9SfnHvyn/PM+lu+9592FOBcaBRji9kdk/u6g96Wbh6Tq06nncTkoqzNI0U3EPp3XpoRSUBtAKoPzDLdaWj7Nh7Byrhk4wuP8os29nVPCb8VOc/GYFZ46t4fSRlXy9r5u79x4vXyhty+XRjJFPWRgWB79c/o2RbQMc2LubkfIg/b2bqFQqyvfs+Uu2D+9l11eH2L5jjK6ubq5evaJ8URwXDI3ltclJLn8+L3GR8DnJMnl2lv1XMDdyxEkq62DLnpkCg1a7LdMLZNdS5YtlOJEg172Oh5+vWbJcLC56+OBfhsVdeJaOY7RxzSXM9mI+jU/pJCFZaMuKdMTXyQ8+cY//Y1KaavjkeDXv8XRmkb+mNaVPLfiMVxvKrsy5yn5Zs6jUTSY/mEzM6kzWdDnv8Fp81WbA5WdNPgJFCoAvmhi32AAAAABJRU5ErkJggg==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/2ba1c4f264907a390555861d29961025/dc47e/kakao_chatbot_openbuilder_login.png 200w,
+/static/2ba1c4f264907a390555861d29961025/9f2d5/kakao_chatbot_openbuilder_login.png 400w,
+/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png 800w,
+/static/2ba1c4f264907a390555861d29961025/77647/kakao_chatbot_openbuilder_login.png 1200w,
+/static/2ba1c4f264907a390555861d29961025/34a69/kakao_chatbot_openbuilder_login.png 1499w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/2ba1c4f264907a390555861d29961025/dc47e/kakao_chatbot_openbuilder_login.png 200w,
+/static/2ba1c4f264907a390555861d29961025/9f2d5/kakao_chatbot_openbuilder_login.png 400w,
+/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png 800w,
+/static/2ba1c4f264907a390555861d29961025/77647/kakao_chatbot_openbuilder_login.png 1200w,
+/static/2ba1c4f264907a390555861d29961025/34a69/kakao_chatbot_openbuilder_login.png 1499w" src="/static/2ba1c4f264907a390555861d29961025/90823/kakao_chatbot_openbuilder_login.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="-카카오톡-오픈빌더-신청하기-" style="position:relative;"><a href="#-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EC%98%A4%ED%94%88%EB%B9%8C%EB%8D%94-%EC%8B%A0%EC%B2%AD%ED%95%98%EA%B8%B0-" aria-label=" 카카오톡 오픈빌더 신청하기  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 카카오톡 오픈빌더 신청하기 ]</h2>
+<p>  <strong>키카오톡 오픈빌더</strong>를 통해서 카카오 챗봇을 제작할 수 있습니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2ba1c4f264907a390555861d29961025/52c43/kakao_chatbot_openbuilder_login.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 63.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACyElEQVQ4y22SS2hUZxTHZ+vSlaArcWdA0oUYk5iYOkYTrY+IFQqCKEhRC4ogFKo7l9JNSwsu2o2urCiKb6GkikYko3ExSS3RcZLMzczkvu/c9/157pdbisUD/3vP+c7j+3/nnNLonv3sGTtIeecuegeG6BP0Fugb+JLeLUP/w1b139y/lZ7+QaUPbhtmZGSUnkNnKLVaTQzDwLZtLIHjurgFbNtRPl3XCywJ2kpvtlpomkaj0WB+oUF7scGV8RlKFJIkCVEUYzsOnucpGIaJaVpYloVp6GJb6IarCnqeW+REBGEEWcL1FzVKaZoSBIFCHPo4loFlLOG7Fp7rKJY5e9uJsE0Na6mKaXnygjzHx/d9vE6HLA65NvGeUn5LHAVoVsjZ+xnf3oHv7sHhG/D4Xc49IowhdZ5AfTfU+kA7Jzk2oThCIdKRoqQxf+QME2GYCLM5I2L01zpfXJhg48Upvr9tUJ0zJS4hiV3MN8NMXFvD5K31NJ+vxqn/hCd1QskNglC17ebkPKUsyyQpoK5HHPy9SfnHvyn/PM+lu+9592FOBcaBRji9kdk/u6g96Wbh6Tq06nncTkoqzNI0U3EPp3XpoRSUBtAKoPzDLdaWj7Nh7Byrhk4wuP8os29nVPCb8VOc/GYFZ46t4fSRlXy9r5u79x4vXyhty+XRjJFPWRgWB79c/o2RbQMc2LubkfIg/b2bqFQqyvfs+Uu2D+9l11eH2L5jjK6ubq5evaJ8URwXDI3ltclJLn8+L3GR8DnJMnl2lv1XMDdyxEkq62DLnpkCg1a7LdMLZNdS5YtlOJEg172Oh5+vWbJcLC56+OBfhsVdeJaOY7RxzSXM9mI+jU/pJCFZaMuKdMTXyQ8+cY//Y1KaavjkeDXv8XRmkb+mNaVPLfiMVxvKrsy5yn5Zs6jUTSY/mEzM6kzWdDnv8Fp81WbA5WdNPgJFCoAvmhi32AAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot openbuilder login"
+        title="kakao chatbot openbuilder login"
+        src="/static/2ba1c4f264907a390555861d29961025/c1b63/kakao_chatbot_openbuilder_login.png"
+        srcset="/static/2ba1c4f264907a390555861d29961025/5a46d/kakao_chatbot_openbuilder_login.png 300w,
+/static/2ba1c4f264907a390555861d29961025/0a47e/kakao_chatbot_openbuilder_login.png 600w,
+/static/2ba1c4f264907a390555861d29961025/c1b63/kakao_chatbot_openbuilder_login.png 1200w,
+/static/2ba1c4f264907a390555861d29961025/52c43/kakao_chatbot_openbuilder_login.png 1499w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>  <strong><a href="https://i.kakao.com/login">카카오톡 오픈빌더</a>{:target="_blank"}</strong>에 접속해 왼쪽의 <strong>카카오톡 채널 챗봇 만들기</strong>를 선택하여 로그인하고 신청합니다. (신청 후 일정 기간이 지나면 승인됩니다.)</p>
+<h2 id="-채널-" style="position:relative;"><a href="#-%EC%B1%84%EB%84%90-" aria-label=" 채널  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 채널 ]</h2>
+<p>  챗봇을 사용하려면 챗봇을 연결할 <strong>채널</strong>이 필요합니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 832px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e8979e96c7e5dfa5665589837ec51cee/ef6b9/kakao_chatbot_make_channel.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 47.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAs0lEQVQoz6WPXwrCMAyHd1sfBEFvIF7B84h4A4/gYBNxdOvWrl3bJGb/RB/qw/xISAn5ftCEiJpa5nleaU1RsG9xtOlK37YhX5PPeJNwm7YtiqJWCgBCFPD6asuTKS9OnhHUJE/hCJ/gWDO8cQE9EJcLfExf8m/Yd851nfW+n5zWy4iBh8x2ZboRpROCf/CspMTOknexoPExyc3jUN/3jUJjtB8gAJqPojL9wVuGoRbKS3gBt3gQElWdsQYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot make channel"
+        title="kakao chatbot make channel"
+        src="/static/e8979e96c7e5dfa5665589837ec51cee/ef6b9/kakao_chatbot_make_channel.png"
+        srcset="/static/e8979e96c7e5dfa5665589837ec51cee/5a46d/kakao_chatbot_make_channel.png 300w,
+/static/e8979e96c7e5dfa5665589837ec51cee/0a47e/kakao_chatbot_make_channel.png 600w,
+/static/e8979e96c7e5dfa5665589837ec51cee/ef6b9/kakao_chatbot_make_channel.png 832w"
+        sizes="(max-width: 832px) 100vw, 832px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>  <strong><a href="https://center-pf.kakao.com/">카카오톡 관리자 센터</a>{:target="_blank"}</strong>에 접속해 채널을 생성해 줍니다.</p>
+<h2 id="-챗봇-만들기-" style="position:relative;"><a href="#-%EC%B1%97%EB%B4%87-%EB%A7%8C%EB%93%A4%EA%B8%B0-" aria-label=" 챗봇 만들기  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 챗봇 만들기 ]</h2>
+<p>  <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ff6cffd3c04fc4fe5c310a76a67b079f/afa26/kakao_chatbot_make_bot.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACHklEQVQoz22RW2saQRTHl7yYaC7rJW0KyVMgL/0a/Qp9S+OlBFoKjdl13d3Ze9Q3nxpo+6ISX0UEIRUKSQylfppeUJO0WOHfMxPdpuDCn3PmzPx/Z/aMtLOzi729p9je3sXysoyVlXgYY7GEiNHofZ5IPEGStLHxCPH4FmT5MRIU41SLR2k/moS0tBQlg4xUaovMMhmTtE4IwOpqUgB5nUPn8Hmz9fVNrK2lEInIdDaGzVQE0v5+GulMGrlcBgfpLCmHNFdmJsp5Paw92M9mXyJD8cXBIV4dPofy5hkk2/Fg2QHJgeN6Qq7nw/ODhXJ9HycnJZRKJYoByuWyiD7f80qQTFODob+GYTAYpgnLsqEbBhS1ALVAUu+lqCry+WMoiooC1XVdJ48B13VFNMlr2zYkxlQCZqFpuig6joNqtYrm2Rnq9ToajUaoWq0mas1mE5VKhTyaAHIfY0xcRtKZjbzGwGYw3r3X64F/w+EQ49EIi75OpyOAPo2AQz2Pj46ABpHzBU104EV+qNvt4u7uF759/0HQMcbjW9INxje3tB5hOp2i1WqhWCwiCIIQaNM7ENCi2TGYBGR05SOa0/n5p4W3+jOZ4OdvYEJ5u90WM7XprxgxmGURwyKggHGoJYAFrYj3Hz7i62CAq34f/etrIZ5fXF7i88UV+l8GeHd6So+mzbwslGQ+uOEcrhV1vKXuR/9JQf54JlrzM/+8Vqi//I8Pnk+i24UAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot make bot"
+        title="kakao chatbot make bot"
+        src="/static/ff6cffd3c04fc4fe5c310a76a67b079f/c1b63/kakao_chatbot_make_bot.png"
+        srcset="/static/ff6cffd3c04fc4fe5c310a76a67b079f/5a46d/kakao_chatbot_make_bot.png 300w,
+/static/ff6cffd3c04fc4fe5c310a76a67b079f/0a47e/kakao_chatbot_make_bot.png 600w,
+/static/ff6cffd3c04fc4fe5c310a76a67b079f/c1b63/kakao_chatbot_make_bot.png 1200w,
+/static/ff6cffd3c04fc4fe5c310a76a67b079f/afa26/kakao_chatbot_make_bot.png 1258w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>  승인이 되었다면 <strong><a href="https://i.kakao.com/openbuilder">카카오톡 오픈빌더</a>{:target="_blank"}</strong>에 접속하여 <strong>+</strong>를 눌러 카카오 챗봇을 만들어 줍니다.  </p>
+<h2 id="-시나리오-" style="position:relative;"><a href="#-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4-" aria-label=" 시나리오  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 시나리오 ]</h2>
+<p>  <strong>시나리오</strong>는 카카오 챗봇에서 제공하는 여러 <strong>블록</strong>들로 구성된 서비스 단위입니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1e9381707cda6f7c1a4e94806afffb23/d9199/kakao_chatbot_make_senario.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 97.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACyUlEQVQ4y3WSW0/UQBSA+wuMRAUSTSSigCygBnEXIVFiom8+GZ81vvsz9D8Y46vxwT9g4gNvPhiFAFlgL91uu+1OpzPTufayLnpKRUWx+dJ0OufM5TvHGjkzOTW1uHjz7sLCyuxsbWJi4fTpi8DIyMTY2JWzZy8B585Njo5eLhkfnz5//uqpUxcePX5iXby0eLVyu7Z8v7b84M7aw1vVe9PTSzMzt+bnV65dW52bq1Uq1UoF3rXZ2er166tLS2vV6r3LkzeePntudVq77v6G196P3Lpnt5rNtuN0S1ot27addrtj24ADf3w/AFzXr9dbXze3rA8t83pTv987eLM1/NgZwiOklsoMBsMsL8gHf5Pl3w4OvveC0Hq7IV6sy1ef1ct1/m6Da208L/CDUOlMCA1woWN+DBYrqdJ217cE5980H2bJMNWDRIdU7HlhH0V9hEls+jSJRSJVImTxLhHSmCR3vMByvNBxAy5TCBIqheS62yeEUoCrkGkudZIkaZbHStNYYExRCPO80XYsHxEURibNtUkBpSAyZ7HEmHGupDScFwhh4liXMKakSGzHtz410G6nv+/Rhku2HGITjXiCQ+a6KIokIYoCVBIqKVUlhEgem3anZ21/qTtO0POw5xN3rxO7AdwKovsBnFueCCwE+9sgDHeR38UaRQU+krwwCXoAzvX/gFtgKizMFGESBBYc+cQRDWFSGZB1IiZJmVBWRCXn8qgMpvxAiAR9AiXlwpwIeIUtLSYSpdM/awhDjGPPQwixX5KOkJRIcNnr4TASh8nqdwPIw/ODElDKmMZh3PNxEBAY/kw+1M6owkT+nVzU2WRwMChmCWVFwq9hScwUpseTiwMz2fBCXNg6fp3jgDPCVXnnQpUqujCD9txxgm4XFqAsFlonWqf/YkzGhLZE0Y8QYbIsz/OBOpzbaXmb+93tprfnoP/RdMMfmXvJSQHNGGkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot make senario"
+        title="kakao chatbot make senario"
+        src="/static/1e9381707cda6f7c1a4e94806afffb23/d9199/kakao_chatbot_make_senario.png"
+        srcset="/static/1e9381707cda6f7c1a4e94806afffb23/5a46d/kakao_chatbot_make_senario.png 300w,
+/static/1e9381707cda6f7c1a4e94806afffb23/0a47e/kakao_chatbot_make_senario.png 600w,
+/static/1e9381707cda6f7c1a4e94806afffb23/d9199/kakao_chatbot_make_senario.png 960w"
+        sizes="(max-width: 960px) 100vw, 960px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li><strong>블록</strong><br>
+<strong>블록</strong>은 대화의 최소단위로 <strong>사용자 발화 - 봇 응답</strong>으로 구성되어 있습니다.  </li>
+<li>
+<p><strong>블록 제작하기</strong><br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1142px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dce824a5319eebfdb0bef0f903d0af77/b490f/kakao_chatbot_user_talk.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 24.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAmklEQVQY053OSxaCMAwF0O5/d27AiYBov/kUxMkTIladMrhtzmnyGnc6d7h0V4zjHbc0GZY30QlaZ7tJKoj/ic67T/8MN0ZCIQERI5Ou6vqoYFaoVizL0wZiYYSQ4XcxsYXUabGbWNb6Abcd3hcMQ0DOalL6iklanXNtfntsxuYEblszBELfe8QoxwWxzy2wlGrpuWjb8ogt5wXWXH17UFSiCAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot user talk"
+        title="kakao chatbot user talk"
+        src="/static/dce824a5319eebfdb0bef0f903d0af77/b490f/kakao_chatbot_user_talk.png"
+        srcset="/static/dce824a5319eebfdb0bef0f903d0af77/5a46d/kakao_chatbot_user_talk.png 300w,
+/static/dce824a5319eebfdb0bef0f903d0af77/0a47e/kakao_chatbot_user_talk.png 600w,
+/static/dce824a5319eebfdb0bef0f903d0af77/b490f/kakao_chatbot_user_talk.png 1142w"
+        sizes="(max-width: 1142px) 100vw, 1142px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>블록에서 사용자가 입력할 것 같은 <strong>발화를 등록</strong>해줍니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 843px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/44e4048d484d1ea9c33b17f2fd1b5616/4ff83/kakao_chatbot_response_buttons.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB90lEQVQoz4VT2W7bMBDUF/ev+hV9K+IWbdH4ipPYiSTLkqyDuiVSlGVnulyrQR4MhMCAqwU5s9xZWUs3hB9EqJsOSg3ouh6d/IDuE0j9HrcEKxQVHC+AvQ/ghylE0RIa3rOyRX4LVYdiQpxkSERJ+QZlLWH1VNXGOWJth9i4ER4JmwnLlwDzrY/Fzud9vrvG988H/H7cM/5M+88HF6vXEJbIqMIgRZHnKIoCQgh0bQuzClJ0/BSHKMcxLeHHOcc7L8bdysZs7eDHhLulzWJW3So4oUBVVUwqpcQbrqtsJFwS84kkTHImNPHLIcGvjftemcGMBBb0IqumS/tjBq0HMkWjaTsiVRxL1SPLSEQpjOMZp3HkfTiN0IQ0K/D3yeMKmXDHhApumJFDEoY8Lyp2vDKu9+QcCRiS8/nCGM/XeBwvLDjfHvjps5Xzn1DCo2cMgxkZiSRJmUTRYZMTIqeqJfrpBVqfKH/C2zhA94qN4goJxkSroR4+72OE4tp024+uvSKUdcciddNyS8xcGpFKDtimA4JSk+Mevi9eGfc0CZYZRjsQPDpPbkzkCQusaQSOJPJxnS8X9G2FddTjyzeNrw8aQST4/JacN63jCvt+4AoYFJtv/mukmX51ExXdM3clnTGtYBPpr+EKTdK421KvOo7Vp2DiG/l/0/2Fvhv4XeAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot response buttons"
+        title="kakao chatbot response buttons"
+        src="/static/44e4048d484d1ea9c33b17f2fd1b5616/4ff83/kakao_chatbot_response_buttons.png"
+        srcset="/static/44e4048d484d1ea9c33b17f2fd1b5616/5a46d/kakao_chatbot_response_buttons.png 300w,
+/static/44e4048d484d1ea9c33b17f2fd1b5616/0a47e/kakao_chatbot_response_buttons.png 600w,
+/static/44e4048d484d1ea9c33b17f2fd1b5616/4ff83/kakao_chatbot_response_buttons.png 843w"
+        sizes="(max-width: 843px) 100vw, 843px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>그리고 <strong>텍스트, 카드, 스킬</strong> 등을 이용하여 해당 발화에 대한 <strong>응답을 설정</strong>할 수 있습니다.<br>
+<strong>버튼</strong>을 이용하면 다른 블록을 직접 연결하거나 메세지를 전송하도록 하여 다른 블록으로 넘어갈 수 있습니다.  </p>
+</li>
+<li>
+<p><strong>봇 테스트</strong><br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/5a791/kakao_chatbot_bot_test.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADJElEQVQ4y12T204TURSG58qoiRLEiCBFRQ4KGjWicuszeKWJVz6Nj6AvYEw0ngKUHikElcrJKihMoTCUtnPac55OQf1dezfF6CR/1prdvb691r870u3b9/DgwWPcv/8IPT3D6OjoO9SZMwM4ffqSyDs7BzAyMobh4bvou3gdg4O30N9/E8NX7qB/aBQ3ugZw9dwgpKPHuhDrvYZLA6O4fGUM3d2XceJEDKdOXcTZs4MC1tbWS+8XKMZE3t5+ng7qo71DdGg/Tp6M4Qhxjh/vhpSJTyCXmMTHbAKzmTTi8TSSySwSiYzQ1FRzjcdUahrpdA6ZTI7es7SeQio9g4n3ccRfvMa75y8hvZUjPCsc4GkBSCkQjx/U0Xp+/xdbzy9aCMMG7Q0RRL9g2xH2/RBSvuQiV/SR2XCxtG1DMxh2yzWYzIVp+bDspmwuxwezHMpdBHSoRwBF2YVKNVX7AJZ3AMkxTYSuDexH8D0fqzsVaJoG3bRRYwFsN0C9HsGlThiBVjbLyMtlLG5WsFDco7iHfNHAmjyOdfkVpHJFhapb8IIIjhfSCBFM06EOHXgEcxySG4qoGw5WSxVs79WElJoOhzpd3lIRX5jHbCEPqabqYFTMx7FILkGrVVPINH0YhifEKFc1B1t7GiyLUQ0jD0Php1zRMb5YxPQ3hYCGC4351AWNR11woG0HVOT/I76m6Q5KFQNBGNFeOojZCKnDNaWGycV15L5uQmJkNiOQ59cFjEsnky3bE7fNjee/8ZzRBKWqIdY03SCrTETk73cCThBwmgMdl8Z0g0MYl6oyKrDIt1B03RK/7YWNXcyvK/j0Y0fos7yLmdUSEstyE8hPb4nD+AWoqoUaeWhwOyjXaVTT9MT7HBVPLm0gsSILyNTyBpKUJ1eKyDaB4eFYXGHA/Qmpm0AAeLccyMhHDp1b2yZIE9ACNaOMbKEIqTUmh3GPfihV1FRDXFLTO/p/8sgPpH359R1kqJCPxwFcuW9bSH7ZoliCxM32qcOQbi6sN1DWGLaVCspVHTp9LYbl/RXzxKfW2N9Ho9FAPaLPjaIf/cTDNwGefAjwB22V9aY0J92DAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot bot test"
+        title="kakao chatbot bot test"
+        src="/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/c1b63/kakao_chatbot_bot_test.png"
+        srcset="/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/5a46d/kakao_chatbot_bot_test.png 300w,
+/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/0a47e/kakao_chatbot_bot_test.png 600w,
+/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/c1b63/kakao_chatbot_bot_test.png 1200w,
+/static/0c40ecb4adc13ea29b88d2e0c9bc1fd5/5a791/kakao_chatbot_bot_test.png 1248w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>저장하여 등록했다면 오른쪽 상단의 <strong>봇테스트</strong>를 통해서 확인해 볼 수 있습니다.  </p>
+</li>
+</ul>
+<h3 id="-기본-시나리오-" style="position:relative;"><a href="#-%EA%B8%B0%EB%B3%B8-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4-" aria-label=" 기본 시나리오  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; 기본 시나리오 ></h3>
+<ul>
+<li><strong>웰컴 블록</strong><br>
+웰컴 블록에서는 봇이 사용자와 처음 채팅을 시작할 때 보여줄 응답을 지정할 수 있습니다.  </li>
+<li><strong>폴백 블록</strong><br>
+폴백 블록에서는 봇이 이해할 수 없는 발화에 대한 응답을 지정할 수 있습니다.  </li>
+<li><strong>탈출 블록</strong><br>
+탈출 블록에서는 대화를 초기화하거나 끝내기 위해 사용할 발화를 지정할 수 있습니다.  </li>
+</ul>
+<h2 id="-스킬-" style="position:relative;"><a href="#-%EC%8A%A4%ED%82%AC-" aria-label=" 스킬  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 스킬 ]</h2>
+<p>  <strong>스킬</strong>은 사용자가 필요로 하는 정보를 <strong>웹 서버</strong>에서 처리하여 제공할 수 있습니다.<br>
+인터넷상에 있어 자주 변하는 정보, 복잡한 연산을 필요로 하는 정보들은 관리자가 직접 등록하기에는 한계가 있습니다. 이런 정보를 스킬을 통해 잘 처리하여 제공할 수 있습니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0be231a999a9fafc5a0a3cd543cae41a/0a47e/kakao_chatbot_skill_network.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 80%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAADIElEQVQ4y52SXUhTYRjH/+dsplK6srwqgiKCLCiMxK6LoOgiKEtZUS2hbgrCi6Iussg5c1rm0myZq4ioCBX7wJWaVnQRfdEXhBlN/Nrc9JxtbtOd9+nZmRddtl748bzveV7+7/95ngMiQEcBou8xZ+Ynsmmaz4PMCLD6zVsY+pRMuU/NkL4qkEZUCYrKySDgn8iWBsbnQMyeKaIjUZijD2aagIdRyA+H6IGBvwHPCIZeZT2LrkUXvzzBfAgZMRN0QIQUxoOoagbpohJojOMo8uLjEDEvKMrEfBKx6FG4KDfr9cgGvKIMvIyb8JlMS+g7MK2WsStCzE+YDhC0oEBYzcNUwuUkE8D+8DDr/kB06Dui47+4CwHcT7Si6NXNRVfdlvQtPW3prd3bc/X+aOH7uuBIfxRjA1F2xuLqfnbNuWFADCGPSxXsmnQUkPChrJ+WgZ7DRG3IoVbMDT3O3EilMPHNY7oghZkQO1RnHXLZwgNZ40fFKPYJP34ziuaF413XkjTs4fv3ONeGdaIda+kOkhP8FDJw2Q7EVYXxsDtzcig8MOrgeJf5wvQg61zv1s28k0707UB+x0mYuw8g0m5MY5fG/s5lMCjcIzWcnOqEmi0NKn9NOay/nsOXC+KP5Hx6KGXtaj+SY+62rCpxWzYUdZauKXZbMm88KQQ9ALxPFiYdRiJJN0EW8ulisqGVf6lviX0b0rR2eSG7nEcu5NbdyZu/1GXJKHp6cP5ud2nWzs5SGb0d6H20InEXxZ4WbnwI3DP+cWfxMwFGTQhyfvDZ4sTLhsGXyzfd/lay8vikw4RTO7D3xWFsa92HIvch7Gb+abm0KqOT6tE0c+F044ydGiNVfqdmV+qC1vUNERvqQlY5JcEbVGO8RZfgFPaK2uEzVP6xTDjUCmqimsJmuogrEZuMVFazqDE2CzuuxqrONYQrqX7yfKxxyhZvmL5Q0KTZUxd0Ua2xhWoTJVewW+K9aOZ4OWQtdExV/odDLvk6O2yMVZ1yxqvJqVUHrsWrJ1kwv54FmdQEbb6zOpXe8nSb92wOsyCBdfSMXDlWDiuTyvoDwmgHW7uViOAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot skill network"
+        title="kakao chatbot skill network"
+        src="/static/0be231a999a9fafc5a0a3cd543cae41a/0a47e/kakao_chatbot_skill_network.png"
+        srcset="/static/0be231a999a9fafc5a0a3cd543cae41a/5a46d/kakao_chatbot_skill_network.png 300w,
+/static/0be231a999a9fafc5a0a3cd543cae41a/0a47e/kakao_chatbot_skill_network.png 600w"
+        sizes="(max-width: 600px) 100vw, 600px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li>
+<p><strong>스킬 제작</strong><br>
+스킬 탭에서 스킬을 생성하겠습니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1194px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0ae7fe862506f2b75d593e9b5566f4e6/187fa/kakao_chatbot_skill.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 65.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB/ElEQVQ4y51SyW4TQRCdA5GjKDkkcmxjSxDw2DgSSiCSL9z4glxy4cLfcUYeb+OgcOMDkDhyRHIS43j26e5ZHlU9Q8AsYmnpTVVXV72qfj1Gv/8cZ2cvcXr6Au32E1Srbezvm9rW6x00Gl3yH+L+vcc4OnqGTucEpvn01h72+nhA/nHDRK/1CMbGRhWt1iHa5gm63T6azR4qlTq2t1vY2zvA7u4Btrbu0r6pYzs7BfisVjO13dxsEFENdyo1GIPBBJY1xXQywtAaYjSaEWyMx+eEmcZwaOvYZHKO2ewCtn1BNZw3xWj8BsPBGG8nNqzXFgyUK0lT/OvK8sK6Cng3BxYCMFaOj+WNg/nlNRw3hOeFcP8Sy5ULZ+Xg49zDq/cBPnzyYcRCQQiBJEnwvytPJH0VMqWYUCKKYkSxgFIppEp+Dfmd/QGCh6LaKJbFhGEQIiRSIXlaWSTcQlKR0k3ZV79pxm8QF4QSvh9g8flGa+n54RpYK54+JvC54/rUXPwEJmYuPWEQRri6XpIVa+BEz4/0VZj08mqhSTkehHGJModizGXwmHwlRppmVBhrm2aZFtwnOfhPUAnrq3Q8LnMy8vM8R0jEK8cjyZKCkLXjCXhs1vKrNqxLce1A73WO/JbDeibUyA8iuG6geQy+DnfXDyBLiHXw+Z9ymJi5vgB4dYD7xc7DkgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kakao chatbot skill"
+        title="kakao chatbot skill"
+        src="/static/0ae7fe862506f2b75d593e9b5566f4e6/187fa/kakao_chatbot_skill.png"
+        srcset="/static/0ae7fe862506f2b75d593e9b5566f4e6/5a46d/kakao_chatbot_skill.png 300w,
+/static/0ae7fe862506f2b75d593e9b5566f4e6/0a47e/kakao_chatbot_skill.png 600w,
+/static/0ae7fe862506f2b75d593e9b5566f4e6/187fa/kakao_chatbot_skill.png 1194w"
+        sizes="(max-width: 1194px) 100vw, 1194px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>URL에 스킬을 제공할 서버의 접속 주소를 입력해줍니다.  </p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"2.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"data"</span><span class="token operator">:</span> 
+    <span class="token punctuation">{</span>
+        <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"Googy Bot"</span><span class="token punctuation">,</span>
+        <span class="token property">"age"</span><span class="token operator">:</span><span class="token string">"1"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>위는 스킬 응답 예시입니다. 챗봇과 서버는 <strong>JSON 형식</strong>으로 통신합니다.  </p>
+<ul>
+<li><strong>version</strong>: 챗봇이 응답을 이해하는데 필요한 버전입니다. (작성하지 않으면 1.0으로 인식합니다.)  </li>
+<li><strong>data</strong>: 실질적으로 우리가 사용할 응답 데이터입니다.  </li>
+</ul>
+</li>
+<li>
+<p><strong>블록 - 스킬 연결</strong><br>
+스킬 응답을 돌려주는 서버를 만들었다면 이를 블록에서 사용할 수 있습니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e426d3c6c58d4f93fd749693a85709bd/4719e/kaka_chatbot_skill_block.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAClUlEQVQ4y12Sy2/TQBDG/Re1qjgAaqoeKKVSJfiHEAfEgRt3kDhy5ISoBFRIRaUUSOmDJG0edmzH78faa3uTJqQfs+sUpEb6aZT17DfzzY62ufEQ21uPsNbYxNLSKpaXb9JQcWVlDevr22g0tnDnzkbN7XtYXX2Axt372Ly1hiePn0LrOyGMgMGNM+Q5JwoVGcsW5GBZjkzB6xxeIoxSRHFCMARhgpEfUy6D9nxf4NkXgbctgXFZoK+bsEceeCFQiUuU1eQflVhE+pYnVIxEGZ/ASiYoKsotBTTGOF2ukOWlEvH8SJFzusSrGwhwimxoIzdtVLaLkhyIyQwVFeLUuSZbl1WlWFGOESc5XDeiyJGm5Q0K+haT3Qwpq2roPI5zirwWzGhmUkhZJOE8F5RQIIk5PC9RJEmhkOc1HL6fwiHxKMrV/yStZ6tJK1JQ4lN3QcSULVlARWVT1HbpTM5JUOH/jOnskr7NCWmZSasycYyhn8CwPXhhiiQrkJEAI2SUYmGaozsKaCtShUV5VsQxCm2ae5O2oaIOyTJfXJCvOhi66HR09Po2+gMHvZ6FVpfQPfw4N7Hf0nHQHuCgY+DjcRfvmzo+HX3F99M3CBLq0KQHkC/MZEfU5chwEJomAseBZ1koaddC24dFM+taPtqGjYHtUHcJ9loGdk96+HCsY/fMQZxm0FKaTbHoUFoL3BD4M8P06grT+Rzy5yghD80LC+9+nhMXKu4cdbHT7GLv9AKH7R5C2k1Nzo/LR5HLKudIHUZOUL8wvWLshTg56+Pzrz5dMtAhcUnb8vCbxjNwA7w+9PHqwEfBObTr/buObsigDz0Ypk94CpOETSoQ0hbMqfv5bEYmyMV0Rv3P8fJoghffBKaixF843aPfI/PkyQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kaka chatbot skill block"
+        title="kaka chatbot skill block"
+        src="/static/e426d3c6c58d4f93fd749693a85709bd/c1b63/kaka_chatbot_skill_block.png"
+        srcset="/static/e426d3c6c58d4f93fd749693a85709bd/5a46d/kaka_chatbot_skill_block.png 300w,
+/static/e426d3c6c58d4f93fd749693a85709bd/0a47e/kaka_chatbot_skill_block.png 600w,
+/static/e426d3c6c58d4f93fd749693a85709bd/c1b63/kaka_chatbot_skill_block.png 1200w,
+/static/e426d3c6c58d4f93fd749693a85709bd/4719e/kaka_chatbot_skill_block.png 1330w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>그림과 같이 스킬을 지정하면 <strong>{{#webhook.KEY}}</strong>로 스킬 서버에서 받은 데이터를 활용할 수 있습니다.  </p>
+</li>
+<li>
+<p><strong>스킬 자체 응답 작성하기</strong><br>
+봇 응답을 서버에서 모두 처리하는 방법도 있습니다.<br>
+스킬 서버에서 <strong>template</strong>을 구성해 보내주고 봇 응답으로 <strong>스킬 데이터</strong>를 사용하면 됩니다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"2.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"outputs"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"basicCard"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                    <span class="token property">"title"</span><span class="token operator">:</span><span class="token string">"Skill Test"</span><span class="token punctuation">,</span>
+                    <span class="token property">"buttons"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                          <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"message"</span><span class="token punctuation">,</span>
+                          <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"보기"</span><span class="token punctuation">,</span>
+                          <span class="token property">"messageText"</span><span class="token operator">:</span> <span class="token string">"보기"</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1053px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/51885410137233fc082943dc2848daf3/34e70/kaka_chatbot_skill_response.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnElEQVQoz0WS3XKbMBCFecY+Sa/7An2bXvQy00mbm17UE7ttph4X/0BsIwgSEkICCSdwsgK3YebTLjOac84uRMY6cKHA8hK6aRHeje2u9Y3GdGio6qwA3+4h0yPsicFqA+d7ONfBtg5RuFzJBkVRUTWodftGfYX6JpgZi15rXJTCM9WhaTD0Hs8vAPmhbS+zoFQG53NJohJVZcC5ngh9QJHRIxO4352xSnKs0nyuSYZlwhEff4ElH5Fka0QhpqYEUtoJQUKMceQkIEQzCdbKYpMWWGxPWD8WWJ+eJjbE8sDxdXWHxeI97jcLRFKTiGogawttHGpCWz/3+t+4HQ4ZGUiF8dJjfsbpdH2P24cjPi8FfsQM0U+KvYsPqGnZbaVguYQtK1hZo+08LdrD09IPlDh9kggBWCnB6J6oDVJa093vGN8f/mC5TRFp2mFfCvS1hixINKTwHkMlMY7jBB3gZLDPShIQM7nAnpXIRYUvfyU+3JT4Fsv5oxj6bUIqE+AVWiEpbUjY/0/pnL+OORsEhmEe+zZ9wbtPDjc7j1fD+FkxDE512QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kaka chatbot skill response"
+        title="kaka chatbot skill response"
+        src="/static/51885410137233fc082943dc2848daf3/34e70/kaka_chatbot_skill_response.png"
+        srcset="/static/51885410137233fc082943dc2848daf3/5a46d/kaka_chatbot_skill_response.png 300w,
+/static/51885410137233fc082943dc2848daf3/0a47e/kaka_chatbot_skill_response.png 600w,
+/static/51885410137233fc082943dc2848daf3/34e70/kaka_chatbot_skill_response.png 1053w"
+        sizes="(max-width: 1053px) 100vw, 1053px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+</li>
+<li><strong>스킬 파라미터</strong><br>
+스킬에서 <strong>파라미터</strong>를 입력으로 받아 처리한다면 하나의 스킬을 가지고 여러 블록에서 사용할 수 있습니다.  </li>
+</ul>
+<p>  스킬을 위한 <strong>Request, Reponse</strong>에 대한 자세한 내용은 카카오의 [<strong><a href="https://i.kakao.com/docs/skill-response-format">응답 타입별 JSON 포맷</a>{:target="_blank"}]</strong> 문서를 참고하시면 좋을 것 같습니다.  </p>
+<h2 id="-more-" style="position:relative;"><a href="#-more-" aria-label=" more  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ MORE ]</h2>
+<p>  지금까지 기본적인 기능을 제공할 수 있는 카카오톡 챗봇을 제작해보았습니다.<br>
+카카오 오픈빌더에는 더 많은 기능들이 있으니 더 공부하실 분은 <strong>[<a href="https://i.kakao.com/docs/getting-started-overview">오픈 빌더 가이드</a>{:target="_blank"}]</strong>를 참조하시길 바랍니다.  </p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/kakao">kakao</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/chatbot">chatbot</a></span> on <time dateTime="2019-10-30T00:00:00.000Z">30 October, 2019</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/page">Example</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2019-10-30-kakao-chatbot";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-cc9810edb3a3d14d9afb.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-d5c831629f7c9432a052.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-cc9810edb3a3d14d9afb.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-7a7417a086300d6612fd.js" async=""></script></body></html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">그래프 (Graph) - googy-blog</title><meta data-react-helmet="true" name="description" content="그래프를 알아보자"/><meta data-react-helmet="true" property="og:title" content="그래프 (Graph) - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="그래프를 알아보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2020-03-04-graph"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="그래프 (Graph) - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="그래프를 알아보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, graph, data_structure"/><meta data-react-helmet="true" name="article:published_time" content="2020-03-04T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2020-03-04T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="graph"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "graph, data_structure",
+          "headline": "그래프 (Graph) - googy-blog",
+          "url": "https://goo-gy.github.io/2020-03-04-graph",
+          "datePublished": "2020-03-04T00:00:00.000Z",
+          "dateModified": "2020-03-04T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "그래프를 알아보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=ad7a20dd6840767906116efbf27011c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad7a20dd6840767906116efbf27011c7"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-7a7417a086300d6612fd.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-cc9810edb3a3d14d9afb.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-d5c831629f7c9432a052.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2020-03-04-graph/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/project">Project</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/graph">graph</a><time dateTime="2020-03-04T00:00:00.000Z">04 March, 2020</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">그래프 (Graph)</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:48.50000000000001%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACmUlEQVQozz2SXUgUURiGv9ld3Nmd3Z1fZ2d3XXXVtfxDE7cIb4QiiggjihITLf/YrVAE241Ii+gyirqRLiQrgv7wJqKLsC6CMLqKSgJvUot+oEQliIHzdmYsL17mPTPf95zzfnOIiCAQMX9ERlA1EVKjCKgGvKII/s32er2QpEDO12JQZmLaIIyT+mOCWh/PqsQr8E6jRw8uq9zR5NQdIg9viEQTLBkpQbNYjow/hTp/KSy9FGJEtUlw2qgriVc7/CtXEJ+/21H5drotuHoN4pepATyrzSx/NrD0sb6AVV4ZLo4hHYqx9kAFutUa9ETSOBhIoc0bQ0IrtX1SyAF2V2CuWVy++q3sw8O9tbNPMsGV61+NhcnDeFrT8GvJXFycazyOn7xSUxLYRibrCqbQx4EnUw0YSjSht7gR24MpO8THQB46Ieyqc1KRuTBFLTMv6H41isFffJruJDjR18h9UrmsY3JshD2//RKvb13CzdEyjFduwXDZVuwJVdi6HIMnEMjx4RANNvjubQL1j/1Rei6umf3nf+suDCTY34sEF5hUdFw4sI+dHSjgTPde3NjdhHPVjRgqb8JOqcTWFMsFCuEIryYhlwflCkzOFpjKpQzw9bFh0NFToN4RTlRUC7UksmpZRtqMo7+iDqPpenRb5WiSdDukRZ19cw7tUM8bOesAubIFRDnQkyu4PsTlepI0E5oVZ0lDRU2JhSpTw/6YgVZZQjxaYnv9QQeYBeA50vdez+WZzE8Y5s0KB3O/Ic3ZiDyC4Nw/ZunF2KwpaDRkVBkaTCuBIilik/sr1oGdg/PRf6AwP6m1ActDd1VgfCjrDcwrSigKa/C7UiH4ityL/R/oRG7vmOHRGGVPc+Uh8piCMwKuQDbPXP8XJm41RZZW8qUAAAAASUVORK5CYII=" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/8511a8b63d35e9e0d5cf70c9196ccb77/dc47e/graph_nostale_map.png 200w,
+/static/8511a8b63d35e9e0d5cf70c9196ccb77/9f2d5/graph_nostale_map.png 400w,
+/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png 513w" sizes="(max-width: 513px) 100vw, 513px" /><img loading="lazy" sizes="(max-width: 513px) 100vw, 513px" srcset="/static/8511a8b63d35e9e0d5cf70c9196ccb77/dc47e/graph_nostale_map.png 200w,
+/static/8511a8b63d35e9e0d5cf70c9196ccb77/9f2d5/graph_nostale_map.png 400w,
+/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png 513w" src="/static/8511a8b63d35e9e0d5cf70c9196ccb77/492e6/graph_nostale_map.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h1 id="-그래프graph-" style="position:relative;"><a href="#-%EA%B7%B8%EB%9E%98%ED%94%84graph-" aria-label=" 그래프graph  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 그래프(Graph) ]</h1>
+<p>그래프(Graph)는 특정 개체들이 연결된 관계를 표현하기 위해 <strong>노드(Node)</strong>와 <strong>연결(Edge)</strong>로 만들어진 자료구조이다. 지하철역들이 연결된 노선 모습이나, 게임 내의 스테이지의 연결 상태 등을 나타내는데 사용할 수 있다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 513px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8511a8b63d35e9e0d5cf70c9196ccb77/267f6/graph_nostale_map.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACmUlEQVQozz2SXUgUURiGv9ld3Nmd3Z1fZ2d3XXXVtfxDE7cIb4QiiggjihITLf/YrVAE241Ii+gyirqRLiQrgv7wJqKLsC6CMLqKSgJvUot+oEQliIHzdmYsL17mPTPf95zzfnOIiCAQMX9ERlA1EVKjCKgGvKII/s32er2QpEDO12JQZmLaIIyT+mOCWh/PqsQr8E6jRw8uq9zR5NQdIg9viEQTLBkpQbNYjow/hTp/KSy9FGJEtUlw2qgriVc7/CtXEJ+/21H5drotuHoN4pepATyrzSx/NrD0sb6AVV4ZLo4hHYqx9kAFutUa9ETSOBhIoc0bQ0IrtX1SyAF2V2CuWVy++q3sw8O9tbNPMsGV61+NhcnDeFrT8GvJXFycazyOn7xSUxLYRibrCqbQx4EnUw0YSjSht7gR24MpO8THQB46Ieyqc1KRuTBFLTMv6H41isFffJruJDjR18h9UrmsY3JshD2//RKvb13CzdEyjFduwXDZVuwJVdi6HIMnEMjx4RANNvjubQL1j/1Rei6umf3nf+suDCTY34sEF5hUdFw4sI+dHSjgTPde3NjdhHPVjRgqb8JOqcTWFMsFCuEIryYhlwflCkzOFpjKpQzw9bFh0NFToN4RTlRUC7UksmpZRtqMo7+iDqPpenRb5WiSdDukRZ19cw7tUM8bOesAubIFRDnQkyu4PsTlepI0E5oVZ0lDRU2JhSpTw/6YgVZZQjxaYnv9QQeYBeA50vdez+WZzE8Y5s0KB3O/Ic3ZiDyC4Nw/ZunF2KwpaDRkVBkaTCuBIilik/sr1oGdg/PRf6AwP6m1ActDd1VgfCjrDcwrSigKa/C7UiH4ityL/R/oRG7vmOHRGGVPc+Uh8piCMwKuQDbPXP8XJm41RZZW8qUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph nostale map"
+        title="graph nostale map"
+        src="/static/8511a8b63d35e9e0d5cf70c9196ccb77/267f6/graph_nostale_map.png"
+        srcset="/static/8511a8b63d35e9e0d5cf70c9196ccb77/5a46d/graph_nostale_map.png 300w,
+/static/8511a8b63d35e9e0d5cf70c9196ccb77/267f6/graph_nostale_map.png 513w"
+        sizes="(max-width: 513px) 100vw, 513px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>※ Nostale이라는 게임 일부의 지도를 그래프로 표현한 것이다.  </p>
+<h2 id="-구성-요소-" style="position:relative;"><a href="#-%EA%B5%AC%EC%84%B1-%EC%9A%94%EC%86%8C-" aria-label=" 구성 요소  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 구성 요소 ]</h2>
+<p>그래프는 <strong>노드(Node)</strong>와 <strong>연결(Edge)</strong>로 구성되어 있다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 300px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/aab071d100540e39af30c615960f29cf/5a46d/graph_model.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 88.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAADjklEQVQ4y41Se0zNcRQ/39/Vkuve1BIpvYvl0YZhNoaN2QyzYWxmNqL7awjxu9E8y8w7j255rHZJKZOo3EUNeVSbR95hjTynXLJQLr/jfH+/X7df+MP37nPP93HO53fO5xwQJQSLVYZlqxFcgDA59zH9I4wpqWXd2neDR9seYd7uZliY2grmT4eEuW9XwTmHlQH5ZB4tAkRgm3c+hB3pNyHbfhyACEOIcEbCWpxaYULjFHt9X/KFcUW3IaAhV/D8mg4Ltn3xWbLe5e3dnAXxzxOFgpI0IEJ2INPRjwhhzeYPsGnHY0i3XQSIT/5lXpLiGpi8CAf1rz+V5/XlgKvPi+OFqXOw+7DKKxBTc2Ga6WNmk7k5601s1aXxkyqLYfYWNL94OKLsc2PAzyd3JuznpByHDpeCUt4U+1MYfKN8eLf2PXTcIht+7MLRZdVxdDD7vcm+B5hK2+0Y2Zhxk+I8bldNT/rxwROxFeRv78yYY7cPOZlvg3PFWwWYWHCPTSisg5kZrwMpi9c8sKfT5hx79taAHi0HIehp/l7BtQs5wp7kb5j0yAZ5JWnDnS8Dv6MT8P3z6Pq4JPRekfIVCgr3MQh9dBqCnuWzELJjSmoGhj04I40svx7b+1WOkj39hJhqRwKVvzJ7KBqbqAnfG33BUZo86k71TCk3Lyus9to8uFsznV2+lAAQfr8IPL/tA8qOxVZVgPFTBunmIC2SWOIKZMtXKaQeabMwhponWiRckHviiOFqxVJoedUHSs9vgIYHoxhlChXliWo3AeMJayGirpiZnDYDZSukLETeMFi67qd50ca2oYs3tsUSob8oyV5c+braaUJTQ7ihumo+wxa6aQc4lnMS/rksfDZVGGisIkUrn1U0ECIskqy8iTS7/P6/lo6wOwWFqgTKmZMLfC9qd3+tjgfVSe5qVQRQNtFEFk2+/uqdrP8oz14FxSmbTsI/iVVwn3g9gRtyV1Kybi0UK2EPUREejTpCgeBLZx+yTOwkMRH8CV76j7iZLZxEwigK9KOgKNqbRfU+nGwgIYgQqlXhw/Uk+HEpuNYdGXNCppUcTOjIjJohBxOxB9kQXemRml6hNEKeWiI9iShY2zNNB6UMb0KEyMdDwjCCr+YURe8mIumlZQVKcyT6kDpKUURutGi6g24k3KQEH/0sknMIWZ6FoPP3U3ytaHL3QdWwsyl6cUXrH13s8ta1u/op+Q0YoJSWfhXWCwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph model"
+        title="graph model"
+        src="/static/aab071d100540e39af30c615960f29cf/5a46d/graph_model.png"
+        srcset="/static/aab071d100540e39af30c615960f29cf/5a46d/graph_model.png 300w"
+        sizes="(max-width: 300px) 100vw, 300px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li><strong>노드(Node)</strong><br>
+위에서 언급한 지하철역, 스테이지 등의 개체를 의미한다. Node는 독립된 개체로서 여러 가지 정보를 담을 수 있다. (위 그림의 경우 각 Node는 Clear 여부를 나타내고 있다.)  </li>
+<li><strong>연결(Edge)</strong><br>
+노드(Node)들을 연결하는 선이다. 연결/비연결 상태만을 표시할 수도 있고, 연결 상태를 구분하기 위해 값을 가질 수도 있다. (위 그림의 경우 각 Edge는 이동 통로의 상태를 경로, 잠금, 잠금 해제, 경로 없음 등으로 구분하고 있다.)  </li>
+</ul>
+<p>Node는 독립되어 있기 때문에 정의한 개체의 배열을 통해 간단하게 구현하지만, Node들의 관계를 나타내는 Edge를 어떻게 구성하냐에 따라 동작 방식과 효율이 달라진다.  </p>
+<h2 id="-2차-배열을-이용한-연결edge-표현-" style="position:relative;"><a href="#-2%EC%B0%A8-%EB%B0%B0%EC%97%B4%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%97%B0%EA%B2%B0edge-%ED%91%9C%ED%98%84-" aria-label=" 2차 배열을 이용한 연결edge 표현  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 2차 배열을 이용한 연결(Edge) 표현 ]</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/5da3e0d5e0058904fa4fa4e3c0465bda/1cfc2/graph_direction.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACtklEQVQozy2Ra0iTYQCFz/dtfpf57eJaXjKKItfFLmo6o7KMwmiVrdJNV9jU1kUKzSKqtbW5iiCTfmiQTZqKm1sJSUWXH1F0gQqhLAgijYrCJpKIJDXn2zvox/n78JxzkNRhBcLV8DgyQbYCX60sRszA+z0C6t3ZMF2tYI53NcEXaOe/h/vk8xv1clmzkSPetSCnDUDXTtbctE7MbTEqQAig7rTKZME9qoNn8wSyBuzrKkn2dK9aRlZDNqdtp4SwXUIz8CbwIMHZ7lJiH7hRZ9aKqDvv5d+G/P4xd16tahHkj+pmaUct4KDpsApMty3lwskFadHtUMRMEMk2CKQYynOnFup1HVYdOjPZz8HHCU6/QwkGMnIic1HMnXt7ymO4P+XKqSDUbLIIwo8SCCAbgJZjczVx3cvH5wHPvHJtezn/ZwfEtzaRe27XSrQIboVucTXhNmGgZlrquF2ro0OxcVB/NoRhm0I7dmjGzBGbQoVfpQDZQo1SwcxvNTHorkwqvlSY/tiuUVAgJkrBkaWQf7rZy5GFwITH4CMN+e8/rIH48D80ejpr5VRDPok6s1fhiV2DV1WS4kW1Sumrnw2EqoTSiwWqYQuUEQvEjxWi2LNfOe1qT4jH0z5u2LlsPXHllLzUg495DF2TrhxbNwVPnll+YOJYxkyQDGD5lc1JhhajDu9aGNw9gsrzK0A2UvMFYL2Oxeo0X3G6MeDS1He4lQWbwI9TqwEjJAr0x9x5rdSwKG46WEhPiVemVok00qy2EobuCVPjWoQPz0DjCT3wpZdBqFw6GrikqA5cSAzWJqvJbiExQncjrRbQc7wxT/4g3U/6aQGPtOvmuCH010zMdH8ZUvwWJNOg9xAcriUg0KAw6MD9QA9358a9BMKD/baLFyJlECNWlh+vm639fXReyhCFDZnB/gOITALDewKbFwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph direction"
+        title="graph direction"
+        src="/static/5da3e0d5e0058904fa4fa4e3c0465bda/1cfc2/graph_direction.png"
+        srcset="/static/5da3e0d5e0058904fa4fa4e3c0465bda/5a46d/graph_direction.png 300w,
+/static/5da3e0d5e0058904fa4fa4e3c0465bda/0a47e/graph_direction.png 600w,
+/static/5da3e0d5e0058904fa4fa4e3c0465bda/1cfc2/graph_direction.png 900w"
+        sizes="(max-width: 900px) 100vw, 900px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+<strong>N개의 Node</strong>를 가지는 그래프는 <strong>N x N의 행렬</strong>로 표현할 수 있다. 행렬을 보면 행을 출발 Node, 열을 목적 Node로 두고 바로 갈 수 있는지 표시하였다. (색칸은 True, 빈칸은 False)  </p>
+<p><em>※ 위 행렬의 경우 0에서는 1, 2로 갈 수 있다.</em>  </p>
+<h2 id="-그래프-양상-" style="position:relative;"><a href="#-%EA%B7%B8%EB%9E%98%ED%94%84-%EC%96%91%EC%83%81-" aria-label=" 그래프 양상  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 그래프 양상 ]</h2>
+<ul>
+<li><strong>방향성이 없을 때</strong><br>
+경우에 따라서 화살표가 필요 없는 그래프도 있다. 갔던 길로 돌아올 수 있는 좀 더 직관적인 형태이다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/590a20ea1a2da1d3bb6b6650ec204d0d/1cfc2/graph_no_direction.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACvklEQVQozy2Re0hTcRTHv5vb3b13d1MmaWVNKOg9LNnuetjDpLLMSG1ON9NcRWWUpVQSW9w7SHosI5hgkLm2umkKWhlpBdELk+qPHn8kDHoSZdjLKLeav+6k3z/ndziczznf84U+5ATaXLAdWwySD7x1KDFUDDyu1MLUtA6rmrco9ksn0SwFNK86nqt2HzNRzoYcmniXgLh54HyRsvhENmNuXMOCEEAXciaopXJ99qkVFMmC8pGLS+jbrEsgU6Bgz5dpVa0uHU7LA1pvqX0tB3WYD7xyZ8z5K1j6I17rsx+CpXquBerbe4yGb3ZQcSAtA1PLjiw0/CkAG1sPhqwHTdaCLT2alTYxUDIOkkn5PtBK6Xu7NUNu06Jh0SpEBcsVIvI9sUOZG0nkBf7mgv6wAQxIDuDfNzUJdwWF78A0oK9eld5cpBkpBPtgi151f6uBk4Xg4VkfQ0qAqGAOjYp8GP/fcCH033dPNg7vmmQc2sTp8dWG+O2YuESVVKGgpHLDfP/q8V07UzWPKzn8soEiZqjDHZc1csRvkQ8SrzX8bi20pK0OEcEijnqtJOa1/vzjmWfF1aoU9G5P1tzclswer5sGGciYmvK5z3ZoP9nBvqzQ0odrx3NnLoVo3OmnBj0Z2aOezIIBM5iYYPF/E/n6EcFcE4dGPXOXIe5MasCemHbWZkBXlRLtW7HQnwuyVC7NgFJ0mxLZcxsm5EmepL1BgcvLB/1G7nm6AIwM+RIT+RuDgqU0KvLXYnWzZ+G1A/GttGqpQmcIliqqxUzwjWvQXJMOn7wxBi4qINm4WqmB3XzhiLatOiWRVHBceCW0MdF6b0yuyD/JqjIwl+MuJwUdSGuxISVgV+hDjrFc/gOdO+D2mECQjOXSQfRIHVR3+3U1oaF859TQH2VHR/ZPT/19YOakSM2UlEGXjuncY0z4B2GiByq35ycDAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph no direction"
+        title="graph no direction"
+        src="/static/590a20ea1a2da1d3bb6b6650ec204d0d/1cfc2/graph_no_direction.png"
+        srcset="/static/590a20ea1a2da1d3bb6b6650ec204d0d/5a46d/graph_no_direction.png 300w,
+/static/590a20ea1a2da1d3bb6b6650ec204d0d/0a47e/graph_no_direction.png 600w,
+/static/590a20ea1a2da1d3bb6b6650ec204d0d/1cfc2/graph_no_direction.png 900w"
+        sizes="(max-width: 900px) 100vw, 900px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+방향성이 없다면 그래프 행렬은 대각선으로 대칭 모양을 띌 것이다. 이는 A에서 B로 갈 수 있다면, B에서도 A로 갈 수 있기 때문이다.  </li>
+<li><strong>경로의 가중치가 다를 때</strong><br>
+경로마다 필요한 비용(cost) 또는 가중치(weight)가 다른 경우도 있다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ff8540eea977615b19b004b05b5d0ec8/1cfc2/graph_weight.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACj0lEQVQozy1RXUhTYRh+jmc/Zzs/O2c7aeFP0oVU0AgSMyiwqItcy3RzO1vGdFMTvShSqGEWBKkZ25WzyKwU25yiEhllaFJSdKFE1EXeZZE16YeiFIw6fTt08fC+H9/3Pe/zvA+sAz5gpBbhc3asVgBLCoVlL7DopzHelIWqbi91ZjCC3ni/8XNyTmeLbtGVRQ8YnZES/c5Yqb4oVmoKdOwyFPY4zFBVQBzw03QiIATbixn1IOhFfwb3zp8h/S4HX9NebMV4I4dOUC8Sk/r6RITtaMkR54KC5VXAJM/WifKdpiz5Ub3ETx23Sj/dyIDcrzAYDmVea87P/+GG/N2NLFJtahmEC61bC+QBv4wne6i38Rl9KHGJna7RWcgd98UDCyHgyWBuxQWG9OJHBTqo+4FYyybRftVJkWnAdFi3sc9l/OUCt3DMwMzWW1m1EPTY8ITh9FC3ab4K1m+e9GdK+KRAICSWdCWQU17o0zuj1sohEvfwdu2mkAxKjuje7NlaC/uy2oTVShjWHOCfPl7RKWM95pmgUV4haj74KIYQmFIKzFr1Yj3paTxssGG+hmWfhQT++ql8YKiaORwpEUgwEnnELQTMpmSDIHXdnTSEEpfZe3Vm25oL/JKPShMJBPx/QltKs2wHtl9xSiQxGa9jFKbCONu2Dc+DfIa6D/rzbXZLbq8z+1C8TQzFO9nRBt76pwIcIWQ1MmKZgCUQyVmHr5XEazLIEnB5fW6q/2Qu6i4WQbUCgydygDe3yRp8XHM8ak6HMtgoWP5WgCWW2WUFaduSplTRlNLYcNODHT0OFPQeodbdUpB7w42O8GYtrPQKVGSiJNGKB/FRw8TIfb2aB/r9UQOT8mg2jQSMBkXrqX/qhun8x5XwIAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph weight"
+        title="graph weight"
+        src="/static/ff8540eea977615b19b004b05b5d0ec8/1cfc2/graph_weight.png"
+        srcset="/static/ff8540eea977615b19b004b05b5d0ec8/5a46d/graph_weight.png 300w,
+/static/ff8540eea977615b19b004b05b5d0ec8/0a47e/graph_weight.png 600w,
+/static/ff8540eea977615b19b004b05b5d0ec8/1cfc2/graph_weight.png 900w"
+        sizes="(max-width: 900px) 100vw, 900px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+이때는 bool 값 대신 가중치 값을 저장하여 구현한다.  </li>
+</ul>
+<h2 id="-list를-배열을-이용한-연결edge-표현-" style="position:relative;"><a href="#-list%EB%A5%BC-%EB%B0%B0%EC%97%B4%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%97%B0%EA%B2%B0edge-%ED%91%9C%ED%98%84-" aria-label=" list를 배열을 이용한 연결edge 표현  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ List를 배열을 이용한 연결(Edge) 표현 ]</h2>
+<p>  Node마다 연결된 Node들의 번호를 리스트로 저장하는 방식이다. 이 방법은 연결되지 않은 부분은 무시하고 연결된 Edge만 저장한다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0c7325a87c9ddc8ee0ab3aa03c027275/1cfc2/graph_graph_list.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACZElEQVQozx1SS0wTURQ9084MUwq0OFATSkQBIdoahYpEMAqJDUTQttbSDsVGJCz4CIkpaJBaxYU0FjFQKLRAPwgCC1GQoEYXaowLdyZGEzfG6MLEBPwvXIxvZnGTk9zzzj33ngc+4WLxoFs55s2HeBQQy4CRnkICRGDxrGpL0qXEqwoEr9xgdo3X0wtefQbpKPaFLJ7iuLODYNYwI/hKI5Ya/HoKYLmN91w/qP/QxGg3HEjddEAtWsDd6dLn7ozacrDUoob4CKP+MH1gpJab6tvOExGmZNQayJ91TxCsNsTca8Zpeyt+PgFswSPa40PVaZIzsQoojNqUYh2Ytx4us9e/lw97d3D32lOJw0GmOlSlfN/Ibn3Tn55WEXSSB69BBKFZ8wP/XgKfFij8sYP71gDm/NUSYKFZlZ1wZQ1dKNKEegokMvXbDpWYDoR9Q3TlLTM717tNckiXhh2X8+c8QYK5osTptcJYQws21skQM6gvApUmBCrlmxknT+jud+h0Yj3YcwMm/DiFDIkz5V9RlpGVk7152dIN94+fjBkSwjrBqj0xd58pajXj7zPAPVjB+XzGHHxeovBuEljppKQ1vjqRIg3qHDDpi6I23huYpg8Nm1PiF/OySF9pCtnCu+PCXSm82rADzHIb8P0xiWjeoybO+PRZN5eZFOSbYHMdL1o1KI5YKWbeo6Hnz2i7AtfY8pEabvJSgeywdNyeLJ5teij/ho+rCvPYMYUcChGh+ITAkjQh12KzLDrXnYvsuBOptxupvBm3ItI/TBtCtYrnHZlqKeXDN+uM5RGrSeJKtdquk6zgP5qqzpuKbYcyAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graph graph list"
+        title="graph graph list"
+        src="/static/0c7325a87c9ddc8ee0ab3aa03c027275/1cfc2/graph_graph_list.png"
+        srcset="/static/0c7325a87c9ddc8ee0ab3aa03c027275/5a46d/graph_graph_list.png 300w,
+/static/0c7325a87c9ddc8ee0ab3aa03c027275/0a47e/graph_graph_list.png 600w,
+/static/0c7325a87c9ddc8ee0ab3aa03c027275/1cfc2/graph_graph_list.png 900w"
+        sizes="(max-width: 900px) 100vw, 900px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+각 Node마다 연결된 Node의 인덱스를 담은 리스트를 가지고 있다. 이는 list 대신 vector(동적 배열)을 사용할 수도 있다. Edge의 개수에 맞춰 저장할 수 있다는 것이 핵심이다.  </p>
+<p>  <em>※ 헷갈리지 말아야 할 것이 가장 위에 있는 리스트의 경우 1번 Node에서 2번 Node로 연결되어 있다는 것이 아니다. 0번 Node에서 1번 Node와 2번 Node로 연결되어 있다는 의미이다.</em>  </p>
+<h2 id="-장단점-비교-" style="position:relative;"><a href="#-%EC%9E%A5%EB%8B%A8%EC%A0%90-%EB%B9%84%EA%B5%90-" aria-label=" 장단점 비교  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 장단점 비교 ]</h2>
+<p>  그럼 이제 Graph의 Edge를 2차원 배열을 이용해 구현할 때와 List 배열을 이용해 구현할 때의 장단점을 비교해보자.<br>
+Node의 개수를 N이라 하자.  </p>
+<ul>
+<li>
+<p><strong>연결 확인</strong><br>
+단순히 특정 두 Node가 연결되어 있는지 확인하는 작업이다.</p>
+<ul>
+<li><strong>2차원 배열</strong><br>
+x번 Node에서 y번 Node로 연결되어 있는지 확인하려면 Edge[x][y]만 확인해 보면 되므로 시간 복잡도는 <strong>O(1)</strong>이다.  </li>
+<li><strong>List 배열</strong><br>
+x번 Node에서 y번 Node로 연결되어 있는지 확인하려면 y이 나올 때까지 Edge[x]의 리스트 멤버를 순회해야 한다. 따라서 시간 복잡도는 <strong>O(N)</strong>이 된다.  </li>
+</ul>
+</li>
+<li>
+<p><strong>순회</strong><br>
+특정 Node에 연결된 모든 Node를 찾는 작업이다.  </p>
+<ul>
+<li><strong>2차원 배열</strong><br>
+Node X에 연결된 Node를 모두 확인하려면 Edge[x][0] ~ Edge[x][n - 1]을 모두 확인해야 하므로 N번의 확인이 필요하다. <strong>O(N)</strong>  </li>
+<li><strong>List 배열</strong><br>
+Edge[x]의 모든 멤버를 순회하면 된다. 모두 연결되어 있을 경우 N번 확인해야 하므로 <strong>O(N)</strong>이지만, Edge가 적을 경우 훨씬 효율적이다.  </li>
+</ul>
+</li>
+<li><strong>메모리</strong><br>
+2차원 배열로 Edge를 표현할 경우 연결된 부분과 연결되지 않은 부분 모두 표현하기 때문에 항상 <strong>(N*N) * Size</strong>의 메모리가 필요하다. Node가 많고 Edge가 적은 경우에 낭비가 심하다. 이 경우에는 List 배열을 이용하면 메모리 비용이 훨씬 줄어든다.  </li>
+</ul></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/graph">graph</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/data_structure">data_structure</a></span> on <time dateTime="2020-03-04T00:00:00.000Z">04 March, 2020</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/page">Example</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2020-03-04-graph";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-cc9810edb3a3d14d9afb.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-d5c831629f7c9432a052.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-cc9810edb3a3d14d9afb.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-7a7417a086300d6612fd.js" async=""></script></body></html>

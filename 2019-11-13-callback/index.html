@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">콜백 함수(Callback Function) [JavaScript] - googy-blog</title><meta data-react-helmet="true" name="description" content="비동기 처리와 콜백 함수에 대해서 알아보자"/><meta data-react-helmet="true" property="og:title" content="콜백 함수(Callback Function) [JavaScript] - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="비동기 처리와 콜백 함수에 대해서 알아보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2019-11-13-callback"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="콜백 함수(Callback Function) [JavaScript] - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="비동기 처리와 콜백 함수에 대해서 알아보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, callback, synchronous, asynchronous, javascript"/><meta data-react-helmet="true" name="article:published_time" content="2019-11-13T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-12-03T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="callback"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "callback, synchronous, asynchronous, javascript",
+          "headline": "콜백 함수(Callback Function) [JavaScript] - googy-blog",
+          "url": "https://goo-gy.github.io/2019-11-13-callback",
+          "datePublished": "2019-11-13T00:00:00.000Z",
+          "dateModified": "2019-12-03T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "비동기 처리와 콜백 함수에 대해서 알아보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=ad7a20dd6840767906116efbf27011c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad7a20dd6840767906116efbf27011c7"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-7a7417a086300d6612fd.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-cc9810edb3a3d14d9afb.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-d5c831629f7c9432a052.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2019-11-13-callback/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/project">Project</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/callback">callback</a><time dateTime="2019-11-13T00:00:00.000Z">13 November, 2019</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">콜백 함수(Callback Function) [JavaScript]</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:78%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEIElEQVQ4y02Tf0yVVRjHH5BKKSJtUVlrrrI2mhsq8g+upkTL/1xt5dxqa1mz3FzIysq1NdM0+SGUBFkYEOBsBXhBBAHhld9w+Q0XEjHg8kv5eeFy7/ue877Pt3MvjHW2z55znve83+f7Pue8xOXnAvj6D4SBq2QwCEQPzBMFqhigeMgEiNuvkFWXTZOOi4Gt3l+pSCYSSXo42E2bSacNNpFKxXyG8qx4Ii45SVz49YvoK0o0OyrOyNq/UtFblMIdBee5/sef2H7xe+4qSrYqknY7uxIo2/thWK15+btq+UdqGdIzNDPvvCZzT2Vahzdfsj4hQuefhObsfXJsAp4hCXefF2LWBHsGwAsl4PlCRR24p+QEnK0kRee2JHkCu4yteNUZgSjPyzgqD2JEVkQOWzeUw44i4ub8GP3uLBjwApDGtJCme0D65vDl9D5wb1YcnKVkyq7wC+K0eM27Xe6bjRZ79J3yC3FIOM2bEaNWlRJsKyBuzIs1RqaxKsBy3mC5dIdV/3wIy9OvHGbFY7yagKnw40sf87oRwqaJACtIxf3zu9mFtu0LaF0VbFKCw9M+h35BY84Algd9BVQKAoYDsjsr3jWaS3aRGW43b+G6sKFM2Pi6KIYmS7mOf9tex5lrDl9fdagrTLh00zk9ZFbOQFZMQx+Z+wdw/H7MNZ5GV/Tj4V4smP59KwZMAbf82zwVUWCe9h1KIaE1/019aAZiWSm61ZZpifqxXnzQMoP3Gl246WwDBnO/wv1Mump8u22ep/zeJUt/9K1t1rmdxVaCEtRSCZVnI43Oujb095Whr7Pc6+itxURVDcZKNdyu1DBmaze0tHeH+5Ip1/PpFoelaePcr41wd40v9lu3anLMuK055jElqC6uj4QldY2/ubSRLlQ8dXYZa3mi7iDVBxpaWQeqBMHACqZCKHSQw+ihjsVBouAmbwBVeojq8EryJE+kTvLyhhZ+h365RweS8OALLyGUHu1SYsZaEaBH0aBoVtQrHCTMVQNbO+W6gCZJ1GC81bxkYUr9f0eG5Unfw9BCaw9lWVEHa/n9oTmunViE1j7J2t151sYWWWtT8+EFrh51sb34Nu8fWWDlv94gKvQSXfasj+6VKXsdMpvKPSEhaQhdf43foExEf9aNz6UF/7ivDs1cnd9zY220TuCoOiGidU2CNrYKeqRFPE6V+ha6pj8T0m2EURIeW1/OMWRD1JF2HHMb/veMySU2DFNddmbT6YKlSwj1uWhw8mGVVw4bBMX2S3q+Q6jFlL8PwRmqUiIHBWbgScpAWEQ+P5fSjMj4CsQcKkFs3A3sTW5CVEIjdqTZsSO9jXd9WYUn0u0+QeXwfwRQi2qBTfU0lSkoR21QxBSDyu6o+dvYRIfwNH2EZ32FVRGqdzLd/Bf0s52pSsX/ACmbfMyq6IXQAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c6df67d7008e2b8836e2dfad1d64e9db/dc47e/callback_to_callstack.png 200w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/9f2d5/callback_to_callstack.png 400w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png 720w" sizes="(max-width: 720px) 100vw, 720px" /><img loading="lazy" sizes="(max-width: 720px) 100vw, 720px" srcset="/static/c6df67d7008e2b8836e2dfad1d64e9db/dc47e/callback_to_callstack.png 200w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/9f2d5/callback_to_callstack.png 400w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png 720w" src="/static/c6df67d7008e2b8836e2dfad1d64e9db/92865/callback_to_callstack.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="콜백-함수callback-function란-무엇인가" style="position:relative;"><a href="#%EC%BD%9C%EB%B0%B1-%ED%95%A8%EC%88%98callback-function%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80" aria-label="콜백 함수callback function란 무엇인가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>콜백 함수(Callback Function)란 무엇인가</h2>
+<p>  일반적으로 callback은 <strong>답신 전화, 회신</strong> 등을 의미합니다. <strong>콜백 함수</strong>도 이와 비슷합니다. 회의 중에 전화가 왔다면 기다렸다가 회의가 끝나고 답신 전화를 걸어주는 것처럼, <strong>콜백 함수</strong>는 코드 상에 명시적으로 특정 시점에 호출하라는 것이 아니라, <strong>특정 조건</strong>이 만족될 때 호출하려고 사용합니다.  </p>
+<p>  ※ 콜백 함수는 특정 함수를 콜백 함수라고 정의하는 것이 아니라, 일반 함수를 콜백으로 사용한다고 볼 수 있습니다.  </p>
+<h2 id="-callback-사용법-" style="position:relative;"><a href="#-callback-%EC%82%AC%EC%9A%A9%EB%B2%95-" aria-label=" callback 사용법  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Callback 사용법 ]</h2>
+<p>  콜백 함수를 올바르게 사용하기 위해서는 인자로 사용될 콜백 함수가 어떻게 사용되는지 파악해야 합니다.  </p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function">print_result</span><span class="token punctuation">(</span><span class="token parameter">param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> callback_function</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token function">callback_function</span><span class="token punctuation">(</span><span class="token parameter">param1<span class="token punctuation">,</span> param2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>  위의 경우 콜백 함수에 두 개의 인자를 넘겨주고 콜백 함수로부터 받은 결과 값을 출력해줍니다.
+따라서 <strong>두 개의 인자</strong>를 받고 어떤 작업을 하여 출력할 <strong>값을 내보내주는</strong> 콜백 함수를 사용할 수 있겠네요.  </p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">number1<span class="token punctuation">,</span> number2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> sum <span class="token operator">=</span> number1 <span class="token operator">+</span> number2<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> <span class="token function-variable function">print_result</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> callback_function</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token function">callback_function</span><span class="token punctuation">(</span><span class="token parameter">param1<span class="token punctuation">,</span> param2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>  숫자 두 개를 받아 덧셈한 결과를 내보내는 함수를 넣어주면 반환 값을 출력합니다.  </p>
+<h2 id="-비동기-처리-" style="position:relative;"><a href="#-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%B2%98%EB%A6%AC-" aria-label=" 비동기 처리  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 비동기 처리 ]</h2>
+<p>  이제 콜백 함수가 필요한 예를 보기 위해 <strong>동기(synchronous)</strong>와 <strong>비동기(asynchronous)</strong>에 대해서 알아보겠습니다.  </p>
+<ul>
+<li><strong>동기 처리</strong><br>
+<strong>동기 처리</strong>는 특정 작업이 끝나기 전까지는 다음 작업이 실행되지 않도록 막습니다.<br>
+그러면 <strong>명시된 순서대로</strong> 처리가 되겠죠?  </li>
+<li><strong>비동기 처리</strong><br>
+반대로 <strong>비동기 처리</strong>는 특정 작업을 처리하는 동안에도 다른 작업이 실행할 수 있도록 합니다.  </li>
+</ul>
+<p>  예를 들어 서버에서 사용자의 요청을 기다리는데 한 사용자가 응답을 보내주지 않는다고 해서 다른 사용자를 기다리게 할 순 없겠죠? 이때 특정 조건이 만족될 때 처리하도록 콜백 함수를 등록해주고 다른 작업을 수행하도록 비동기식으로 처리할 수 있습니다.  </p>
+<h2 id="-비동기-처리-함수-" style="position:relative;"><a href="#-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%B2%98%EB%A6%AC-%ED%95%A8%EC%88%98-" aria-label=" 비동기 처리 함수  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 비동기 처리 함수 ]</h2>
+<p>  JavaScript에는 비동기식으로 처리하는 함수(혹은 메서드)들이 있습니다.<br>
+대표적으로 <strong>setTimeout</strong>이 있습니다. setTimeout의 경우에는 인자 값을 받지 않는 콜백 함수를 사용합니다.  </p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">bye</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bye"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>bye<span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>  3초 동안 기다렸다가 bye 함수를 실행하라고 하였습니다. 하지만 <strong>setTimeout</strong>은 비동기식 함수이기 때문에 3초를 기다리는 동안 아래의 다른 코드를 수행하도록 합니다. 따라서 결과는 <strong>Hello?</strong>가 먼저 출력되고 <strong>Bye</strong>가 출력됩니다.  </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Hello?
+Bye</code></pre></div>
+<h3 id="-delay가-0일-때" style="position:relative;"><a href="#-delay%EA%B0%80-0%EC%9D%BC-%EB%95%8C" aria-label=" delay가 0일 때 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>* <strong>Delay가 0일 때</strong></h3>
+<p>  그러면 setTimeout의 Delay가 0일 때는 어떤 결과가 나타날까요?  </p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">bye</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bye"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>bye<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>  필자는 처음에 0, 1 정도가 출력되고 Bye를 출력한 후 2, 3 .... 9999가 출력될 것이라 생각했습니다.  </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">1
+2
+3
+...
+9999
+Bye</code></pre></div>
+<p>  하지만 결과는 위와 같이 아래 코드가 모두 실행된 뒤 콜백 함수가 실행됩니다.</p>
+<h2 id="-javascript-동작-방식-" style="position:relative;"><a href="#-javascript-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D-" aria-label=" javascript 동작 방식  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ JavaScript 동작 방식 ]</h2>
+<p>  이를 이해하기 위해 자바스크립트의 동작 방식을 살펴봅시다. 자바스크립트는 <strong>Javascript Engine, Web API, Task Queue</strong> 들과 함께 실행됩니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/125309401cb9a1ea51c3afec63debdff/37523/callback_Javascript_process.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAECElEQVQ4y02TW2wUZRTH/9uKAvIgGI0SHggBTWpISim8QDSIRHnRxgdNfPDFS9BoEyABlRiNgiiFQtVaRcu1FyHaOxR6n3ZLW3bLttILiEi3C72k1G7Zdnfm+745xzOlIpP85pz5ZvI//3Pm+0Dn9/mo+hvwlXI4xGBgzgSQJNEnPGSYQZdOwfUfx3Df4aRA4meU6f2AxsPzp7AYNuZVqBxU0l4UutsBqvoCVPrJcu4t229CtXt1y2853FN2iEIlB6n12+8oePgr6i7LdmsPrI90Z+F44q3HW0zxl436ZM45zvvRMoUHLV2wO9/dsviI+x7AXafBHcc365tDHL+ueao3wWrcMMWvMEWrmCZKBT/T5apdHAlAq66VB/QuXuOs4Gcjqbw2/jRn6jc4rGvTB9wacRgqA3UUbbT/HmdiTjCzdsaUNlNXtJezt2b3MvUc28qRszC6O+V7tUc9l1ilN4+vUxvs1XqHeltFTEPqoFsvgp0loLbCTU54jGcFSE04ZGJ/kZfLTVGiXxwe2863GsE8krIz9i4lh8GLhnzuAxIzJtbTJHeuinJgVrBdBAfGPId3Bf9x2MSu8X+CnOibEYwNFiCo8lOCppmrVQWfUxVUrSrZ0mfJT7+s8lP+PYcvzDq0BaOjtjGx68ZzTN5a4qoIHt02FM7FKXtnSoKj3jsz25FRPKV/N7tTS8we76eUggNFL9nXb7Oa5hnsEc1muke+9VxHZYqdMsOCj0cH81HufL5ygkZ4ph3SM9F7rnD3ra50s0TQygHXfZ3udPk7ub/3HPd2nbf7e1ooUt9EkTMW3axuoBuVl9yW3Ndv9WXjZPz9pX2uZd2ifitMfzR5sd9tbjphtq44YbaJoGxcj6yYbONPjyxEbu0T+6b53vr9vDnJSRLADt/FCEqwGX3OZYTuXAPmtyd8qIsDfn4me5iGcoZpet5Feg2/jkqBQeDUbSB/DGhzgG4RDXvil4ULQofQKvRBmbtFsaJLJ/vaNXDBebUj5vKwnL8Pw/ozvOwuSK6hBtRRC6rJSqohCzVsvdhG1sgkWYNC5zBZA1FqlDxY+SdlhKMEoFUqlyaA4vjcdT360IZefQL1d+bNKeSnYMnh9kvZBubkZokWc0YX37tGp/7PA0OcKX8ISG5XWBhQWHBRPYo6eynO2EseuWovwklejkaaQosI1ZFJamIXTaxeCcn0ZDNol8zgJLu2ZiXt8oUIbXGkbWlVYVO/xrKQkoeRmTk8eEwq/URzUcypOE2rUcRpvmJOx1HeuKyQN+2o5ecPtPParDZOyw1yWl4nrfmonh/LC3qC4vA+fAjICCoMcFREy+WDKqGEkST5nA94ETL5SbzDS7zChzoYrRFCww3GD0FCvcR/AZD2eJfySjEtAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="callback Javascript process"
+        title="callback Javascript process"
+        src="/static/125309401cb9a1ea51c3afec63debdff/37523/callback_Javascript_process.png"
+        srcset="/static/125309401cb9a1ea51c3afec63debdff/5a46d/callback_Javascript_process.png 300w,
+/static/125309401cb9a1ea51c3afec63debdff/0a47e/callback_Javascript_process.png 600w,
+/static/125309401cb9a1ea51c3afec63debdff/37523/callback_Javascript_process.png 720w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li>실행하면 코드를 읽어 하나씩 <strong>Call Stack</strong>에 올리고 실행합니다. <strong>Call Stack</strong>에서 SetTimeout과 같은 Web API 함수를 만나면 <strong>Web API</strong>에 요청을 합니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/d58b98e32aec50a485d5f3613360b8a6/37523/callback_web_api.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEEklEQVQ4y02TXUwcVRTHD1RjqX0pRqNNHxpTNGmNgUL7UmKjSGLfGo02Nr6JkfrQBElMbWNqahXttnzUUgy2pCDQ1MhHWQKUrzLuArssy0Jhd9GW8rHAAgvdhV12Z+69c453dgnxJr85Z+7c+Z//mXsH8MGVJGz/BWjyPmhIQADPBwGSZUySvCCIAEfugW6tBr+nMtkR+x2a+VUADi/uisBeUCGlhZWBGYugTi8EwNZLgE3nD5C7+apwdRVxy19lNNFciq7GEuy//isOV/6EY83Fete1bN+YCapjn79iEXd/eMj/KOugit8UUVei8NrLt/X8vVX6GQAa/RPIXn2Czy9SdIpTxB0jtiYIo5OEoVbCYJPESjjeeoF8Q8A119vX+AU6oqXRO750Ohp9k87y0zTLu7Jm9E7p0NUMaK/PUZ+uERLFiIhrAcZFZJIbORlzqptw4k4BLXQC190Hb/AidjyWwU+sHWPvqpn8G5bHfKI3fU7vkYLORsDBulxtNkBbAsiCGorwY6mPKC8Mox7p8E4hTdUDsUeHzgVPU/IsUOoi6M/JeDKYjevkzAiRY0vQJgVnAobDhOAzlURkxiiA8SLatOGwcFlu0Mw/nx0fibViOzdTB2vBdmYmhbehFW9lWPH2tsP3txyqUkPwkC5EcEBg1MJxc1DFUBuh0/R9hxS8p317MEZho7DY6kgwivAGcTm9UfxobEoTkKP+A3Vqldim7C+ik7oiV61VEwZOJVi5JFtuOR+YqoL72sW3guiPe+fI4zGIS9SiX8k06yYpqJQBdf+cpY1aneR1d5B77IHqGbfQvLWP/HaFloZ7abZ3RLeUn/J5S6E2+tV+j64oC+hVZvFRnxG9+t99NaIgrUZ8LQVlGwamsDzG31XtgfKuV02RxNy6ZFUSkYwn1iWDHKRRAiFhEpXAo42Da+MxwC5bLAm6owBWOlTsx8UyP26mOPATaFyWAnOSVaBYQEZtuzjRuGRAYpf0SzzAROIZpI3yHUk2DjCgfWgP67Qk/78vp/nF0hv67slV7PWH0eLyo/LkGSqLYVJGZP40iMr8BipOmc+E8OHcOg6b/8WTsyGU/vs1gKYYwN3ozmMTvDTHw2vg1kZK7RC9EeXGqSEKGJsl4imtyP6FnsiXI7Q9HIt0Vu4QwA4bgz0OBruH2EvQre6HDnUf2NXUm4N0IKRi/JWFDXnONTJkmD9MmiaI6YjCt066yokZxQZ8mC/npcMBBrleDq+7mLxZin+HT80IHzfgzutDlF45gpmmQTpcYqeswi7KyWul3IJOeq/YRkeN+fJhOlzhxCPneujlimFDUDr8H0lg0yC7T0B+O0LbEwLLHEGDl6Bd5vARpUIevQZf0D6jcKmdoN+H0DtNcHMYoUfG/wDPepomq0GALAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="callback web api"
+        title="callback web api"
+        src="/static/d58b98e32aec50a485d5f3613360b8a6/37523/callback_web_api.png"
+        srcset="/static/d58b98e32aec50a485d5f3613360b8a6/5a46d/callback_web_api.png 300w,
+/static/d58b98e32aec50a485d5f3613360b8a6/0a47e/callback_web_api.png 600w,
+/static/d58b98e32aec50a485d5f3613360b8a6/37523/callback_web_api.png 720w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></li>
+<li><strong>Web API</strong>에서 SetTimeout의 지정된 시간이 완료되면 Callback 함수를 <strong>Task Queue</strong>로 넘겨줍니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/32eb7c0ccecf49a3cd5692e3236cfd53/37523/callback_task_queue.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEFklEQVQ4y01TW0xcVRTdA9SWqolFbWpTE2NADdWEV/vTxqZWEvkjrfFDP6VJ/bARSbSxMSZWpULLq0VMsQRUwPrg/X4Pr850GIHA8BBogeEpBQYGuHfuOXcvz1BCvcm6e99971l73X3WIa5PsXDt94SRcvIxCER7VokCVLQo7JUA8d93yOwsoPmhWwEOLZfKxDUiQU/u36DDpFNwhZFJlZxMhWYSEVd9TVz6RShcZddkb2Oy6PgzE4NlGdxbks5dWTe459Z33F+WZjZeP+nuT6UC7cODHbL4Sqv4JbMOOT9aZWG6Vfz6zW3zwuE88yMi9P1OsBfEiZk5bE0IbLg0GMsSvDUC9lSBV0sVOsEDVZfhdpAw+t64Li7jmC8Mb7ojcHzrVVwU72NKNMZMmg1KYW8Zsb3ojH5/GQxoAIRvyRByY0T4c/hrugs8mJ8Idw1J0R9+0/jWOKVFiLjlE8ZpPVp8ZiQYbtkSMW02K0JnCfHdwljf1BJ2CNhY9bH0jrM/VzeDtWGlMD8Jsy0ELIR/7j3PgZOEkDkyg6YI8SsneQ3OSA8cO4Q2RTi55Ff4iHDFB+kdw2PCoW3CjelCchi5R3tlN8rN31BhFnOjrEW7rOEOMzeyw/xpV+HbOwp1BSk8upTeCelXzP6aNgpzIO/TWfdNqhBXXls0x+T6uhr0phKgQW7JVVGBqxEVSPFvSinBUfSOPvEQxia2oS8IyM1BxedX7QFrTmCg6NKiO5duiHOnZuUo/l15iEXPAjzeNSwa06hDRnQ9MhWhNZPQdDXG19fpxLCrDq6+en14sIPdzW3srraaMzWteFDdo3Wlf6BMGpSlnQ0f5e7WRYxbZzHUtoAx6wg62vLFJ2EFIlERKuP6kepVNv4y7wBlNx5K2cRu3Ybs7Rin08F8vLs3ZlmtkY/fb8MEOdfvkW15kGi/TbNQ0xZRJ46mzfNc5jxvBjv4PSpeIcoromTQoSTQc48Wu3ZI+hW6FewKXQpDZOw0obA+EWixCaJu31m718S8On8fT4mvKF48HdSA5oD26fHX243OyRW0zq6z1TkP6/1Vts5s52yd9HDr9Br3VP7D8VMeJqIuH1GpRlS8te/EoMg47RI/U9V68J4yvBJQrw73H0CkHTBNvy2BxQ2GNLGTY/dyzOGichlRoM2gAw6DnrpnPEtN+ktUrR95ZkQPoUKEBrRgg5oYETaWmqEmpSw674XPJ2GYzNK9BlMXMNTvotvNF1RdKew2KHZY0Mu9hnpY2J7DE3mqUw7vs9xBBJVw9It/ISrLjpikRpxJqEJsYgPeSrPheOpdRGX3ICrHyccuNeP5nB4/oVL4P1jIoUZQLoluM1kq1Qe1oFCFhgmVn0MIJeAFOo8j/sYZdlCXm6nlAeiHHqZmFf8Da4mBwv4n2LUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="callback task queue"
+        title="callback task queue"
+        src="/static/32eb7c0ccecf49a3cd5692e3236cfd53/37523/callback_task_queue.png"
+        srcset="/static/32eb7c0ccecf49a3cd5692e3236cfd53/5a46d/callback_task_queue.png 300w,
+/static/32eb7c0ccecf49a3cd5692e3236cfd53/0a47e/callback_task_queue.png 600w,
+/static/32eb7c0ccecf49a3cd5692e3236cfd53/37523/callback_task_queue.png 720w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </li>
+<li><strong>Event Loop</strong>가 계속 돌면서 <strong>CallStack</strong>이 비어 있는지 확인하고 비어 있다면 <strong>Task Queue</strong>에 있는 Task를 <strong>CallStack</strong>에 넘겨 실행합니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e5560c6cc3167b4ebaee1f36eb1958e3/37523/callback_wait_for_empty.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEIUlEQVQ4y02TW2xUVRSG17QgBWuAGiUQTNCAJiVNegEehGgQSeSNaDRGn4zYoA9E2kQMmGgURCiXFi81SJEihUCgdyhMp5fpjQ4zvQHTaSDFDsN0IBVm6Iwz5+y9z/rdp0yIJ/nPWntn5dv/2hfiK/sd3LKPMNZAJoNANDtKlKGjQ2uOAogHz5LVU02R0aMZ3tQfVC8PEEl6dl6ClpBBcxtFBTXxXqqxSom4+Xviup3L4a8/oIZa98ru8xW4WV/OQ7WHuffIz+w7+iOP1B+yWg+uC42UUXXq0xe71ZkfOuRfFZdR+btb1Rx2y1O7q6ytS45bnxNh+BzBU71J3ptEclwi4U9BPFTg5Bg41gyO1mn1gG8070LIS1IM5x2Uu7DaXIE3QvlYk3wN2+RHCMrWVROWUzscqif2nN5g3HkIBlIApDklpEqMSTuHPWf4wTdPbEfoEik5kvuL2CPeTBXITQ/XivVGkfxKbBEh1Z5/12rTwIFa4qs1G83gFNIAFlGTVfy25jPrn+DUqHZ4ohThDgLu5+6IF3NmkJAz6bBm6bg5uo4fY6AgBm8a2K+BE1O2wyfARwZUYsJeYAYIY1wDq0rjd6vJJ6pyfaoLLaIRl0Ujt4gmuOUl7uFjBT1c9dTh22mHhmYoGbOUinUrpLoUkn0Gx11g/7mSydCfdNbYkZtCTB8+VLojJZCQF9Tu/Fq1xz6UOoL39DvG+D8Q/2o7CQvGA1316BjE1Ps6/xD86ACsQNvOB+FmajC/y4vyfcy0w3Im2uNGa39Rk1Wmge4KguunVeZwzwAC/svwjzhV4HoHwt2t8bCvMz452Iag04Ou8g8i/n10KvnFslHL7Q5zwB3k6512DFhdnSfV9hUnVYkG6otrqyyur/G3JxZSxaVF9piKrzxHJa759Mn5bPq4M5uqw7P0vGOm3kxLaQktAzRq3qCh6dtE8/pTDnIliXqw8lCEJ49EODHnmlW8+BYWvBzgBSvHkE2D1iJ6XWggpw3c0OrT8mj1ao2SUE+M0Yphmenol0R95rueuIWIfn9fBuU3NB9Zs53spFbuzHOzKxjljvA03AMRdt+JsvveNM/kEzHuuPuYfU23eHMwxkTUaxLVpYjOJLPW3pTl6/3yJF2cnju7Hq9mXNGP+zyjwMOwLLZvAR4kGMpCOsfTzzuJbXYHlNkvaKFXUPY18Ty5jGV00Vi6YMzIoRosz2jnBLmA/KusUgI2RkTiME0FYTGr0GNYhoTQ7aIvxFv1vHbYJ2hjQNIrQ0IP7s/swzPH9UqVnOU4i3yq5aKXLqDwiAerSluxYUszNm534q1D/VhTdhWFv/pQWDnAq79uwwuVPhuoHf5PDvLqLWhQRFVMjiZd0AJaruUc1/l7yKEtWEyfYam9cLkH1Btiav8b9JuPqU3H/wA0jH8WtclM7gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="callback wait for empty"
+        title="callback wait for empty"
+        src="/static/e5560c6cc3167b4ebaee1f36eb1958e3/37523/callback_wait_for_empty.png"
+        srcset="/static/e5560c6cc3167b4ebaee1f36eb1958e3/5a46d/callback_wait_for_empty.png 300w,
+/static/e5560c6cc3167b4ebaee1f36eb1958e3/0a47e/callback_wait_for_empty.png 600w,
+/static/e5560c6cc3167b4ebaee1f36eb1958e3/37523/callback_wait_for_empty.png 720w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c6df67d7008e2b8836e2dfad1d64e9db/37523/callback_to_callstack.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEIElEQVQ4y02Tf0yVVRjHH5BKKSJtUVlrrrI2mhsq8g+upkTL/1xt5dxqa1mz3FzIysq1NdM0+SGUBFkYEOBsBXhBBAHhld9w+Q0XEjHg8kv5eeFy7/ue877Pt3MvjHW2z55znve83+f7Pue8xOXnAvj6D4SBq2QwCEQPzBMFqhigeMgEiNuvkFWXTZOOi4Gt3l+pSCYSSXo42E2bSacNNpFKxXyG8qx4Ii45SVz49YvoK0o0OyrOyNq/UtFblMIdBee5/sef2H7xe+4qSrYqknY7uxIo2/thWK15+btq+UdqGdIzNDPvvCZzT2Vahzdfsj4hQuefhObsfXJsAp4hCXefF2LWBHsGwAsl4PlCRR24p+QEnK0kRee2JHkCu4yteNUZgSjPyzgqD2JEVkQOWzeUw44i4ub8GP3uLBjwApDGtJCme0D65vDl9D5wb1YcnKVkyq7wC+K0eM27Xe6bjRZ79J3yC3FIOM2bEaNWlRJsKyBuzIs1RqaxKsBy3mC5dIdV/3wIy9OvHGbFY7yagKnw40sf87oRwqaJACtIxf3zu9mFtu0LaF0VbFKCw9M+h35BY84Algd9BVQKAoYDsjsr3jWaS3aRGW43b+G6sKFM2Pi6KIYmS7mOf9tex5lrDl9fdagrTLh00zk9ZFbOQFZMQx+Z+wdw/H7MNZ5GV/Tj4V4smP59KwZMAbf82zwVUWCe9h1KIaE1/019aAZiWSm61ZZpifqxXnzQMoP3Gl246WwDBnO/wv1Mump8u22ep/zeJUt/9K1t1rmdxVaCEtRSCZVnI43Oujb095Whr7Pc6+itxURVDcZKNdyu1DBmaze0tHeH+5Ip1/PpFoelaePcr41wd40v9lu3anLMuK055jElqC6uj4QldY2/ubSRLlQ8dXYZa3mi7iDVBxpaWQeqBMHACqZCKHSQw+ihjsVBouAmbwBVeojq8EryJE+kTvLyhhZ+h365RweS8OALLyGUHu1SYsZaEaBH0aBoVtQrHCTMVQNbO+W6gCZJ1GC81bxkYUr9f0eG5Unfw9BCaw9lWVEHa/n9oTmunViE1j7J2t151sYWWWtT8+EFrh51sb34Nu8fWWDlv94gKvQSXfasj+6VKXsdMpvKPSEhaQhdf43foExEf9aNz6UF/7ivDs1cnd9zY220TuCoOiGidU2CNrYKeqRFPE6V+ha6pj8T0m2EURIeW1/OMWRD1JF2HHMb/veMySU2DFNddmbT6YKlSwj1uWhw8mGVVw4bBMX2S3q+Q6jFlL8PwRmqUiIHBWbgScpAWEQ+P5fSjMj4CsQcKkFs3A3sTW5CVEIjdqTZsSO9jXd9WYUn0u0+QeXwfwRQi2qBTfU0lSkoR21QxBSDyu6o+dvYRIfwNH2EZ32FVRGqdzLd/Bf0s52pSsX/ACmbfMyq6IXQAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="callback to callstack"
+        title="callback to callstack"
+        src="/static/c6df67d7008e2b8836e2dfad1d64e9db/37523/callback_to_callstack.png"
+        srcset="/static/c6df67d7008e2b8836e2dfad1d64e9db/5a46d/callback_to_callstack.png 300w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/0a47e/callback_to_callstack.png 600w,
+/static/c6df67d7008e2b8836e2dfad1d64e9db/37523/callback_to_callstack.png 720w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </li>
+</ul>
+<p>  이전에 봤던 코드에서 Web API로 bye 함수가 넘어와서 0초 만에 Task Queue로 넘어가지만 Call Stack에서 아래 코드를 모두 수행한 이후에 bye 함수가 Call Stack으로 넘어가서 처리됩니다.  </p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/callback">callback</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/synchronous">synchronous</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/asynchronous">asynchronous</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/javascript">javascript</a></span> on <time dateTime="2019-11-13T00:00:00.000Z">13 November, 2019</time>.</p><p>Last updated on <time dateTime="2019-12-03T00:00:00.000Z">03 December, 2019</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/page">Example</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2019-11-13-callback";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-cc9810edb3a3d14d9afb.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-d5c831629f7c9432a052.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-cc9810edb3a3d14d9afb.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-7a7417a086300d6612fd.js" async=""></script></body></html>

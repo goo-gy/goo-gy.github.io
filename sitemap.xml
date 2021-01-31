@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://goo-gy.github.io/2020-08-28-teachable_machine</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2020-03-04-graph</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-12-19-PE</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-12-09-memoization</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-11-13-callback</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-10-30-kakao-chatbot</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-10-11-dijkstra</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-10-02-selenium</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-09-24-crawling</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-09-14-priority_queue</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-09-13-tree</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-09-07-queue</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-09-03-stack</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-08-27-dynamic-array</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/2019-08-26-linked-list</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/demo</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/page</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/project</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/machine_learning</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/ai</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/graph</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/data_structure</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/pe</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/memoization</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/dp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/dynamic-programming</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/algorithm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/callback</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/synchronous</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/asynchronous</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/kakao</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/chatbot</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/python</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/crawling</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/demo</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/archive/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tags/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>

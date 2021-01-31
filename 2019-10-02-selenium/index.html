@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">셀레니움(Selenium)을 이용한 크롤링 [Python] - googy-blog</title><meta data-react-helmet="true" name="description" content="크롤러에서 자바스크립트(JavaScipt)를 실행하고 싶은데.."/><meta data-react-helmet="true" property="og:title" content="셀레니움(Selenium)을 이용한 크롤링 [Python] - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="크롤러에서 자바스크립트(JavaScipt)를 실행하고 싶은데.."/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2019-10-02-selenium"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="셀레니움(Selenium)을 이용한 크롤링 [Python] - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="크롤러에서 자바스크립트(JavaScipt)를 실행하고 싶은데.."/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, python, crawling"/><meta data-react-helmet="true" name="article:published_time" content="2019-10-02T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-10-08T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="python"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "python, crawling",
+          "headline": "셀레니움(Selenium)을 이용한 크롤링 [Python] - googy-blog",
+          "url": "https://goo-gy.github.io/2019-10-02-selenium",
+          "datePublished": "2019-10-02T00:00:00.000Z",
+          "dateModified": "2019-10-08T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "크롤러에서 자바스크립트(JavaScipt)를 실행하고 싶은데..",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=ad7a20dd6840767906116efbf27011c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad7a20dd6840767906116efbf27011c7"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-7a7417a086300d6612fd.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-cc9810edb3a3d14d9afb.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-d5c831629f7c9432a052.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2019-10-02-selenium/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/project">Project</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/python">python</a><time dateTime="2019-10-02T00:00:00.000Z">02 October, 2019</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">셀레니움(Selenium)을 이용한 크롤링 [Python]</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:50%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQoz3WS30tTYRzGn7ONutAbQ8so7CKSECI54Q+SIvoLuvMyrwoLlN0ElSAKiYJibeAPNqEbEVSCbsySGVJGIOYwdcxfaMba/DGhjnM7m9+n993yIqIXHh44HD7v8/2+D8rHiatKV94QNwLErUmi8h1xf4Zo/EI4e8qAF8iK/gBsz3NIVxc4OQkuLYGBAMTrhfT2ggMD6idSSbQbyp052Q5cIxw/igzswIkIHGgGbndfNPhoDkdPn+RxdNSUqSmTIyMmW1ry2dYGdnYeAzXsGKxlA9cVMF4MWCrdnpJXqQqYmXkFfl24K7u75Opqgnt75OJiPZeXdWIXPu7QMRUjAlGp2ToQfzwlvtl4pkHx4YqVlCGOWpWyAh6cKugvMBX2pB1aeMDDQ0riIMVkkgrm5vo6uLbmwuovuiIJYsOiO5IQblrC78l0UAONqPMl9kHEsFH9DCWV3ZfO4A4Kg9PDzcwIhUzStslQqJErK1CJc8B1iwj/pNtKC+0j4dYfoGNfAdOgM45vm2dRTlwu1J85/alBNEgDU6m/gdNq5A/bxPuY1GxY4o8d0je7n2lU24UrcqHM2DZqVcIqBTqROne6VK00X4LBh0yndcKUdobDbjVubuT/PsqgepRoMYxdtbUdjQdEiUNDkLm5OloWJZNJaOf8fH22QqGQ67gy/9bmsQJGigxjW9UmqsbUsNLS3MVNTXkcHDQ5PGyK9tbWfLa3gx0dgPmWWZWPC25miy2oniDqPhP3VLnPv9ao3GF/P9jXB3o84NgYODGR854e0OeD+P34DfNV0WCyMggvAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/9123c8781b453b4fa183c90183bd2a4b/dc47e/selenium_selenium_communication.png 200w,
+/static/9123c8781b453b4fa183c90183bd2a4b/9f2d5/selenium_selenium_communication.png 400w,
+/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png 800w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/9123c8781b453b4fa183c90183bd2a4b/dc47e/selenium_selenium_communication.png 200w,
+/static/9123c8781b453b4fa183c90183bd2a4b/9f2d5/selenium_selenium_communication.png 400w,
+/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png 800w" src="/static/9123c8781b453b4fa183c90183bd2a4b/90823/selenium_selenium_communication.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="javascript-처리" style="position:relative;"><a href="#javascript-%EC%B2%98%EB%A6%AC" aria-label="javascript 처리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ JavaScript 처리 ]</h2>
+<p>  웹 페이지 중에는 <strong>JavaScript</strong>를 실행해야 가져올 수 있는 데이터가 있으며 그중에서도 <strong>비동기적으로 처리</strong>되어 나중에 불러지는 데이터도 있습니다. 크롤러에서 JavaScript를 해석하고 로딩에 시간차가 생기는 데이터를 처리하는 것은 까다롭습니다. 하지만 크롬 등의 <strong>브라우저</strong>에는 이들을 처리하는 기능들이 내장되어 있어 사용자가 쉽게 이용할 수 있습니다. <strong>Selenium</strong>은 브라우저를 이용한 웹 진단 프레임워크입니다. 우리는 Selenium으로 브라우저의 기능을 활용하여 복잡한 처리를 거치는 데이터를 쉽게 가져올 수 있습니다.  </p>
+<h2 id="selenium의-동작원리" style="position:relative;"><a href="#selenium%EC%9D%98-%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC" aria-label="selenium의 동작원리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Selenium의 동작원리 ]</h2>
+<p>  <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9123c8781b453b4fa183c90183bd2a4b/5a190/selenium_selenium_communication.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQoz3WS30tTYRzGn7ONutAbQ8so7CKSECI54Q+SIvoLuvMyrwoLlN0ElSAKiYJibeAPNqEbEVSCbsySGVJGIOYwdcxfaMba/DGhjnM7m9+n993yIqIXHh44HD7v8/2+D8rHiatKV94QNwLErUmi8h1xf4Zo/EI4e8qAF8iK/gBsz3NIVxc4OQkuLYGBAMTrhfT2ggMD6idSSbQbyp052Q5cIxw/igzswIkIHGgGbndfNPhoDkdPn+RxdNSUqSmTIyMmW1ry2dYGdnYeAzXsGKxlA9cVMF4MWCrdnpJXqQqYmXkFfl24K7u75Opqgnt75OJiPZeXdWIXPu7QMRUjAlGp2ToQfzwlvtl4pkHx4YqVlCGOWpWyAh6cKugvMBX2pB1aeMDDQ0riIMVkkgrm5vo6uLbmwuovuiIJYsOiO5IQblrC78l0UAONqPMl9kHEsFH9DCWV3ZfO4A4Kg9PDzcwIhUzStslQqJErK1CJc8B1iwj/pNtKC+0j4dYfoGNfAdOgM45vm2dRTlwu1J85/alBNEgDU6m/gdNq5A/bxPuY1GxY4o8d0je7n2lU24UrcqHM2DZqVcIqBTqROne6VK00X4LBh0yndcKUdobDbjVubuT/PsqgepRoMYxdtbUdjQdEiUNDkLm5OloWJZNJaOf8fH22QqGQ67gy/9bmsQJGigxjW9UmqsbUsNLS3MVNTXkcHDQ5PGyK9tbWfLa3gx0dgPmWWZWPC25miy2oniDqPhP3VLnPv9ao3GF/P9jXB3o84NgYODGR854e0OeD+P34DfNV0WCyMggvAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="selenium selenium communication"
+        title="selenium selenium communication"
+        src="/static/9123c8781b453b4fa183c90183bd2a4b/5a190/selenium_selenium_communication.png"
+        srcset="/static/9123c8781b453b4fa183c90183bd2a4b/5a46d/selenium_selenium_communication.png 300w,
+/static/9123c8781b453b4fa183c90183bd2a4b/0a47e/selenium_selenium_communication.png 600w,
+/static/9123c8781b453b4fa183c90183bd2a4b/5a190/selenium_selenium_communication.png 800w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+이전 포스터에서의 로봇이 브라우저의 역할을 대신했다면 여기 Selenium은 브라우저를 조종하는 로봇이라고 할 수 있습니다. 사용자 대신 브라우저에게 명령을 하여 처리한 데이터를 가져올 수 있습니다.  </p>
+<h2 id="selenium-시작하기" style="position:relative;"><a href="#selenium-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0" aria-label="selenium 시작하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Selenium 시작하기 ]</h2>
+<p>  selenium에서는 크롬(Chrome), 파이어폭스(FireFox), PhantomJS 등 여러 가지 브라우저를 이용할 수 있지만 여기서는 <strong>크롬(Chrome)</strong>을 이용하도록 하겠습니다.    </p>
+<ul>
+<li>
+<p><strong>Selenium 설치하기</strong>  </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&gt; pip install selenium</code></pre></div>
+<p><em>※ PATH에 pip 경로가 등록되어있지 않다면 python 경로 아래 scripts에서 실행해야합니다.</em>  </p>
+</li>
+<li><strong>크롬 설치</strong><br>
+<strong>Chrome 다운: <a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a>{:target="_blank"}</strong>  </li>
+<li><strong>Chrome Driver</strong><br>
+Selnium에서 Chrome을 이용하기 위해서는 현재 크롬 버전에 맞는 Chrome Diver를 설치해야 합니다.<br>
+<strong>Chrome-driver 다운: <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">https://sites.google.com/a/chromium.org/chromedriver/downloads</a>{:target="_blank"}</strong>  </li>
+</ul>
+<h2 id="selenium-사용법" style="position:relative;"><a href="#selenium-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-label="selenium 사용법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Selenium 사용법 ]</h2>
+<h3 id="driver-생성" style="position:relative;"><a href="#driver-%EC%83%9D%EC%84%B1" aria-label="driver 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C;Driver 생성></h3>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<ul>
+<li>
+<p><strong>옵션 넣기</strong>  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">options <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>ChromeOptions<span class="token punctuation">(</span><span class="token punctuation">)</span>
+options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'lang=ko_KR'</span><span class="token punctuation">)</span>
+options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'user-agent=googy bot'</span><span class="token punctuation">)</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>options<span class="token punctuation">)</span></code></pre></div>
+</li>
+</ul>
+<h3 id="element-찾기" style="position:relative;"><a href="#element-%EC%B0%BE%EA%B8%B0" aria-label="element 찾기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C;Element 찾기></h3>
+<ul>
+<li><strong>find<em>element</em>by<em>tag</em>name( ‘tag 명’ )</strong>  </li>
+<li><strong>find<em>element</em>by_id( ‘id 명’ )</strong>  </li>
+<li><strong>find<em>element</em>by<em>class</em>name( ‘class 명’ )</strong>  </li>
+<li>
+<p><strong>find<em>element</em>by_xpath( ‘옵션’ )</strong><br>
+<strong>XPath(XML Path Language)</strong>는 마크업 언어 구조의 문서에서 지정한 구문을 사용하여 경로를 나타내고 처리하는 언어입니다. 이를 이용하면 HTML에서 원하는 요소(Element)를 쉽게 얻을 수 있습니다.  </p>
+<ul>
+<li>
+<p><strong>기본적인 단어는 tag를 지정합니다.</strong><br>
+Tag가 p인 요소</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//p'</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+<li>
+<p><strong>[] : 술부(Predicates)로 추가적인 조건을 명시하여 특정 요소를 찾을 수 있습니다.</strong>  </p>
+<ul>
+<li>
+<p><strong>@ : 속성을 지정할 때 표시합니다.</strong><br>
+Tag가 div이면서 id 속성을 가진 요소  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id]'</span><span class="token punctuation">)</span></code></pre></div>
+<p>Tag가 div이면서 id 속성 값이 "header"인 요소  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="header"]'</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>/ : 경로 구분을 위해 나타냅니다.</strong> (맨 앞에 오면 최상위 노드에서 시작합니다.)<br>
+id가 header인 div 요소 > ul 요소 > li 요소</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="header"]/ul/li'</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+<li>
+<p><strong>// : 해당 경로 하위 노드 전체에서 검색합니다.</strong> (마찬가지로, 맨 앞에 오면 최상위 노드에서 시작합니다.)<br>
+id가 header인 div 요소 내부에서 li 요소 검색</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="header"]//li'</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+<li>
+<p><strong>* : 모든(불특정)</strong><br>
+id 값이 "header"인 모든 엘리먼트</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//*[@id="header"]//li'</span><span class="token punctuation">)</span></code></pre></div>
+<p>div 태그 중 어떤 속성값이라도 가지는 엘리먼트</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@*]'</span><span class="token punctuation">)</span></code></pre></div>
+<p>div 태그 중 어떤 속성값이라도 "header" 값을 가지는 엘리먼트</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@*="header"]//li'</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<p>  element에 s를 붙이면 조건을 만족하는 모든 요소를 가져와 리스트처럼 사용할 수 있습니다.  </p>
+<ul>
+<li><strong>find<em>elements</em>by<em>tag</em>name( ‘tag 명’ )</strong>  </li>
+<li><strong>find<em>elements</em>by_id( ‘id 명’ )</strong>  </li>
+<li><strong>find<em>elements</em>by<em>class</em>name( ‘class 명’ )</strong>  </li>
+<li><strong>find<em>elements</em>by_xpath( ‘옵션’ )</strong>  </li>
+</ul>
+<h3 id="data-입력하기" style="position:relative;"><a href="#data-%EC%9E%85%EB%A0%A5%ED%95%98%EA%B8%B0" aria-label="data 입력하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C;Data 입력하기></h3>
+<ul>
+<li><strong>send_keys( str )</strong><br>
+Element에 문자열을 입력합니다. 물론 input, textarea 등 입력이 가능한 Element 이어야 합니다.  </li>
+<li><strong>click()</strong><br>
+Element에 클릭합니다. button, submit, link 등 클릭이 가능한 Element 이어야 합니다.  </li>
+</ul>
+<h3 id="로딩-기다리기" style="position:relative;"><a href="#%EB%A1%9C%EB%94%A9-%EA%B8%B0%EB%8B%A4%EB%A6%AC%EA%B8%B0" aria-label="로딩 기다리기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C;로딩 기다리기></h3>
+<p>  브라우저에 특정 페이지에 접속하라고 명령을 해두어도 비동기 처리 혹은 네트워크 상황에 따라 문서(DOCUMENT)에서 내가 찾는 Element가 로딩되지 않았을 수도 있습니다.
+로딩이 끝나지 않은 문서에서 Element를 찾거나 입력을 준다면 오류가 발생할 수 있습니다.
+이를 방지하기 위해서 Selenium에서는 브라우저에게 특정 Element가 존재할 때까지 기다리라고 명령할 수 있습니다.  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions
+
+DELAY <span class="token operator">=</span> <span class="token number">10</span>
+url <span class="token operator">=</span> <span class="token string">"https://www.kaggle.com/"</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>presence_of_all_elements_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//a[@id="sign-in-button"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//a[@id="sign-in-button"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<p>  [<a href="https://seleniumhq.github.io/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">selenium expected_conditions</a>{:target="_blank"}] 내 여러 함수를 이용해 특정 조건을 지정하고 WebDriverWait()에서 Delay를 줄 수 있습니다.  </p>
+<h3 id="other-tips" style="position:relative;"><a href="#other-tips" aria-label="other tips permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C;Other Tips></h3>
+<ul>
+<li>
+<p><strong>Alert() 처리하기</strong>  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>alert_is_present<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+check_alert <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>alert<span class="token punctuation">.</span>Alert<span class="token punctuation">(</span>driver<span class="token punctuation">)</span>
+check_alert<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+<li>
+<p><strong>새 윈도우로 전환하기</strong>  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">window_before <span class="token operator">=</span> driver<span class="token punctuation">.</span>window_handles
+<span class="token comment"># 여기에 새 윈도우 창을 띄우는 작업</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>new_window_is_opened<span class="token punctuation">(</span>window_before<span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>driver<span class="token punctuation">.</span>window_handles<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
+</li>
+</ul>
+<h2 id="-예제-kaggle-로그인하기-" style="position:relative;"><a href="#-%EC%98%88%EC%A0%9C-kaggle-%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%95%98%EA%B8%B0-" aria-label=" 예제 kaggle 로그인하기  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 예제: Kaggle 로그인하기 ]</h2>
+<p>  Kaggle에서는 Google, Facebook 등의 SSO 인증을 지원합니다. Selenium을 이용하면 구글의 복잡한 로그인 처리, SSO 인증을 간편하게 수행할 수 있습니다.  </p>
+<p>  &#x3C;<strong>Settings</strong>>  </p>
+<ul>
+<li><strong>Python</strong><br>
+2.7.16  </li>
+<li><strong>Selenium</strong><br>
+3.141.0</li>
+<li><strong>Chrome</strong><br>
+77.0.3865.75 (공식 빌드)  </li>
+<li><strong>Chrome-Drvier</strong><br>
+77.0.3865.40  </li>
+</ul>
+<p>  먼저 Kaggle에 접속해 우리가 자동으로 수행할 부분을 찾아줍니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1048px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c332588dc75da221d1a9a9b68a5efc3e/2e694/selenium_get_xpath_with_chrome.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 69.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACZUlEQVQoz21S604TQRTedxBqQROioIkX4u0FjQoWSL0QLCBFHwLjA5hA+OMlIMXCUrbb2S3dy+xlLjt7m/VsC/hDvpzMzk7Od873nRll+t7sw8fP7s8+efDo6fTM3bHK5LXxCYixysT49cnxCuyroxirVOGkUr1Rnbw5dfvO1K0ZZXmlsdH89HFjs9H8/Pz9+nJjfWV17cPq+kpjbenNu/mFpRdztbnXC6/may/narXFem2pXn+73NxsLizWFR5FxRBZUbDiKshCiqzIktG+XPLy4ziOEgRBycyyPM/h+BJpmrIojlMZ59K2KdItvc8NS6BBBIGJ7KK+Qggpi0n5r9PwR8pc90TbzU88+Rsx1fA7ptsdEAOL76f0J8q39zoKoRRkmAbp6cQ0KKycxUkSQ/M4SYcCCz8UGDMf24yRNEkwpnDc7w8UxigTydbO8ZcddWv7+Otu59u+ziIBrSFvpCUIU6MfYs8PQkooxx6Josg0TYVSCoa1XlfTTjStg1D37MwEw8AJITUgNCCmObAs4PqMcVDEOSeEGoahUEJyEMYizhmUjYU4ty2l7frAjYYQQmDXZYyNyJQSTdPKgYEBj1A/KJHAgIeTBzINw8DzGOdJkoA6dwi4rVK5H+o9dD7tPMt5xCmPRJpfDpw7jt1qIYQoZXEcQyboEiJCWrvz59fR4cEFWUqonWY5xEgzkJnnUVV1ej0QBSTQBZ0954ygfd77oR/tXdzzFe+q4Bjzdts+PXVcN0tT8AJtiYvTOAF5htlXLNuGqvw/gFUHIXx4qKtqV9dty/I8z7Ed/eDAbLWwrneO1b9kVdNJZTXUdwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="selenium get xpath with chrome"
+        title="selenium get xpath with chrome"
+        src="/static/c332588dc75da221d1a9a9b68a5efc3e/2e694/selenium_get_xpath_with_chrome.png"
+        srcset="/static/c332588dc75da221d1a9a9b68a5efc3e/5a46d/selenium_get_xpath_with_chrome.png 300w,
+/static/c332588dc75da221d1a9a9b68a5efc3e/0a47e/selenium_get_xpath_with_chrome.png 600w,
+/static/c332588dc75da221d1a9a9b68a5efc3e/2e694/selenium_get_xpath_with_chrome.png 1048w"
+        sizes="(max-width: 1048px) 100vw, 1048px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+Chrome 개발자 도구에서 원하는 Element 우클릭 > Copy > Copy XPath를 사용하면 XPath를 얻을 수 있습니다. ( 다만, 저는 한 번 만든 프로그램은 오래 사용하길 원하기 때문에 페이지의 변경 가능성을 고려하여 XPath를 직접 작성하는 것을 선호합니다. )</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions
+<span class="token keyword">import</span> getpass
+
+DELAY <span class="token operator">=</span> <span class="token number">30</span>
+url <span class="token operator">=</span> <span class="token string">"https://www.kaggle.com/"</span>
+GOOGLE_ID <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">"Google ID:"</span><span class="token punctuation">)</span>
+GOOGLE_PW <span class="token operator">=</span> getpass<span class="token punctuation">.</span>getpass<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+<span class="token comment"># 로그인 > 구글 로그인</span>
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># Kaggle에서 로그인 클릭을 위해 창 크기를 늘립니다.</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>element_to_be_clickable<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//a[@id="sign-in-button"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//a[@id="sign-in-button"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>element_to_be_clickable<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'/html/body/main/div/div/div/div/div/div/form/div[2]/div/div[1]/a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'/html/body/main/div/div/div/div/div/div/form/div[2]/div/div[1]/a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Google ID 입력</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>visibility_of_all_elements_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//input[@id="identifierId"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//input[@id="identifierId"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span>GOOGLE_ID<span class="token punctuation">)</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>element_to_be_clickable<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//div[@id="identifierNext"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="identifierNext"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Google Password 입력</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>visibility_of_all_elements_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//div[@id="password"]//input[@name="password"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="password"]//input[@name="password"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span>GOOGLE_PW<span class="token punctuation">)</span>
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> DELAY<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>element_to_be_clickable<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//div[@id="passwordNext"]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//div[@id="passwordNext"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/python">python</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/crawling">crawling</a></span> on <time dateTime="2019-10-02T00:00:00.000Z">02 October, 2019</time>.</p><p>Last updated on <time dateTime="2019-10-08T00:00:00.000Z">08 October, 2019</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/page">Example</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2019-10-02-selenium";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-cc9810edb3a3d14d9afb.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-d5c831629f7c9432a052.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-cc9810edb3a3d14d9afb.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-7a7417a086300d6612fd.js" async=""></script></body></html>

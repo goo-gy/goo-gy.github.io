@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">PE (Portable Executable) 구조 [Windows] - googy-blog</title><meta data-react-helmet="true" name="description" content="윈도우 실행 파일의 구조를 분석해보자"/><meta data-react-helmet="true" property="og:title" content="PE (Portable Executable) 구조 [Windows] - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="윈도우 실행 파일의 구조를 분석해보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2019-12-19-PE"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="PE (Portable Executable) 구조 [Windows] - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="윈도우 실행 파일의 구조를 분석해보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, PE"/><meta data-react-helmet="true" name="article:published_time" content="2019-12-19T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2020-01-02T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="PE"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "PE",
+          "headline": "PE (Portable Executable) 구조 [Windows] - googy-blog",
+          "url": "https://goo-gy.github.io/2019-12-19-PE",
+          "datePublished": "2019-12-19T00:00:00.000Z",
+          "dateModified": "2020-01-02T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "윈도우 실행 파일의 구조를 분석해보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=ad7a20dd6840767906116efbf27011c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad7a20dd6840767906116efbf27011c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad7a20dd6840767906116efbf27011c7"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-7a7417a086300d6612fd.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-cc9810edb3a3d14d9afb.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-d5c831629f7c9432a052.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2019-12-19-PE/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/ad39b/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/183c2/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/project">Project</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/pe">PE</a><time dateTime="2019-12-19T00:00:00.000Z">19 December, 2019</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">PE (Portable Executable) 구조 [Windows]</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD1UlEQVQ4y52R/U9TZxTHz40h8ZrG+w/MgAx+3DJfwMVgRiyFYmlpS2/LHLCxKSAvjiwLv2BUXDJnnGwLOCarCMgiGwnKcC8Z2xShgNAXqXcU4c7KS0s2XkpBRlvu7dlzHSbshzbLnuST8+R7ks895z4AW05r5U9wyvgJVLOXYnrOuUz9H02V3PvQfaz7lOP4bULf+SfHSHaip8Zl0L6at409WAhflndDxPNt9Qh1ocAM5/MbGXvt/Jyrfg0nGgL43Wkb/nDGQe5BlDLSe5x76Didn1oKHVV9VETh0M8u6sqnX0FDbetO73hgYtWDOP1wLWT91S3Y7jwRPK5ASMq84+vOd/JK6ZLCSrh72x5ZaHvQSDVdqwJz0/vM4nIXHxJ7cHm1U5zxNofd0+aw/+lNQcoWfV1cUXEWXVauBctgXWTh6ChQzS0AZjMwK6vAh0KAC4sgEqSK8wsgCCKgfwW44mKgKyrIVvchsnByDKj2NoCWq8CEA8BjGNDjBpEfA3RaAX93gYAIKPwFXNkJoN+rBHDaogh/tO+gLjVth4/N25nflmS8OyjDqQ2ZOCPIcHqD3EMy4XFAhqTH5RXF0G+Vx0DXwI7IwlSrgtpjTgICc2Rey2eHWNQEWVEdfFZREzIKUkZ6XFzJi/Tu0gQ41C+PLFSOZVAH2pJhf+M+xhDU89rlbFR7s8TsP9UokTWjEnR+LeYE9VxsQSydWJkICltaZGH6QyWV3HoA9tTvZXICBl41pUaFPV3MnFShhHxYIWR5NEh63AvGXXTiyURIG1FEEY69RiW3vQIERreeyRtRjQRxs6IJNYJUdetKLqEijky4G+T2lMjCw99XU/suFsDeC/mM2lnLaycvY/ajOjH7UT0+Y7xOkDLS4+JeT6Hj30yF1M6qKBPecFDJZ69B0umrjK53mWeHN9AwFBAJuIkgZbpeHxevL6ITTGUgbx6MIvxmgEo+9wUk1XzO6CwenrX5kLX7RJPzKZpGV5G1LQlSpuuf5eINhXRCbhHIr/8STThEhFcg6WwDo+v38kb7Kur6PGLmLQce6XaifuAPwWhfIZmXCN8mwmIivPMfhX3/CLX3ZsWMjmFUdtr+h/DrwS0TzvGs1U/W9Aum0bWw8cFamLUuk5X9ZOUtwtYowoznE9Y07NRb5iZY2woSyYZhxCdKkHtIysjHnM+FadfvRhYqblgoMh3sP3OZIavOGoaXMOf+AmFxkwWUMm3vDB+fQx7FVASHW6I8SspnHfDyux/ASydrYtLbBzSZNx355N8dJbyxyVGSFSjaLapdSsO2WFUuHLzY9i/H34qBYGX7khrXAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/7361d20491e2be78c01bd0f85fdc04fa/dc47e/PE_PE.png 200w,
+/static/7361d20491e2be78c01bd0f85fdc04fa/9f2d5/PE_PE.png 400w,
+/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png 450w" sizes="(max-width: 450px) 100vw, 450px" /><img loading="lazy" sizes="(max-width: 450px) 100vw, 450px" srcset="/static/7361d20491e2be78c01bd0f85fdc04fa/dc47e/PE_PE.png 200w,
+/static/7361d20491e2be78c01bd0f85fdc04fa/9f2d5/PE_PE.png 400w,
+/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png 450w" src="/static/7361d20491e2be78c01bd0f85fdc04fa/5498c/PE_PE.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="-들어가기-전에-" style="position:relative;"><a href="#-%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90-" aria-label=" 들어가기 전에  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 들어가기 전에 ]</h2>
+<p>  이 블로그에서는 32bit 실행파일을 예시로 설명하고 있습니다. 구조체의 크기나 Offset, ImageBase 등에서 64bit 실행파일과 차이가 있겠지만 전반전인 내용에 있어서는 크게 차이가 없으니 양해 바랍니다.  </p>
+<h2 id="-pe-portable-executable-란-" style="position:relative;"><a href="#-pe-portable-executable-%EB%9E%80-" aria-label=" pe portable executable 란  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ PE (Portable Executable) 란? ]</h2>
+<p>  PE는 EXE, DLL 등의 윈도우에서 실행 가능한 파일들의 파일 형식입니다. PE 구조에서 실행 파일을 분석하기 위해 어떤 내용이 있는지, 그리고 어떻게 활용할 수 있는지 살펴보겠습니다. 이번에는 PE에 대한 모든 것을 파헤치는 것이 아니라 전체적인 구조와 알아두면 유용한 내용을 중심으로 다루겠습니다.  </p>
+<h2 id="-구조-" style="position:relative;"><a href="#-%EA%B5%AC%EC%A1%B0-" aria-label=" 구조  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 구조 ]</h2>
+<p>  <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 450px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7361d20491e2be78c01bd0f85fdc04fa/fc2a6/PE_PE.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD1UlEQVQ4y52R/U9TZxTHz40h8ZrG+w/MgAx+3DJfwMVgRiyFYmlpS2/LHLCxKSAvjiwLv2BUXDJnnGwLOCarCMgiGwnKcC8Z2xShgNAXqXcU4c7KS0s2XkpBRlvu7dlzHSbshzbLnuST8+R7ks895z4AW05r5U9wyvgJVLOXYnrOuUz9H02V3PvQfaz7lOP4bULf+SfHSHaip8Zl0L6at409WAhflndDxPNt9Qh1ocAM5/MbGXvt/Jyrfg0nGgL43Wkb/nDGQe5BlDLSe5x76Didn1oKHVV9VETh0M8u6sqnX0FDbetO73hgYtWDOP1wLWT91S3Y7jwRPK5ASMq84+vOd/JK6ZLCSrh72x5ZaHvQSDVdqwJz0/vM4nIXHxJ7cHm1U5zxNofd0+aw/+lNQcoWfV1cUXEWXVauBctgXWTh6ChQzS0AZjMwK6vAh0KAC4sgEqSK8wsgCCKgfwW44mKgKyrIVvchsnByDKj2NoCWq8CEA8BjGNDjBpEfA3RaAX93gYAIKPwFXNkJoN+rBHDaogh/tO+gLjVth4/N25nflmS8OyjDqQ2ZOCPIcHqD3EMy4XFAhqTH5RXF0G+Vx0DXwI7IwlSrgtpjTgICc2Rey2eHWNQEWVEdfFZREzIKUkZ6XFzJi/Tu0gQ41C+PLFSOZVAH2pJhf+M+xhDU89rlbFR7s8TsP9UokTWjEnR+LeYE9VxsQSydWJkICltaZGH6QyWV3HoA9tTvZXICBl41pUaFPV3MnFShhHxYIWR5NEh63AvGXXTiyURIG1FEEY69RiW3vQIERreeyRtRjQRxs6IJNYJUdetKLqEijky4G+T2lMjCw99XU/suFsDeC/mM2lnLaycvY/ajOjH7UT0+Y7xOkDLS4+JeT6Hj30yF1M6qKBPecFDJZ69B0umrjK53mWeHN9AwFBAJuIkgZbpeHxevL6ITTGUgbx6MIvxmgEo+9wUk1XzO6CwenrX5kLX7RJPzKZpGV5G1LQlSpuuf5eINhXRCbhHIr/8STThEhFcg6WwDo+v38kb7Kur6PGLmLQce6XaifuAPwWhfIZmXCN8mwmIivPMfhX3/CLX3ZsWMjmFUdtr+h/DrwS0TzvGs1U/W9Aum0bWw8cFamLUuk5X9ZOUtwtYowoznE9Y07NRb5iZY2woSyYZhxCdKkHtIysjHnM+FadfvRhYqblgoMh3sP3OZIavOGoaXMOf+AmFxkwWUMm3vDB+fQx7FVASHW6I8SspnHfDyux/ASydrYtLbBzSZNx355N8dJbyxyVGSFSjaLapdSsO2WFUuHLzY9i/H34qBYGX7khrXAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE PE"
+        title="PE PE"
+        src="/static/7361d20491e2be78c01bd0f85fdc04fa/fc2a6/PE_PE.png"
+        srcset="/static/7361d20491e2be78c01bd0f85fdc04fa/5a46d/PE_PE.png 300w,
+/static/7361d20491e2be78c01bd0f85fdc04fa/fc2a6/PE_PE.png 450w"
+        sizes="(max-width: 450px) 100vw, 450px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+PE는 크게 DOS Header, NT Header, Section Header, Section으로 구성되어 있습니다.  </p>
+<h2 id="-dos-header" style="position:relative;"><a href="#-dos-header" aria-label=" dos header permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ DOS Header]</h2>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_IMAGE_DOS_HEADER</span> <span class="token punctuation">{</span>      <span class="token comment">// DOS .EXE header</span>
+  WORD   e_magic<span class="token punctuation">;</span>                     <span class="token comment">// Magic number</span>
+  WORD   e_cblp<span class="token punctuation">;</span>                      <span class="token comment">// Bytes on last page of file</span>
+  WORD   e_cp<span class="token punctuation">;</span>                        <span class="token comment">// Pages in file</span>
+  WORD   e_crlc<span class="token punctuation">;</span>                      <span class="token comment">// Relocations</span>
+  WORD   e_cparhdr<span class="token punctuation">;</span>                   <span class="token comment">// Size of header in paragraphs</span>
+  WORD   e_minalloc<span class="token punctuation">;</span>                  <span class="token comment">// Minimum extra paragraphs needed</span>
+  WORD   e_maxalloc<span class="token punctuation">;</span>                  <span class="token comment">// Maximum extra paragraphs needed</span>
+  WORD   e_ss<span class="token punctuation">;</span>                        <span class="token comment">// Initial (relative) SS value</span>
+  WORD   e_sp<span class="token punctuation">;</span>                        <span class="token comment">// Initial SP value</span>
+  WORD   e_csum<span class="token punctuation">;</span>                      <span class="token comment">// Checksum</span>
+  WORD   e_ip<span class="token punctuation">;</span>                        <span class="token comment">// Initial IP value</span>
+  WORD   e_cs<span class="token punctuation">;</span>                        <span class="token comment">// Initial (relative) CS value</span>
+  WORD   e_lfarlc<span class="token punctuation">;</span>                    <span class="token comment">// File address of relocation table</span>
+  WORD   e_ovno<span class="token punctuation">;</span>                      <span class="token comment">// Overlay number</span>
+  WORD   e_res<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                    <span class="token comment">// Reserved words</span>
+  WORD   e_oemid<span class="token punctuation">;</span>                     <span class="token comment">// OEM identifier (for e_oeminfo)</span>
+  WORD   e_oeminfo<span class="token punctuation">;</span>                   <span class="token comment">// OEM information; e_oemid specific</span>
+  WORD   e_res2<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                  <span class="token comment">// Reserved words</span>
+  LONG   e_lfanew<span class="token punctuation">;</span>                    <span class="token comment">// File address of new exe header</span>
+<span class="token punctuation">}</span> IMAGE_DOS_HEADER<span class="token punctuation">,</span> <span class="token operator">*</span>PIMAGE_DOS_HEADER<span class="token punctuation">;</span></code></pre></div>
+<p>  DOS 헤더는 PE 파일의 시작 부분입니다. DOS 헤더에서 의미 있게 살펴볼 부분은 <strong>e_magic</strong> 과 <strong>e_lfanew</strong> 정도입니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 983px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/77d41f616bb8b0348066c7a49c2162c0/91b29/PE_DOS.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 75.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnUlEQVQ4y4WT227TQBCG/S6lEhISpfAEPB6tClzwNHBLxR1IpUkTkjgnx/aefYodx4l/ZtcJaRESF6PxjsffzPyz9t5+usOLqwFevv+FNx9HeE12Qc+XH0a4tM/kL24Gzr+i+Pm7Ic6uxnh2fbLnNxOcX49wRu+8UGUQIoTRGoJzaKWRpSmdFeIwRJHnFGfgjCFcrShXoG1b7Pf7J9Y0W8ikgLdkAlHkI6YPgpgh1hmkVNhsKgfeNQ12uwZFkWO9LlwcaAm6R/sISAdUTQtvEabwfYVwQR2Ml5BRAqkK5PmWAHsCNe45z3fIsi0VqZGYmt5tqdCOwDgAW8QygZekW4TxHmousPr8BbI3gMlyKKmh1COjs1AGwlDBJEWS26I56s2Giq6xrWsCGnhS1/AnJYSsILUEIx35P0wo0vTnPeLbb4i+3sLc3aOu7RRr6jxDVZYweQlPEXA6rUjsElJw0jMGYxzM6klmYYz0tcZnc8SDIYL7HvR8QeOT3kIiouUxFkOl665DC5S2Q8kJErsuLZQLu7DIwWycS5rAdkoQQ13FVDwkmM1JEgOdlY+BJX0YuYQwjDoA5y65g/I/MVvAGIPlYoHRaEw2wnK5hMqoQ2WshhUllZTMXFU7qr1vR/2O0CPQvje0nNl0isFggId+n5qadiNbDX2/osROw1Ww6sa2uh26OcKcjoeYovHH1F2/13M+CIITcHoEyuNS2Gm7h07/9gldHcG7fPsj2OvjgEJ1GmqzoeTTlgUJbz+2voOLJ15rQ79l4a6O3XZJ10bZpaRpg8V8g0RXMEpAEVTTOEoK8sJ5GzuetZKQBMzpt6yryllZFNhva+g0h/f9YY67YYxpmMAPBfzV/20ScMxijQUzmEUKP/oTjJcxhoHCb5PzUC0wn+kHAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE DOS"
+        title="PE DOS"
+        src="/static/77d41f616bb8b0348066c7a49c2162c0/91b29/PE_DOS.png"
+        srcset="/static/77d41f616bb8b0348066c7a49c2162c0/5a46d/PE_DOS.png 300w,
+/static/77d41f616bb8b0348066c7a49c2162c0/0a47e/PE_DOS.png 600w,
+/static/77d41f616bb8b0348066c7a49c2162c0/91b29/PE_DOS.png 983w"
+        sizes="(max-width: 983px) 100vw, 983px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li><strong>e_magic (2 byte)</strong><br>
+DOS의 Signature로 4D 5A ('MZ') 값을 가집니다.  </li>
+<li><strong>e_lfanew (4 byte)</strong><br>
+NT 헤더의 파일 주소 값입니다.  </li>
+</ul>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&lt;Little-Endian&gt;
+컴퓨터에서 데이터를 저장할 때 byte 단위로 저장하는데 하위 byte부터 기록하는 것이 Little-Endian입니다.  
+4 byte 크기의 값 0x1A2B3C4D는 Little-Endian으로 4D 3C 2B 1A으로 저장됩니다.  </code></pre></div>
+<h2 id="-nt-header-" style="position:relative;"><a href="#-nt-header-" aria-label=" nt header  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ NT Header ]</h2>
+<p>  <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9409a2c36606d789c51d3a8e2e2cdfc7/6af66/PE_NT_header.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABrklEQVQoz42Sy0oDQRBFr0Zd+BeKS0GDC78ozM69SPb5nTHZJASyEiSbKIqCBt8vMGp8O5l22lM9PlAX2lB0zVTVrXurWvrjLC19uoXDQ1X6fTVaLcX1uqrcy8fHqvEvbrc1ublJ1tGRROLQ1ZVGCBRubnK7vVWB2Ij3GpqYUIHUsetrrSSJ/Omp/Pm5PDX+6Sm3jQ3N7e4qBzs4kAgqTSXnJECCT1Hwp6c1bjdg9edneQoTatz6ulLqXokl29uaha20vy/t7Wnm8lILJJdeXhQBFtG11OtpYXVV8wZmdn+vJjEPe4dlgGXGjn9ua0tFwxIyhZRFSzQZyDQG/uJCHraeWNmYcobxmzT0mDPpg4Ey+358lGN+xSCZeZncAIjvYRVAzf8APDvLASlswtRj7v3O7M4yuZ0dFRmfZPP7kPzwoBJFEd0j839KvrtTk1n5tTU5U8Eisk4nNHc0LRo52/LnUpiHmGNYDFJ+LYVmYSnMMiHX0TTFf4VA0u1q9uTkn89maio8m1FAVt6lfjMkeyTPBcl/nXL562HDoALLBtJjmFWxZaxG85gxTDIOvQHbPZIIKPLIOAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE NT header"
+        title="PE NT header"
+        src="/static/9409a2c36606d789c51d3a8e2e2cdfc7/6af66/PE_NT_header.png"
+        srcset="/static/9409a2c36606d789c51d3a8e2e2cdfc7/5a46d/PE_NT_header.png 300w,
+/static/9409a2c36606d789c51d3a8e2e2cdfc7/0a47e/PE_NT_header.png 600w,
+/static/9409a2c36606d789c51d3a8e2e2cdfc7/6af66/PE_NT_header.png 640w"
+        sizes="(max-width: 640px) 100vw, 640px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+NT 헤더는 <strong>Signature, File Header, Optional Header</strong>로 이루어져 있습니다.  </p>
+<p>  <strong>Signature</strong> (4 byte)는 50 45 00 00 ( 'PE..') 값을 가지며 이는 PE 파일임을 나타냅니다.    </p>
+<ul>
+<li>
+<p><strong>File Header</strong>  </p>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_IMAGE_FILE_HEADER</span> <span class="token punctuation">{</span>
+    WORD    Machine<span class="token punctuation">;</span>
+    WORD    NumberOfSections<span class="token punctuation">;</span>
+    DWORD   TimeDateStamp<span class="token punctuation">;</span>
+    DWORD   PointerToSymbolTable<span class="token punctuation">;</span>
+    DWORD   NumberOfSymbols<span class="token punctuation">;</span>
+    WORD    SizeOfOptionalHeader<span class="token punctuation">;</span>
+    WORD    Characteristics<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> IMAGE_FILE_HEADER<span class="token punctuation">,</span> <span class="token operator">*</span>PIMAGE_FILE_HEADER<span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li><strong>NumberOfSection</strong><br>
+section의 수입니다.  </li>
+<li><strong>TimeDateStamp</strong><br>
+컴파일된 시간을 의미합니다.  </li>
+<li><strong>SizeOfOptionalHeader</strong><br>
+시스템에 따라 32bit 용은 0xE0, 64bit 용은 0xF0의 값을 가집니다. 이것에 따라 다음에 설명할 Optional Header 구조체가 달라지는데, 다음은 32bit Optional Header입니다.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Optional Header</strong>  </p>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_IMAGE_OPTIONAL_HEADER</span> <span class="token punctuation">{</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// Standard fields.</span>
+    <span class="token comment">//</span>
+    WORD    Magic<span class="token punctuation">;</span>
+    BYTE    MajorLinkerVersion<span class="token punctuation">;</span>
+    BYTE    MinorLinkerVersion<span class="token punctuation">;</span>
+    DWORD   SizeOfCode<span class="token punctuation">;</span>
+    DWORD   SizeOfInitializedData<span class="token punctuation">;</span>
+    DWORD   SizeOfUninitializedData<span class="token punctuation">;</span>
+    DWORD   AddressOfEntryPoint<span class="token punctuation">;</span>
+    DWORD   BaseOfCode<span class="token punctuation">;</span>
+    DWORD   BaseOfData<span class="token punctuation">;</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// NT additional fields.</span>
+    <span class="token comment">//</span>
+    DWORD   ImageBase<span class="token punctuation">;</span>
+    DWORD   SectionAlignment<span class="token punctuation">;</span>
+    DWORD   FileAlignment<span class="token punctuation">;</span>
+    WORD    MajorOperatingSystemVersion<span class="token punctuation">;</span>
+    WORD    MinorOperatingSystemVersion<span class="token punctuation">;</span>
+    WORD    MajorImageVersion<span class="token punctuation">;</span>
+    WORD    MinorImageVersion<span class="token punctuation">;</span>
+    WORD    MajorSubsystemVersion<span class="token punctuation">;</span>
+    WORD    MinorSubsystemVersion<span class="token punctuation">;</span>
+    DWORD   Win32VersionValue<span class="token punctuation">;</span>
+    DWORD   SizeOfImage<span class="token punctuation">;</span>
+    DWORD   SizeOfHeaders<span class="token punctuation">;</span>
+    DWORD   CheckSum<span class="token punctuation">;</span>
+    WORD    Subsystem<span class="token punctuation">;</span>
+    WORD    DllCharacteristics<span class="token punctuation">;</span>
+    DWORD   SizeOfStackReserve<span class="token punctuation">;</span>
+    DWORD   SizeOfStackCommit<span class="token punctuation">;</span>
+    DWORD   SizeOfHeapReserve<span class="token punctuation">;</span>
+    DWORD   SizeOfHeapCommit<span class="token punctuation">;</span>
+    DWORD   LoaderFlags<span class="token punctuation">;</span>
+    DWORD   NumberOfRvaAndSizes<span class="token punctuation">;</span>
+    IMAGE_DATA_DIRECTORY DataDirectory<span class="token punctuation">[</span>IMAGE_NUMBEROF_DIRECTORY_ENTRIES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> IMAGE_OPTIONAL_HEADER32<span class="token punctuation">,</span> <span class="token operator">*</span>PIMAGE_OPTIONAL_HEADER32<span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li><strong>ImageBase</strong><br>
+실행되어 메모리에 올라올 때 실행 파일의 시작 주소입니다.  </li>
+<li><strong>NumberOfRvaAndSizes</strong><br>
+DataDirectory 배열의 길이입니다. (일반적으로 16이지만 항상은 아니기 때문에 이 값을 따르는 것이 좋다고 합니다.)  </li>
+<li><strong>DataDirectory</strong><br>
+Section과 관련되며 내용이 많기 때문에 뒤에서 설명하겠습니다.    </li>
+</ul>
+</li>
+</ul>
+<h2 id="-section-header-" style="position:relative;"><a href="#-section-header-" aria-label=" section header  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Section Header ]</h2>
+<p>  Section Header는 File Header에 있는 NumberOfSections 길이의 배열로 이루어져 있습니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/98e1688b87caa161787cf9b5d2fc5130/6af66/PE_section_header.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABuklEQVQoz42SWy8DQRTHB4l60A8gsbz6AOK9tt3dWrttd7YpffDAg8uDaNrGg/oevo9IlBAtpSoiQdwFidteusd/GpcXETs5mTl7zvzmzP8Mk8akDikjdWEO9WX7QtK4FBJrMfdP9IfCA+HOHr2ne5EWmXFtzMeP4hSrxEg9UEnZU0jelCm6HSW1phLiBZE0Zb1Z59zlFe7w2re5vIr/JyMnI5ksZRkAzLgyZuGTVtfc+HHcB7wJaFM71Bz9TKfRi9EFlnxKLnGPkx3YP9a0KY0h1omHxHTiPsHMW5MZl8acAALuARZoDY2UqhKoddXTT3UCNMesV6tg3pgkl+XX6FbURZIbWYs4w+vDb8nHJOHAKYCZeWcK6JyAIM9DVYGyiytvyAGuLXxCTo5hU0lUkv5liEpR4QwO/K4w9ZwiFOGlXlKBWH/OHg4mxHPMuDEmkNCAbuvWu7X5ZfDL0LAGrfgkTTLoJvSeQYxs33agsQ+QD7n8lu9w0ZQFRkR/Gr723nRvd4lKTIgOcKuz6r5KsZ0YQRohV8sHsPgfIMtTvm2FVlhkNTKEhizh2RQALgrDkynCz6Pby4gNfgAmJVtVRvJEqQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE section header"
+        title="PE section header"
+        src="/static/98e1688b87caa161787cf9b5d2fc5130/6af66/PE_section_header.png"
+        srcset="/static/98e1688b87caa161787cf9b5d2fc5130/5a46d/PE_section_header.png 300w,
+/static/98e1688b87caa161787cf9b5d2fc5130/0a47e/PE_section_header.png 600w,
+/static/98e1688b87caa161787cf9b5d2fc5130/6af66/PE_section_header.png 640w"
+        sizes="(max-width: 640px) 100vw, 640px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+.text, .idata, .data, .rsrc 등의 섹션이 있으며 하나의 section_header는 다음과 같은 정보들을 가지고 있습니다.  </p>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_IMAGE_SECTION_HEADER</span> <span class="token punctuation">{</span>
+  BYTE    Name<span class="token punctuation">[</span>IMAGE_SIZEOF_SHORT_NAME<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">union</span> <span class="token punctuation">{</span>
+          DWORD   PhysicalAddress<span class="token punctuation">;</span>
+          DWORD   VirtualSize<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> Misc<span class="token punctuation">;</span>
+  DWORD   VirtualAddress<span class="token punctuation">;</span>
+  DWORD   SizeOfRawData<span class="token punctuation">;</span>
+  DWORD   PointerToRawData<span class="token punctuation">;</span>
+  DWORD   PointerToRelocations<span class="token punctuation">;</span>
+  DWORD   PointerToLinenumbers<span class="token punctuation">;</span>
+  WORD    NumberOfRelocations<span class="token punctuation">;</span>
+  WORD    NumberOfLinenumbers<span class="token punctuation">;</span>
+  DWORD   Characteristics<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> IMAGE_SECTION_HEADER<span class="token punctuation">,</span> <span class="token operator">*</span>PIMAGE_SECTION_HEADER<span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li><strong>Name</strong>
+섹션의 이름입니다. 모두 길이가 8을 넘지 않는 짧은 길이기 때문에 주소값이 아니라 문자열 자체가 header에 들어있습니다.  </li>
+<li><strong>VirtualSize</strong><br>
+Section의 크기입니다.  </li>
+<li><strong>VirtualAddress</strong><br>
+파일이 실행될 때 메모리에 올라오는 Section의 주소 (Image Base로부터의 Offset)입니다.  </li>
+<li><strong>PointerToRawData</strong><br>
+파일 내부에서 Section의 주소입니다. (이를 줄여서 <strong>Raw</strong>라고 부르겠습니다.)  </li>
+<li><strong>Characteristics</strong><br>
+Section의 쓰기/읽기/실행 가능 여부의 속성입니다.  </li>
+</ul>
+<p>  *※ PE 구조 내에서의 VirtualAddress는 대부분 <strong>RVA (Relative Virtual Address)</strong>, 즉 Image Base로부터의 <strong>상대 주소</strong>입니다.*  </p>
+<p>  메모리에서의 주소(VirtualAddress)와 파일에서의 주소(PointerToRawData)가 따로 존재하는데, 이는 PE 파일의 모습과 실행되어 메모리에 올라온 모습이 다르기 때문입니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/885b00e5fe788fcd3207a0308eeaf3c9/6af66/PE_file_memory.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 102.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFT0lEQVQ4y11UC0yTVxQ+CIiMaeYmEDO3JdNNJwNa3BBFR1TAx8bUxUUz3bJM6RyMLGEBHe+CYiLq4tRkuiyARWGE+RhYFCggUBDkTUHeLX3RJ+XV0t/e/me3dYDZSb7cc/577ne/c++5PwC15GsXoCKh94OmNOW2c1/e+Cw56sIX1A+tSOzdiIjgAPwMcDjxO2iPN3qUxInDkqIuHIsLTz2auO/cV5eP3T7YkWVYJbtE8+RSdKGc7m3X9aKRAhabrqko1OxIgR07bhjr5wn9EjhesBfcr6QVBQ3kMzh6C7HuspTty52zDwlsKL4ij3lyVQWQI0lfAn7wmlbT+2DOLMPB/lrbYH+NzWKWol77rNKpjtqapNWrKOEbl0r4IeYZ2ZxBJ8Gerkf2cVWbjcY4Jms/oVJ0Ad19iyPfdXLaR2i2+KJC6WMblfqQWbMvTs/4iBCDnQp3XFy2jOa53K1eGcg892X0Bl+UK3zsCqWvzcr4olrjzdPqvQGOV4ArwGrXGROUMxZAjRqIYgyIlfqzkyB6ITAAQs+7eAIEujwQQQCxAmMyAqqVwDrybVa6Tgk8/ThNXSfwdqODx4+asPKYvs34fROXRNcGkJOdH2OcNowSFjhL9uYvXw7u4LG/MjDoJ30Yw2vk4smWIPZEdQCJGd6KseNhvDjjDnCWcxiPQ+TYAWFY+z7cUhNBgst3ke3NezBSfkD0ELtg/mK4whAIa9q7IVJ5kKF5uLUukg1+sJPs7IvCCOl+3m7lwReE3+DXEKELF255EoLcexzif+tDsvlxMEZow0WleN+Zw3kY6LpPuxe2t4ZuDNfuYoLuc3BTGZf1F/iRTyTbMFIXztsztRsgsmynq+NSCjW5whL1TSweu0n+kt4kxfJ8LNLkVs2rcyDuYSxcbb+8vthUyBSOCbBQLmBvDeeTIk0B5qn+jL6pyQXY8MduN/ACz9RmnfDcAEF+m4HwW/Xk3CDBtBaDaJ7s/YyNy+nGS29X3OXOWNA6Z0OcI8hSEBqjQjUZrVJPA7z9W4i7o7Fj6waF8Z16jKnqIT9UdJL4Th3G1g+L5vvQOzXwFTosCf09l3OoQckcEqvx0ztP2YPVI+SQWIVRZV28z8slAK/z3/KCrbAyoX6wPJWSJFRLSHx5K0np0GCieHhB4fpMroPQ7WJpUWCLZopp1c1gs9LAPtVMERpjVb8sunpQAfDOrx8tdbRNknhImNWjx19E3eT0ozaS2a3D5MZFwjfTArwchEfy8jjpXTomo1uP8f+IWbqOZPQYMKG2j5dYPwjgc3atJ/jDipQno8IzvROY3iIj6c1ScqbXiKnNsoWSOdmbPR0lF4hKAxTTc4zKzKDKYmPV5ueExiiRj0f3KbX0bM5QwkBYkdgwVJ5OdzpV+4wkinpIOlVwSjzykkJ/L/AA96P5udyzPXomu9eAqdVdbFabgmRLDJhc389LFQ8BbCo64mgbF1qes+SUumckqabHWXJK4yLhe3znpbhl/V3AqZIbmWqlCR/1j7FVUh2pkk/g3a7h6PuSUVjoMbvVUoYvjPwHZK1zC334Lp+eoRe4fyvI4+ZI9MzFZ0Y82zjAnu8eJzlULb9hgJfZNLRIOD0zW2Z3MNntzylsDn9mdrZyfn5dht+r9Dfinlicz70jNVnvyaewZEBtvyM12u7ITJjfMRIt6JYtEprN5of4P7NYLDXz82szg5x9eExQGMjv1rOZjvOu6MC0pwrkO/zH/SdPN7ykUKVSZZtMpsaJiYlKB6gvpt9yXn5610uvQbu4eY1RO/5oUq+rnjToqygqjVpN4+jgwD7Z8BD8C/ew3yDbomChAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE file memory"
+        title="PE file memory"
+        src="/static/885b00e5fe788fcd3207a0308eeaf3c9/6af66/PE_file_memory.png"
+        srcset="/static/885b00e5fe788fcd3207a0308eeaf3c9/5a46d/PE_file_memory.png 300w,
+/static/885b00e5fe788fcd3207a0308eeaf3c9/0a47e/PE_file_memory.png 600w,
+/static/885b00e5fe788fcd3207a0308eeaf3c9/6af66/PE_file_memory.png 640w"
+        sizes="(max-width: 640px) 100vw, 640px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>  Header까지는 크기와 상대 위치가 같지만 Section에서 차이가 있습니다.  </p>
+<h2 id="-datadirectory-따라가기-" style="position:relative;"><a href="#-datadirectory-%EB%94%B0%EB%9D%BC%EA%B0%80%EA%B8%B0-" aria-label=" datadirectory 따라가기  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ DataDirectory 따라가기 ]</h2>
+<p>  DataDirectory는 앞에서 봤던 NT Header의 Optional Header의 끝부분에 있는 구조체 배열입니다. 여기에는 <strong>Import Table, Resource Table, TLS Table</strong> 등의 데이터의 주소 정보를 담고 있습니다. 실제 데이터는 Section 영역에 포함되어 있습니다.   </p>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_IMAGE_DATA_DIRECTORY</span> <span class="token punctuation">{</span>
+  DWORD   VirtualAddress<span class="token punctuation">;</span>
+  DWORD   Size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> IMAGE_DATA_DIRECTORY<span class="token punctuation">,</span> <span class="token operator">*</span>PIMAGE_DATA_DIRECTORY<span class="token punctuation">;</span></code></pre></div>
+<p>  DataDirectory 구조체를 보면 파일에서의 주소는 명시되어 있지 않습니다. 하지만 이 데이터는 특정 Section에 속해 있기 때문에 Section Header의 정보들을 통해서 다음과 같이 <strong>Raw (파일 주소)</strong>를 구할 수 있습니다.  </p>
+<ol>
+<li>
+<p><strong>Data가 어느 Section에 속해 있는지 확인한다.</strong>  </p>
+<ol>
+<li><strong>Virtual Address (Data) > Virtual Address (Section A)</strong>  </li>
+<li><strong>Virtual Address (Data) &#x3C; Virtual Address (Section A) + Virtual Size (Section A)</strong><br>
+이 두 가지를 모두 만족한다면 Data는 Section A에 속해 있습니다.  </li>
+</ol>
+</li>
+<li><strong>해당 Section Header의 정보를 통해서 Raw를 계산한다.</strong><br>
+<strong>Raw (Data)</strong>를 구하기 위해서는 이 데이터를 포함한 섹션의 시작점으로부터 얼마나 떨어져 있는지 <strong>(Offset)</strong> 계산해야 합니다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7574e58ab5b5e279ff2e4cfce5f770ab/00d43/PE_data_raw.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACv0lEQVQozy2SaUhUURTHzywpmjZTGiKMFJmEhkUkgiZ9iBbQPkRBJYQLFVaYqQllTmoWEVnS4lKWRhmjSfklctxGm81hdNKymcFxY7Iy1NFZfc7a6d5nF37vnHPv4f+/h/sAAEFe+BQQEdD1C8gKJ4SO9XSs7fW3kzgLIDJBkOgaPWf3yYokhNHe/zVweTzy5SF0lvbSJj4iIyg/mxlflnsqgdThiG4+VuRRCYAEwhFC1GWoam4VJCanpO5OSUtK2n9gb3l9swD2pMIhVvY4RlDxUe1IzujvJZ9hwbloWHBYRn9aVtXar0elxP3CR+TBeeRCJHJg4z0eehgZMXQR/hDc6GW68F0LiKPIpQt2XY8mviE3mrouFUmNWEy42jWOxZ1GvFkjySJXh33H+kKid6pjNseptz7akBHRYprXSX44sc3sQBpbDHM6HRmf6HDAIwoWEhtwVtZm+6vq0JAv9pmuVPj9VfVovVWXbi8QA6bsCNKFCqP1/OCYeYBNj1/2DFU39eLtZ588Na9k+KRRqlUCrGcFtyByWmvboLFVniX5oME37Srf63ZVQPJegw1vZRn1HUNwmvTgQfY1IJcXycU7DVqnuAa/XSz12sseIN59rsScPHiYlAowPT7Bn/b4Ycruyp4LIM7jGjQ3LdszJq0OmJyY4olWEE7mnAFIS4cS2aRGLDdjpXLWI1aYsaRvQsm+x4lzAKt2G4+x22DFZs1Er8ePfp+VYCc547BYDruWl8Fls3Jnv+uhovEFmQk4Frd32P4X0RrAAI2Lbu8g/XWS47YD9CpULD1yxTrlkE6oGv4ioCi0w0KpbIDfPSAHitVigfvV1fQeHC/D9GPA7yPGSyT6PcxKNxWMT0wEMBqNLAaDAWZmZsBsNrPQfGxsDPR6PQsVzS8sYieTa7Rhg7oRoZoY0/iZ1FRwW2ws/AP6XL7Z9TdhHQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="PE data raw"
+        title="PE data raw"
+        src="/static/7574e58ab5b5e279ff2e4cfce5f770ab/00d43/PE_data_raw.png"
+        srcset="/static/7574e58ab5b5e279ff2e4cfce5f770ab/5a46d/PE_data_raw.png 300w,
+/static/7574e58ab5b5e279ff2e4cfce5f770ab/0a47e/PE_data_raw.png 600w,
+/static/7574e58ab5b5e279ff2e4cfce5f770ab/00d43/PE_data_raw.png 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+<strong>Offset = Virtual Address (Data) - Virtual Address (Section)</strong><br>
+이제 이 값을 Raw (Section)에 더한 것이 Raw (Data)입니다.<br>
+<strong>Raw (Data) = Raw (Section) + Offset</strong><br>
+<strong>= Virtual Address (Data) - Virtual Address (Section) + Raw (Section)</strong>  </li>
+</ol>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Converter = Virtual Address (Section) - Raw (Section) 라고 해두고
+Raw (Data) = Virtual Address (Data) - Converter
+이렇게 사용하기도 합니다.  </code></pre></div>
+<h2 id="-next-" style="position:relative;"><a href="#-next-" aria-label=" next  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Next ]</h2>
+<p>  DataDirectory가 가리키는 Data의 파일 주소 찾는 법을 알았으니 다음 포스팅에서는 <strong>Resource Table</strong>의 구조를 다뤄보겠습니다.<br>
+</p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/pe">PE</a></span> on <time dateTime="2019-12-19T00:00:00.000Z">19 December, 2019</time>.</p><p>Last updated on <time dateTime="2020-01-02T00:00:00.000Z">02 January, 2020</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfElEQVQ4y3VU30tUQRS++8NWyCW2H6Cb61ZKbBSKZliLCSFBpouEsA8ioQ9pBCK+WL1I6cMGIiH5YtuLli/+AYJSJPXgg09CD26i6IKhICrrquvOved0zjSzXYMufJyZuTPffOd8M2MAgIGIBsdsNuvMZDLGm1jMRWMtpmlNUlwlZAmCsG6a5tTh4WHr0dFRvmVZBvWddg7ZsBEaB+l0I/V/JNfXsae7Gx+3teGzri58PzaGiUQC9Udky8eZTJQFqPUOjpJI7yCEeM2Tf21sYHMkIirLy0X59evW5ZISKLxwAYLFxVZzU5OYnp4WmpgUjqTT6ZwwmSYrY7Lj42O5+Yd4XIRrauB+fT3cDYeBiKGmuhoqbtyA0kuX4LzPB4+am82fiYRQpO+UMIdMk9CoM9nf37cCRUXoJPEetxvOFBTg5UAArwSDWFlRgbzRvbo6VowPHzwAri0RIaFNKvz08SMb8COxtIQv+vpE7Z076CIyN5WX4SAYCtw+c/o0Xi0txerKSmhsaMDd3V2TlRBhkuA1SFELD7zq7xe0CAwbmUaewyFh34BjaTAIyWSSlwtKm+MTznuSHJOD3799g3NUH57ssoGJPC4XnnI6/27whxhK/H5YW1szVS1n2ZlVMkTWLxaLQS49WmTY0rWn7VTg/svnzyGVSoFKO8UKs8oQKCsrg97eXuzo6JCTXaRKE3V2dmI0Gs319b/BgQFJRsbKaFC6Uh7VAvwknx0bHR2Vkz0ej4wNVHz9BchxHnO73TLeJHOUOrmWr846D6ysrFhEAO3t7RgKhU6o4P729jYuLi5iAR0jHnNSPTmS47C3twfq9hww4RR3tra2RGFhISinczXU0efz5ch4TBFCFSmkTx+dr1zDVmW5iEQikjAvL++kETaDdFvNgZ6eHllCZWw3u5xPhMvcm5+fN9VC0CnZiTSZqh94vV6kI2OpdDdJ3Fl9qaNaZTweB7faXacva0ZkXFPaCPSG9Ehw7bJq7VP92jiV2yPKSEF31KR6sstAqsBGLhEOh3FhYcGykU0oYY7cs6PwbmdnBwN+P6sSdbW15rVQCC5Sv6qqCgcHB2Fubs5UDy7+Q/bntbE/jgptMzMzybfDwzgxPo63b92S6Q8PDYE+i3zeiGxTp/nfB5Ylq+jli06Ypccz9eXzZ3kOad4B3YivVJ5u+nfWRpQT9Bsq58mslTvvzQAAAABJRU5ErkJggg==" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png 1x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/4747d/nehalist-gatsby.png 1.5x,
+/static/eb69cec1bb7991ff33aeff8b18fb4015/3b7ca/nehalist-gatsby.png 2x" src="/static/eb69cec1bb7991ff33aeff8b18fb4015/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/page">Example</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2019-12-19-PE";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-cc9810edb3a3d14d9afb.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-d5c831629f7c9432a052.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-cc9810edb3a3d14d9afb.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-7a7417a086300d6612fd.js" async=""></script></body></html>
