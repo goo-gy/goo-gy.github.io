@@ -1,4 +1,135 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 12 Feb 2021 14:53:20 GMT</lastBuildDate><item><title><![CDATA[CSS Layout (위치 잡기 / 여백 / 정렬)]]></title><description><![CDATA[css layout에서 헷갈리는 position, padding, margin, 정렬 방법 등을 알아보자]]></description><link>https://goo-gy.github.io/2021-02-10-css-position</link><guid isPermaLink="false">https://goo-gy.github.io/2021-02-10-css-position</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;-css-layout-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-css-layout-&quot; aria-label=&quot; css layout  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ CSS Layout ]&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 28 Feb 2021 06:58:20 GMT</lastBuildDate><item><title><![CDATA[[React] Material-Ui로 쉽게 개발하기]]></title><link>https://goo-gy.github.io/2021-02-28-material-ui</link><guid isPermaLink="false">https://goo-gy.github.io/2021-02-28-material-ui</guid><pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;material-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui&quot; aria-label=&quot;material ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui ]&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://material-ui.com/&quot;&gt;https://material-ui.com/&lt;/a&gt;&lt;br&gt;
+Material-Ui에서는 자주 사용되는 기능/디자인들을 Component/API로 제공해 줘서, React로 개발을 할 때 다양한 UI를 쉽게 만들 수 있다. 기능적인 Ui를 제공해 주면서도 내 프로젝트에 맞게 커스터마이징할 수 있다는 게 굉장히 매력적이다.&lt;/p&gt;
+&lt;h2 id=&quot;material-ui-시작하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0&quot; aria-label=&quot;material ui 시작하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui 시작하기 ]&lt;/h2&gt;
+&lt;h3 id=&quot;설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EC%B9%98&quot; aria-label=&quot;설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;설치&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;@material-ui/core&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;// with &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; @material-ui/core
+
+// with &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; @material-ui/core&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;@material-ui/icons&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;// with &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; @material-ui/icons
+
+// with &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; @material-ui/icons&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;meterial에서 제공하는 icon도 사용하고 싶다면 같이 설치하자.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;원하는-components-찾기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%90%ED%95%98%EB%8A%94-components-%EC%B0%BE%EA%B8%B0&quot; aria-label=&quot;원하는 components 찾기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;원하는 Components 찾기&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a2c64f68bd90b0f34fad13ea59800f8f/d8d09/material_sidebar.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAC/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAUjcNM2o/8QAGxAAAgEFAAAAAAAAAAAAAAAAAAEEEBESIzL/2gAIAQEAAQUClLZZGKJPdP/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAMBAQAAAAAAAAAAAAAAAAABMXEQ/9oACAEBAAY/AlhEQWd//8QAGhAAAgIDAAAAAAAAAAAAAAAAAAEgIWGB8f/aAAgBAQABPyFDoWhyDChn/9oADAMBAAIAAwAAABDf/wD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAIAQMBAT8QiY//xAAWEQADAAAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8QrKz/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQoTFBsf/aAAgBAQABPxBTtA827YQCzeiaX1z/AP/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;material sidebar&quot;
+        title=&quot;material sidebar&quot;
+        src=&quot;/static/a2c64f68bd90b0f34fad13ea59800f8f/e5166/material_sidebar.jpg&quot;
+        srcset=&quot;/static/a2c64f68bd90b0f34fad13ea59800f8f/f93b5/material_sidebar.jpg 300w,
+/static/a2c64f68bd90b0f34fad13ea59800f8f/b4294/material_sidebar.jpg 600w,
+/static/a2c64f68bd90b0f34fad13ea59800f8f/e5166/material_sidebar.jpg 1200w,
+/static/a2c64f68bd90b0f34fad13ea59800f8f/d9c39/material_sidebar.jpg 1800w,
+/static/a2c64f68bd90b0f34fad13ea59800f8f/d8d09/material_sidebar.jpg 1916w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+사이드바를 보면 여러 가지 카테고리가 있다. 이 중에서 원하는 기능을 찾거나 검색해보자. material-ui 문서에 사용하는 방법, 여러 종류의 예제가 있어서 쉽게 사용해 볼 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;material-ui-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;material ui 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui 사용하기 ]&lt;/h2&gt;
+&lt;h3 id=&quot;document&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#document&quot; aria-label=&quot;document permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;Document&gt;&lt;/h3&gt;
+&lt;p&gt;필자는 상단에 띄워 다른 페이지로 이동할 수 있는 Top-Header를 만들기 위해 Tabs Component를 이용하기로 했다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCBAb/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/aAAwDAQACEAMQAAABbVBAmwJhf//EABwQAAIBBQEAAAAAAAAAAAAAAAACAwEEEhQzQf/aAAgBAQABBQKVkSmxCYKX/L0//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8BV//EAB0QAAECBwAAAAAAAAAAAAAAAAABAhARMTJxkZL/2gAIAQEABj8CRXS0VbyWoNzH/8QAHxAAAgECBwAAAAAAAAAAAAAAABEBECExQWFxofDx/9oACAEBAAE/Ic4snLFxcs8E6uhGHen/2gAMAwEAAgADAAAAEPj/AP/EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAwEBPxBCwv/EABcRAQEBAQAAAAAAAAAAAAAAAAEAEVH/2gAIAQIBAT8QFtdv/8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAsRAxoWH/2gAIAQEAAT8QAyDT6pUCWwVDbVnJtOVeP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;material tabs&quot;
+        title=&quot;material tabs&quot;
+        src=&quot;/static/9031480d0b619d20946d24cc9208dd7b/e5166/material_tabs.jpg&quot;
+        srcset=&quot;/static/9031480d0b619d20946d24cc9208dd7b/f93b5/material_tabs.jpg 300w,
+/static/9031480d0b619d20946d24cc9208dd7b/b4294/material_tabs.jpg 600w,
+/static/9031480d0b619d20946d24cc9208dd7b/e5166/material_tabs.jpg 1200w,
+/static/9031480d0b619d20946d24cc9208dd7b/d9c39/material_tabs.jpg 1800w,
+/static/9031480d0b619d20946d24cc9208dd7b/4e564/material_tabs.jpg 1900w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;br&gt;
+&lt;a href=&quot;https://material-ui.com/components/tabs/&quot;&gt;https://material-ui.com/components/tabs/&lt;/a&gt;&lt;br&gt;
+문서를 보면 여러 예제가 있는데 &amp;#x3C; &gt; 버튼을 누르면 code를 확인할 수 있다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;import&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#import&quot; aria-label=&quot;import permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;Import&gt;&lt;/h3&gt;
+&lt;p&gt;이전에 material-ui를 설치했으므로 편하게 사용할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; AppBar &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@material-ui/core/AppBar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Tabs &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@material-ui/core/Tabs&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Tab &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@material-ui/core/Tab&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;예제를 보니 AppBar, Tabs, Tab이 필요해 보여서 이들을 import 하였다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; AppBar&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Tabs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Tab &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@material-ui/core&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;필자는 더 필요한 게 생겼을 때 쉽게 추가하고, 코드도 깔끔하게 하기 위해서 이렇게 사용하는 것을 더 선호한다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;component&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#component&quot; aria-label=&quot;component permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;Component&gt;&lt;/h3&gt;
+&lt;iframe src=&quot;https://codesandbox.io/embed/boring-cookies-ug881?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+    style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+    title=&quot;boring-cookies-ug881&quot;
+    allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+    sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+&gt;&lt;/iframe&gt;  
+&lt;hr&gt;
+&lt;h3 id=&quot;icon&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#icon&quot; aria-label=&quot;icon permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;Icon&gt;&lt;/h3&gt;
+&lt;p&gt;tabs 문서를 보니 각 tab에 아이콘을 넣을 수도 있는 것 같다.&lt;br&gt;
+&lt;a href=&quot;https://material-ui.com/components/material-icons/&quot;&gt;https://material-ui.com/components/material-icons/&lt;/a&gt; 여기서 넣고 싶은 아이콘을 찾아서 적용해보자  &lt;/p&gt;
+&lt;iframe src=&quot;https://codesandbox.io/embed/material-tabs-icon-tuvlv?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+    style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+    title=&quot;material-tabs-icon&quot;
+    allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+    sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+&gt;&lt;/iframe&gt;  
+&lt;h2 id=&quot;커스터마이징&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95&quot; aria-label=&quot;커스터마이징 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 커스터마이징 ]&lt;/h2&gt;
+&lt;h3 id=&quot;styled-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components&quot; aria-label=&quot;styled components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C;styled-components&gt;&lt;/h3&gt;
+&lt;p&gt;React에서는 여러 styling 방법이 있고, material에서도 makeStyles라는 솔루션을 지원하지만, 필자는 프로젝트 전반적으로 하나의 styling 방식을 사용하기 위해 &lt;strong&gt;styled-components&lt;/strong&gt;를 사용하였다. styled-components는 scss 문법도 지원하고 있다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;설치  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; styled-components&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe src=&quot;https://codesandbox.io/embed/vigorous-architecture-4479r?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+    style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+    title=&quot;vigorous-architecture-4479r&quot;
+    allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+    sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+&gt;&lt;/iframe&gt;
+&lt;p&gt;material component에 그냥 style을 주면 적용이 되지 않는다. 이는 material에서 적용된 style의 우선순위가 더 높기 때문인데, 필자는 &amp;#x26;&amp;#x26;에 style을 주어서 우선순위를 높일 수 있었다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;위에서 &amp;#x26;&amp;#x26;을 통해서 우선순위를 높였는데, 이 scss 문법과 css의 우선순위, material의 styling 방식을 좀 더 이해하고 정리해서 다음 포스팅으로 돌아오겠다.  &lt;/p&gt;
+&lt;hr&gt;</content:encoded></item><item><title><![CDATA[CSS Layout (위치 잡기 / 여백 / 정렬)]]></title><description><![CDATA[css layout에서 헷갈리는 position, padding, margin, 정렬 방법 등을 알아보자]]></description><link>https://goo-gy.github.io/2021-02-10-css-position</link><guid isPermaLink="false">https://goo-gy.github.io/2021-02-10-css-position</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;-css-layout-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-css-layout-&quot; aria-label=&quot; css layout  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ CSS Layout ]&lt;/h1&gt;
 &lt;p&gt;오늘은 CSS 속성 중 Layout을 잡을 때 꼭 필요하지만 어딘가 헷갈리는 부분을  정리하려고 한다. element를 원하는 위치에 배치하기 위해서 position을 어떻게 설정할지, padding, margin 등은 어떤 차이가 있고 어떻게 사용해야 할지, 그리고 item들을 중앙 정렬하는 법 등을 다룰 것이다.  &lt;/p&gt;
 &lt;h2 id=&quot;-position-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-position-&quot; aria-label=&quot; position  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Position &gt;&lt;/h2&gt;
 &lt;p&gt;position은 해당하는 element의 위치를 어떤 방식으로 지정할지 결정하는 속성으로 볼 수 있다. position을 지정하면 종류에 따라 top, bottom, left, right 속성으로 위치를 조정할 수 있다.  &lt;/p&gt;
