@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 28 Feb 2021 10:16:49 GMT</lastBuildDate><item><title><![CDATA[[React] Material-Ui로 쉽게 개발하기]]></title><description><![CDATA[Material-Ui를 사용해보자]]></description><link>https://goo-gy.github.io/2021-02-28-material-ui</link><guid isPermaLink="false">https://goo-gy.github.io/2021-02-28-material-ui</guid><pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;material-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui&quot; aria-label=&quot;material ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 13 Mar 2021 17:00:09 GMT</lastBuildDate><item><title><![CDATA[[React] styled-component와 material-ui 사용하기]]></title><description><![CDATA[styled-component와 css 선택자에 대해 알아보자]]></description><link>https://goo-gy.github.io/2021-03-12-styled-material</link><guid isPermaLink="false">https://goo-gy.github.io/2021-03-12-styled-material</guid><pubDate>Fri, 12 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 들어가기 전에 ]&lt;/h2&gt;
+&lt;p&gt;이전 포스트에서 styled-component를 이용해 material-ui에 style을 줄 때 &amp;#x26;&amp;#x26;를 활용했다. 그게 어떤 원리로 적용되는지 한 번 살펴보고자 한다.&lt;br&gt;
+궁금한 분들은 &lt;a href=&quot;https://goo-gy.github.io/2021-02-28-material-ui&quot;&gt;https://goo-gy.github.io/2021-02-28-material-ui&lt;/a&gt;를 참고하길 바란다.  &lt;/p&gt;
+&lt;h2 id=&quot;css-선택자-우선순위&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#css-%EC%84%A0%ED%83%9D%EC%9E%90-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84&quot; aria-label=&quot;css 선택자 우선순위 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ CSS 선택자 우선순위 ]&lt;/h2&gt;
+&lt;p&gt;먼저 CSS가 적용되는 우선순위를 먼저 알아보자.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;!important를 붙인 속성&lt;/li&gt;
+&lt;li&gt;html에서 직접 style을 지정&lt;/li&gt;
+&lt;li&gt;id 선택자 (&lt;strong&gt;#id&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;class 선택자 (&lt;strong&gt;.class&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;태그 선택자&lt;/li&gt;
+&lt;li&gt;상위 속성 상속&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;같은-우선순위인-경우&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%99%EC%9D%80-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EC%9D%B8-%EA%B2%BD%EC%9A%B0&quot; aria-label=&quot;같은 우선순위인 경우 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;같은 우선순위인 경우?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;부모-자식 관계가 많은 경우가 우선&lt;/li&gt;
+&lt;li&gt;나중에 선언한 것이 우선&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;styled-components의-원리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components%EC%9D%98-%EC%9B%90%EB%A6%AC&quot; aria-label=&quot;styled components의 원리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ styled-components의 원리 ]&lt;/h2&gt;
+&lt;p&gt;styled-component를 이용해 css를 입힌 예제를 살펴보자.&lt;/p&gt;
+&lt;iframe src=&quot;https://codesandbox.io/embed/styled-component-uk61d?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+     style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+     title=&quot;styled-component&quot;
+     allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+     sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+&gt;&lt;/iframe&gt;  
+예제에는 다음과 같은 3가지 element가 있다.  
+&lt;ul&gt;
+&lt;li&gt;아무런 style도 주지 않은 div  &lt;/li&gt;
+&lt;li&gt;styled-components로 생성했지만 아무런 속성도 주지 않은 DivNone  &lt;/li&gt;
+&lt;li&gt;styled-components로 css 속성을 준 DivBox  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3KAH/8QAGBABAAMBAAAAAAAAAAAAAAAAAQACECH/2gAIAQEAAQUCAqQ7Lb//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAADAAAAAAAAAAAAAAAAAAABESD/2gAIAQEABj8CQr//xAAbEAACAQUAAAAAAAAAAAAAAAABEQAQITFBcf/aAAgBAQABPyEJCgJkSw0uzSv/2gAMAwEAAgADAAAAEMQP/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAR/9oACAEDAQE/EFV1n//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAAIDAAMAAAAAAAAAAAAAAAABESExYXGR/9oACAEBAAE/EE9My0bUFeELHgkMx2Fgz//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;classSelector&quot;
+        title=&quot;classSelector&quot;
+        src=&quot;/static/d6dc208e70db91364679089d46e4adf4/e5166/classSelector.jpg&quot;
+        srcset=&quot;/static/d6dc208e70db91364679089d46e4adf4/f93b5/classSelector.jpg 300w,
+/static/d6dc208e70db91364679089d46e4adf4/b4294/classSelector.jpg 600w,
+/static/d6dc208e70db91364679089d46e4adf4/e5166/classSelector.jpg 1200w,
+/static/d6dc208e70db91364679089d46e4adf4/7e26b/classSelector.jpg 1510w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;변환된 코드를 보면 styled-components는 class 선택자로 style을 생성하고 component에 해당하는 class를 전달하여 style을 적용하는 것을 알 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;material-ui--styled-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui--styled-components&quot; aria-label=&quot;material ui  styled components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ material-ui + styled-components ]&lt;/h2&gt;
+&lt;iframe src=&quot;https://codesandbox.io/embed/styled-components-w1x03?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+     style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+     title=&quot;styled-components&quot;
+     allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+     sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+&gt;&lt;/iframe&gt;  
+material component에 styled-component로 그냥 style을 주면 제대로 적용되지 않지만, &amp;&amp;를 통해 style을 주니 적용되는 것을 확인할 수 있다.    
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3pAD/8QAFRABAQAAAAAAAAAAAAAAAAAAARD/2gAIAQEAAQUCb//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAABD/2gAIAQEABj8Cf//EABcQAQEBAQAAAAAAAAAAAAAAAAABEUH/2gAIAQEAAT8hOJNj/9oADAMBAAIAAwAAABB7z//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAECAQE/ECf/xAAZEAEAAwEBAAAAAAAAAAAAAAABABEhMUH/2gAIAQEAAT8QBZkUtm125QKeT//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;doubleClass&quot;
+        title=&quot;doubleClass&quot;
+        src=&quot;/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/e5166/doubleClass.jpg&quot;
+        srcset=&quot;/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/f93b5/doubleClass.jpg 300w,
+/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/b4294/doubleClass.jpg 600w,
+/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/e5166/doubleClass.jpg 1200w,
+/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/d9c39/doubleClass.jpg 1800w,
+/static/d4e8c0bdd6778a0a5f1b09d4efdc5815/0f98f/doubleClass.jpg 1920w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;br&gt;
+해당 component의 css 부분을 보면 선택자로 .class가 두 번 중첩되어 있는 것을 확인할 수 있다.&lt;br&gt;
+material-ui의 기본 디자인 역시 class 선택자로 style을 생성하고 class를 전달하는데,  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;우선순위가 같을 경우 부모-자식 관계가 많은 경우가 우선&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이라는 규칙 때문에 material의 기본 style보다 &amp;#x26;&amp;#x26;으로 지정한 style이 더 우선적으로 적용되는 것 같다.  &lt;/p&gt;
+&lt;iframe height=&quot;265&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;doubleClassName&quot; src=&quot;https://codepen.io/goo-gy/embed/jOVdpYR?height=265&amp;theme-id=dark&amp;default-tab=css,result&quot; frameborder=&quot;no&quot; loading=&quot;lazy&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&apos;https://codepen.io/goo-gy/pen/jOVdpYR&apos;&gt;doubleClassName&lt;/a&gt; by Googy
+  (&lt;a href=&apos;https://codepen.io/goo-gy&apos;&gt;@goo-gy&lt;/a&gt;) on &lt;a href=&apos;https://codepen.io&apos;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;  
+이해를 돕기 위해서 비슷한 예제를 가져왔다.  </content:encoded></item><item><title><![CDATA[[React] Material-Ui로 쉽게 개발하기]]></title><description><![CDATA[Material-Ui를 사용해보자]]></description><link>https://goo-gy.github.io/2021-02-28-material-ui</link><guid isPermaLink="false">https://goo-gy.github.io/2021-02-28-material-ui</guid><pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;material-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui&quot; aria-label=&quot;material ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui ]&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://material-ui.com/&quot;&gt;https://material-ui.com/&lt;/a&gt;&lt;br&gt;
 Material-Ui에서는 자주 사용되는 기능/디자인들을 Component/API로 제공해 줘서, React로 개발을 할 때 다양한 UI를 쉽게 만들 수 있다. 기능적인 Ui를 제공해 주면서도 내 프로젝트에 맞게 커스터마이징할 수 있다는 게 굉장히 매력적이다.&lt;/p&gt;
 &lt;h2 id=&quot;material-ui-시작하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#material-ui-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0&quot; aria-label=&quot;material ui 시작하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Material-Ui 시작하기 ]&lt;/h2&gt;
@@ -2657,7 +2753,7 @@ method_list &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span
   &lt;/a&gt;
     &lt;/span&gt;&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;  &lt;strong&gt;최대 힙(Max-Heap)&lt;/strong&gt;은 큰 노드가 작은 노드들을 자식으로 가지는 &lt;strong&gt;완전 이진 트리(Binary Tree)&lt;/strong&gt; 구조입니다. 두 자식 노드 중 누가 더 큰 지는 상관없이 양쪽 모두 부모 노드보다 작기만 하면 됩니다. 그러면 최댓값이 항상 루트 노드에 위치하여 항상 루트 노드에 있는 데이터가 먼저 빠져나갑니다. 힙은 &lt;strong&gt;완전 이진 트리(Complete Binary Tree)&lt;/strong&gt;로 구현한다고 했는데 루트에서 데이터가 빠지면 데이터가 어떻게 재구성되는지 힙의 삽입과 삭제 과정을 통해 알아보겠습니다.  &lt;/p&gt;
-&lt;p&gt;  ※ 완전 이진 트리가 무엇인지 모르신다면 이전 포스터 &lt;a href=&quot;https://goo-gy.github.io/tree/&quot;&gt;[ 트리(Tree)를 알아보자. ]&lt;/a&gt;를 읽어보시는 걸 추천합니다.  &lt;/p&gt;
+&lt;p&gt;  ※ 완전 이진 트리가 무엇인지 모르신다면 이전 포스터 &lt;a href=&quot;https://goo-gy.github.io/2019-09-13-tree/&quot;&gt;[ 트리(Tree)를 알아보자. ]&lt;/a&gt;를 읽어보시는 걸 추천합니다.  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;삽입&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;&lt;span
