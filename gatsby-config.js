@@ -85,5 +85,14 @@ module.exports = {
         }]
       }
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          'G-08K0MBGSZM',
+          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+        ],
+      },
+    },
   ],
 };

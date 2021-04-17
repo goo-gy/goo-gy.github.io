@@ -20,6 +20,7 @@
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",
     "gatsby": "^2.13.55",
+    "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-robots-txt": "^1.5.5",
     "gatsby-plugin-sharp": "^2.13.4",
     "gatsby-remark-images": "^3.10.0",
