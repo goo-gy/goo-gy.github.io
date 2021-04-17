@@ -15,7 +15,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby build && cp googlecee5373df45a820d.html public/ && gh-pages -d public -b master"
   },
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",
