@@ -2,7 +2,7 @@
 
 title: "메모이제이션 (Memoization)"
 excerpt: "동적계획법?"
-tags: [memoization, DP, dynamic programming, algorithm]
+tags: [algorithm, memoization, DP]
 
 path: "/2019-12-09-memoization"
 featuredImage: "./memoization_fibonacci_overlap.png"

@@ -2,7 +2,7 @@
 
 title: "연결리스트 (Linked List)"
 excerpt: "연결리스트를 알아보자"
-tags: [data_structure]
+tags: [algorithm, data_structure]
 
 path: "/2019-08-26-linked-list"
 featuredImage: "./single_linked_list_node.png"

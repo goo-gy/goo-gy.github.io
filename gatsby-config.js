@@ -6,22 +6,38 @@ module.exports = {
     topics: [],
     menu: [
       {
-        name: 'Home',
-        path: '/'
+        name: "Home",
+        path: "/",
       },
       {
-        name: 'Project',
-        path: '/project'
+        name: "Project",
+        path: "/tag/project",
+      },
+      {
+        name: "Algorithm",
+        path: "/tag/algorithm",
+      },
+      {
+        name: "Web",
+        path: "/tag/web",
       },
     ],
     footerMenu: [
       {
-        name: 'Project',
-        path: '/project'
+        name: "Home",
+        path: "/",
       },
       {
-        name: 'Example',
-        path: '/page'
+        name: "Project",
+        path: "/tag/project",
+      },
+      {
+        name: "Algorithm",
+        path: "/tag/algorithm",
+      },
+      {
+        name: "Web",
+        path: "/tag/web",
       },
     ],
     search: true,
@@ -36,9 +52,9 @@ module.exports = {
         instagram: ``,
         youtube: ``,
         github: `https://github.com/goo-gy`,
-        twitch: ``
-      }
-    }
+        twitch: ``,
+      },
+    },
   },
   plugins: [
     {
@@ -51,11 +67,11 @@ module.exports = {
           background_color: `#a4cbb8`,
           theme_color: `#a4cbb8`,
           display: `minimal-ui`,
-          icon: `${__dirname}/content/assets/images/logo.png`
-        }
-      }
+          icon: `${__dirname}/content/assets/images/logo.png`,
+        },
+      },
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-  ]
+  ],
 };

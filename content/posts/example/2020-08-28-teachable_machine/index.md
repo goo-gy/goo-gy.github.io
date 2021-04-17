@@ -3,7 +3,7 @@
 layout: post
 title: "Teachable Machine 앱에서 사용하기"
 excerpt: "Android App에서 Teachable Machine을 사용해 보자"
-tags: [machine_learning, AI]
+tags: [project, machine_learning, AI]
 
 path: "/2020-08-28-teachable_machine"
 featuredImage: "./teachable_machine.JPG"

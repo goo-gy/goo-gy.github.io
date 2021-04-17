@@ -2,7 +2,7 @@
 
 title: "우선순위 큐 (Priority Queue)"
 excerpt: "우선순위 큐? 힙(Heap)?"
-tags: [data_structure]
+tags: [algorithm, data_structure]
 
 path: "/2019-09-14-priority_queue"
 featuredImage: "./priority_queue_max_heap.png"

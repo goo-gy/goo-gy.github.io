@@ -2,7 +2,7 @@
 layout: post
 title: "[React] Material-Ui로 쉽게 개발하기"
 excerpt: "Material-Ui를 사용해보자"
-tags: [react, web]
+tags: [web, react]
 
 path: "/2021-02-28-material-ui"
 featuredImage: "./material.jpg"

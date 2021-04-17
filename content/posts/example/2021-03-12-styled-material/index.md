@@ -2,7 +2,7 @@
 layout: post
 title: "[React] styled-component와 material-ui 사용하기"
 excerpt: "styled-component와 css 선택자에 대해 알아보자"
-tags: [react, web]
+tags: [web, react]
 
 path: "/2021-03-12-styled-material"
 featuredImage: "./styled-compoent-material-ui.JPG"

@@ -2,7 +2,7 @@
 
 title: "동적배열 (Dynamic Array)"
 excerpt: "동적배열을 알아보자"
-tags: [data_structure]
+tags: [algorithm, data_structure]
 
 path: "/2019-08-27-dynamic-array"
 featuredImage: "./dynamic_array.png"

@@ -2,7 +2,7 @@
 
 title: "카카오 챗봇 제작하기"
 excerpt: "카카오 챗봇을 만들어보자"
-tags: [kakao, chatbot]
+tags: [project, kakao, chatbot]
 
 path: "/2019-10-30-kakao-chatbot"
 featuredImage: "./kakao_chatbot_openbuilder_login.png"
