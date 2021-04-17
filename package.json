@@ -11,7 +11,7 @@
   "main": "n/a",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && cp googlecee5373df45a820d.html public/",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",

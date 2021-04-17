@@ -6,4 +6,4 @@ excerpt: A sample page.
 
 ## Examples
 
-Testing
+examples
