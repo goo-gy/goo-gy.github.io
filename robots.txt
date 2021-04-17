@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://goo-gy.github.io/sitemap.xml
+Host: https://goo-gy.github.io
