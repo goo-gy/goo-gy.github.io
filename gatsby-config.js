@@ -74,5 +74,16 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://goo-gy.github.io/',
+        sitemap: 'https://goo-gy.github.io/sitemap.xml',
+        policy: [{
+          userAgent: '*',
+          allow: '/'
+        }]
+      }
+    },
   ],
 };
