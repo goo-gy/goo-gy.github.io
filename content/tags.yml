@@ -1,4 +1,4 @@
-- name: All
+- name: archive
   color: "#007acc"
   icon: ./assets/images/logo.png
   featured: true
