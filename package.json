@@ -11,11 +11,11 @@
   "main": "n/a",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby clean && cp content/assets/images/logo-googy.png node_modules/@nehalist/gatsby-theme-nehalem/logo.png && gatsby build && cp googlecee5373df45a820d.html public/ && cp naver56bd76a3a8aa3b7af3011823265cb5bd.html public/",
+    "build": "gatsby clean && cp content/assets/images/logo-googy.png node_modules/@nehalist/gatsby-theme-nehalem/logo.png -y && cp content/assets/images/logo.png node_modules/@nehalist/gatsby-theme-nehalem/assets/nehalist-gatsby.png -y && gatsby build && cp googlecee5373df45a820d.html public/ && cp naver56bd76a3a8aa3b7af3011823265cb5bd.html public/",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "gatsby clean && cp content/assets/images/logo-googy.png node_modules/@nehalist/gatsby-theme-nehalem/logo.png && gatsby build && cp googlecee5373df45a820d.html public/ && cp naver56bd76a3a8aa3b7af3011823265cb5bd.html public/ && gh-pages -d public -b master"
+    "deploy": "gatsby clean && cp content/assets/images/logo-googy.png node_modules/@nehalist/gatsby-theme-nehalem/logo.png -y && cp content/assets/images/logo.png node_modules/@nehalist/gatsby-theme-nehalem/assets/nehalist-gatsby.png -y && gatsby build && cp googlecee5373df45a820d.html public/ && cp naver56bd76a3a8aa3b7af3011823265cb5bd.html public/ && gh-pages -d public -b master"
   },
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",

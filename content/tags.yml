@@ -1,4 +1,4 @@
-- name: archive
+- name: project
   color: "#007acc"
   icon: ./assets/images/logo.png
   featured: true
