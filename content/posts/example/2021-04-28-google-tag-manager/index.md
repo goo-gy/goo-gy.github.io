@@ -2,7 +2,7 @@
 layout: post
 title: "React 프로젝트에 Google Tag Manager 설정하기"
 excerpt: "Google  Tag Manager의 원리를 알아보자"
-tags: [web, react]
+tags: [web, react, data]
 
 path: "/2021-04-28-google-tag-manager"
 featuredImage: "./GTM.png"
@@ -43,7 +43,7 @@ TagManager.initialize(tagManagerArgs);
 
 태그에서는 Application에서 어떤 행위가 일어날 때 기록할 정보들을 지정할 수 있다. 기본적으로 해당 Event의 Category, Action, Label을 지정하고 추가적인 데이터를 더 저장할 수도 있다. 간단하게 Login 태그를 만들어보자.  
 ![tag.png](tag.png)
-인증과 관련된 내용이라 Category를 Auth로 설정하고, Action과 Label은 Login으로 설정하였다. 우리는 GA에서 태그 데이터를 이용하기 위해 Type을 Google Analytics: Universal Analytics로 설정했는데, GA와 연결하기 위한 **Google Analytics Settings**을 설정해주어야 한다.  
+인증과 관련된 내용이라 Category를 Auth로 설정하고, Action과 Label은 Login으로 설정하였다. 우리는 GA에서 태그 데이터를 이용하기 위해 Type을 Google Analytics: Universal Analytics로 설정했는데, GA와 연결하기 위한 **Google Analytics Settings**을 설정해 주어야 한다.  
 GA Setting 변수를 만들어 두지 않았다면 새로 만들어서 연결해주자.  
 ![GA-setting.png](GA-setting.png)
 Tracking ID에는 만들어 둔 GA Application의 추적 ID (UA-XXXXXX-X)를 넣어주면 된다.  
@@ -51,14 +51,11 @@ Tracking ID에는 만들어 둔 GA Application의 추적 ID (UA-XXXXXX-X)를 넣
 위에서 Tag에서 보낼 여러 정보들을 설정했는데, 이 정보들을 언제 보낼지에 대한 Trigger가 필요하다. Trigger를 만들어서 Tag와 연결해주자.  
 
 ## [ 트리거 (Trigger) ]
-Trigger는 event를 감지하고 조건에 맞는 event가 발생하면 연결된 Tag를 발동(Fire)시켜주는 역할을 한다.  
-- 미리 정의된 Event
-- Custom Event
-
+Trigger는 event를 감지하고 조건에 맞는 event가 발생하면 연결된 Tag를 발동(Fire) 시켜주는 역할을 한다.  
 
 ### < 정의된 Event >
 
-미리 정의되어 있는 Event를이용하면 한 번 연결된 Application은 더이상 코드에 관여하지 않고도 Event를 발생시킬 수 있다. Web Application의 경우 Page View, Click, ... 등이 있다.  Click Event를 이용한 Trigger를 한 번 만들어 보자.  
+미리 정의되어 있는 Event를 이용하면 한 번 연결된 Application은 더이상 코드에 관여하지 않고도 Event를 발생시킬 수 있다. Web Application의 경우 Page View, Click, ... 등이 있다.  Click Event를 이용한 Trigger를 한 번 만들어 보자.  
 
 ![trigger-click.png](trigger-click.png)
 
@@ -85,13 +82,14 @@ TagManager.dataLayer(tagManagerArgs);
 
 위와 같이 Event name을 "login"으로 설정해두고, 로그인에 성공했을 때 Application에서 "login" event를 전송해 주면 Trigger가 발동된다.
 
-*이 때 주의할 점은 Trigger에서 등록한 Event name과 코드에서 보내는 event의 값이 정확하게 같아야 한다.*  
+*이때 주의할 점은 Trigger에서 등록한 Event name과 코드에서 보내는 event의 값이 정확하게 같아야 한다.*  
 
-## [ 디버깅 해보기 ]
+## [ GTM Debug ]
 
+태그와 트리거를 만들어서 연결했으니 실제로 Application에서 Event가 발생할 때 내가 설정한 대로 Tag가 동작하는지 테스트해보자. GTM 오른쪽 상단에 보면 Preview라는 버튼을 누르면 아래와 같은 화면이 나온다.  
 ![GTM-debug-connect.png](GTM-debug-connect.png)
 
-태그와 트리거를 만들어서 연결했으니 실제로 Application에서 Event가 발생할 때 내가 설정한대로 Tag가 동작하는지 테스트해보자. GTM 오른쪽 상단에 보면 Preview라는 버튼을 누르면 위와 같은 화면이 나온다. develop 서버를 돌려놓고 주소를 연결해주면 된다.  
+ 테스트 환경 서버를 돌려놓고 주소를 연결해주면 된다.  
 
 ![GTM-debug.png](GTM-debug.png)
 
@@ -103,9 +101,9 @@ GTM에서는 다양한 종류의 변수를 정의하고 사용할 수 있다. �
 
 ### < Built-In Variables >
 
-Built-In 변수는 Event가 일어날 때 해당 Event에 대한 정보를 가져올 수 있다. 앞에서 Click Event를 이용한 트리거를 만들어봤는데, Login 버튼을 Click했을 때, 그 버튼의 텍스트를 가져오고 싶다고 하자. 그러면 Click Text라는 Built-In Variable을 사용할 수 있다.  
+Built-In 변수는 Event가 일어날 때 해당 Event에 대한 정보를 가져올 수 있다. 앞에서 Click Event를 이용한 트리거를 만들어봤는데, Login 버튼을 Click 했을 때, 그 버튼의 텍스트를 가져오고 싶다고 하자. 그러면 Click Text라는 Built-In Variable을 사용할 수 있다.  
 ![built-in-variables.png](built-in-variables.png)
-필요한 Builit-In 변수를 체크해두면 Event가 일어날 때마다, Application에서 설정한 변수값을 같이 보낸다.  
+필요한 Builit-In 변수를 체크해두면 Event가 일어날 때마다, Application에서 해당 변수값을 같이 보낸다.  
 
 
 ### < User-Defined Variables >
@@ -126,12 +124,12 @@ TagManager.dataLayer(tagManagerArgs);
 ```
 앞에서 만든 login event에 userName이라는 data를 추가하여 보냈다.  
 ![dataLayer-variable.png](dataLayer-variable.png)
-그러면 GTM의 variable 설정에서 Data Layer Variable Name을 코드에서 정한대로 userName이라고 설정하여 변수를 만들고 활용할 수 있다.  
+그러면 GTM의 variable 설정에서 Data Layer Variable Name을 코드에서 정한 대로 userName이라고 설정하여 변수를 만들고 활용할 수 있다.  
 
 ### < 태그에서 변수 사용하기 >
 
 ![tag-variable.png](tag-variable.png)
 태그에서 필요한 곳에 {{변수명}} 이렇게 설정하면 변수의 값이 들어간다. (+ 버튼을 눌러서 사용할 변수를 추가할 수도 있다.)  
 ![tag-detail.png](tag-detail.png)
-디버그모드에서 발동된 Login Tag의 값을 보니 Application에서 보내준 데이터가 값으로 들어간 것을 확인할 수 있다.  
-모두 테스트했다면 잊지말고, Publish 해주고, 다음에 Google Analytics에서 기록된 Event를 확인해보자.  
+디버그 모드에서 발동된 Login Tag의 값을 보니 Application에서 보내준 데이터가 값으로 들어간 것을 확인할 수 있다.  
+모두 테스트했다면 잊지 말고, Publish 해주고, 다음에 Google Analytics에서 기록된 Event를 확인해보자.  
