@@ -1,4 +1,443 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Apr 2021 03:19:34 GMT</lastBuildDate><item><title><![CDATA[[React] styled-component와 material-ui 사용하기]]></title><description><![CDATA[styled-component와 css 선택자에 대해 알아보자]]></description><link>https://goo-gy.github.io/2021-03-12-styled-material</link><guid isPermaLink="false">https://goo-gy.github.io/2021-03-12-styled-material</guid><pubDate>Fri, 12 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 들어가기 전에 ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 29 Apr 2021 03:01:42 GMT</lastBuildDate><item><title><![CDATA[React 프로젝트에 Google Tag Manager 설정하기]]></title><description><![CDATA[Google  Tag Manager의 원리를 알아보자]]></description><link>https://goo-gy.github.io/2021-04-28-google-tag-manager</link><guid isPermaLink="false">https://goo-gy.github.io/2021-04-28-google-tag-manager</guid><pubDate>Wed, 28 Apr 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;GTM을 이용하면 Application에서 일어나는 특정 이벤트를 감지하여 측정할 수 있다. GTM의 작동 원리를 한 번 알아보자.  &lt;/p&gt;
+&lt;h2 id=&quot;gtm의-작동원리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gtm%EC%9D%98-%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC&quot; aria-label=&quot;gtm의 작동원리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GTM의 작동원리 ]&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAADL0lEQVQ4y52TaUzURxjGn78rNbGmwTaaGPEIIk2sCNTs4rJkFwQqNPU2HpEQqdpwqJRVORJ2seWShXIs7H93NUpTxQNRvDC2qyA9UhNSNQaPqhhp0g/Gpil3uyzzdBar6cfSSZ5MZvLO731nnnfA2mWgMxGibCGE3aARJcFTRE3UZDqiFYCI3PYLVn09qpjZg5i2F8qbqZwSlvdCQwI/PcxRVl/4E3hXLuIJvUvO40DrTLAqEqyJgliLt31dp8CKIPA6oNvxDOvbfTBdGgJ5C4gRIfJUQHFjK07cPI6k5lH4E2MBsUx9BTy4CCyer7DOsJF2Q7aoi9lFddHszuIsNOZUKFGqqNA5xVWdc6xVp/J8tOo7v1wdOGdShz3aemFOOOFD8mmvssTmB9YZIGyLwbKFAaLe2CMa4sgGE4dr4tbDROO0FSPaqKPeB0k/P2Xy40fUNpGfnmznbzcjeaPjYxrdQxfzv+vEV7cPKRFVfqDdDwyTbxgaIBpMT4RjOekwsqtk+04kcvMbH3jXhdm9jzZ473ITu8Z0TRQHWs4IPsdob7eWsa7B5pL2K2i7//k/wDq9fK/3wNIFGtpjXKw3tstKPWwIX5qW3gZZJfSHxr41Xhxg7OU/BnSHOfThkedDJS2n+nef7KTeMXrM1DaGtG96FZ3NK4FH1kgzdNKUCPBYCng2C8NNmeAz4J0N/RokiEmhhZwRnMo587cwKP7A73NRyunfm5sL95t/NcBDzWVLM4qL7oA5gXgJ8Rvzxfvghf0QP34Jca1S7n8E2SnYkkwsKSVC04iQFHmlWuLGZy3gvtQEmteFMyctyJdXEDRSYAVz90lgtdZvCETRLAh/29TqxxN4q/Xos8XKACK8koq+6i9lZXWfEr/7njLoapztKz+41WurShopr5zFzIyAHhnny83Hfx50OCSbEB4PhNPpodtNulyk05lCux3C4dAwN3eCwHnzwO5u+bOcP7wGquoncg05/w+grJAdHX5gi3C7+4TL1SdBm6UgJBATGSws/LcW02JJlIql1RoorNIQiwUTA2bKVtq796Wys6dyz563mJU1lenpk6TAjIzxuL8BjTfV+vRvnlIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GTM.png&quot;
+        title=&quot;GTM.png&quot;
+        src=&quot;/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png&quot;
+        srcset=&quot;/static/a0941cdab499d9ad7ef98ec02d9c4cac/5a46d/GTM.png 300w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/0a47e/GTM.png 600w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png 640w&quot;
+        sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;Application과 GTM을 연결하면 Application에서 일어나는 Event들을 GTM으로 보낼 수 있다. Application이 GTM으로 Event를 보내면 GTM은 해당 event가 등록되어 있는 Trigger가 있는지 확인하고 매칭되면 그 Trigger와 연결된 Tag 정보를 GA에 전달한다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tag  &lt;/li&gt;
+&lt;li&gt;Trigger  &lt;/li&gt;
+&lt;li&gt;Variables  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;react-project에-gtm-연결하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#react-project%EC%97%90-gtm-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0&quot; aria-label=&quot;react project에 gtm 연결하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ React Project에 GTM 연결하기 ]&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; react-gtm-module&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; TagManager &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react-gtm-module&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tagManagerArgs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  gtmId&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;GTM-KG6PFHT&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+TagManager&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tagManagerArgs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;최상위 App에 TagManager를 등록해주자.&lt;/p&gt;
+&lt;h2 id=&quot;태그-tag&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%83%9C%EA%B7%B8-tag&quot; aria-label=&quot;태그 tag permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 태그 (Tag) ]&lt;/h2&gt;
+&lt;p&gt;태그에서는 Application에서 어떤 행위가 일어날 때 기록할 정보들을 지정할 수 있다. 기본적으로 해당 Event의 Category, Action, Label을 지정하고 추가적인 데이터를 더 저장할 수도 있다. 간단하게 Login 태그를 만들어보자.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/473c068172e1f86f902f02218d6aa01a/599ea/tag.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 90.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAABOklEQVQ4y62U63KEIAyFff/XbDvrVHCVm4uCpzmutrr9UdwtM4kjxM9DAql6Y9F1HZRS6HuDnDNSysuz1Bg/zzOMdajoYhyXhf1gwBnjMI5AF4DJwJkrLnWNpmmgtUbbtpimaQnOf8CoMKW0KnQeYwyItxviOIra+A06q9BSIV1vDEaB7bfLP5aOA5Ayvfdw8kJ7BJfm8wAMIWASRdsitzwMwwF2SiHzxir/JDktc08B6agwPSjk3NMKhzD8At6k6s8DhyPwpS0TuH2U838oFEcAFW0qXy4Kz19cz99dKSue1/e7O3UOL6rHe63xdlFQnUcQto/z4WAXK+wJ1BYfAqR9agMt0KuNxfc477uNleaw5YzGq8eC5Fx+l7fh5ApX7bVbGmwjDbZpFKy1klO/PI00X2MLTOIYT9YXLJGJ2Oyb8EUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tag.png&quot;
+        title=&quot;tag.png&quot;
+        src=&quot;/static/473c068172e1f86f902f02218d6aa01a/c1b63/tag.png&quot;
+        srcset=&quot;/static/473c068172e1f86f902f02218d6aa01a/5a46d/tag.png 300w,
+/static/473c068172e1f86f902f02218d6aa01a/0a47e/tag.png 600w,
+/static/473c068172e1f86f902f02218d6aa01a/c1b63/tag.png 1200w,
+/static/473c068172e1f86f902f02218d6aa01a/d61c2/tag.png 1800w,
+/static/473c068172e1f86f902f02218d6aa01a/599ea/tag.png 1926w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+인증과 관련된 내용이라 Category를 Auth로 설정하고, Action과 Label은 Login으로 설정하였다. 우리는 GA에서 태그 데이터를 이용하기 위해 Type을 Google Analytics: Universal Analytics로 설정했는데, GA와 연결하기 위한 &lt;strong&gt;Google Analytics Settings&lt;/strong&gt;을 설정해 주어야 한다.&lt;br&gt;
+GA Setting 변수를 만들어 두지 않았다면 새로 만들어서 연결해주자.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ea8a358dd7a9a988698e119a0587770e/9ce1c/GA-setting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAu0lEQVQoz52S2w6DIBBE+f8vrYkFuctFpoypRp8q3WQFsuQws6sw1kJKBakU5nlGjBG1VpSRLBV12+BDgHDOIQaHlNIOOqK1NpSM0MUIUt+2wVgHozWWZYH3fhi4HQr50aFhTRm5q6TSUsqwyhPouhprNIwxaF+7BK7rOgS9WWZyOOwhiwTmnE/gr7gBbR8Ke0YIZbNI2yz+pTB2a0cPri9ez0+DLKH6VKWUeE0TuLfdOu3vq3mevM9/+QMjtcPXtpcfKwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GA-setting.png&quot;
+        title=&quot;GA-setting.png&quot;
+        src=&quot;/static/ea8a358dd7a9a988698e119a0587770e/c1b63/GA-setting.png&quot;
+        srcset=&quot;/static/ea8a358dd7a9a988698e119a0587770e/5a46d/GA-setting.png 300w,
+/static/ea8a358dd7a9a988698e119a0587770e/0a47e/GA-setting.png 600w,
+/static/ea8a358dd7a9a988698e119a0587770e/c1b63/GA-setting.png 1200w,
+/static/ea8a358dd7a9a988698e119a0587770e/d61c2/GA-setting.png 1800w,
+/static/ea8a358dd7a9a988698e119a0587770e/9ce1c/GA-setting.png 1886w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+Tracking ID에는 만들어 둔 GA Application의 추적 ID (UA-XXXXXX-X)를 넣어주면 된다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4d553c305704c2ecb5bd6558ded9dd29/89557/tag-trigger.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 87.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAABIUlEQVQ4y61Ui1KEMAzk//9TPESQR5u20LImreh5PCxqZjKFEnY2ySaFJoOu79G0LZRSuLdlWRBCYF/PY5dYshYFGQtnDSy/KK1BRNE1P3vvOTAB/+RixjoGtBPgOpDqUb82aJoGXddFtglwyQYUcoU2BuM4YpomPFouu28MpYaS4lqHx6Ac2wBKeutlLqMThsSA4wbwiu2krHfZ/Sllkc2/pEzc5bquUVUVd3uAcw6/tU+GIhnDGjLMUqbC+wAfLrhP0xR1qBhwGIY4JTMLeZrnXZ8P7r++ewi5OHqiw7WGR0XPadJHDe3mx3sAOZ9vNZ7KKor/qHEbwKOgBPiCsrxdA9wzWQ5SireB0PapLHJ33mWWTVjO951xAeQy9iGTewdUdj6hkKTqTgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tag-trigger.png&quot;
+        title=&quot;tag-trigger.png&quot;
+        src=&quot;/static/4d553c305704c2ecb5bd6558ded9dd29/c1b63/tag-trigger.png&quot;
+        srcset=&quot;/static/4d553c305704c2ecb5bd6558ded9dd29/5a46d/tag-trigger.png 300w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/0a47e/tag-trigger.png 600w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/c1b63/tag-trigger.png 1200w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/d61c2/tag-trigger.png 1800w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/89557/tag-trigger.png 1928w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+위에서 Tag에서 보낼 여러 정보들을 설정했는데, 이 정보들을 언제 보낼지에 대한 Trigger가 필요하다. Trigger를 만들어서 Tag와 연결해주자.  &lt;/p&gt;
+&lt;h2 id=&quot;트리거-trigger&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B8%EB%A6%AC%EA%B1%B0-trigger&quot; aria-label=&quot;트리거 trigger permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 트리거 (Trigger) ]&lt;/h2&gt;
+&lt;p&gt;Trigger는 event를 감지하고 조건에 맞는 event가 발생하면 연결된 Tag를 발동(Fire) 시켜주는 역할을 한다.  &lt;/p&gt;
+&lt;h3 id=&quot;-정의된-event-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%A0%95%EC%9D%98%EB%90%9C-event-&quot; aria-label=&quot; 정의된 event  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; 정의된 Event &gt;&lt;/h3&gt;
+&lt;p&gt;미리 정의되어 있는 Event를 이용하면 한 번 연결된 Application은 더이상 코드에 관여하지 않고도 Event를 발생시킬 수 있다. Web Application의 경우 Page View, Click, ... 등이 있다.  Click Event를 이용한 Trigger를 한 번 만들어 보자.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1145px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAr0lEQVQoz6WR6wrDMAiF+/7PusHIRZOYeKbpWLuyH90qSMDIp56zEBFijAghIOcMVb2USy0MpoxaK0TEirgGzK3jTgJpFcyM1tpfoDEGeu8GFMWtDFQmpJTmph6/Ah02gc0AxU+2TfvALHrDPvTUgLV3YS5mSkDMDY/ISGbQquV2hurAuXBT6qqdSHulzLPdcSL+MMsHuMb+ftVRd8Cjbl476ukgHyLS34Dtz3S0fAJvQXhz+qkpBgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;trigger-click.png&quot;
+        title=&quot;trigger-click.png&quot;
+        src=&quot;/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png&quot;
+        srcset=&quot;/static/837fe78ab8b55bc719378e6fe2d66ba4/5a46d/trigger-click.png 300w,
+/static/837fe78ab8b55bc719378e6fe2d66ba4/0a47e/trigger-click.png 600w,
+/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png 1145w&quot;
+        sizes=&quot;(max-width: 1145px) 100vw, 1145px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이렇게 ( id=&quot;login&quot;이라는 element를 클릭할 때만 발동 ) 조건을 달아주면 모든 Click을 인식하지 않고 우리가 id=&quot;login&quot;이라고 달아둔 로그인 버튼의 Click만 측정할 수 있다.  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;필자의 경우 미리 정의된 &amp;#x3C; Click - Just Links &gt; Trigger는 a 태그에 id를 지정하고 조건을 달아주면 잘 동작했는데, &amp;#x3C; Click - All Elements &gt;로 했을 때는 Trigger가 제대로 발동하지 않았다. 아마 Click 했을 때 겹치는 부분에 있던 다른 Element가 Click된 것 같다. 좀 더 공부하고 다시 해봐야겠다.)&lt;/em&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;-custom-trigger-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-custom-trigger-&quot; aria-label=&quot; custom trigger  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Custom Trigger &gt;&lt;/h3&gt;
+&lt;p&gt;일반적으로 Application에서 일어나는 일반적인 행위가 아닌, Login 성공 등의 Event는 Custom Event를 이용할 수 있다.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/43bdaa89fec5c7abc286db212c6a4010/84a78/Untitled%202.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAs0lEQVQoz52S2woDIQxE/f+/7HNZXO+6UaeJRWmfVjYwCGpOMlHlnMNxHENaa/Te0Vpj8do31L73JVJKUKUUxJTHpsCe6A9I0SG/X7A+wFr7GFprRYiRgSWj+BNElUU/l7BiFxqlw8R2xfJMnNZz5kI8juu6RvU78LDMOYpIEmglzBCwdDyBd92tGYZEOI2FMWYB5EA0h70bmR0pbSOMdfwgBt778TAiKRBCGNZ3JOOx/AU/D4B2hXchvF0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Untitled 2.png&quot;
+        title=&quot;Untitled 2.png&quot;
+        src=&quot;/static/43bdaa89fec5c7abc286db212c6a4010/c1b63/Untitled%202.png&quot;
+        srcset=&quot;/static/43bdaa89fec5c7abc286db212c6a4010/5a46d/Untitled%202.png 300w,
+/static/43bdaa89fec5c7abc286db212c6a4010/0a47e/Untitled%202.png 600w,
+/static/43bdaa89fec5c7abc286db212c6a4010/c1b63/Untitled%202.png 1200w,
+/static/43bdaa89fec5c7abc286db212c6a4010/d61c2/Untitled%202.png 1800w,
+/static/43bdaa89fec5c7abc286db212c6a4010/84a78/Untitled%202.png 1832w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; TagManager &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react-gtm-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tagManagerArgs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  dataLayer&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    event&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;login&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+TagManager&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dataLayer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tagManagerArgs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위와 같이 Event name을 &quot;login&quot;으로 설정해두고, 로그인에 성공했을 때 Application에서 &quot;login&quot; event를 전송해 주면 Trigger가 발동된다.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;이때 주의할 점은 Trigger에서 등록한 Event name과 코드에서 보내는 event의 값이 정확하게 같아야 한다.&lt;/em&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;gtm-debug&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gtm-debug&quot; aria-label=&quot;gtm debug permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GTM Debug ]&lt;/h2&gt;
+&lt;p&gt;태그와 트리거를 만들어서 연결했으니 실제로 Application에서 Event가 발생할 때 내가 설정한 대로 Tag가 동작하는지 테스트해보자. GTM 오른쪽 상단에 보면 Preview라는 버튼을 누르면 아래와 같은 화면이 나온다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/741524960dca4520b45e1700d3ebdf94/252a4/GTM-debug-connect.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACJ0lEQVQ4y4WUSW7bQBBFda7kSLlDtjlGgCyyTja5QOBVEjgIkMG2bA0cREkcm2NP/K5qkrIgS3EDT9Ustn4P9ZszpRTqukZVVY6yLF1smobyHFsY28Na6+h7e+g/5XqwTtd1mEkpEccxdrudI4oibLdbJEninosiw3Hrcb4ZY0hQYsbKL7XPPxSubrWT49Wcg5tSehA8N4C3yQLXC40372t8+Cqxjq37ox0FnguqpxWeClrHsMKPVw2+/GzGcRP9BUGtL2zUoi4LVCKD6QrorkRTFShFgd6akxMdoiatGf+EmYWfGHjEOjZY7g1WMaOx2mssdtrlmL2wyKoe6Ql53UOqUXBTAH7aw3MAq6R3rNORBFjS+S12LDgIJCXFcurTJJMge2cTeAj9FfZR4KK3WuDm3288zG8RhT42oYc8iyHyBGkSo8gzZFmKNE2onyOjaLQatsw+zESLRHQ0YwdRtc7Qk9nZ4CVFbcyL9nKCTafxfV7h203quJ6ntDV12DofRZgDQWoP53uOu8ig6ajKndS43zR4CAXuA4G5X2C9lwioUGFqcBtp/PKU4y4aCsji/D4Y+5xbJxYtC+oLtpm89fZTidfvYrwiuH/87vRCjrY5NvYYRwNL2WG5rfHHq/DXr7GIKijKnTM255yxW9oy1cOZlS/49AVxl50KRtfemXxgGPPfouRVR+alSgoqP1kgJwohHFxpSbNKSZ8mgvvKPctncL5tWzwCIJvUoQgTRjUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GTM-debug-connect.png&quot;
+        title=&quot;GTM-debug-connect.png&quot;
+        src=&quot;/static/741524960dca4520b45e1700d3ebdf94/c1b63/GTM-debug-connect.png&quot;
+        srcset=&quot;/static/741524960dca4520b45e1700d3ebdf94/5a46d/GTM-debug-connect.png 300w,
+/static/741524960dca4520b45e1700d3ebdf94/0a47e/GTM-debug-connect.png 600w,
+/static/741524960dca4520b45e1700d3ebdf94/c1b63/GTM-debug-connect.png 1200w,
+/static/741524960dca4520b45e1700d3ebdf94/252a4/GTM-debug-connect.png 1314w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt; 테스트 환경 서버를 돌려놓고 주소를 연결해주면 된다.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0cc7f36fafa7b559f4002679b762de3b/39472/GTM-debug.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAuklEQVQoz62R6w6CMAxG9/7v6G9EHcju989uQFQCMVGXnDRrt7OmY3wcceUcdyFhnYc2FuoQ87HGTp0EnwyEENBaIziHlBJSzjPpSd7s92qsHzRGYWDILqSCsR5hc3AlhNAee8291Siy7txjkpJEASEW+JDhiJgKiQtyKQBRiJznuEeV1sgut4GECrJKaQ7WWnjvMa/SWC+1zIFwrbEqU3qZIQljTPhlsfq7YpFKpVs01KX+ktZhlf6LBydLcTkY4hkAAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GTM-debug.png&quot;
+        title=&quot;GTM-debug.png&quot;
+        src=&quot;/static/0cc7f36fafa7b559f4002679b762de3b/c1b63/GTM-debug.png&quot;
+        srcset=&quot;/static/0cc7f36fafa7b559f4002679b762de3b/5a46d/GTM-debug.png 300w,
+/static/0cc7f36fafa7b559f4002679b762de3b/0a47e/GTM-debug.png 600w,
+/static/0cc7f36fafa7b559f4002679b762de3b/c1b63/GTM-debug.png 1200w,
+/static/0cc7f36fafa7b559f4002679b762de3b/d61c2/GTM-debug.png 1800w,
+/static/0cc7f36fafa7b559f4002679b762de3b/97a96/GTM-debug.png 2400w,
+/static/0cc7f36fafa7b559f4002679b762de3b/39472/GTM-debug.png 3636w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;왼쪽 사이드바에는 발생한 Event 이름이 나온다. 우리가 Application에서 보내준 login 이벤트를 확인할 수 있다. 그리고 Tags 탭에서 어떤 Tag가 발동되었는지 나타난다. 우리가 login Event로 연결한 Login 태그가 발동된 것을 확인할 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;변수-variables&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B3%80%EC%88%98-variables&quot; aria-label=&quot;변수 variables permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 변수 (Variables) ]&lt;/h2&gt;
+&lt;p&gt;GTM에서는 다양한 종류의 변수를 정의하고 사용할 수 있다. 앞에서 만들었던 GA-Setting도 변수를 만들어서 사용한 것이다. GTM에서 변수에는 크게 &lt;strong&gt;Built-In Variable&lt;/strong&gt;과 &lt;strong&gt;User-Defined Variable&lt;/strong&gt;로 나눌 수 있다.  &lt;/p&gt;
+&lt;h3 id=&quot;-built-in-variables-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-built-in-variables-&quot; aria-label=&quot; built in variables  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Built-In Variables &gt;&lt;/h3&gt;
+&lt;p&gt;Built-In 변수는 Event가 일어날 때 해당 Event에 대한 정보를 가져올 수 있다. 앞에서 Click Event를 이용한 트리거를 만들어봤는데, Login 버튼을 Click 했을 때, 그 버튼의 텍스트를 가져오고 싶다고 하자. 그러면 Click Text라는 Built-In Variable을 사용할 수 있다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cf747c6e391fa3dd3764ffd7a01f2ba0/29007/built-in-variables.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA+0lEQVQoz6WTy3KEIBBF+f9PTLLIuIny8IEgAsJNy2hqJskiwa46ZQFyu+E2LIQA7z2UUpBSQgiBvu/RdR0453DO4S+RUio6zK0rjLVomoZE7gI7luasXRBCRM6ZNhD5d+7rCTFuYCF47FXubNv2I/P5cxEs3+8c84cw40pj1IYGiQTTo9TB/4K9tBF8XMHbD0i6R0pSsuZcB3vtIsToMChZ7u08ZrXgW7uglRqCHF3JJb+7fgE2jT1Ur/B+a8CFhFkcZmMxk8M1MDU5MsVS/3GyPV4/8k1tGEzANA6l5K82ybkK5hZDjbw89d2lCic9Q2tdntr+/E7R2vgE3iWu8KRC1I4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;built-in-variables.png&quot;
+        title=&quot;built-in-variables.png&quot;
+        src=&quot;/static/cf747c6e391fa3dd3764ffd7a01f2ba0/c1b63/built-in-variables.png&quot;
+        srcset=&quot;/static/cf747c6e391fa3dd3764ffd7a01f2ba0/5a46d/built-in-variables.png 300w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/0a47e/built-in-variables.png 600w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/c1b63/built-in-variables.png 1200w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/29007/built-in-variables.png 1600w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+필요한 Builit-In 변수를 체크해두면 Event가 일어날 때마다, Application에서 해당 변수값을 같이 보낸다.  &lt;/p&gt;
+&lt;h3 id=&quot;-user-defined-variables-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-user-defined-variables-&quot; aria-label=&quot; user defined variables  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; User-Defined Variables &gt;&lt;/h3&gt;
+&lt;p&gt;User-Defined Variable은 우리가 직접 값을 설정해줄 수 있다. Constant Variables의 경우 설정한 값을 그대로 가지고 있다. 너무 길거나 외우기 힘들 때 이런 변수를 사용할 수 있다.&lt;br&gt;
+여기서 유용하게 살펴볼 변수는 Data Layer Variable이다. 이 변수를 사용하면 Custom Event를 보낼 때 같이 넣어준 데이터를 가져올 수 있다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; TagManager &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react-gtm-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; randomName &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Googy&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Letters&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tagManagerArgs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  dataLayer&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    event&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;login&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    userName&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; randomName
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+TagManager&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dataLayer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tagManagerArgs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;앞에서 만든 login event에 userName이라는 data를 추가하여 보냈다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/01ba1d9e75c9d99fb582b45ee0f88854/bf9ea/dataLayer-variable.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAp0lEQVQoz5WSgQ6DIAxE+f9vnYmUCjict54T3BLHXJMXENLHpdHdhgGj97iX0ihlQVl23s6v4EQnkFFCw4vA+9EQzPN8WSpB4ZrEPgj3wR6YYt5ki6VkreuK09qPec8+V0WHUKAm8/EB1YCUUmvowYdF9RDWlK+ECg3SEnKtCc+FJwk/hLaS2sAZ/krYFeoUEWNEzhn/1FehBNvbr0QoJanDdm+z5vyfuutxgTfgW30AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;dataLayer-variable.png&quot;
+        title=&quot;dataLayer-variable.png&quot;
+        src=&quot;/static/01ba1d9e75c9d99fb582b45ee0f88854/c1b63/dataLayer-variable.png&quot;
+        srcset=&quot;/static/01ba1d9e75c9d99fb582b45ee0f88854/5a46d/dataLayer-variable.png 300w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/0a47e/dataLayer-variable.png 600w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/c1b63/dataLayer-variable.png 1200w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/d61c2/dataLayer-variable.png 1800w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/97a96/dataLayer-variable.png 2400w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/bf9ea/dataLayer-variable.png 2716w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+그러면 GTM의 variable 설정에서 Data Layer Variable Name을 코드에서 정한 대로 userName이라고 설정하여 변수를 만들고 활용할 수 있다.  &lt;/p&gt;
+&lt;h3 id=&quot;-태그에서-변수-사용하기-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%83%9C%EA%B7%B8%EC%97%90%EC%84%9C-%EB%B3%80%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-&quot; aria-label=&quot; 태그에서 변수 사용하기  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; 태그에서 변수 사용하기 &gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7adc5dc241704bf2bba7b210d006a97d/f705e/tag-variable.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAvElEQVQoz62TbQ+DIAyE/f+/drxZwELXI5M4ozK3NbnwAXjSK8dknBfoYV1bja7Oe2EuwqXIsrBqORbz+13VtAemGCQoMIQg8zwrmAVVaz3UGEheYiQhIkkpSdEuz2DYGwKdAzC2w5/UNVAFm5gPgDnn1smZ5THQKVCtrhdgeQtc6xaQXsDyH6BXy9St7i1/BURc1s4wy7qD3JyhF9sfhns0fgRaMcY06wCP4mNHQGQQtjE//BIAr4SobYFPNNOpg7hYkB8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tag-variable.png&quot;
+        title=&quot;tag-variable.png&quot;
+        src=&quot;/static/7adc5dc241704bf2bba7b210d006a97d/c1b63/tag-variable.png&quot;
+        srcset=&quot;/static/7adc5dc241704bf2bba7b210d006a97d/5a46d/tag-variable.png 300w,
+/static/7adc5dc241704bf2bba7b210d006a97d/0a47e/tag-variable.png 600w,
+/static/7adc5dc241704bf2bba7b210d006a97d/c1b63/tag-variable.png 1200w,
+/static/7adc5dc241704bf2bba7b210d006a97d/d61c2/tag-variable.png 1800w,
+/static/7adc5dc241704bf2bba7b210d006a97d/97a96/tag-variable.png 2400w,
+/static/7adc5dc241704bf2bba7b210d006a97d/f705e/tag-variable.png 2998w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+태그에서 필요한 곳에 {{변수명}} 이렇게 설정하면 변수의 값이 들어간다. (+ 버튼을 눌러서 사용할 변수를 추가할 수도 있다.)&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/765df93a51c096fafcf1bc3dd0a1ca9e/aaba6/tag-detail.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtElEQVQoz42R2w7DIAhA/f8vXbKH1aJYL8iAzaTpWleTUzGVI6J7vJ68lcy1Vi5KKRbX1ox2YOwp5bv/gFtDZL8GXlZgjRfvOefMOqh3JqId3f4hImPaOAqat8fpx8NHCCJETAyyDlHilKyquqM1MvQArXLkD9wITCgSAOAY0USa1KXKM3T8F1qFKD0kS7iSnQnH/CMMQpPm8kR2W6iPkrRv0viZTB9H59vCKpD0sE+ufVXhG+6GcRj2NAo3AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tag-detail.png&quot;
+        title=&quot;tag-detail.png&quot;
+        src=&quot;/static/765df93a51c096fafcf1bc3dd0a1ca9e/c1b63/tag-detail.png&quot;
+        srcset=&quot;/static/765df93a51c096fafcf1bc3dd0a1ca9e/5a46d/tag-detail.png 300w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/0a47e/tag-detail.png 600w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/c1b63/tag-detail.png 1200w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/d61c2/tag-detail.png 1800w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/97a96/tag-detail.png 2400w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/aaba6/tag-detail.png 3374w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+디버그 모드에서 발동된 Login Tag의 값을 보니 Application에서 보내준 데이터가 값으로 들어간 것을 확인할 수 있다.&lt;br&gt;
+모두 테스트했다면 잊지 말고, Publish 해주고, 다음에 Google Analytics에서 기록된 Event를 확인해보자.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[[React] styled-component와 material-ui 사용하기]]></title><description><![CDATA[styled-component와 css 선택자에 대해 알아보자]]></description><link>https://goo-gy.github.io/2021-03-12-styled-material</link><guid isPermaLink="false">https://goo-gy.github.io/2021-03-12-styled-material</guid><pubDate>Fri, 12 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 들어가기 전에 ]&lt;/h2&gt;
 &lt;p&gt;이전 포스트에서 styled-component를 이용해 material-ui에 style을 줄 때 &amp;#x26;&amp;#x26;를 활용했다. 그게 어떤 원리로 적용되는지 한 번 살펴보고자 한다.&lt;br&gt;
 궁금한 분들은 &lt;a href=&quot;https://goo-gy.github.io/2021-02-28-material-ui&quot;&gt;https://goo-gy.github.io/2021-02-28-material-ui&lt;/a&gt;를 참고하길 바란다.  &lt;/p&gt;
 &lt;h2 id=&quot;css-선택자-우선순위&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#css-%EC%84%A0%ED%83%9D%EC%9E%90-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84&quot; aria-label=&quot;css 선택자 우선순위 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ CSS 선택자 우선순위 ]&lt;/h2&gt;

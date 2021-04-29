@@ -1,0 +1,612 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">React 프로젝트에 Google Tag Manager 설정하기 - googy-blog</title><meta data-react-helmet="true" name="description" content="Google  Tag Manager의 원리를 알아보자"/><meta data-react-helmet="true" property="og:title" content="React 프로젝트에 Google Tag Manager 설정하기 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="Google  Tag Manager의 원리를 알아보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2021-04-28-google-tag-manager"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="React 프로젝트에 Google Tag Manager 설정하기 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="Google  Tag Manager의 원리를 알아보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, web, react, data"/><meta data-react-helmet="true" name="article:published_time" content="2021-04-28T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2021-04-28T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="web"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "web, react, data",
+          "headline": "React 프로젝트에 Google Tag Manager 설정하기 - googy-blog",
+          "url": "https://goo-gy.github.io/2021-04-28-google-tag-manager",
+          "datePublished": "2021-04-28T00:00:00.000Z",
+          "dateModified": "2021-04-28T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "Google  Tag Manager의 원리를 알아보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa hdGqMx jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.hdGqMx{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:rgba(130,240,220,0.9);z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=bd980a9f8c3998db92fa9ed41520e21b" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-79c6cb472abad735489b.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-7f14ff075869536f8e68.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-9f95ad3bf33af9cd770d.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2021-04-28-google-tag-manager/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/project">Project</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/algorithm">Algorithm</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/web">Web</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" class="reading-progress__ReadingProgressBar-vxjjnv-0 hdGqMx"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/web">web</a><time dateTime="2021-04-28T00:00:00.000Z">28 April, 2021</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">React 프로젝트에 Google Tag Manager 설정하기</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:70.5%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAADL0lEQVQ4y52TaUzURxjGn78rNbGmwTaaGPEIIk2sCNTs4rJkFwQqNPU2HpEQqdpwqJRVORJ2seWShXIs7H93NUpTxQNRvDC2qyA9UhNSNQaPqhhp0g/Gpil3uyzzdBar6cfSSZ5MZvLO731nnnfA2mWgMxGibCGE3aARJcFTRE3UZDqiFYCI3PYLVn09qpjZg5i2F8qbqZwSlvdCQwI/PcxRVl/4E3hXLuIJvUvO40DrTLAqEqyJgliLt31dp8CKIPA6oNvxDOvbfTBdGgJ5C4gRIfJUQHFjK07cPI6k5lH4E2MBsUx9BTy4CCyer7DOsJF2Q7aoi9lFddHszuIsNOZUKFGqqNA5xVWdc6xVp/J8tOo7v1wdOGdShz3aemFOOOFD8mmvssTmB9YZIGyLwbKFAaLe2CMa4sgGE4dr4tbDROO0FSPaqKPeB0k/P2Xy40fUNpGfnmznbzcjeaPjYxrdQxfzv+vEV7cPKRFVfqDdDwyTbxgaIBpMT4RjOekwsqtk+04kcvMbH3jXhdm9jzZ473ITu8Z0TRQHWs4IPsdob7eWsa7B5pL2K2i7//k/wDq9fK/3wNIFGtpjXKw3tstKPWwIX5qW3gZZJfSHxr41Xhxg7OU/BnSHOfThkedDJS2n+nef7KTeMXrM1DaGtG96FZ3NK4FH1kgzdNKUCPBYCng2C8NNmeAz4J0N/RokiEmhhZwRnMo587cwKP7A73NRyunfm5sL95t/NcBDzWVLM4qL7oA5gXgJ8Rvzxfvghf0QP34Jca1S7n8E2SnYkkwsKSVC04iQFHmlWuLGZy3gvtQEmteFMyctyJdXEDRSYAVz90lgtdZvCETRLAh/29TqxxN4q/Xos8XKACK8koq+6i9lZXWfEr/7njLoapztKz+41WurShopr5zFzIyAHhnny83Hfx50OCSbEB4PhNPpodtNulyk05lCux3C4dAwN3eCwHnzwO5u+bOcP7wGquoncg05/w+grJAdHX5gi3C7+4TL1SdBm6UgJBATGSws/LcW02JJlIql1RoorNIQiwUTA2bKVtq796Wys6dyz563mJU1lenpk6TAjIzxuL8BjTfV+vRvnlIAAAAASUVORK5CYII=" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/a0941cdab499d9ad7ef98ec02d9c4cac/dc47e/GTM.png 200w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f2d5/GTM.png 400w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png 640w" sizes="(max-width: 640px) 100vw, 640px" /><img loading="lazy" sizes="(max-width: 640px) 100vw, 640px" srcset="/static/a0941cdab499d9ad7ef98ec02d9c4cac/dc47e/GTM.png 200w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f2d5/GTM.png 400w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png 640w" src="/static/a0941cdab499d9ad7ef98ec02d9c4cac/9f8d2/GTM.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><p>GTM을 이용하면 Application에서 일어나는 특정 이벤트를 감지하여 측정할 수 있다. GTM의 작동 원리를 한 번 알아보자.  </p>
+<h2 id="gtm의-작동원리" style="position:relative;"><a href="#gtm%EC%9D%98-%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC" aria-label="gtm의 작동원리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ GTM의 작동원리 ]</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 70.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAADL0lEQVQ4y52TaUzURxjGn78rNbGmwTaaGPEIIk2sCNTs4rJkFwQqNPU2HpEQqdpwqJRVORJ2seWShXIs7H93NUpTxQNRvDC2qyA9UhNSNQaPqhhp0g/Gpil3uyzzdBar6cfSSZ5MZvLO731nnnfA2mWgMxGibCGE3aARJcFTRE3UZDqiFYCI3PYLVn09qpjZg5i2F8qbqZwSlvdCQwI/PcxRVl/4E3hXLuIJvUvO40DrTLAqEqyJgliLt31dp8CKIPA6oNvxDOvbfTBdGgJ5C4gRIfJUQHFjK07cPI6k5lH4E2MBsUx9BTy4CCyer7DOsJF2Q7aoi9lFddHszuIsNOZUKFGqqNA5xVWdc6xVp/J8tOo7v1wdOGdShz3aemFOOOFD8mmvssTmB9YZIGyLwbKFAaLe2CMa4sgGE4dr4tbDROO0FSPaqKPeB0k/P2Xy40fUNpGfnmznbzcjeaPjYxrdQxfzv+vEV7cPKRFVfqDdDwyTbxgaIBpMT4RjOekwsqtk+04kcvMbH3jXhdm9jzZ473ITu8Z0TRQHWs4IPsdob7eWsa7B5pL2K2i7//k/wDq9fK/3wNIFGtpjXKw3tstKPWwIX5qW3gZZJfSHxr41Xhxg7OU/BnSHOfThkedDJS2n+nef7KTeMXrM1DaGtG96FZ3NK4FH1kgzdNKUCPBYCng2C8NNmeAz4J0N/RokiEmhhZwRnMo587cwKP7A73NRyunfm5sL95t/NcBDzWVLM4qL7oA5gXgJ8Rvzxfvghf0QP34Jca1S7n8E2SnYkkwsKSVC04iQFHmlWuLGZy3gvtQEmteFMyctyJdXEDRSYAVz90lgtdZvCETRLAh/29TqxxN4q/Xos8XKACK8koq+6i9lZXWfEr/7njLoapztKz+41WurShopr5zFzIyAHhnny83Hfx50OCSbEB4PhNPpodtNulyk05lCux3C4dAwN3eCwHnzwO5u+bOcP7wGquoncg05/w+grJAdHX5gi3C7+4TL1SdBm6UgJBATGSws/LcW02JJlIql1RoorNIQiwUTA2bKVtq796Wys6dyz563mJU1lenpk6TAjIzxuL8BjTfV+vRvnlIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="GTM.png"
+        title="GTM.png"
+        src="/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png"
+        srcset="/static/a0941cdab499d9ad7ef98ec02d9c4cac/5a46d/GTM.png 300w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/0a47e/GTM.png 600w,
+/static/a0941cdab499d9ad7ef98ec02d9c4cac/6af66/GTM.png 640w"
+        sizes="(max-width: 640px) 100vw, 640px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<p>Application과 GTM을 연결하면 Application에서 일어나는 Event들을 GTM으로 보낼 수 있다. Application이 GTM으로 Event를 보내면 GTM은 해당 event가 등록되어 있는 Trigger가 있는지 확인하고 매칭되면 그 Trigger와 연결된 Tag 정보를 GA에 전달한다.  </p>
+<ul>
+<li>Tag  </li>
+<li>Trigger  </li>
+<li>Variables  </li>
+</ul>
+<h2 id="react-project에-gtm-연결하기" style="position:relative;"><a href="#react-project%EC%97%90-gtm-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0" aria-label="react project에 gtm 연결하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ React Project에 GTM 연결하기 ]</h2>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> react-gtm-module</code></pre></div>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> TagManager <span class="token keyword">from</span> <span class="token string">'react-gtm-module'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> tagManagerArgs <span class="token operator">=</span> <span class="token punctuation">{</span>
+  gtmId<span class="token operator">:</span> <span class="token string">'GTM-KG6PFHT'</span>
+<span class="token punctuation">}</span>
+
+TagManager<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span>tagManagerArgs<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>최상위 App에 TagManager를 등록해주자.</p>
+<h2 id="태그-tag" style="position:relative;"><a href="#%ED%83%9C%EA%B7%B8-tag" aria-label="태그 tag permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 태그 (Tag) ]</h2>
+<p>태그에서는 Application에서 어떤 행위가 일어날 때 기록할 정보들을 지정할 수 있다. 기본적으로 해당 Event의 Category, Action, Label을 지정하고 추가적인 데이터를 더 저장할 수도 있다. 간단하게 Login 태그를 만들어보자.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/473c068172e1f86f902f02218d6aa01a/599ea/tag.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 90.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAABOklEQVQ4y62U63KEIAyFff/XbDvrVHCVm4uCpzmutrr9UdwtM4kjxM9DAql6Y9F1HZRS6HuDnDNSysuz1Bg/zzOMdajoYhyXhf1gwBnjMI5AF4DJwJkrLnWNpmmgtUbbtpimaQnOf8CoMKW0KnQeYwyItxviOIra+A06q9BSIV1vDEaB7bfLP5aOA5Ayvfdw8kJ7BJfm8wAMIWASRdsitzwMwwF2SiHzxir/JDktc08B6agwPSjk3NMKhzD8At6k6s8DhyPwpS0TuH2U838oFEcAFW0qXy4Kz19cz99dKSue1/e7O3UOL6rHe63xdlFQnUcQto/z4WAXK+wJ1BYfAqR9agMt0KuNxfc477uNleaw5YzGq8eC5Fx+l7fh5ApX7bVbGmwjDbZpFKy1klO/PI00X2MLTOIYT9YXLJGJ2Oyb8EUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="tag.png"
+        title="tag.png"
+        src="/static/473c068172e1f86f902f02218d6aa01a/c1b63/tag.png"
+        srcset="/static/473c068172e1f86f902f02218d6aa01a/5a46d/tag.png 300w,
+/static/473c068172e1f86f902f02218d6aa01a/0a47e/tag.png 600w,
+/static/473c068172e1f86f902f02218d6aa01a/c1b63/tag.png 1200w,
+/static/473c068172e1f86f902f02218d6aa01a/d61c2/tag.png 1800w,
+/static/473c068172e1f86f902f02218d6aa01a/599ea/tag.png 1926w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+인증과 관련된 내용이라 Category를 Auth로 설정하고, Action과 Label은 Login으로 설정하였다. 우리는 GA에서 태그 데이터를 이용하기 위해 Type을 Google Analytics: Universal Analytics로 설정했는데, GA와 연결하기 위한 <strong>Google Analytics Settings</strong>을 설정해 주어야 한다.<br>
+GA Setting 변수를 만들어 두지 않았다면 새로 만들어서 연결해주자.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ea8a358dd7a9a988698e119a0587770e/9ce1c/GA-setting.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAu0lEQVQoz52S2w6DIBBE+f8vrYkFuctFpoypRp8q3WQFsuQws6sw1kJKBakU5nlGjBG1VpSRLBV12+BDgHDOIQaHlNIOOqK1NpSM0MUIUt+2wVgHozWWZYH3fhi4HQr50aFhTRm5q6TSUsqwyhPouhprNIwxaF+7BK7rOgS9WWZyOOwhiwTmnE/gr7gBbR8Ke0YIZbNI2yz+pTB2a0cPri9ez0+DLKH6VKWUeE0TuLfdOu3vq3mevM9/+QMjtcPXtpcfKwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="GA-setting.png"
+        title="GA-setting.png"
+        src="/static/ea8a358dd7a9a988698e119a0587770e/c1b63/GA-setting.png"
+        srcset="/static/ea8a358dd7a9a988698e119a0587770e/5a46d/GA-setting.png 300w,
+/static/ea8a358dd7a9a988698e119a0587770e/0a47e/GA-setting.png 600w,
+/static/ea8a358dd7a9a988698e119a0587770e/c1b63/GA-setting.png 1200w,
+/static/ea8a358dd7a9a988698e119a0587770e/d61c2/GA-setting.png 1800w,
+/static/ea8a358dd7a9a988698e119a0587770e/9ce1c/GA-setting.png 1886w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+Tracking ID에는 만들어 둔 GA Application의 추적 ID (UA-XXXXXX-X)를 넣어주면 된다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4d553c305704c2ecb5bd6558ded9dd29/89557/tag-trigger.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 87.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAABIUlEQVQ4y61Ui1KEMAzk//9TPESQR5u20LImreh5PCxqZjKFEnY2ySaFJoOu79G0LZRSuLdlWRBCYF/PY5dYshYFGQtnDSy/KK1BRNE1P3vvOTAB/+RixjoGtBPgOpDqUb82aJoGXddFtglwyQYUcoU2BuM4YpomPFouu28MpYaS4lqHx6Ac2wBKeutlLqMThsSA4wbwiu2krHfZ/Sllkc2/pEzc5bquUVUVd3uAcw6/tU+GIhnDGjLMUqbC+wAfLrhP0xR1qBhwGIY4JTMLeZrnXZ8P7r++ewi5OHqiw7WGR0XPadJHDe3mx3sAOZ9vNZ7KKor/qHEbwKOgBPiCsrxdA9wzWQ5SireB0PapLHJ33mWWTVjO951xAeQy9iGTewdUdj6hkKTqTgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="tag-trigger.png"
+        title="tag-trigger.png"
+        src="/static/4d553c305704c2ecb5bd6558ded9dd29/c1b63/tag-trigger.png"
+        srcset="/static/4d553c305704c2ecb5bd6558ded9dd29/5a46d/tag-trigger.png 300w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/0a47e/tag-trigger.png 600w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/c1b63/tag-trigger.png 1200w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/d61c2/tag-trigger.png 1800w,
+/static/4d553c305704c2ecb5bd6558ded9dd29/89557/tag-trigger.png 1928w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+위에서 Tag에서 보낼 여러 정보들을 설정했는데, 이 정보들을 언제 보낼지에 대한 Trigger가 필요하다. Trigger를 만들어서 Tag와 연결해주자.  </p>
+<h2 id="트리거-trigger" style="position:relative;"><a href="#%ED%8A%B8%EB%A6%AC%EA%B1%B0-trigger" aria-label="트리거 trigger permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 트리거 (Trigger) ]</h2>
+<p>Trigger는 event를 감지하고 조건에 맞는 event가 발생하면 연결된 Tag를 발동(Fire) 시켜주는 역할을 한다.  </p>
+<h3 id="-정의된-event-" style="position:relative;"><a href="#-%EC%A0%95%EC%9D%98%EB%90%9C-event-" aria-label=" 정의된 event  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; 정의된 Event ></h3>
+<p>미리 정의되어 있는 Event를 이용하면 한 번 연결된 Application은 더이상 코드에 관여하지 않고도 Event를 발생시킬 수 있다. Web Application의 경우 Page View, Click, ... 등이 있다.  Click Event를 이용한 Trigger를 한 번 만들어 보자.  </p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1145px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAr0lEQVQoz6WR6wrDMAiF+/7PusHIRZOYeKbpWLuyH90qSMDIp56zEBFijAghIOcMVb2USy0MpoxaK0TEirgGzK3jTgJpFcyM1tpfoDEGeu8GFMWtDFQmpJTmph6/Ah02gc0AxU+2TfvALHrDPvTUgLV3YS5mSkDMDY/ISGbQquV2hurAuXBT6qqdSHulzLPdcSL+MMsHuMb+ftVRd8Cjbl476ukgHyLS34Dtz3S0fAJvQXhz+qkpBgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="trigger-click.png"
+        title="trigger-click.png"
+        src="/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png"
+        srcset="/static/837fe78ab8b55bc719378e6fe2d66ba4/5a46d/trigger-click.png 300w,
+/static/837fe78ab8b55bc719378e6fe2d66ba4/0a47e/trigger-click.png 600w,
+/static/837fe78ab8b55bc719378e6fe2d66ba4/c61d0/trigger-click.png 1145w"
+        sizes="(max-width: 1145px) 100vw, 1145px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>이렇게 ( id="login"이라는 element를 클릭할 때만 발동 ) 조건을 달아주면 모든 Click을 인식하지 않고 우리가 id="login"이라고 달아둔 로그인 버튼의 Click만 측정할 수 있다.  </p>
+<p><em>필자의 경우 미리 정의된 &#x3C; Click - Just Links > Trigger는 a 태그에 id를 지정하고 조건을 달아주면 잘 동작했는데, &#x3C; Click - All Elements >로 했을 때는 Trigger가 제대로 발동하지 않았다. 아마 Click 했을 때 겹치는 부분에 있던 다른 Element가 Click된 것 같다. 좀 더 공부하고 다시 해봐야겠다.)</em>  </p>
+<h3 id="-custom-trigger-" style="position:relative;"><a href="#-custom-trigger-" aria-label=" custom trigger  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; Custom Trigger ></h3>
+<p>일반적으로 Application에서 일어나는 일반적인 행위가 아닌, Login 성공 등의 Event는 Custom Event를 이용할 수 있다.  </p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/43bdaa89fec5c7abc286db212c6a4010/84a78/Untitled%202.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAs0lEQVQoz52S2woDIQxE/f+/7HNZXO+6UaeJRWmfVjYwCGpOMlHlnMNxHENaa/Te0Vpj8do31L73JVJKUKUUxJTHpsCe6A9I0SG/X7A+wFr7GFprRYiRgSWj+BNElUU/l7BiFxqlw8R2xfJMnNZz5kI8juu6RvU78LDMOYpIEmglzBCwdDyBd92tGYZEOI2FMWYB5EA0h70bmR0pbSOMdfwgBt778TAiKRBCGNZ3JOOx/AU/D4B2hXchvF0AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Untitled 2.png"
+        title="Untitled 2.png"
+        src="/static/43bdaa89fec5c7abc286db212c6a4010/c1b63/Untitled%202.png"
+        srcset="/static/43bdaa89fec5c7abc286db212c6a4010/5a46d/Untitled%202.png 300w,
+/static/43bdaa89fec5c7abc286db212c6a4010/0a47e/Untitled%202.png 600w,
+/static/43bdaa89fec5c7abc286db212c6a4010/c1b63/Untitled%202.png 1200w,
+/static/43bdaa89fec5c7abc286db212c6a4010/d61c2/Untitled%202.png 1800w,
+/static/43bdaa89fec5c7abc286db212c6a4010/84a78/Untitled%202.png 1832w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> TagManager <span class="token keyword">from</span> <span class="token string">"react-gtm-module"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> tagManagerArgs <span class="token operator">=</span> <span class="token punctuation">{</span>
+  dataLayer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    event<span class="token operator">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+TagManager<span class="token punctuation">.</span><span class="token function">dataLayer</span><span class="token punctuation">(</span>tagManagerArgs<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>위와 같이 Event name을 "login"으로 설정해두고, 로그인에 성공했을 때 Application에서 "login" event를 전송해 주면 Trigger가 발동된다.</p>
+<p><em>이때 주의할 점은 Trigger에서 등록한 Event name과 코드에서 보내는 event의 값이 정확하게 같아야 한다.</em>  </p>
+<h2 id="gtm-debug" style="position:relative;"><a href="#gtm-debug" aria-label="gtm debug permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ GTM Debug ]</h2>
+<p>태그와 트리거를 만들어서 연결했으니 실제로 Application에서 Event가 발생할 때 내가 설정한 대로 Tag가 동작하는지 테스트해보자. GTM 오른쪽 상단에 보면 Preview라는 버튼을 누르면 아래와 같은 화면이 나온다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/741524960dca4520b45e1700d3ebdf94/252a4/GTM-debug-connect.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 80.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACJ0lEQVQ4y4WUSW7bQBBFda7kSLlDtjlGgCyyTja5QOBVEjgIkMG2bA0cREkcm2NP/K5qkrIgS3EDT9Ustn4P9ZszpRTqukZVVY6yLF1smobyHFsY28Na6+h7e+g/5XqwTtd1mEkpEccxdrudI4oibLdbJEninosiw3Hrcb4ZY0hQYsbKL7XPPxSubrWT49Wcg5tSehA8N4C3yQLXC40372t8+Cqxjq37ox0FnguqpxWeClrHsMKPVw2+/GzGcRP9BUGtL2zUoi4LVCKD6QrorkRTFShFgd6akxMdoiatGf+EmYWfGHjEOjZY7g1WMaOx2mssdtrlmL2wyKoe6Ql53UOqUXBTAH7aw3MAq6R3rNORBFjS+S12LDgIJCXFcurTJJMge2cTeAj9FfZR4KK3WuDm3288zG8RhT42oYc8iyHyBGkSo8gzZFmKNE2onyOjaLQatsw+zESLRHQ0YwdRtc7Qk9nZ4CVFbcyL9nKCTafxfV7h203quJ6ntDV12DofRZgDQWoP53uOu8ig6ajKndS43zR4CAXuA4G5X2C9lwioUGFqcBtp/PKU4y4aCsji/D4Y+5xbJxYtC+oLtpm89fZTidfvYrwiuH/87vRCjrY5NvYYRwNL2WG5rfHHq/DXr7GIKijKnTM255yxW9oy1cOZlS/49AVxl50KRtfemXxgGPPfouRVR+alSgoqP1kgJwohHFxpSbNKSZ8mgvvKPctncL5tWzwCIJvUoQgTRjUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="GTM-debug-connect.png"
+        title="GTM-debug-connect.png"
+        src="/static/741524960dca4520b45e1700d3ebdf94/c1b63/GTM-debug-connect.png"
+        srcset="/static/741524960dca4520b45e1700d3ebdf94/5a46d/GTM-debug-connect.png 300w,
+/static/741524960dca4520b45e1700d3ebdf94/0a47e/GTM-debug-connect.png 600w,
+/static/741524960dca4520b45e1700d3ebdf94/c1b63/GTM-debug-connect.png 1200w,
+/static/741524960dca4520b45e1700d3ebdf94/252a4/GTM-debug-connect.png 1314w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p> 테스트 환경 서버를 돌려놓고 주소를 연결해주면 된다.  </p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0cc7f36fafa7b559f4002679b762de3b/39472/GTM-debug.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 37.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAuklEQVQoz62R6w6CMAxG9/7v6G9EHcju989uQFQCMVGXnDRrt7OmY3wcceUcdyFhnYc2FuoQ87HGTp0EnwyEENBaIziHlBJSzjPpSd7s92qsHzRGYWDILqSCsR5hc3AlhNAee8291Siy7txjkpJEASEW+JDhiJgKiQtyKQBRiJznuEeV1sgut4GECrJKaQ7WWnjvMa/SWC+1zIFwrbEqU3qZIQljTPhlsfq7YpFKpVs01KX+ktZhlf6LBydLcTkY4hkAAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="GTM-debug.png"
+        title="GTM-debug.png"
+        src="/static/0cc7f36fafa7b559f4002679b762de3b/c1b63/GTM-debug.png"
+        srcset="/static/0cc7f36fafa7b559f4002679b762de3b/5a46d/GTM-debug.png 300w,
+/static/0cc7f36fafa7b559f4002679b762de3b/0a47e/GTM-debug.png 600w,
+/static/0cc7f36fafa7b559f4002679b762de3b/c1b63/GTM-debug.png 1200w,
+/static/0cc7f36fafa7b559f4002679b762de3b/d61c2/GTM-debug.png 1800w,
+/static/0cc7f36fafa7b559f4002679b762de3b/97a96/GTM-debug.png 2400w,
+/static/0cc7f36fafa7b559f4002679b762de3b/39472/GTM-debug.png 3636w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>왼쪽 사이드바에는 발생한 Event 이름이 나온다. 우리가 Application에서 보내준 login 이벤트를 확인할 수 있다. 그리고 Tags 탭에서 어떤 Tag가 발동되었는지 나타난다. 우리가 login Event로 연결한 Login 태그가 발동된 것을 확인할 수 있다.</p>
+<h2 id="변수-variables" style="position:relative;"><a href="#%EB%B3%80%EC%88%98-variables" aria-label="변수 variables permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 변수 (Variables) ]</h2>
+<p>GTM에서는 다양한 종류의 변수를 정의하고 사용할 수 있다. 앞에서 만들었던 GA-Setting도 변수를 만들어서 사용한 것이다. GTM에서 변수에는 크게 <strong>Built-In Variable</strong>과 <strong>User-Defined Variable</strong>로 나눌 수 있다.  </p>
+<h3 id="-built-in-variables-" style="position:relative;"><a href="#-built-in-variables-" aria-label=" built in variables  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; Built-In Variables ></h3>
+<p>Built-In 변수는 Event가 일어날 때 해당 Event에 대한 정보를 가져올 수 있다. 앞에서 Click Event를 이용한 트리거를 만들어봤는데, Login 버튼을 Click 했을 때, 그 버튼의 텍스트를 가져오고 싶다고 하자. 그러면 Click Text라는 Built-In Variable을 사용할 수 있다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/cf747c6e391fa3dd3764ffd7a01f2ba0/29007/built-in-variables.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA+0lEQVQoz6WTy3KEIBBF+f9PTLLIuIny8IEgAsJNy2hqJskiwa46ZQFyu+E2LIQA7z2UUpBSQgiBvu/RdR0453DO4S+RUio6zK0rjLVomoZE7gI7luasXRBCRM6ZNhD5d+7rCTFuYCF47FXubNv2I/P5cxEs3+8c84cw40pj1IYGiQTTo9TB/4K9tBF8XMHbD0i6R0pSsuZcB3vtIsToMChZ7u08ZrXgW7uglRqCHF3JJb+7fgE2jT1Ur/B+a8CFhFkcZmMxk8M1MDU5MsVS/3GyPV4/8k1tGEzANA6l5K82ybkK5hZDjbw89d2lCic9Q2tdntr+/E7R2vgE3iWu8KRC1I4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="built-in-variables.png"
+        title="built-in-variables.png"
+        src="/static/cf747c6e391fa3dd3764ffd7a01f2ba0/c1b63/built-in-variables.png"
+        srcset="/static/cf747c6e391fa3dd3764ffd7a01f2ba0/5a46d/built-in-variables.png 300w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/0a47e/built-in-variables.png 600w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/c1b63/built-in-variables.png 1200w,
+/static/cf747c6e391fa3dd3764ffd7a01f2ba0/29007/built-in-variables.png 1600w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+필요한 Builit-In 변수를 체크해두면 Event가 일어날 때마다, Application에서 해당 변수값을 같이 보낸다.  </p>
+<h3 id="-user-defined-variables-" style="position:relative;"><a href="#-user-defined-variables-" aria-label=" user defined variables  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; User-Defined Variables ></h3>
+<p>User-Defined Variable은 우리가 직접 값을 설정해줄 수 있다. Constant Variables의 경우 설정한 값을 그대로 가지고 있다. 너무 길거나 외우기 힘들 때 이런 변수를 사용할 수 있다.<br>
+여기서 유용하게 살펴볼 변수는 Data Layer Variable이다. 이 변수를 사용하면 Custom Event를 보낼 때 같이 넣어준 데이터를 가져올 수 있다.  </p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> TagManager <span class="token keyword">from</span> <span class="token string">"react-gtm-module"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> randomName <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">"Googy"</span> <span class="token operator">:</span> <span class="token string">"Letters"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> tagManagerArgs <span class="token operator">=</span> <span class="token punctuation">{</span>
+  dataLayer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    event<span class="token operator">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span>
+    userName<span class="token operator">:</span> randomName
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+TagManager<span class="token punctuation">.</span><span class="token function">dataLayer</span><span class="token punctuation">(</span>tagManagerArgs<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>앞에서 만든 login event에 userName이라는 data를 추가하여 보냈다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/01ba1d9e75c9d99fb582b45ee0f88854/bf9ea/dataLayer-variable.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAp0lEQVQoz5WSgQ6DIAxE+f9vnYmUCjict54T3BLHXJMXENLHpdHdhgGj97iX0ihlQVl23s6v4EQnkFFCw4vA+9EQzPN8WSpB4ZrEPgj3wR6YYt5ki6VkreuK09qPec8+V0WHUKAm8/EB1YCUUmvowYdF9RDWlK+ECg3SEnKtCc+FJwk/hLaS2sAZ/krYFeoUEWNEzhn/1FehBNvbr0QoJanDdm+z5vyfuutxgTfgW30AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="dataLayer-variable.png"
+        title="dataLayer-variable.png"
+        src="/static/01ba1d9e75c9d99fb582b45ee0f88854/c1b63/dataLayer-variable.png"
+        srcset="/static/01ba1d9e75c9d99fb582b45ee0f88854/5a46d/dataLayer-variable.png 300w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/0a47e/dataLayer-variable.png 600w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/c1b63/dataLayer-variable.png 1200w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/d61c2/dataLayer-variable.png 1800w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/97a96/dataLayer-variable.png 2400w,
+/static/01ba1d9e75c9d99fb582b45ee0f88854/bf9ea/dataLayer-variable.png 2716w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+그러면 GTM의 variable 설정에서 Data Layer Variable Name을 코드에서 정한 대로 userName이라고 설정하여 변수를 만들고 활용할 수 있다.  </p>
+<h3 id="-태그에서-변수-사용하기-" style="position:relative;"><a href="#-%ED%83%9C%EA%B7%B8%EC%97%90%EC%84%9C-%EB%B3%80%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-" aria-label=" 태그에서 변수 사용하기  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&#x3C; 태그에서 변수 사용하기 ></h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7adc5dc241704bf2bba7b210d006a97d/f705e/tag-variable.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAvElEQVQoz62TbQ+DIAyE/f+/drxZwELXI5M4ozK3NbnwAXjSK8dknBfoYV1bja7Oe2EuwqXIsrBqORbz+13VtAemGCQoMIQg8zwrmAVVaz3UGEheYiQhIkkpSdEuz2DYGwKdAzC2w5/UNVAFm5gPgDnn1smZ5THQKVCtrhdgeQtc6xaQXsDyH6BXy9St7i1/BURc1s4wy7qD3JyhF9sfhns0fgRaMcY06wCP4mNHQGQQtjE//BIAr4SobYFPNNOpg7hYkB8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="tag-variable.png"
+        title="tag-variable.png"
+        src="/static/7adc5dc241704bf2bba7b210d006a97d/c1b63/tag-variable.png"
+        srcset="/static/7adc5dc241704bf2bba7b210d006a97d/5a46d/tag-variable.png 300w,
+/static/7adc5dc241704bf2bba7b210d006a97d/0a47e/tag-variable.png 600w,
+/static/7adc5dc241704bf2bba7b210d006a97d/c1b63/tag-variable.png 1200w,
+/static/7adc5dc241704bf2bba7b210d006a97d/d61c2/tag-variable.png 1800w,
+/static/7adc5dc241704bf2bba7b210d006a97d/97a96/tag-variable.png 2400w,
+/static/7adc5dc241704bf2bba7b210d006a97d/f705e/tag-variable.png 2998w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+태그에서 필요한 곳에 {{변수명}} 이렇게 설정하면 변수의 값이 들어간다. (+ 버튼을 눌러서 사용할 변수를 추가할 수도 있다.)<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/765df93a51c096fafcf1bc3dd0a1ca9e/aaba6/tag-detail.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 37.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtElEQVQoz42R2w7DIAhA/f8vXbKH1aJYL8iAzaTpWleTUzGVI6J7vJ68lcy1Vi5KKRbX1ox2YOwp5bv/gFtDZL8GXlZgjRfvOefMOqh3JqId3f4hImPaOAqat8fpx8NHCCJETAyyDlHilKyquqM1MvQArXLkD9wITCgSAOAY0USa1KXKM3T8F1qFKD0kS7iSnQnH/CMMQpPm8kR2W6iPkrRv0viZTB9H59vCKpD0sE+ufVXhG+6GcRj2NAo3AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="tag-detail.png"
+        title="tag-detail.png"
+        src="/static/765df93a51c096fafcf1bc3dd0a1ca9e/c1b63/tag-detail.png"
+        srcset="/static/765df93a51c096fafcf1bc3dd0a1ca9e/5a46d/tag-detail.png 300w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/0a47e/tag-detail.png 600w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/c1b63/tag-detail.png 1200w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/d61c2/tag-detail.png 1800w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/97a96/tag-detail.png 2400w,
+/static/765df93a51c096fafcf1bc3dd0a1ca9e/aaba6/tag-detail.png 3374w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+디버그 모드에서 발동된 Login Tag의 값을 보니 Application에서 보내준 데이터가 값으로 들어간 것을 확인할 수 있다.<br>
+모두 테스트했다면 잊지 말고, Publish 해주고, 다음에 Google Analytics에서 기록된 Event를 확인해보자.  </p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/web">web</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/react">react</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/data">data</a></span> on <time dateTime="2021-04-28T00:00:00.000Z">28 April, 2021</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/">Home</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/algorithm">Algorithm</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/web">Web</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2021-04-28-google-tag-manager";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-7f14ff075869536f8e68.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-9f95ad3bf33af9cd770d.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-7f14ff075869536f8e68.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-79c6cb472abad735489b.js" async=""></script></body></html>
