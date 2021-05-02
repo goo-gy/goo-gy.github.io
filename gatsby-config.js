@@ -89,7 +89,7 @@ module.exports = {
       resolve: `gatsby-plugin-gtag`,
       options: {
         trackingIds: [
-          'G-08K0MBGSZM',
+          'UA-194826905-2',
           // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
         ],
       },
