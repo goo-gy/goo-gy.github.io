@@ -58,6 +58,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingIds: [
+          'UA-194826905-2',
+          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+        ],
+      },
+    },
+    {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: {
         manifest: {
@@ -84,15 +93,6 @@ module.exports = {
           allow: '/'
         }]
       }
-    },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingIds: [
-          'UA-194826905-2',
-          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-        ],
-      },
     },
   ],
 };
