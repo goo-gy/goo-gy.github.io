@@ -60,10 +60,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-gtag`,
       options: {
-        trackingIds: [
-          'UA-194826905-2',
-          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-        ],
+        trackingId: `UA-194826905-2`, // 측정 ID
+        head: false,
+        anonymize: true,
       },
     },
     {
