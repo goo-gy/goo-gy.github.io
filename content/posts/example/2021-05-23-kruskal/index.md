@@ -2,17 +2,17 @@
 layout: post
 title: "크루스칼(Kruskal) 알고리즘을 이용하여 최소 스패닝 트리 (Minimum Spanning Tree) 찾기"
 excerpt: "cycle을 찾기"
-tags: [web, react, data]
+tags: [algorithm, data_structure, graph]
 
 path: "/2021-05-23-kruskal"
-featuredImage: "./minimum_spanning_tree.png"
+featuredImage: "./post_logo.png"
 created: 2021-05-23
 updated: 2021-05-23
 ---
 
 ## [ 최소 스패닝 트리 (Minimum Spanning Tree) ]  
 
-![trigger-click.png](minimum_spanning_tree.png)  
+![post_logo.png](post_logo.png)  
 
 **스패닝 트리(Spanning Tree)**는 어떤 그래프의 부분 그래프 중에, 모든 노드를 포함하고, 모든 노드들이 서로 간에 경로가 존재하는 그래프를 말한다. 이 그래프는 (모든 Edge의 Weight가 양수라는 가정 하에) 당연히 트리 형태를 가지기 때문에, 스패닝 트리라고 부른다. **최소 스패닝 트리 (Minimum Spanning Tree)**는 이름에서 알 수 있듯이 간선(Edge)의 Weight 합이 최소가 되는 Spanning Tree를 말한다.  
 
@@ -35,9 +35,10 @@ updated: 2021-05-23
 
 ### < Union-Find >  
 Union-Find 알고리즘은 서로소 집합 (Disjoint Set)을 표현하기 위해 사용하는 알고리즘이라고 한다. 우리는 Spanning Tree를 만들어 나갈 때 연결된 컴포넌트라는 것을 집합으로 표현하고, Edge를 확정하여 집합들을 합칠 때 Union-Find 알고리즘을 사용할 것이다.  
-![tree.png](tree.png)  
-Union-Find 알고리즘에서는 각 집합(컴포넌트)을 트리구조로 표현하여 집합 내의 모든 원소들이 대표 원소를 찾을 수 있도록 한다. Union-Find의 단계는 다음과 같다.  
+![disjoint.png](disjoint.png)  
+Union-Find 알고리즘에서는 각 **집합(컴포넌트)**을 **트리구조**로 표현하여 집합 내의 모든 원소들이 대표 원소를 찾을 수 있도록 한다. Union-Find의 단계는 다음과 같다.  
 
+[그림]  
 - (초기화) 각 노드 만큼의 집합을 만든다.  
 - Edge마다 연결된 두 노드의 대표값을 찾는다(Find).  
 - 대표값이 다르다면 두 집합을 합치고(Union) Edge를 Spanning Tree에 추가한다.  
@@ -45,11 +46,15 @@ Union-Find 알고리즘에서는 각 집합(컴포넌트)을 트리구조로 표
 
 
 ## [ 구현 ]  
-- 각 노드마다 parent와 size를 저장한다.
-  parent는 대표 노드를 Find할 때 따라갈 노드이고, size는 해당 
-- 그래프 내의 Edge를 Weight가 작은 순으로 순회한다.
-  * Edge마다 연결된 두 노드의 대표값을 찾는다(Find).  
-  * 대표값이 다르다면 두 집합을 합치고(Union) Edge를 Spanning Tree에 추가한다.  
+![union-find.png](union-find.png)  
+앞에서 만든 집합의 구현 상태는 이렇게 된다. 그러면 이렇게 되기까지 구현 과정을 살펴보자.  
+
+![initial.png](initial.png)  
+- 각 노드마다 parent와 size를 저장한다. (집합에서 필요한 부분만 구현)   
+  parent는 대표 노드를 Find할 때 따라갈 노드이고, size는 자신을 포함한 하위 트리의 노드 수이다.   
+- 그래프 내의 Edge를 Weight가 작은 순으로 순회하면서 다음 작업을 수행한다.  
+- Edge마다 연결된 두 노드의 대표값을 찾는다(Find).  
+- 대표값이 다르다면 두 집합을 합치고(Union) Edge를 Spanning Tree에 추가한다.  
 
 ### < 코드 >  
 ``` cpp
