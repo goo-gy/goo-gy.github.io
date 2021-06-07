@@ -58,6 +58,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `UA-194826905-2`, // 측정 ID
+        head: false,
+        anonymize: true,
+      },
+    },
+    {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: {
         manifest: {
@@ -84,15 +92,6 @@ module.exports = {
           allow: '/'
         }]
       }
-    },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingIds: [
-          'G-08K0MBGSZM',
-          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-        ],
-      },
     },
   ],
 };
