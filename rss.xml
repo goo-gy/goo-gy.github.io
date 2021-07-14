@@ -1,4 +1,193 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 29 May 2021 15:40:23 GMT</lastBuildDate><item><title><![CDATA[크루스칼(Kruskal) 알고리즘을 이용하여 최소 스패닝 트리 (Minimum Spanning Tree) 찾기]]></title><description><![CDATA[크루스칼 알고리즘과 Union-Find에 대하여 알아보자]]></description><link>https://goo-gy.github.io/2021-05-23-kruskal</link><guid isPermaLink="false">https://goo-gy.github.io/2021-05-23-kruskal</guid><pubDate>Sun, 23 May 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;최소-스패닝-트리-minimum-spanning-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B5%9C%EC%86%8C-%EC%8A%A4%ED%8C%A8%EB%8B%9D-%ED%8A%B8%EB%A6%AC-minimum-spanning-tree&quot; aria-label=&quot;최소 스패닝 트리 minimum spanning tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 최소 스패닝 트리 (Minimum Spanning Tree) ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 14 Jul 2021 04:54:13 GMT</lastBuildDate><item><title><![CDATA[GNU Radio 시작하기]]></title><description><![CDATA[GNU Radio에서 OOT block을 만들어 보자.]]></description><link>https://goo-gy.github.io/2021-07-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-07-13-gnuradio</guid><pubDate>Tue, 13 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;gnu-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio&quot; aria-label=&quot;gnu radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio ]&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gnuradio.org/&quot;&gt;https://www.gnuradio.org&lt;/a&gt;&lt;br&gt;
+GNU Radio는 Software Defined Radio에서 신호를 처리하는 프로그램을 만들 수 있는 개발도구이다.  &lt;/p&gt;
+&lt;h3 id=&quot;-software-defined-radio-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-software-defined-radio-&quot; aria-label=&quot; software defined radio  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Software Defined Radio &gt;&lt;/h3&gt;
+&lt;p&gt;Software Defined Radio (SDR)는 신호 처리 로직이 Hardware 내의 회로에서 고정된 것이 아니라 Software로 동작하도록 설계된 무선 통신 장비이다. 이를 이용하면 신호처리에 대한 업데이트도 쉽고 하나의 장비로 여러 종류의 통신을 지원할 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;gnu-radio-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;gnu radio 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio 설치 ]&lt;/h2&gt;
+&lt;h3 id=&quot;-환경-버전-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%99%98%EA%B2%BD-%EB%B2%84%EC%A0%84-&quot; aria-label=&quot; 환경 버전  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; 환경, 버전 &gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu LTS 18.04  &lt;/li&gt;
+&lt;li&gt;GNU Radio 3.8  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;-설치-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%84%A4%EC%B9%98-&quot; aria-label=&quot; 설치  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; 설치 &gt;&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; add-apt-repository ppa:gnuradio/gnuradio-releases-3.8
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; update
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; gnuradio&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ppa를 통해서 쉽게 설치할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; add-apt-repository ppa:gnuradio/gnuradio-releases&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3.8 버전이 필요해 gnuradio-releases-3.8로 설치하였지만, 최신 버전으로 설치하고 싶다면  이렇게 바꾸면 된다.  &lt;/p&gt;
+&lt;h2 id=&quot;gnu-radio-시작하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0&quot; aria-label=&quot;gnu radio 시작하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio 시작하기 ]&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;gnuradio-companion&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fc2c88459b54e67e90ceac6318482862/f2331/gnuradio.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAACMklEQVQoz52SXUsUURjH5zNEQRSFoJldSKm5u46pq2Qk+DX6GlFU2EUXdRNEN1Go65a7rW8hXWRlmrUrBgbRQhdrjM6w4+7O7M7s7rz8Oo4GdtGLHfjxPDw853/+5zlHGpa7uXhBZrBbZqg3ynB0gMs9vQyKen9niGh7B3JnmLttLXxoO8lKuIFM5ARrXcf53HuM7MBRstEj5AYPk7t0CGkoLDbJIQZCO/TR3y4Luug7F+F8YyuR5rN0nm7nSkcbN+VWrobOcC3cwvVwMzcip7glN3FbbmSkp4lH0Qak+yN3mJ9NMvlsglhsNIjJ5FNSiTipyXES8VFmnsdJpiaJz0zzeCLGw9FxxpJJJqamiKVSjCUSxOZfknxwD2n2yTRKVkXJFfiWVfifVTdLQbS+rCEtvVig7kHZLOM4Dq7r7uHheh6etxsDRN37Wdvp8Xxc2yK/+Z0NLY+2uoy09mYlUPdFUxB9/98J7FXZVjcp2jWK66tImYXlQMh13IOJ7RPUtxS0ooH+KY20/jodCHp7DgOXB5ifX68FDguWLQQzSF9f7Qo6to3n1APwhFvX+TNi3v5On12hoG6hFkpspt8jLcfnsMrbGNoWpq5hFXSMvIpd2qZqFHDKxm8o4VRMakYeXVNQ8jobK0tI6blFHOHQrlaxazXq4uSKZVEWuP7fL+/6LnlhRBe/RMl8FK889y6Yn6EXqRRNygWDSskUuRFgidwqGb9gG/sxUXMbqKpGbvEtPwDm5Dzz1jN9NgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gnuradio.png&quot;
+        title=&quot;gnuradio.png&quot;
+        src=&quot;/static/fc2c88459b54e67e90ceac6318482862/c1b63/gnuradio.png&quot;
+        srcset=&quot;/static/fc2c88459b54e67e90ceac6318482862/5a46d/gnuradio.png 300w,
+/static/fc2c88459b54e67e90ceac6318482862/0a47e/gnuradio.png 600w,
+/static/fc2c88459b54e67e90ceac6318482862/c1b63/gnuradio.png 1200w,
+/static/fc2c88459b54e67e90ceac6318482862/f2331/gnuradio.png 1427w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gnuradio 코드는 여러 block들로 구성된다. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Options&lt;/strong&gt;&lt;br&gt;
+Options block은 프로그램에 대한 정보를 나타낸다. 더블 클릭하면 properties를 설정할 수 있는데, Id를 설정해 주어야 실행 가능하다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Variable&lt;/strong&gt;&lt;br&gt;
+자주 사용하는 값을 재사용하기 위해서 변수로 지정하는 block이다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;-source--sink-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-source--sink-&quot; aria-label=&quot; source  sink  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; source &amp;#x26; sink &gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 741px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e5c05d746e5c895aa3217344cb97b5b0/13e20/source_sink.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABNUlEQVQoz5WS207CUBBF+/8f4wOJ+kCiIRGChBhAChioGNBWalvonbbA8pSk2Fa5OMlkknOm6+yZXSmOE3w3Ymm6OKuAwI/wPB/X9djtdqSR1UtCch2fVn1A9bZJt/2GOlvSfOjRaSvEcfx/YBiukZ/H9DojRoMpmmqgvi+wDIfNZnMAZnkWeMmreVAenn8kq9LvBvbK0kxHTpLkrML8uVRuTk2ajjXajzKj/hzbCgofh36IYSzRdRPH9shYB4X5MdJQJgo3lXvqtR6WFjN89Zh9iX1GAaphcyfOq9cNGrU+46EmJtmeBuoLncpVlVZjyFxZMVFMbC8gWoc4osrylO7TC7rmCfXrgnEFU36Wm0ItPjWTj/kCe+WWNyZ6tgKU7LMsSCrC/l582bRjhhxRePq3OHf/DUM3WHld2TAaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;source_sink.png&quot;
+        title=&quot;source_sink.png&quot;
+        src=&quot;/static/e5c05d746e5c895aa3217344cb97b5b0/13e20/source_sink.png&quot;
+        srcset=&quot;/static/e5c05d746e5c895aa3217344cb97b5b0/5a46d/source_sink.png 300w,
+/static/e5c05d746e5c895aa3217344cb97b5b0/0a47e/source_sink.png 600w,
+/static/e5c05d746e5c895aa3217344cb97b5b0/13e20/source_sink.png 741w&quot;
+        sizes=&quot;(max-width: 741px) 100vw, 741px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;source&lt;/strong&gt;&lt;br&gt;
+source block은 어떤 출력을 내보내주는 block이다. 위 예제에서는 frequency가 1khz인 cosine wave를 내보내고 있다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sink&lt;/strong&gt;&lt;br&gt;
+sink block은 어떤 입력을 받아서 처리하는 block이다. QT GUI Sink는 입력받은 신호를 그래프로 그려준다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;out-of-tree-modules-제작하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#out-of-tree-modules-%EC%A0%9C%EC%9E%91%ED%95%98%EA%B8%B0&quot; aria-label=&quot;out of tree modules 제작하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Out Of Tree Modules 제작하기 ]&lt;/h2&gt;
+&lt;p&gt;Out Of Tree (OOT)는 Gnuradio에 내장되어 있지 않고, 사용자가 직접 함수를 작성하여 block으로 사용할 수 있는 module이다.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;myOOT&lt;/code&gt;라는 module과 &lt;code class=&quot;language-text&quot;&gt;print_data&lt;/code&gt;라는 block을 만들어보자.  &lt;/p&gt;
+&lt;h3 id=&quot;-모듈-생성-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EB%AA%A8%EB%93%88-%EC%83%9D%EC%84%B1-&quot; aria-label=&quot; 모듈 생성  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; 모듈 생성 &gt;&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gr_modtool newmod &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;module name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;실행하면 gr-{module name}이라는 폴더가 생긴다.&lt;/p&gt;
+&lt;h3 id=&quot;-block-추가-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-block-%EC%B6%94%EA%B0%80-&quot; aria-label=&quot; block 추가  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; block 추가 &gt;&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; gr-&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;module name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+gr_modtool &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; -t &lt;span class=&quot;token function&quot;&gt;sync&lt;/span&gt; -l python&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;Language: Python
+Enter name of block/code &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;without module name prefix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;block name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+Block/code identifier: &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;block id&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+Please specify the copyright holder:
+Enter valid argument list, including default arguments: &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;arg1&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;, &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;arg2&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;, &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;필요한 properties&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+Add Python QA code? &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Y/n&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; n&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;완료되면 module 폴더 내에 &lt;code class=&quot;language-text&quot;&gt;grc/{module name}_{block name}.block.yml&lt;/code&gt; 과 &lt;code class=&quot;language-text&quot;&gt;python/{block name}.py&lt;/code&gt; 파일이 생긴다.  &lt;/p&gt;
+&lt;h3 id=&quot;-block-설정코드-작성-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-block-%EC%84%A4%EC%A0%95%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1-&quot; aria-label=&quot; block 설정코드 작성  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Block 설정/코드 작성 &gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;grc/{module name}_{block name}.block.yml&lt;/code&gt;&lt;br&gt;
+paramters, inputs, outputs에서 ...으로 되어 있는 부분에 값을 채워준다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; sample_rate
+&lt;span class=&quot;token key atrule&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Sample Rate
+&lt;span class=&quot;token key atrule&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; float
+
+&lt;span class=&quot;token key atrule&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; input
+&lt;span class=&quot;token key atrule&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; float&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;parameter의 id는 block을 생성할 때 지정한 argument 이름과 맞춰주어야 한다.&lt;br&gt;
+input만 필요한 block을 만들 것이기 때문에 outputs은 제거하였다. inputs에서는 label, dtype만 설정해 주고 필요 없는 부분은 제거하였다.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;python/{block name}.py&lt;/code&gt;  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; numpy
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; gnuradio &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; gr
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;print_data&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;gr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sync_block&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;
+  docstring for block print_data
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; sample_rate&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      gr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sync_block&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;__init__&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;print_data&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          in_sig&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;numpy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;float32&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          out_sig&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+  &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; input_items&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; output_items&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      in0 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; input_items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;in0&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;in0&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;파일을 보면 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;+numpy.float32+&amp;gt;&lt;/code&gt;이런 형식으로 되어 있는 부분은 &lt;code class=&quot;language-text&quot;&gt;numpy.float32&lt;/code&gt; 이렇게 바꿔주어야 한다. output은 없는 block을 만들 것이므로 &lt;code class=&quot;language-text&quot;&gt;__init__&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;out_sig=None&lt;/code&gt;으로 설정해 주고 &lt;code class=&quot;language-text&quot;&gt;work&lt;/code&gt;에서 input을 출력하도록 구현하였다.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;-oot-빌드-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-oot-%EB%B9%8C%EB%93%9C-&quot; aria-label=&quot; oot 빌드  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; OOT 빌드 &gt;&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; build
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; build
+cmake &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; ldconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;완료되면 아래와 같이 만든 block을 사용할 수 있다.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/db63b107f9c35802189b54fb8dd7536d/82c1e/OOT.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABp0lEQVQoz6VS207bQBD1H5JCaEhCiooQ4gsr9bmvfahUqVUEMY7XWa+dgONbbGcvp7PGpolK+9IjHc3s7MzZ0ew4s/EZLC8vzjAenmB8PsCE7OT8BFeTIa4/jHA9G+H24xQ3V5M254I4fT+gmlPMiNPRgPgOd5dDOBsRgDEPQcDA/CUiEUIwhmjlwbufw/fuEbMlBA8QCoHHxQKux7BZR/BZANd1wTlHGHIsfR8O/gPNrkSapkexVtAYg2pX42EeYMWeiDGi8KmNa63fJF1BFSmUlNB0MB1fO7SCP74v8PjAIUhsm+ToH7PFPfpCC1VmMCR+GH/t8BBWLAqfUe/2vQy0UlDqd/E/BQ+RFwU+f/qCb199bAKBpqlQJDHcn3N4XnSU+yKojh5xjJaQdQ1JhVruYZTEarkC9yPkSUqxhu6rFzYNjM3p8nRVktBx186a+0gER/m8QZNvkdE6qF3WUlcFZJG1nfS0Z0l2nyc0kvSPuToJfXuW5yjKEnupWj/LC/JlN723Qf+Mqi67hAPBeB0j3W5pVk27DvZL7aBN7/+F6FaqF+rtL6QfMsaBRby2AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;OOT.PNG&quot;
+        title=&quot;OOT.PNG&quot;
+        src=&quot;/static/db63b107f9c35802189b54fb8dd7536d/c1b63/OOT.png&quot;
+        srcset=&quot;/static/db63b107f9c35802189b54fb8dd7536d/5a46d/OOT.png 300w,
+/static/db63b107f9c35802189b54fb8dd7536d/0a47e/OOT.png 600w,
+/static/db63b107f9c35802189b54fb8dd7536d/c1b63/OOT.png 1200w,
+/static/db63b107f9c35802189b54fb8dd7536d/82c1e/OOT.png 1398w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+지정한 parameter에 값을 넣어주고 실행해보자.  &lt;/p&gt;
+&lt;h3 id=&quot;-error-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-error-&quot; aria-label=&quot; error  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Error &gt;&lt;/h3&gt;
+&lt;p&gt;실행했을 때 &lt;code class=&quot;language-text&quot;&gt;No module named myOOT&lt;/code&gt; 에러가 난다면, myOOT 모듈이 python 모듈들이 있는 위치에 있는지 검색해보고 다른 곳에 있다면 옮겨주자. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;find&lt;/span&gt; / -name &lt;span class=&quot;token string&quot;&gt;&quot;myOOT&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[크루스칼(Kruskal) 알고리즘을 이용하여 최소 스패닝 트리 (Minimum Spanning Tree) 찾기]]></title><description><![CDATA[크루스칼 알고리즘과 Union-Find에 대하여 알아보자]]></description><link>https://goo-gy.github.io/2021-05-23-kruskal</link><guid isPermaLink="false">https://goo-gy.github.io/2021-05-23-kruskal</guid><pubDate>Sun, 23 May 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;최소-스패닝-트리-minimum-spanning-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B5%9C%EC%86%8C-%EC%8A%A4%ED%8C%A8%EB%8B%9D-%ED%8A%B8%EB%A6%AC-minimum-spanning-tree&quot; aria-label=&quot;최소 스패닝 트리 minimum spanning tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 최소 스패닝 트리 (Minimum Spanning Tree) ]&lt;/h2&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; &quot;
