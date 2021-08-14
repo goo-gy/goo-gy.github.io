@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">GNU Radio를 이용한 SDR 프로그래밍 - googy-blog</title><meta data-react-helmet="true" name="description" content="GNU Radio를 이용하여 Software Defined Radio 프로그래밍"/><meta data-react-helmet="true" property="og:title" content="GNU Radio를 이용한 SDR 프로그래밍 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="GNU Radio를 이용하여 Software Defined Radio 프로그래밍"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2021-08-13-gnuradio"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="GNU Radio를 이용한 SDR 프로그래밍 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="GNU Radio를 이용하여 Software Defined Radio 프로그래밍"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, project, network, gnuradio, SDR"/><meta data-react-helmet="true" name="article:published_time" content="2021-08-13T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2021-08-13T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="project"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "project, network, gnuradio, SDR",
+          "headline": "GNU Radio를 이용한 SDR 프로그래밍 - googy-blog",
+          "url": "https://goo-gy.github.io/2021-08-13-gnuradio",
+          "datePublished": "2021-08-13T00:00:00.000Z",
+          "dateModified": "2021-08-13T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "GNU Radio를 이용하여 Software Defined Radio 프로그래밍",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa jWOxDX jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.jWOxDX{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#007acc;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=bd980a9f8c3998db92fa9ed41520e21b" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-79c6cb472abad735489b.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-523b933e5cd718e8fe46.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-9f95ad3bf33af9cd770d.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2021-08-13-gnuradio/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/project">Project</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/algorithm">Algorithm</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/web">Web</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#007acc" class="reading-progress__ReadingProgressBar-vxjjnv-0 jWOxDX"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/project">project</a><time dateTime="2021-08-13T00:00:00.000Z">13 August, 2021</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">GNU Radio를 이용한 SDR 프로그래밍</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:74%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHcrNKOMH//xAAZEAEBAQADAAAAAAAAAAAAAAACAREAAxD/2gAIAQEAAQUCSgk7d4dxhVkQ+f/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABoQAAMAAwEAAAAAAAAAAAAAAAABERAhMlH/2gAIAQEABj8CrZeUbKoevH//xAAbEAADAAIDAAAAAAAAAAAAAAAAASEQMUFhgf/aAAgBAQABPyGcQy3QuWOyvcaZHKXPR4//2gAMAwEAAgADAAAAEODP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAIBABAAEEAAcAAAAAAAAAAAAAAREAQWFxECExUYGx4f/aAAgBAQABPxCGIWLuin0kesT4e+KAiHziIjealwgAlJn5T4/TaLcP/9k=" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/5f5a2cefb58bb96bdd87d815f55a9c14/8850c/RTL-SDR.jpg 200w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/da113/RTL-SDR.jpg 400w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg 700w" sizes="(max-width: 700px) 100vw, 700px" /><img loading="lazy" sizes="(max-width: 700px) 100vw, 700px" srcset="/static/5f5a2cefb58bb96bdd87d815f55a9c14/8850c/RTL-SDR.jpg 200w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/da113/RTL-SDR.jpg 400w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg 700w" src="/static/5f5a2cefb58bb96bdd87d815f55a9c14/e0a14/RTL-SDR.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="sdr-software-defined-radio" style="position:relative;"><a href="#sdr-software-defined-radio" aria-label="sdr software defined radio permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ SDR (Software Defined Radio) ]</h2>
+<p>Software Defined Radio (SDR)는 신호 처리 로직이 Hardware 내의 회로에서 고정된 것이 아니라 Software로 동작하도록 설계된 무선 통신 장비이다. 이를 이용하면 신호처리에 대한 업데이트도 쉽고 하나의 장비로 여러 종류의 통신을 지원할 수 있다.<br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 74%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHcrNKOMH//xAAZEAEBAQADAAAAAAAAAAAAAAACAREAAxD/2gAIAQEAAQUCSgk7d4dxhVkQ+f/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABoQAAMAAwEAAAAAAAAAAAAAAAABERAhMlH/2gAIAQEABj8CrZeUbKoevH//xAAbEAADAAIDAAAAAAAAAAAAAAAAASEQMUFhgf/aAAgBAQABPyGcQy3QuWOyvcaZHKXPR4//2gAMAwEAAgADAAAAEODP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAIBABAAEEAAcAAAAAAAAAAAAAAREAQWFxECExUYGx4f/aAAgBAQABPxCGIWLuin0kesT4e+KAiHziIjealwgAlJn5T4/TaLcP/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="RTL-SDR"
+        title="RTL-SDR"
+        src="/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg"
+        srcset="/static/5f5a2cefb58bb96bdd87d815f55a9c14/f93b5/RTL-SDR.jpg 300w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/b4294/RTL-SDR.jpg 600w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg 700w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+오늘은 RTL-SDR이라는 실제 장비를 GNU Radio와 연결하여 장비를 통해 인식한 Signal을 살펴볼 것이다.  </p>
+<h2 id="sdr-driver-설치" style="position:relative;"><a href="#sdr-driver-%EC%84%A4%EC%B9%98" aria-label="sdr driver 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ SDR Driver 설치 ]</h2>
+<h2 id="sdr-블록이-내장된-gnu-radio-설치" style="position:relative;"><a href="#sdr-%EB%B8%94%EB%A1%9D%EC%9D%B4-%EB%82%B4%EC%9E%A5%EB%90%9C-gnu-radio-%EC%84%A4%EC%B9%98" aria-label="sdr 블록이 내장된 gnu radio 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ SDR 블록이 내장된 GNU-Radio 설치 ]</h2>
+<p><a href="https://goo-gy.github.io/2021-07-13-gnuradio">https://goo-gy.github.io/2021-07-13-gnuradio</a>에서 간단하게 GNU Radio를 설치하는 방법을 소개했지만, 아쉽게도 이 방법으로 설치할 경우 RTL-SDR 블록이 내장되어 있지 않다. 그래서 추가적으로 RTL-SDR 모듈을 설치하려고 하였지만 GNU Radio 3.8에서는 다른 좋은 방법을 찾지 못하고 GNU Radio 3.8을 설치할 때 같이 설치하는 방법만 발견하였다.  </p>
+<p><a href="https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6">https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6</a><br>
+위 포스팅을 참고하고 하면 되지만 몇 가지 수정할 부분이 있어 다시 정리하였다.  </p>
+<h3 id="pybomb-설치" style="position:relative;"><a href="#pybomb-%EC%84%A4%EC%B9%98" aria-label="pybomb 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pybomb 설치</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python3-pip python3-apt
+<span class="token function">sudo</span> -H pip3 <span class="token function">install</span> PyBOMBS</code></pre></div>
+<h3 id="recipes-추가" style="position:relative;"><a href="#recipes-%EC%B6%94%EA%B0%80" aria-label="recipes 추가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>recipes 추가</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/sdr
+<span class="token builtin class-name">cd</span> ~/sdr
+pybombs auto-config
+pybombs recipes <span class="token function">add</span> gr-recipes git+https://github.com/gnuradio/gr-recipes.git
+pybombs recipes <span class="token function">add</span> gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
+pybombs prefix init ~/sdr</code></pre></div>
+<h3 id="setup_envsh로-python3" style="position:relative;"><a href="#setup_envsh%EB%A1%9C-python3" aria-label="setup_envsh로 python3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setup_env.sh로 python3</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/2\.6/3.6/g'</span> setup_env.sh
+<span class="token function">sed</span> -i <span class="token string">'s/2\.7/3/g'</span> setup_env.sh</code></pre></div>
+<h3 id="gnuradio-recipe-수정" style="position:relative;"><a href="#gnuradio-recipe-%EC%88%98%EC%A0%95" aria-label="gnuradio recipe 수정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>gnuradio recipe 수정</h3>
+<ul>
+<li><code class="language-text">~/.pybombs/recipes/gr-recipes/gnuradio.lwr</code></li>
+<li>"gitbranch"를 <code class="language-text">maint-3.8</code> 로 수정 (master로 되어 있을거임)</li>
+<li>config<em>opt에 `-DENABLE</em>CTRLPORT_THRIFT=OFF` 추가</li>
+</ul>
+<h3 id="uhd-설치" style="position:relative;"><a href="#uhd-%EC%84%A4%EC%B9%98" aria-label="uhd 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>uhd 설치</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/sdr/setup_env.sh
+pybombs <span class="token function">install</span> uhd
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> cmake g++ libboost-all-dev libgmp-dev <span class="token punctuation">\</span>
+  swig python3-numpy python3-mako python3-sphinx python3-lxml <span class="token punctuation">\</span>
+  doxygen libfftw3-dev libcomedi-dev libsdl1.2-dev libgsl-dev <span class="token punctuation">\</span>
+  libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev <span class="token punctuation">\</span>
+  libzmq3-dev python3-yaml python3-click python3-click-plugins</code></pre></div>
+<h3 id="gnuradio-38-설치" style="position:relative;"><a href="#gnuradio-38-%EC%84%A4%EC%B9%98" aria-label="gnuradio 38 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>gnuradio 3.8 설치</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">pybombs <span class="token function">install</span> gnuradio</code></pre></div>
+<h3 id="gr-osmosdr-설치" style="position:relative;"><a href="#gr-osmosdr-%EC%84%A4%EC%B9%98" aria-label="gr osmosdr 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>gr-osmosdr 설치</h3>
+<ul>
+<li>
+<p>~/.pybombs/recipes/gr-recipes/gr-iqbal.lwr 수정</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">category</span><span class="token punctuation">:</span> common
+<span class="token key atrule">depends</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> gnuradio
+<span class="token punctuation">-</span> libosmo<span class="token punctuation">-</span>dsp
+<span class="token key atrule">description</span><span class="token punctuation">:</span> Gnuradio I/Q balancing
+<span class="token comment">#gitbranch: master</span>
+<span class="token key atrule">gitbranch</span><span class="token punctuation">:</span> maint<span class="token punctuation">-</span><span class="token number">3.8</span>
+<span class="token key atrule">inherit</span><span class="token punctuation">:</span> cmake
+<span class="token comment"># Let's always build this from source, not binaries</span>
+<span class="token comment">#source: git+https://git.osmocom.org/gr-iqbal</span>
+<span class="token key atrule">source</span><span class="token punctuation">:</span> git+https<span class="token punctuation">:</span>//github.com/velichkov/gr<span class="token punctuation">-</span>iqbal.git</code></pre></div>
+</li>
+<li>
+<p>~/.pybombs/recipes/gr-recipes/gr-osmosdr .lwr 수정</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">category</span><span class="token punctuation">:</span> common
+<span class="token key atrule">depends</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> uhd
+<span class="token punctuation">-</span> rtl<span class="token punctuation">-</span>sdr
+<span class="token punctuation">-</span> osmo<span class="token punctuation">-</span>sdr
+<span class="token punctuation">-</span> hackrf
+<span class="token punctuation">-</span> gnuradio
+<span class="token punctuation">-</span> gr<span class="token punctuation">-</span>iqbal
+<span class="token punctuation">-</span> bladeRF
+<span class="token punctuation">-</span> airspy
+<span class="token punctuation">-</span> soapysdr
+<span class="token key atrule">description</span><span class="token punctuation">:</span> Interface API independent of the underlying radio hardware
+<span class="token comment">#gitbranch: master</span>
+<span class="token key atrule">gitbranch</span><span class="token punctuation">:</span> maint<span class="token punctuation">-</span><span class="token number">3.8</span>
+<span class="token key atrule">inherit</span><span class="token punctuation">:</span> cmake
+<span class="token comment"># Let's always build this from source, not binaries</span>
+<span class="token comment">#source: git+https://git.osmocom.org/gr-osmosdr</span>
+<span class="token key atrule">source</span><span class="token punctuation">:</span> git+https<span class="token punctuation">:</span>//github.com/velichkov/gr<span class="token punctuation">-</span>osmosdr.git</code></pre></div>
+</li>
+<li>
+<p>설치</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">pybombs <span class="token function">install</span> gr-osmosdr</code></pre></div>
+</li>
+</ul>
+<h3 id="gnuradio-실행" style="position:relative;"><a href="#gnuradio-%EC%8B%A4%ED%96%89" aria-label="gnuradio 실행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>gnuradio 실행</h3>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/sdr/setup_env.sh
+gnuradio-companion</code></pre></div>
+<p>gnuradio를 실행하기 전에 항상 setup_env.sh 파일을 실행시켜줘야 한다.  </p>
+<h2 id="rtl-sdr-테스트" style="position:relative;"><a href="#rtl-sdr-%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="rtl sdr 테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ RTL-SDR 테스트 ]</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 847px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABJ0AAASdAHeZh94AAABJklEQVQoz4WSi07CQBBF+f+/MdEYRIWk4AOUEjGgQCiCFmihtZS2PLo9bktIXCDhZmdnM5m5mbmzuSRBIiGOBevVFn+xxPN8wmDFZrMlSRPSs0vM/KHt4yly+8f4Z0ZTH/BUbtJtj7HNNY4dIkSsEKlQyRTCL8PkLv9MudTgvTFkMopwZ5FMFkpRsIzod0067SHmyJWTrNUO08sw+tRf3igWauSvNLSSzqjn8NqyMcaOJPGlDAt8f8Gj3uPmukq92qX/6eC54fHIIomzDrVig9Jtjd6HRfgLcztiG8dKgWU53BceqGg6nZaJ74WnNRz0v8lfVri8KGYjeza4kvC/hnsvhNRT7BYphDhNGCxDppM51tTJzHMDGVsdbfcUlKUcBs4VnPs2fza/ZxaIUA9pAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="rtl-sdr-block"
+        title="rtl-sdr-block"
+        src="/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png"
+        srcset="/static/b7de2959f59b3b7ae9b649705424a5e7/5a46d/rtl-sdr-block.png 300w,
+/static/b7de2959f59b3b7ae9b649705424a5e7/0a47e/rtl-sdr-block.png 600w,
+/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png 847w"
+        sizes="(max-width: 847px) 100vw, 847px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
+<ul>
+<li><strong>Frequency</strong><br>
+하드웨어에서 관찰하고자 하는 중심 주파수를 지정한다.  </li>
+<li><strong>Bandwidth</strong><br>
+하드웨어에서 관찰하고자 하는 주파수 영역의 범위를 지정한다.  </li>
+<li><strong>Sample Rate</strong><br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA3XAAAN1wFCKJt4AAABJ0lEQVQY0y1NvUrDYBS9gwjVTV/CwdGlfQWXxkjUycFNcHAQXEVwEnwAwYLPUEqhxSltEwUJNb82P3xIlIaomCbkhyTXL6EHDufec+89F05PLrcMOUhsPcGiQPS9HG01RGLGWGE+/yksy8TxeHLrua6AaYpFlpXVjCrmUYR5HOdVH4bhPZyfXWyXJR1QS5cWSGZRHRT8pjh9jlGTXdR1BYeD4d2370/roCo0jrFIknq3pMcl9f487xEYtr1pGLP259cHK4nvjG06e7bjsIRY7FPvbX80mhx0Og87zVZrg+f5XcMwjhRF4SRBONR0ndNUlZM1jXsVxeNBt9uE65srSNMU6CNwzQCSKKtrxBzUlwUQ4kK/34M2wwDFCmWDcn2pjaW3SrlW6T+lC9/pYpQQTQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Cont_to_digital.png"
+        title="Cont_to_digital.png"
+        src="/static/bc4377c852d877a03b16631260551979/0a47e/Cont_to_digital.png"
+        srcset="/static/bc4377c852d877a03b16631260551979/5a46d/Cont_to_digital.png 300w,
+/static/bc4377c852d877a03b16631260551979/0a47e/Cont_to_digital.png 600w"
+        sizes="(max-width: 600px) 100vw, 600px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span>
+<a href="https://wiki.gnuradio.org/index.php/Guided_Tutorial_Introduction">https://wiki.gnuradio.org/index.php/Guided<em>Tutorial</em>Introduction</a><br>
+하드웨어에서 얼마나 자주 signal을 캡처할 것인지를 지정한다. (Analog Signal을 Digital Signal로 변환해야 하기 때문에 sample rate가 필요하다)  </li>
+</ul>
+<p>장비의 성능상 모든 주파수 대역 완벽하게 관찰할 수는 없기 때문에 이런 설정들이 필요하다. 그 외에도 여러 설정값들이 있지만 이 정도만 살펴보자.  </p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2e49dfc64195760d21a4c3f5554f34bb/6dd26/signal_data.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABJ0lEQVQoz61S2Y7DIAzM//9il6bdHumRRkkAAyF4iqEP26eVuhtp5PHYmAly098uOB+/cTrsC4Qf9i36awc9DZjHx6/Q44Dxccdwv6AJ3uE/vrRGeDOh8Y6KwMwfo5xPEcHOaBz9HIgPUM8VhzLQe3qZ5j+gOiwDp8li1ox5TtAmwdgMU7lokmvLcJ5hKYFchdS1rnVyjCUsCJQHtoqgFNBuGecz43hg7FqG+spQXHS1iWjViv7O2Oa8zfX9rtakd7NhdKeI6MXhaMsbxMgIof6CcHG0rlVLS8i3+1JblgrhKWVw7bMmVodWj/BksOT18aRfnEBGI+QNMPOES3cquuQSY3AlOqsrd7kmuaxNf+tAekIKlC3bgjW8R3nsd/29VxCymaG/4gkc2AtI+jl93AAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="signal_data.png"
+        title="signal_data.png"
+        src="/static/2e49dfc64195760d21a4c3f5554f34bb/c1b63/signal_data.png"
+        srcset="/static/2e49dfc64195760d21a4c3f5554f34bb/5a46d/signal_data.png 300w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/0a47e/signal_data.png 600w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/c1b63/signal_data.png 1200w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/6dd26/signal_data.png 1597w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span><br>
+RTL-SDR 블록을 통해 외부에서 들어오는 Signal을 확인할 수 있다.  </p>
+<h2 id="signal-data-처리" style="position:relative;"><a href="#signal-data-%EC%B2%98%EB%A6%AC" aria-label="signal data 처리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Signal Data 처리 ]</h2>
+<p>새로운 블록 만들어서 RTL-SDR로 들어오는 data를 코드로 한번 살펴보자.<br>
+OOT 블록을 만들 줄 모른다면 이전 포스터 <a href="https://goo-gy.github.io/2021-07-13-gnuradio">https://goo-gy.github.io/2021-07-13-gnuradio</a>를 참고하자  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"> <span class="token keyword">def</span> <span class="token function">work</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> input_items<span class="token punctuation">,</span> output_items<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    signal_size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>input_items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    output_items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> numpy<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span>size<span class="token operator">=</span>self<span class="token punctuation">.</span>sending_size<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>output_items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
+<p>GNU Radio의 블록은 work 함수를 통해 input을 읽어 들이고 output을 내보낸다.
+input_items[k]와 output_items[k]은 init에서 설정한 type의 numpy 배열로 이루어져 있다. 이 배열로 들어오는 값은 신호의 <strong>Amplitude(진폭)</strong>을 의미하고, 각각의 값은 <strong>1/sample_rate (s) 간격</strong>으로 측정한 값이다.  </p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sf<span class="token punctuation">,</span> threshold<span class="token punctuation">,</span> preamble_len<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    gr<span class="token punctuation">.</span>sync_block<span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>
+        name<span class="token operator">=</span><span class="token string">"weak_lora_detect"</span><span class="token punctuation">,</span>
+        in_sig<span class="token operator">=</span><span class="token punctuation">[</span>numpy<span class="token punctuation">.</span>complex64<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        out_sig<span class="token operator">=</span><span class="token punctuation">[</span>numpy<span class="token punctuation">.</span>complex64<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>set_output_multiple<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sending_size<span class="token punctuation">)</span></code></pre></div>
+<p>numpy 배열의 size는 <code class="language-text">self.set_output_multiple(size)</code>통해서 설정할 수 있다. 이는 sample_rate와 관계없이, 한 work 함수에서 몇 개의 data를 처리할 것인지에 대한 설정이다.  </p>
+<h2 id="gnu-radio-참고" style="position:relative;"><a href="#gnu-radio-%EC%B0%B8%EA%B3%A0" aria-label="gnu radio 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ GNU Radio 참고 ]</h2>
+<p><a href="https://wiki.gnuradio.org/index.php/Tutorials">https://wiki.gnuradio.org/index.php/Tutorials</a>에서 GNU Radio에 대한 개념 설명과 Tutorial을 제공하니 부족한 부분이 있다면 참고해보길 바라며, 다음에는 GNU Radio를 이용한 Lora PHY 분석을 다뤄볼 예정이다.  </p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/project">project</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/network">network</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/gnuradio">gnuradio</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/sdr">SDR</a></span> on <time dateTime="2021-08-13T00:00:00.000Z">13 August, 2021</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/">Home</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/algorithm">Algorithm</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/web">Web</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-194826905-2"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'UA-194826905-2'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'UA-194826905-2', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2021-08-13-gnuradio";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-523b933e5cd718e8fe46.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-9f95ad3bf33af9cd770d.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-523b933e5cd718e8fe46.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-79c6cb472abad735489b.js" async=""></script></body></html>

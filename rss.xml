@@ -1,4 +1,224 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 14 Jul 2021 04:54:13 GMT</lastBuildDate><item><title><![CDATA[GNU Radio 시작하기]]></title><description><![CDATA[GNU Radio에서 OOT block을 만들어 보자.]]></description><link>https://goo-gy.github.io/2021-07-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-07-13-gnuradio</guid><pubDate>Tue, 13 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;gnu-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio&quot; aria-label=&quot;gnu radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 14 Aug 2021 17:07:51 GMT</lastBuildDate><item><title><![CDATA[GNU Radio를 이용한 SDR 프로그래밍]]></title><description><![CDATA[GNU Radio를 이용하여 Software Defined Radio 프로그래밍]]></description><link>https://goo-gy.github.io/2021-08-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-08-13-gnuradio</guid><pubDate>Fri, 13 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;sdr-software-defined-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sdr-software-defined-radio&quot; aria-label=&quot;sdr software defined radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ SDR (Software Defined Radio) ]&lt;/h2&gt;
+&lt;p&gt;Software Defined Radio (SDR)는 신호 처리 로직이 Hardware 내의 회로에서 고정된 것이 아니라 Software로 동작하도록 설계된 무선 통신 장비이다. 이를 이용하면 신호처리에 대한 업데이트도 쉽고 하나의 장비로 여러 종류의 통신을 지원할 수 있다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 74%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHcrNKOMH//xAAZEAEBAQADAAAAAAAAAAAAAAACAREAAxD/2gAIAQEAAQUCSgk7d4dxhVkQ+f/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABoQAAMAAwEAAAAAAAAAAAAAAAABERAhMlH/2gAIAQEABj8CrZeUbKoevH//xAAbEAADAAIDAAAAAAAAAAAAAAAAASEQMUFhgf/aAAgBAQABPyGcQy3QuWOyvcaZHKXPR4//2gAMAwEAAgADAAAAEODP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAIBABAAEEAAcAAAAAAAAAAAAAAREAQWFxECExUYGx4f/aAAgBAQABPxCGIWLuin0kesT4e+KAiHziIjealwgAlJn5T4/TaLcP/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;RTL-SDR&quot;
+        title=&quot;RTL-SDR&quot;
+        src=&quot;/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg&quot;
+        srcset=&quot;/static/5f5a2cefb58bb96bdd87d815f55a9c14/f93b5/RTL-SDR.jpg 300w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/b4294/RTL-SDR.jpg 600w,
+/static/5f5a2cefb58bb96bdd87d815f55a9c14/29d31/RTL-SDR.jpg 700w&quot;
+        sizes=&quot;(max-width: 700px) 100vw, 700px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+오늘은 RTL-SDR이라는 실제 장비를 GNU Radio와 연결하여 장비를 통해 인식한 Signal을 살펴볼 것이다.  &lt;/p&gt;
+&lt;h2 id=&quot;sdr-driver-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sdr-driver-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;sdr driver 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ SDR Driver 설치 ]&lt;/h2&gt;
+&lt;h2 id=&quot;sdr-블록이-내장된-gnu-radio-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sdr-%EB%B8%94%EB%A1%9D%EC%9D%B4-%EB%82%B4%EC%9E%A5%EB%90%9C-gnu-radio-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;sdr 블록이 내장된 gnu radio 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ SDR 블록이 내장된 GNU-Radio 설치 ]&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://goo-gy.github.io/2021-07-13-gnuradio&quot;&gt;https://goo-gy.github.io/2021-07-13-gnuradio&lt;/a&gt;에서 간단하게 GNU Radio를 설치하는 방법을 소개했지만, 아쉽게도 이 방법으로 설치할 경우 RTL-SDR 블록이 내장되어 있지 않다. 그래서 추가적으로 RTL-SDR 모듈을 설치하려고 하였지만 GNU Radio 3.8에서는 다른 좋은 방법을 찾지 못하고 GNU Radio 3.8을 설치할 때 같이 설치하는 방법만 발견하였다.  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6&quot;&gt;https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6&lt;/a&gt;&lt;br&gt;
+위 포스팅을 참고하고 하면 되지만 몇 가지 수정할 부분이 있어 다시 정리하였다.  &lt;/p&gt;
+&lt;h3 id=&quot;pybomb-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#pybomb-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;pybomb 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;pybomb 설치&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python3-pip python3-apt
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; -H pip3 &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; PyBOMBS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;recipes-추가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#recipes-%EC%B6%94%EA%B0%80&quot; aria-label=&quot;recipes 추가 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;recipes 추가&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; ~/sdr
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/sdr
+pybombs auto-config
+pybombs recipes &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gr-recipes git+https://github.com/gnuradio/gr-recipes.git
+pybombs recipes &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
+pybombs prefix init ~/sdr&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;setup_envsh로-python3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setup_envsh%EB%A1%9C-python3&quot; aria-label=&quot;setup_envsh로 python3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;setup_env.sh로 python3&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; -i &lt;span class=&quot;token string&quot;&gt;&apos;s/2\.6/3.6/g&apos;&lt;/span&gt; setup_env.sh
+&lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; -i &lt;span class=&quot;token string&quot;&gt;&apos;s/2\.7/3/g&apos;&lt;/span&gt; setup_env.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;gnuradio-recipe-수정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnuradio-recipe-%EC%88%98%EC%A0%95&quot; aria-label=&quot;gnuradio recipe 수정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gnuradio recipe 수정&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;~/.pybombs/recipes/gr-recipes/gnuradio.lwr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&quot;gitbranch&quot;를 &lt;code class=&quot;language-text&quot;&gt;maint-3.8&lt;/code&gt; 로 수정 (master로 되어 있을거임)&lt;/li&gt;
+&lt;li&gt;config&lt;em&gt;opt에 `-DENABLE&lt;/em&gt;CTRLPORT_THRIFT=OFF` 추가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;uhd-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#uhd-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;uhd 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;uhd 설치&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/sdr/setup_env.sh
+pybombs &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; uhd
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; cmake g++ libboost-all-dev libgmp-dev &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  swig python3-numpy python3-mako python3-sphinx python3-lxml &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  doxygen libfftw3-dev libcomedi-dev libsdl1.2-dev libgsl-dev &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  libzmq3-dev python3-yaml python3-click python3-click-plugins&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;gnuradio-38-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnuradio-38-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;gnuradio 38 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gnuradio 3.8 설치&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pybombs &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; gnuradio&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;gr-osmosdr-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gr-osmosdr-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;gr osmosdr 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gr-osmosdr 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;~/.pybombs/recipes/gr-recipes/gr-iqbal.lwr 수정&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; common
+&lt;span class=&quot;token key atrule&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; gnuradio
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; libosmo&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dsp
+&lt;span class=&quot;token key atrule&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Gnuradio I/Q balancing
+&lt;span class=&quot;token comment&quot;&gt;#gitbranch: master&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;gitbranch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; maint&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3.8&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;inherit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; cmake
+&lt;span class=&quot;token comment&quot;&gt;# Let&apos;s always build this from source, not binaries&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;#source: git+https://git.osmocom.org/gr-iqbal&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; git+https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//github.com/velichkov/gr&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;iqbal.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;~/.pybombs/recipes/gr-recipes/gr-osmosdr .lwr 수정&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; common
+&lt;span class=&quot;token key atrule&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; uhd
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; rtl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;sdr
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; osmo&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;sdr
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; hackrf
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; gnuradio
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; gr&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;iqbal
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; bladeRF
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; airspy
+&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; soapysdr
+&lt;span class=&quot;token key atrule&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Interface API independent of the underlying radio hardware
+&lt;span class=&quot;token comment&quot;&gt;#gitbranch: master&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;gitbranch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; maint&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3.8&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;inherit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; cmake
+&lt;span class=&quot;token comment&quot;&gt;# Let&apos;s always build this from source, not binaries&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;#source: git+https://git.osmocom.org/gr-osmosdr&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; git+https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//github.com/velichkov/gr&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;osmosdr.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;설치&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pybombs &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; gr-osmosdr&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;gnuradio-실행&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnuradio-%EC%8B%A4%ED%96%89&quot; aria-label=&quot;gnuradio 실행 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gnuradio 실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/sdr/setup_env.sh
+gnuradio-companion&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gnuradio를 실행하기 전에 항상 setup_env.sh 파일을 실행시켜줘야 한다.  &lt;/p&gt;
+&lt;h2 id=&quot;rtl-sdr-테스트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#rtl-sdr-%ED%85%8C%EC%8A%A4%ED%8A%B8&quot; aria-label=&quot;rtl sdr 테스트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ RTL-SDR 테스트 ]&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 847px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABJ0AAASdAHeZh94AAABJklEQVQoz4WSi07CQBBF+f+/MdEYRIWk4AOUEjGgQCiCFmihtZS2PLo9bktIXCDhZmdnM5m5mbmzuSRBIiGOBevVFn+xxPN8wmDFZrMlSRPSs0vM/KHt4yly+8f4Z0ZTH/BUbtJtj7HNNY4dIkSsEKlQyRTCL8PkLv9MudTgvTFkMopwZ5FMFkpRsIzod0067SHmyJWTrNUO08sw+tRf3igWauSvNLSSzqjn8NqyMcaOJPGlDAt8f8Gj3uPmukq92qX/6eC54fHIIomzDrVig9Jtjd6HRfgLcztiG8dKgWU53BceqGg6nZaJ74WnNRz0v8lfVri8KGYjeza4kvC/hnsvhNRT7BYphDhNGCxDppM51tTJzHMDGVsdbfcUlKUcBs4VnPs2fza/ZxaIUA9pAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;rtl-sdr-block&quot;
+        title=&quot;rtl-sdr-block&quot;
+        src=&quot;/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png&quot;
+        srcset=&quot;/static/b7de2959f59b3b7ae9b649705424a5e7/5a46d/rtl-sdr-block.png 300w,
+/static/b7de2959f59b3b7ae9b649705424a5e7/0a47e/rtl-sdr-block.png 600w,
+/static/b7de2959f59b3b7ae9b649705424a5e7/b2cef/rtl-sdr-block.png 847w&quot;
+        sizes=&quot;(max-width: 847px) 100vw, 847px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Frequency&lt;/strong&gt;&lt;br&gt;
+하드웨어에서 관찰하고자 하는 중심 주파수를 지정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bandwidth&lt;/strong&gt;&lt;br&gt;
+하드웨어에서 관찰하고자 하는 주파수 영역의 범위를 지정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Rate&lt;/strong&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA3XAAAN1wFCKJt4AAABJ0lEQVQY0y1NvUrDYBS9gwjVTV/CwdGlfQWXxkjUycFNcHAQXEVwEnwAwYLPUEqhxSltEwUJNb82P3xIlIaomCbkhyTXL6EHDufec+89F05PLrcMOUhsPcGiQPS9HG01RGLGWGE+/yksy8TxeHLrua6AaYpFlpXVjCrmUYR5HOdVH4bhPZyfXWyXJR1QS5cWSGZRHRT8pjh9jlGTXdR1BYeD4d2370/roCo0jrFIknq3pMcl9f487xEYtr1pGLP259cHK4nvjG06e7bjsIRY7FPvbX80mhx0Og87zVZrg+f5XcMwjhRF4SRBONR0ndNUlZM1jXsVxeNBt9uE65srSNMU6CNwzQCSKKtrxBzUlwUQ4kK/34M2wwDFCmWDcn2pjaW3SrlW6T+lC9/pYpQQTQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Cont_to_digital.png&quot;
+        title=&quot;Cont_to_digital.png&quot;
+        src=&quot;/static/bc4377c852d877a03b16631260551979/0a47e/Cont_to_digital.png&quot;
+        srcset=&quot;/static/bc4377c852d877a03b16631260551979/5a46d/Cont_to_digital.png 300w,
+/static/bc4377c852d877a03b16631260551979/0a47e/Cont_to_digital.png 600w&quot;
+        sizes=&quot;(max-width: 600px) 100vw, 600px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+&lt;a href=&quot;https://wiki.gnuradio.org/index.php/Guided_Tutorial_Introduction&quot;&gt;https://wiki.gnuradio.org/index.php/Guided&lt;em&gt;Tutorial&lt;/em&gt;Introduction&lt;/a&gt;&lt;br&gt;
+하드웨어에서 얼마나 자주 signal을 캡처할 것인지를 지정한다. (Analog Signal을 Digital Signal로 변환해야 하기 때문에 sample rate가 필요하다)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;장비의 성능상 모든 주파수 대역 완벽하게 관찰할 수는 없기 때문에 이런 설정들이 필요하다. 그 외에도 여러 설정값들이 있지만 이 정도만 살펴보자.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2e49dfc64195760d21a4c3f5554f34bb/6dd26/signal_data.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABJ0lEQVQoz61S2Y7DIAzM//9il6bdHumRRkkAAyF4iqEP26eVuhtp5PHYmAly098uOB+/cTrsC4Qf9i36awc9DZjHx6/Q44Dxccdwv6AJ3uE/vrRGeDOh8Y6KwMwfo5xPEcHOaBz9HIgPUM8VhzLQe3qZ5j+gOiwDp8li1ox5TtAmwdgMU7lokmvLcJ5hKYFchdS1rnVyjCUsCJQHtoqgFNBuGecz43hg7FqG+spQXHS1iWjViv7O2Oa8zfX9rtakd7NhdKeI6MXhaMsbxMgIof6CcHG0rlVLS8i3+1JblgrhKWVw7bMmVodWj/BksOT18aRfnEBGI+QNMPOES3cquuQSY3AlOqsrd7kmuaxNf+tAekIKlC3bgjW8R3nsd/29VxCymaG/4gkc2AtI+jl93AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;signal_data.png&quot;
+        title=&quot;signal_data.png&quot;
+        src=&quot;/static/2e49dfc64195760d21a4c3f5554f34bb/c1b63/signal_data.png&quot;
+        srcset=&quot;/static/2e49dfc64195760d21a4c3f5554f34bb/5a46d/signal_data.png 300w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/0a47e/signal_data.png 600w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/c1b63/signal_data.png 1200w,
+/static/2e49dfc64195760d21a4c3f5554f34bb/6dd26/signal_data.png 1597w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+RTL-SDR 블록을 통해 외부에서 들어오는 Signal을 확인할 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;signal-data-처리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#signal-data-%EC%B2%98%EB%A6%AC&quot; aria-label=&quot;signal data 처리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Signal Data 처리 ]&lt;/h2&gt;
+&lt;p&gt;새로운 블록 만들어서 RTL-SDR로 들어오는 data를 코드로 한번 살펴보자.&lt;br&gt;
+OOT 블록을 만들 줄 모른다면 이전 포스터 &lt;a href=&quot;https://goo-gy.github.io/2021-07-13-gnuradio&quot;&gt;https://goo-gy.github.io/2021-07-13-gnuradio&lt;/a&gt;를 참고하자  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; input_items&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; output_items&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    signal_size &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;input_items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    output_items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; numpy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;random&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;normal&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;size&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sending_size&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;output_items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;GNU Radio의 블록은 work 함수를 통해 input을 읽어 들이고 output을 내보낸다.
+input_items[k]와 output_items[k]은 init에서 설정한 type의 numpy 배열로 이루어져 있다. 이 배열로 들어오는 값은 신호의 &lt;strong&gt;Amplitude(진폭)&lt;/strong&gt;을 의미하고, 각각의 값은 &lt;strong&gt;1/sample_rate (s) 간격&lt;/strong&gt;으로 측정한 값이다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; sf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; threshold&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; preamble_len&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    gr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sync_block&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;__init__&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;weak_lora_detect&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        in_sig&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;numpy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;complex64&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        out_sig&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;numpy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;complex64&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;set_output_multiple&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sending_size&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;numpy 배열의 size는 &lt;code class=&quot;language-text&quot;&gt;self.set_output_multiple(size)&lt;/code&gt;통해서 설정할 수 있다. 이는 sample_rate와 관계없이, 한 work 함수에서 몇 개의 data를 처리할 것인지에 대한 설정이다.  &lt;/p&gt;
+&lt;h2 id=&quot;gnu-radio-참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio-%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;gnu radio 참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio 참고 ]&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://wiki.gnuradio.org/index.php/Tutorials&quot;&gt;https://wiki.gnuradio.org/index.php/Tutorials&lt;/a&gt;에서 GNU Radio에 대한 개념 설명과 Tutorial을 제공하니 부족한 부분이 있다면 참고해보길 바라며, 다음에는 GNU Radio를 이용한 Lora PHY 분석을 다뤄볼 예정이다.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[GNU Radio 시작하기]]></title><description><![CDATA[GNU Radio에서 OOT block을 만들어 보자.]]></description><link>https://goo-gy.github.io/2021-07-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-07-13-gnuradio</guid><pubDate>Tue, 13 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;gnu-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gnu-radio&quot; aria-label=&quot;gnu radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ GNU Radio ]&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.gnuradio.org/&quot;&gt;https://www.gnuradio.org&lt;/a&gt;&lt;br&gt;
 GNU Radio는 Software Defined Radio에서 신호를 처리하는 프로그램을 만들 수 있는 개발도구이다.  &lt;/p&gt;
 &lt;h3 id=&quot;-software-defined-radio-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-software-defined-radio-&quot; aria-label=&quot; software defined radio  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&amp;#x3C; Software Defined Radio &gt;&lt;/h3&gt;
