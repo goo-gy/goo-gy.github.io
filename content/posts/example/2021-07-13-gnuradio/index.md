@@ -2,7 +2,7 @@
 layout: post
 title: "GNU Radio 시작하기"
 excerpt: "GNU Radio에서 OOT block을 만들어 보자."
-tags: [proejct, network, gnuradio, OOT]
+tags: [project, network, gnuradio, OOT]
 
 path: "/2021-07-13-gnuradio"
 featuredImage: "./GNU.png"
