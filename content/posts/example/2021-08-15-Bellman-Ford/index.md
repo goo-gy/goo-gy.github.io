@@ -5,7 +5,7 @@ excerpt: "음수 cost 경로가 존재하는 그래프에서의 경로 탐색"
 tags: [algorithm, graph]
 
 path: "/2021-08-15-Bellman-Ford"
-featuredImage: "./RTL-SDR.jpg"
+featuredImage: "./negative_edge.png"
 created: 2021-08-15
 updated: 2021-08-15
 ---
