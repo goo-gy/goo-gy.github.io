@@ -1,4 +1,217 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 14 Aug 2021 17:07:51 GMT</lastBuildDate><item><title><![CDATA[GNU Radio를 이용한 SDR 프로그래밍]]></title><description><![CDATA[GNU Radio를 이용하여 Software Defined Radio 프로그래밍]]></description><link>https://goo-gy.github.io/2021-08-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-08-13-gnuradio</guid><pubDate>Fri, 13 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;sdr-software-defined-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sdr-software-defined-radio&quot; aria-label=&quot;sdr software defined radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ SDR (Software Defined Radio) ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 18 Aug 2021 17:19:53 GMT</lastBuildDate><item><title><![CDATA[Bellman Ford 알고리즘]]></title><description><![CDATA[음수 cost 경로가 존재하는 그래프에서의 경로 탐색]]></description><link>https://goo-gy.github.io/2021-08-15-Bellman-Ford</link><guid isPermaLink="false">https://goo-gy.github.io/2021-08-15-Bellman-Ford</guid><pubDate>Sun, 15 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;-bellman-ford-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-bellman-ford-&quot; aria-label=&quot; bellman ford  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Bellman Ford ]&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAAC/klEQVQoz21TWUhUYRg9d+aO4531zty54zRZplRCY0SLmRRFCy1aZljOrrmUFi1OapjZYlESRGUgLWDLOJMmVNCmkj5EURA99FYERauZLVC0QA/dvv86vnXh8N/tO/855/t+CPEQCBohHhaNsZBVWQbcr7TiVxEw5FUhEZKHfIBSAOxtyoLzgtdMNZIhFhLFqB8MhlgY6pUcDxNh2GbuCKZwXeudjXumjvuzBrb3fo4RyYQMwoRBH9y/i5DyuMw0Y+uBmenorbPao347iTASYIgnCC0dQdALh+5SiQ23aiyd28Zmf1+L1EEf5yRVEq3pRO5mG/wogu1hhdl9pCFzCgmRTbGgQx8vSUZ3JdBVpjoC+uqB/l384tYlrhXHF7nIhlZxgLtTJXEvgjyUPBgUD7TPw0lQdGR7NcS+amm850yBra0uY0zrzolQiEZZOhIRTtVl4GztBDwN6w3DXlh6qh3AvWZc3+xEx/ZxwM0aA65tMj4qN5k+FyPtnZ+TH1RYgO4K/C2E9Cqg1X1dB27YmyBUVoCpwDDLywcL/cSC53SXSlm2ZorEKUYDLt+ReS4oCu5uEDUDVXZOyQJeB7RGIkmnOuPQKOGXYoB25uil601A42BF8kUfdS3EIOrjYYkaJh9tmJypzAWvrBypeevXgNQKVGd+RnGcj4zH/iYPMT45gfUtc6BmtAp2PD8HfOsFNQlExJNKB0Hqr7Kn/iyCg5ojkpskyhLdW93MWerp2nQ+/9hClLbkApsPzkJ2Wx7KD+dwV7e4ppe05Fr30U4Vh3MYodo93NgG6i5eBnntRy8mfaDu0yRI7ZE0oX1H2tTCowvGoLdej4FGIImUaDpLQdbss9vyZEM8lCLEQkLCMnj6Pv/kUtXOp2JoyKJOyafcp4Fv3u1x40qVDZfLZBPFYo0GoBbRA1ud6InwRGgnQougDnxIndXRwEdB48JtPDQbuB0RbFE/m0cbi4XVQIipJ4XBaIqFZHqW6Z5PHMn/Eqpzt3xkJSEmqhFJhIb9/w9R3xtzwan3IgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;negative_edge.png&quot;
+        title=&quot;negative_edge.png&quot;
+        src=&quot;/static/787c48f68dfa7a207f4c1da298763f81/0b533/negative_edge.png&quot;
+        srcset=&quot;/static/787c48f68dfa7a207f4c1da298763f81/5a46d/negative_edge.png 300w,
+/static/787c48f68dfa7a207f4c1da298763f81/0b533/negative_edge.png 500w&quot;
+        sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;br&gt;
+Bellman Ford 알고리즘은 그래프의 한 노드에서 다른 모든 노드까지의 최단 경로를 구할 수 있는 알고리즘이다. 최단 경로 알고리즘 중 하나인 다익스트라 알고리즘(&lt;a href=&quot;https://goo-gy.github.io/2019-10-11-dijkstra&quot;&gt;https://goo-gy.github.io/2019-10-11-dijkstra&lt;/a&gt;)보다 높은 시간 복잡도를 가진다. 대신 다익스트라 알고리즘은 그래프에 음수 cost가 있는 경우에는 사용할 수 없는 반면, Bellman Ford 알고리즘은 음수 cost가 있는 경우에도 사용할 수 있다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;음수 cost 그래프에서 적용 가능&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Negative Cycle 감지 가능&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;시간 복잡도 = O(NE)&lt;/strong&gt;&lt;br&gt;
+N(Node의 수), E(Edge의 수)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;알고리즘&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot; aria-label=&quot;알고리즘 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;알고리즘&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;출발 노드 설정 &amp;#x26; 최단 거리 테이블 초기화&lt;/strong&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/de17a2aec3f1e95a7c4ee80e1108d3d9/8c557/distance.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 28.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVQY02NgWLOOAYSFd2xlAAPpeAaby0fY7K4cZcv6cJXZ9Nwh9tb/95iMzhzgKPp2g9kQSGd9vMrsfecUq9P1Y6wgLf///2dIf38Foh9mINfmTQzGZw8yKB/aDZVgYC77eRPMyPxwlYHBIo+r5DuQ71HBXffvDkwNE0i9xrG9jOgGsors3MaS8vYyg//908IFX6/PLf52Y1XOp6uLCr5cXwGiga5bnf3x6kKg3MrcT9cW53+5vjLv87X5EU/PiUQ+Pc+Q8OoiI9TA9SCswbR2fTjD4lX2nrdPmpR8v/G//OfN/0CN/5NeX/oP4gM1/Ada8j8RyAca/j/13eX/GR+u/C/8el0DaDADkM2EZCDQlSUTQGHH4HfvND/QVV1ATVOBLusFGjIF6LKesh83pwHDrgdo+JTcz9f6gAZNBuLu4EdnBUMfn2WIf4niQqCBkxYwWFw4zBD2+BxDxc9bDFW/bzMANTPU/LnNADSUoR4YbkBLGGr/3mYAGg6Uv8VQ+esWQ+Sz8wzRz88zpAKDCwQAwCPreyrw+4UAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;distance.png&quot;
+        title=&quot;distance.png&quot;
+        src=&quot;/static/de17a2aec3f1e95a7c4ee80e1108d3d9/8c557/distance.png&quot;
+        srcset=&quot;/static/de17a2aec3f1e95a7c4ee80e1108d3d9/5a46d/distance.png 300w,
+/static/de17a2aec3f1e95a7c4ee80e1108d3d9/0a47e/distance.png 600w,
+/static/de17a2aec3f1e95a7c4ee80e1108d3d9/8c557/distance.png 700w&quot;
+        sizes=&quot;(max-width: 700px) 100vw, 700px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+최단 거리 테이블의 기본값은 무한(INF), 출발 노드는 0으로 초기화   &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모든 Edge를 순회하면서 distance[src] + cost &amp;#x3C; distance[dst] 라면 업데이트&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2번을 N - 1 번 반복&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;증명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A6%9D%EB%AA%85&quot; aria-label=&quot;증명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;증명&lt;/h3&gt;
+&lt;p&gt;다른 부분을 제외하고 출발지에서 임의의 노드로의 최단 경로만 살펴보자.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4c17ddd739c8375670e892aec8ea426b/6af66/shortest_path.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 15.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArElEQVQI1x2NPQ4BURRGT6PRS6yAUqxBYREKkdiAqGSK0dIQ/0PBrMIWbEKhohEJwrwZmed9r7jJ/TnfuWAWDdL1gO+0yLUHyazk5hCzrHMP4NYHs+r4Uq+dbmLEKqOsHHLx253JD5bXqI218JkE2NiSbo5+vnSr5HvrS712/uYYz7pZWTnkcp9bZFHEY1jGPuE9rpBtY5J508OnWsEJQl/qtdNNjFhllJXDuf4tUHIFIrAZPwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;shortest_path.png&quot;
+        title=&quot;shortest_path.png&quot;
+        src=&quot;/static/4c17ddd739c8375670e892aec8ea426b/6af66/shortest_path.png&quot;
+        srcset=&quot;/static/4c17ddd739c8375670e892aec8ea426b/5a46d/shortest_path.png 300w,
+/static/4c17ddd739c8375670e892aec8ea426b/0a47e/shortest_path.png 600w,
+/static/4c17ddd739c8375670e892aec8ea426b/6af66/shortest_path.png 640w&quot;
+        sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+최단 경로 순서대로 Edge를 순회한다면, 위 &lt;code class=&quot;language-text&quot;&gt;2번 과정&lt;/code&gt;을 한 번만 수행해도 최단 거리가 갱신된다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/27b9734070a668d4bca138c63782b271/6af66/update_first.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 15.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5UlEQVQI12Ng+DnFmeHX9EqG371cuxa5MXxf7CX6b7F3/f+FnobHVtkzMPyfx8Dwc1oiGL8oZmB4Ww3kTzUE6qln+DFJlOF5IQPD9wlcYDNAZjH8mX2X4f+C/8pPm+L1/p9h+L7Qo/r/ysD/35f7bP///z8D3914dYZ/8/+D8cMUdQagGMOvGdsZ/i/8z/CtvxrM/9wZz/BvwX+wWUCboxl+z5ypfa9Cwu3/Tobvc13U/i/1Wfhjsaf7/+kNDIFrxFiBBtSD8Ql9VrABPya7M/yetZDhS5caw/9PDAzvGyRAZoDMAgBM7ndkdwiDYAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;update_first.png&quot;
+        title=&quot;update_first.png&quot;
+        src=&quot;/static/27b9734070a668d4bca138c63782b271/6af66/update_first.png&quot;
+        srcset=&quot;/static/27b9734070a668d4bca138c63782b271/5a46d/update_first.png 300w,
+/static/27b9734070a668d4bca138c63782b271/0a47e/update_first.png 600w,
+/static/27b9734070a668d4bca138c63782b271/6af66/update_first.png 640w&quot;
+        sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+최악의 경우에도 &lt;code class=&quot;language-text&quot;&gt;2번 과정&lt;/code&gt;을 한 번 수행하면 최단 경로에 포함된 두 번째 노드의 최단 거리는 갱신된다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/42ebe3959cc1a92eda91c4cdf7119842/6af66/update_last.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 15.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA3UlEQVQI1x2PzUoCYRiFz6aFsxfcC+NiIKhWQSuNr/EnsrWLobtIZiFIK0UhEGUaSj8no7oBqWvoFtSVC29AGZU5fe8sDjznhxdeIB6UsB81cehZv1OFbVTJMqq2OC2f8fkSSfcCjCoPqYRNlnaymbhZds7BsbKMb1KXS8AxXIAT5tdt75R/2GnX5/c9k/fqnCTYdgr8vKMoEZZMOrPhm/K56SN5KXr8qpMftwsgHjZwCAJn+ZhT/MHu9drmrKap3RtuQ9DLnJgDrVTCkkknm7Boc/UEDq5yxgfmi8Y/RjeF8PTxSe8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;update_last.png&quot;
+        title=&quot;update_last.png&quot;
+        src=&quot;/static/42ebe3959cc1a92eda91c4cdf7119842/6af66/update_last.png&quot;
+        srcset=&quot;/static/42ebe3959cc1a92eda91c4cdf7119842/5a46d/update_last.png 300w,
+/static/42ebe3959cc1a92eda91c4cdf7119842/0a47e/update_last.png 600w,
+/static/42ebe3959cc1a92eda91c4cdf7119842/6af66/update_last.png 640w&quot;
+        sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+마찬가지로 &lt;code class=&quot;language-text&quot;&gt;2번 과정&lt;/code&gt;을 한 번 수행할 때마다, 최단 경로에 있는 노드가 차례로 하나씩 최단 거리를 보장하게 된다. 그래프의 노드 수가 N이라면 &lt;code class=&quot;language-text&quot;&gt;2번 과정&lt;/code&gt;을 N - 1번만 수행하면 그래프 내 모든 노드까지의 최단 경로를 갱신할 수 있다.  &lt;/p&gt;
+&lt;h3 id=&quot;negative-cycle&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#negative-cycle&quot; aria-label=&quot;negative cycle permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Negative Cycle&lt;/h3&gt;
+&lt;p&gt;위 증명은 그래프 내에 cost의 합이 음수가 되는 &lt;strong&gt;Negative Cycle&lt;/strong&gt;이 없다고 가정했을 경우에 성립한다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bfb959ffec52659ec39d861b08e23455/6af66/negative_cycle.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2ElEQVQoz3WRS0hUYRTHf/fmJCMU2EKk0hJt0aZNSTK0iGiRpBBthDIigiCIomVEWJjYg7JM81HWBBoRhtPDhauyKEF6gPQgSMLSyPKRTo0zjs7X/353oAg6cPi+e+7/cc534N94tBImj8NUDcTqYOxoFtO1yzB3wQz9wfw3Hhels9A/PfD4MZGNchjmrnSTum5INISYvwbzbS69wvQWwJNVf/HTaWO22SXR6GAiErnniTjMNmVY0WTLfX0bmWyxRrG6AB3iTJ2E6CmPu4CZiw7JZt2b9MP0QeIyxC95nTkMVjpET6t+G7qDubwtz1G9gAeZOXSRKzJMVMHLDY4V8Li/zvlnotET7EKg9cQuFPH9CHzcA6lwNpMnyuhbs5Q3W+HDDuHaYeRACfGGYttZ/zrVbmQwU79JDWQTr8emRlirtzEaa5R325ZQTqa67bHvFj1zyI79auMinpesINk6ZusTVSFbn66tkbnRs4Qxd2QQceHn2Xzmrg4I3El/cZYsHAlWy+SrOt/MLhbydHUeD5cvFjGipQxo84VpwQrhvmn0w5ibErzl+nO/3x6wgC8H/c2lwhp9d5DYeYGewYuQy+BOf4GvSwP8qEY2niAM7Q1ieuDzfvi0j9+71eCcfqIYzQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;negative_cycle.png&quot;
+        title=&quot;negative_cycle.png&quot;
+        src=&quot;/static/bfb959ffec52659ec39d861b08e23455/6af66/negative_cycle.png&quot;
+        srcset=&quot;/static/bfb959ffec52659ec39d861b08e23455/5a46d/negative_cycle.png 300w,
+/static/bfb959ffec52659ec39d861b08e23455/0a47e/negative_cycle.png 600w,
+/static/bfb959ffec52659ec39d861b08e23455/6af66/negative_cycle.png 640w&quot;
+        sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+그림처럼 경로 상에 &lt;strong&gt;Negatvie Cycle&lt;/strong&gt;이 있다면, 최단 경로를 구하기 위해 &lt;strong&gt;Negative Cycle&lt;/strong&gt;을 무한히 순회해야 하기 때문에 최단 경로를 정의하기 어렵다. 굳이 최단 거리를 따지자면 -∞이 될 것이다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;그래프에 Negative Cycle이 존재하는지는 어떻게 알 수 있을까.&lt;br&gt;
+위에서 Negative Cycle이 없을 경우 Edge를 N - 1번 순회하며 출발지에서 모든 노드까지의 최단 거리를 갱신할 수 있었다. 최단 거리가 갱신된 노드는 Distance가 업데이트될 일이 없다. 따라서 &lt;strong&gt;그 이후 &lt;code class=&quot;language-text&quot;&gt;2번 과정&lt;/code&gt;을 더 수행하였을 때, 어떤 노드든 Distance가 업데이트된다면 그래프 내에 Netgative Cycle이 있음&lt;/strong&gt;을 알 수 있다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;-코드-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%BD%94%EB%93%9C-&quot; aria-label=&quot; 코드  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 코드 ]&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;cpp&quot;&gt;&lt;pre class=&quot;language-cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bellman_ford&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; n &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; n &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; N&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; n&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;map&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;pair&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt;iterator e &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; loads&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; e &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; loads&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;first&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;first&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; dst &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;first&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;second&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;second&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;src&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; INF &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;dst&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;src&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; weight&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;dst&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; distance_map&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;src&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; weight&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; N&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;N번째에서 순회에서 Distance가 업데이트 될 경우 true(Negative Cycle 있음)를 리턴한다.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[GNU Radio를 이용한 SDR 프로그래밍]]></title><description><![CDATA[GNU Radio를 이용하여 Software Defined Radio 프로그래밍]]></description><link>https://goo-gy.github.io/2021-08-13-gnuradio</link><guid isPermaLink="false">https://goo-gy.github.io/2021-08-13-gnuradio</guid><pubDate>Fri, 13 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;sdr-software-defined-radio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sdr-software-defined-radio&quot; aria-label=&quot;sdr software defined radio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ SDR (Software Defined Radio) ]&lt;/h2&gt;
 &lt;p&gt;Software Defined Radio (SDR)는 신호 처리 로직이 Hardware 내의 회로에서 고정된 것이 아니라 Software로 동작하도록 설계된 무선 통신 장비이다. 이를 이용하면 신호처리에 대한 업데이트도 쉽고 하나의 장비로 여러 종류의 통신을 지원할 수 있다.&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
