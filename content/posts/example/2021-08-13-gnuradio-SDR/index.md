@@ -16,11 +16,26 @@ Software Defined Radio (SDR)는 신호 처리 로직이 Hardware 내의 회로�
 오늘은 RTL-SDR이라는 실제 장비를 GNU Radio와 연결하여 장비를 통해 인식한 Signal을 살펴볼 것이다.  
 
 ## [ SDR Driver 설치 ]  
+``` shell
+sudo apt install rtl-sdr
+```  
+
+``` shell
+lsusb
+rtl_test -t
+```  
+usb device 인식은 잘 되었으나 rtl_test 결과 device를 사용할 수 없다면, 다음 파일을 설정해 줄 필요가 있다.  
+
+* `/etc/modprobe.d/` 경로에 `blacklist-rtl.conf` 파일을 생성하여 내용을 적어주고 재부팅하자  
+    ```
+    blacklist dvb_usb_rtl28xxu
+    ```  
+
 ## [ SDR 블록이 내장된 GNU-Radio 설치 ]  
 [https://goo-gy.github.io/2021-07-13-gnuradio](https://goo-gy.github.io/2021-07-13-gnuradio)에서 간단하게 GNU Radio를 설치하는 방법을 소개했지만, 아쉽게도 이 방법으로 설치할 경우 RTL-SDR 블록이 내장되어 있지 않다. 그래서 추가적으로 RTL-SDR 모듈을 설치하려고 하였지만 GNU Radio 3.8에서는 다른 좋은 방법을 찾지 못하고 GNU Radio 3.8을 설치할 때 같이 설치하는 방법만 발견하였다.  
 
 [https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6](https://gist.github.com/gbevan/8e583b9cf87aa3c58102251454fa48a6)  
-위 포스팅을 참고하고 하면 되지만 몇 가지 수정할 부분이 있어 다시 정리하였다.  
+위 포스팅을 참고하면 되지만 몇 가지 수정할 부분이 있어 다시 정리하였다.  
 
 ### pybomb 설치
 
