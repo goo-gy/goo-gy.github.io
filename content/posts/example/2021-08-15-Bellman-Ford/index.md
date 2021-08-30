@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bellman Ford 알고리즘"
+title: "벨만 포드(Bellman Ford) 알고리즘"
 excerpt: "음수 cost 경로가 존재하는 그래프에서의 경로 탐색"
 tags: [algorithm, graph]
 
@@ -10,9 +10,9 @@ created: 2021-08-15
 updated: 2021-08-15
 ---
 
-## \[ Bellman Ford \]  
+## \[ 벨만 포드(Bellman Ford) \]  
 ![negative_edge.png](negative_edge.png)  
-Bellman Ford 알고리즘은 그래프의 한 노드에서 다른 모든 노드까지의 최단 경로를 구할 수 있는 알고리즘이다. 최단 경로 알고리즘 중 하나인 다익스트라 알고리즘([https://goo-gy.github.io/2019-10-11-dijkstra](https://goo-gy.github.io/2019-10-11-dijkstra))보다 높은 시간 복잡도를 가진다. 대신 다익스트라 알고리즘은 그래프에 음수 cost가 있는 경우에는 사용할 수 없는 반면, Bellman Ford 알고리즘은 음수 cost가 있는 경우에도 사용할 수 있다.  
+벨만 포드(Bellman Ford) 알고리즘은 그래프의 한 노드에서 다른 모든 노드까지의 최단 경로를 구할 수 있는 알고리즘이다. 최단 경로 알고리즘 중 하나인 다익스트라 알고리즘([https://goo-gy.github.io/2019-10-11-dijkstra](https://goo-gy.github.io/2019-10-11-dijkstra))보다 높은 시간 복잡도를 가진다. 대신 다익스트라 알고리즘은 그래프에 음수 cost가 있는 경우에는 사용할 수 없는 반면, Bellman Ford 알고리즘은 음수 cost가 있는 경우에도 사용할 수 있다.  
 * **음수 cost 그래프에서 적용 가능**  
 * **Negative Cycle 감지 가능**  
 * **시간 복잡도 = O(NE)**  
