@@ -83,15 +83,23 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://goo-gy.github.io/',
-        sitemap: 'https://goo-gy.github.io/sitemap.xml',
-        policy: [{
-          userAgent: '*',
-          allow: '/'
-        }]
-      }
+        host: "https://goo-gy.github.io/",
+        sitemap: "https://goo-gy.github.io/sitemap.xml",
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `googy-develop`,
+      },
     },
   ],
 };
