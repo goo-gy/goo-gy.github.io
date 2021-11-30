@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "위상 정렬 (Topological Sort)"
-excerpt: "일의 처리 순서를 결정하고 싶다면"
+excerpt: "관계 그래프에서 처리 순서를 결정해보자"
 tags: [algorithm, graph]
 
-path: "/2021-09-12-topological-sort"
+path: "/2021-12-01-topological-sort"
 featuredImage: "./1.png"
-created: 2021-11-27
-updated: 2021-11-27
+created: 2021-12-01
+updated: 2021-12-01
 ---
 
 ## 위상 정렬 (Topological Sort)  
