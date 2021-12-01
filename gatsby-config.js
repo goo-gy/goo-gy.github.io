@@ -95,11 +95,5 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `googy-develop`,
-      },
-    },
   ],
 };
