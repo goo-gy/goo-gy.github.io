@@ -1,4 +1,187 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 01 Dec 2021 04:57:40 GMT</lastBuildDate><item><title><![CDATA[위상 정렬 (Topological Sort)]]></title><description><![CDATA[관계 그래프에서 처리 순서를 결정해보자]]></description><link>https://goo-gy.github.io/2021-12-01-topological-sort</link><guid isPermaLink="false">https://goo-gy.github.io/2021-12-01-topological-sort</guid><pubDate>Wed, 01 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;위상-정렬-topological-sort&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%84%EC%83%81-%EC%A0%95%EB%A0%AC-topological-sort&quot; aria-label=&quot;위상 정렬 topological sort permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;위상 정렬 (Topological Sort)&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 03 Dec 2021 05:08:19 GMT</lastBuildDate><item><title><![CDATA[부호 면적(Signed Area)]]></title><description><![CDATA[부호 면적을 통해 점들의 방향을 알아보자]]></description><link>https://goo-gy.github.io/2021-12-03-geometry</link><guid isPermaLink="false">https://goo-gy.github.io/2021-12-03-geometry</guid><pubDate>Fri, 03 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;부호-면적-signed-area&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B6%80%ED%98%B8-%EB%A9%B4%EC%A0%81-signed-area&quot; aria-label=&quot;부호 면적 signed area permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;부호 면적 (Signed Area)&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1195px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/40a430053b16275b64c98ac187118d90/4d383/signedArea.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAvklEQVQY012PPQrCQBCF3yabxH8QG3utvYCtvZVH8AQewtq72HoEG0GwtrUUxEKJX9hJsrjwkpl5387OqFR7vlL6ljy1/CQN1tJwT/2AZmiHXgjffeCecBW7gaWcRa2Ur6QRpn+gBYUel2Jga1rCHQOb3qXE7KQBuyFzOY0uxFfSCiZ0E/5je9ojcvXNO/O5tY1SfNeJJygw57ZOadON/qa001wsWz+ZRoC3IYosxN5ezBXkbSVncVyvVdSL/AAlGxr7c2lDBQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;signedAreaPlus.png&quot;
+        title=&quot;signedAreaPlus.png&quot;
+        src=&quot;/static/40a430053b16275b64c98ac187118d90/4d383/signedArea.png&quot;
+        srcset=&quot;/static/40a430053b16275b64c98ac187118d90/5a46d/signedArea.png 300w,
+/static/40a430053b16275b64c98ac187118d90/0a47e/signedArea.png 600w,
+/static/40a430053b16275b64c98ac187118d90/4d383/signedArea.png 1195w&quot;
+        sizes=&quot;(max-width: 1195px) 100vw, 1195px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+기하학의 벡터에서는 부호 면적(Signed Area)를 구할 수 있다. 부호 면적은 벡터의 양 끝 점에서 x축에 수선을 내렸을 때 생기는 도형의 면적으로, 부호는 벡터의 기울기로 결정된다. 따라서 면적의 부호가 정해지려면 선분의 방향이 존재해야 한다. 위 그림과 같이 벡터 AB의 기울기가 양수라면 이 벡터의 부호 면적은 양수가 된다. 반대로 오른쪽 그림과 같이 기울기가 음수라면 벡터의 부호 면적도 음수가 된다.  &lt;/p&gt;
+&lt;h2 id=&quot;삼각형의-부호-면적&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%82%BC%EA%B0%81%ED%98%95%EC%9D%98-%EB%B6%80%ED%98%B8-%EB%A9%B4%EC%A0%81&quot; aria-label=&quot;삼각형의 부호 면적 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;삼각형의 부호 면적&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bcd1c5530cedbd7319c94fcdead230a1/8b70b/triangleReverseSum.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 28.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjklEQVQY002RTShEURiG33vvzD333pk7Y1j4jTJlLBQiO42fhZXsSMoKKb87FlPKxobFzEJjWBg1JlaaFCmRDfkZZUU0QkJkg5TFfL4Zv6feTuf9znl6v++ganECwDSImjDQ7c6hAJSPNfyu+odz1Fyfofz2Sm49XVNpDurkng8UAWgZSPIdwt+O0sEe5BKh6OlO6wy0uWgLxsWxoXBJIvabWXglVN+cO/tO5p00C/t7VNgoCjlVStIX6EfwDPeinMjatRI2fYCFsi36TiUK6lXYOrlezK8aLo8M9/2zGD+YsFMQ6ux+P2gBjn/JZJbKckApyNOHRoby+aDHZJgERe4ArM2FRVJtJIS6RFwwUMcLKaNxv0kz0PyhEVAMBpVyAMDG0BRc5d2EcGVY2g3DuuR0sKXKY5CALMgo80gVq1F4L+N6Y+JQlNw9Ct/RlJ1C0N7ChqBNBmZCS34l076BItW1lJ7X7jpzYEkZ7CpmiVuuikXgTcT1lottiX9NSicMQtASt7nBwPw0TPyboe0Tibib/COL7McAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;triangleReverseSum.png&quot;
+        title=&quot;triangleReverseSum.png&quot;
+        src=&quot;/static/bcd1c5530cedbd7319c94fcdead230a1/c1b63/triangleReverseSum.png&quot;
+        srcset=&quot;/static/bcd1c5530cedbd7319c94fcdead230a1/5a46d/triangleReverseSum.png 300w,
+/static/bcd1c5530cedbd7319c94fcdead230a1/0a47e/triangleReverseSum.png 600w,
+/static/bcd1c5530cedbd7319c94fcdead230a1/c1b63/triangleReverseSum.png 1200w,
+/static/bcd1c5530cedbd7319c94fcdead230a1/8b70b/triangleReverseSum.png 1266w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+벡터의 부호 면적을 이용하여 도형에도 부호 면적을 적용할 수 있다. 삼각형의 부호 면적은 삼각형을 이루는 세 벡터의 부호 면적 합이다. 삼각형의 부호 면적은 삼각형을 이루는 벡터들이 시계 방향이라면 양수, 반시계 방향이라면 음수가 된다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;외적을-이용한-삼각형의-부호-면적&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%99%B8%EC%A0%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%82%BC%EA%B0%81%ED%98%95%EC%9D%98-%EB%B6%80%ED%98%B8-%EB%A9%B4%EC%A0%81&quot; aria-label=&quot;외적을 이용한 삼각형의 부호 면적 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;외적을 이용한 삼각형의 부호 면적&lt;/h3&gt;
+&lt;p&gt;그럼 삼각형의 부호 면적을 계산해 보자. 앞에서 본 그림과 같이 각 벡터의 (사다리꼴 모양의) 부호 면적을 직접 계산하여 더하는 대신 외적(Cross Product)을 이용하면 삼각형의 부호 면적을 쉽게 구할 수 있다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 911px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVQoz5WSUU6DQBCGf6AgUEttFavRmJoYfTGpifHNE3gOD+KDFzD64Bk8mhdQE6V+MIMlBjVO+Jhll/l3ZnYlbNnDg75sA3ZhDUqI9Zu1AtUPwvfS4AkOpAs+x/rLekRCxEP88FXK8CPIN6Uzlk9S1uq4ddnEQrZTVzCAqBaADLGi9i9SsrTgANItXlHzaJ+JcWrhweR7hgiUBKaQ1Jm9eabPcGcNy8kgmEK0CitD66cmPSXXQkMIKhd69DWCMrIZdP+v0z2EaxyndMWwKGx61cPKSi4qy7RZhUTeL6tWqZ/4DlnPTvGMj/lvhp/7gc2b0/1w4XfrY4pK7tUUfmW2ZYGjwK/NwndKVsmHzcZtmZdwCzf0Zk86ZziNTDBWtyS3Iy8k7rs2rdGszFvELRG6Guqf9gn0c0NbnIzDSQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;externalProduct.png&quot;
+        title=&quot;externalProduct.png&quot;
+        src=&quot;/static/aea71c35fc13190a8714b0b6f0f5ef59/636c2/externalProduct.png&quot;
+        srcset=&quot;/static/aea71c35fc13190a8714b0b6f0f5ef59/5a46d/externalProduct.png 300w,
+/static/aea71c35fc13190a8714b0b6f0f5ef59/0a47e/externalProduct.png 600w,
+/static/aea71c35fc13190a8714b0b6f0f5ef59/636c2/externalProduct.png 911w&quot;
+        sizes=&quot;(max-width: 911px) 100vw, 911px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;br&gt;
+두 벡터 AB(xb - xa, yb - ya, 0)와 BC(xc - xb, yc - yb, 0)를 외적한 절댓값은 이 두 벡터를 두 변으로 하는 평행사변형의 면적과 같다. 따라서 이를 반으로 나눈 값이 이 두 벡터를 두 변으로 하는 삼각형의 면적이 된다. 부호 면적의 부호는 외적 벡터의 방향으로 알 수 있는데, 외적의 방향은 &lt;strong&gt;오른손의 법칙&lt;/strong&gt;을 이용하여 구할 수 있다. 오른손 법칙에 따르면 삼각형을 그리는 방향이 반시계 방향이라면, 부호 면적이 양수가 되고, 시계 방향이라면 부호 면적은 음수가 된다. 확인을 해보고 싶다면 앞에서 다룬 &lt;a href=&quot;#%EC%82%BC%EA%B0%81%ED%98%95%EC%9D%98-%EB%B6%80%ED%98%B8-%EB%A9%B4%EC%A0%81&quot;&gt;#삼각형의 부호 면적&lt;/a&gt;과 비교해 보자.  &lt;/p&gt;
+&lt;!-- [그림-오른손 법칙]   --&gt;
+&lt;!-- 여기서는 삼각형 모형을 그대로 유지한 외적이라 헷갈릴 수 있는데, 헷갈리시는 분은 아래 그림과 같이 벡터 AB를 평행이동하여 외적해보면 익숙할 것이다.   --&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;계산식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%84%EC%82%B0%EC%8B%9D&quot; aria-label=&quot;계산식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;계산식&lt;/h3&gt;
+&lt;p&gt;삼각형 ABC의 부호 면적을 두 벡터 AB, BC의 외적으로 계산하면 다음과 같다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 814px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7e57586483ecb00e512c981971b154f7/a4262/PE_expression.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtUlEQVQY052QzQrCMBCEJ39tglibWCstFq/i0wjWg4ciXgSfWfBV6q5GEPxBHfiYbMIO2QWeJTSEITc9eq6T6JpdUc1nQOKdAuGIjBhaSMUhC6RhhaMPSIoWe79EnW9w8BSUUZrBBz0GDhQsBzqHpuywHhuMqh06X2BebtEW9DYRsDK7tnwnIaH1fUT2E87simsBZW4j/yT559uL38XxK6LknRKzeDflcYmUaOKKeF01YWNPfgGSFRQqaUavZAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;PE_expression.png&quot;
+        title=&quot;PE_expression.png&quot;
+        src=&quot;/static/7e57586483ecb00e512c981971b154f7/a4262/PE_expression.png&quot;
+        srcset=&quot;/static/7e57586483ecb00e512c981971b154f7/5a46d/PE_expression.png 300w,
+/static/7e57586483ecb00e512c981971b154f7/0a47e/PE_expression.png 600w,
+/static/7e57586483ecb00e512c981971b154f7/a4262/PE_expression.png 814w&quot;
+        sizes=&quot;(max-width: 814px) 100vw, 814px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+이때 계산한 부호 면적이 양수라면 삼각형이 시계방향을 이루고, 음수라면 반시계 방향을 이루고 있는 것이다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;signed-area-장점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#signed-area-%EC%9E%A5%EC%A0%90&quot; aria-label=&quot;signed area 장점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Signed Area 장점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;적은 연산량  &lt;/li&gt;
+&lt;li&gt;Float 연산의 최소화  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;삼각형의 면적을 구할 때 벡터의 외적을 이용한 Signed Area 계산은 헤론의 공식보다 연산량이 적다. 그리고 Signed Area를 이용하면 삼각형의 면적 비교나 점들의 회전 방향 등을 Float를 사용하지 않고 정수 연산만으로도 답을 얻을 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;예제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C&quot; aria-label=&quot;예제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제&lt;/h2&gt;
+&lt;p&gt;부호 면적을 이용하여 &lt;a href=&quot;https://www.acmicpc.net/problem/11758&quot;&gt;[BAEK-JOON 11758]&lt;/a&gt; 문제를 풀어보자. 11758는 세 점 P1, P2, P3가 순서대로 주어질 때 이 점을 이은 선들이 시계 방향을 이루는지 반시계 방향을 이루는지 알아내는 문제이다. 이는 세 점 P1, P2, P3가 이루는 삼각형의 부호 면적을 계산하여 방향을 알아낼 수 있다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;cpp&quot;&gt;&lt;pre class=&quot;language-cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;lt;iostream&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;lt;vector&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;namespace&lt;/span&gt; std&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Point&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+vector&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Point&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; v_point&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; signedArea &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        signedArea &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v_point&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; v_point&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        signedArea &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v_point&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; v_point&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;signedArea &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        cout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;signedArea &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        cout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-1&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;
+        cout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pre_setting&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    ios_base&lt;span class=&quot;token operator&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sync_with_stdio&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    cin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tie&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        cin &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        v_point&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    v_point&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v_point&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;pre_setting&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[위상 정렬 (Topological Sort)]]></title><description><![CDATA[관계 그래프에서 처리 순서를 결정해보자]]></description><link>https://goo-gy.github.io/2021-12-01-topological-sort</link><guid isPermaLink="false">https://goo-gy.github.io/2021-12-01-topological-sort</guid><pubDate>Wed, 01 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;위상-정렬-topological-sort&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9C%84%EC%83%81-%EC%A0%95%EB%A0%AC-topological-sort&quot; aria-label=&quot;위상 정렬 topological sort permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;위상 정렬 (Topological Sort)&lt;/h2&gt;
 &lt;p&gt;위상 정렬은 사이클이 없는 방향 그래프 (Directed Acyclic Graphs)에서 순서를 거스르지 않고 모든 노드를 나열하는 알고리즘으로 &lt;strong&gt;선후 관계(전제 조건)&lt;/strong&gt;를 지키면서 일의 순서를 결정하는 데 사용할 수 있다. 결과적으로 보았을 때 그냥 정렬 알고리즘처럼 보이지만, &lt;strong&gt;값의 비교가 아닌 두 작업의 관계에서 순서&lt;/strong&gt;가 정해지는 경우에 위상 정렬 알고리즘을 사용하여 해결할 수 있다.&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
