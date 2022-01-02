@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://goo-gy.github.io/2021-12-31-webpack-react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/2021-12-03-geometry</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/2021-12-01-topological-sort</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/2021-08-30-Floyd-Warshall</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -27,17 +28,18 @@
 <url> <loc>https://goo-gy.github.io/2019-08-27-dynamic-array</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/2019-08-26-linked-list</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/page</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/web</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/project</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goo-gy.github.io/tag/webpack</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/algorithm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/geometry</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/graph</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://goo-gy.github.io/tag/project</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/network</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/gnuradio</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/sdr</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/oot</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/data_structure</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://goo-gy.github.io/tag/web</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://goo-gy.github.io/tag/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/data</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/css</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://goo-gy.github.io/tag/machine_learning</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
