@@ -7,7 +7,7 @@ tags: [web, react, project, webpack]
 path: "/2021-12-31-webpack-react"
 featuredImage: "./webpack.png"
 created: 2021-12-31
-updated: 2021-12-31
+updated: 2022-01-02
 ---
 
 ## [ Webpack이란? ]  
