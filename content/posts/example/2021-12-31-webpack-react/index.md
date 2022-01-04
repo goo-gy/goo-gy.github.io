@@ -38,7 +38,7 @@ npm init -y
 
 ``` json
 {
-  "name": "test",
+  "name": "homepage-front",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -46,9 +46,8 @@ npm init -y
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
 }
-
 ```
 
 -  react 환경 설치  
@@ -70,20 +69,13 @@ npm install --save-dev webpack webpack-cli
 모두 설치하면 다음과 같이 
 ``` json
 ...
-  "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
-    "@babel/preset-react": "^7.16.5",
-    "babel-loader": "^8.2.3",
-    "html-loader": "^3.0.1",
-    "html-webpack-plugin": "^5.5.0",
-    "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.2"
-  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   }
 ...
 ```
@@ -153,10 +145,10 @@ npx webpack
 ```
 ERROR in ./src/index.js 5:16
 Module parse failed: Unexpected token (5:16)
-You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders| import App from './App';
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import App from './App';
 |
 > ReactDOM.render(<App />, document.getElementById('root'));
-|
 ```  
 에러를 보면 JSX 코드 부분을 webpack에서 처리하려면 적절한 loader가 필요하다고 한다.  
 
@@ -185,11 +177,16 @@ module.exports = {
             }
         }
     ]
-  }
+  },
   ...
 };
 ```
-다시 실행하면 dist 디렉터리에 bundle.js가 성공적으로 생성되었을 것이다.  
+
+``` npx  
+npx webpack
+```  
+
+다시 실행하면 dist 디렉터리에 `bundle.js`가 성공적으로 생성되었을 것이다.  
 그러면 `index.html`을 생성하여 bundle.js를 불러와 보자.  
 - index.html  
 
@@ -206,9 +203,11 @@ module.exports = {
 </body>
 </html>
 ```
+
+![webpack_build](webpack_build.png)  
+
 `index.html`을 열어보면 React Component가 성공적으로 렌더링 된 것을 확인할 수 있다.  
 
-<!-- TODO : [ 그림 ]   -->
 
 
 ## [ Plugin ]
@@ -220,7 +219,8 @@ npm install --save-dev html-loader
 npm install --save-dev html-webpack-plugin
 ```
 
-### index.html    
+- index.html  
+
 ``` html
 <html lang="en">
 <head>
@@ -233,7 +233,7 @@ npm install --save-dev html-webpack-plugin
 </body>
 </html>
 ```
-앞에서와 달리 script를 연결하지 않고 id가 root인 div 태그만 만들었다.  
+이번에는 script를 연결하지 않고 id가 root인 div 태그만 만들었다.  
 
 ### webpack.config.js  
 ``` js
@@ -249,35 +249,31 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-        },
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        }
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: {
-              minimize: true,
-            },
-          },
-        ],
+        loader: "html-loader",
+        options: {
+          minimize: true,
+        },
       },
-    ],
+    ]
   },
   plugins: [
-      new HtmlWebpackPlugin({
-          template: 'index.html',
-      })
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+    })
   ],
 };
-
 ```
 
 - webpack에서 html을 처리하기 위해 html-loader를 추가하였다.  
-- `HtmlWebpackPlugin`을 이용하여 변환된 javascript 파일을 index.html에 연결하였다.  
+- `HtmlWebpackPlugin`을 이용하여 변환된 javascript 파일을 index.html에 연결한다.  
+
 
 ### 실행
 ``` npx  
