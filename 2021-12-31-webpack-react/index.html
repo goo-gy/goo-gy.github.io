@@ -190,7 +190,7 @@ webpack이 javascript 외 다른 자원(html, css, image 등)을 변환할 수 �
 <p>만들 프로젝트 디렉터리 내에서 package.json 생성</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> init -y</code></pre></div>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"test"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"homepage-front"</span><span class="token punctuation">,</span>
   <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
@@ -198,7 +198,7 @@ webpack이 javascript 외 다른 자원(html, css, image 등)을 변환할 수 �
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <ul>
 <li>react 환경 설치  </li>
@@ -215,20 +215,13 @@ webpack은 개발 환경에서만 필요하기 때문에 <code class="language-t
 </ul>
 <p>모두 설치하면 다음과 같이 </p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">...
-  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"@babel/core"</span><span class="token operator">:</span> <span class="token string">"^7.16.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"@babel/preset-env"</span><span class="token operator">:</span> <span class="token string">"^7.16.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"@babel/preset-react"</span><span class="token operator">:</span> <span class="token string">"^7.16.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"babel-loader"</span><span class="token operator">:</span> <span class="token string">"^8.2.3"</span><span class="token punctuation">,</span>
-    <span class="token property">"html-loader"</span><span class="token operator">:</span> <span class="token string">"^3.0.1"</span><span class="token punctuation">,</span>
-    <span class="token property">"html-webpack-plugin"</span><span class="token operator">:</span> <span class="token string">"^5.5.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack"</span><span class="token operator">:</span> <span class="token string">"^5.65.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack-cli"</span><span class="token operator">:</span> <span class="token string">"^4.9.1"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack-dev-server"</span><span class="token operator">:</span> <span class="token string">"^4.7.2"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"react"</span><span class="token operator">:</span> <span class="token string">"^17.0.2"</span><span class="token punctuation">,</span>
     <span class="token property">"react-dom"</span><span class="token operator">:</span> <span class="token string">"^17.0.2"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"webpack"</span><span class="token operator">:</span> <span class="token string">"^5.65.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"webpack-cli"</span><span class="token operator">:</span> <span class="token string">"^4.9.1"</span>
   <span class="token punctuation">}</span>
 ...</code></pre></div>
 <p><code class="language-text">--save-dev</code> 옵션을 준 module은 dependencies가 아닌 devDependencies에 설치된 것을 확인할 수 있다.  </p>
@@ -284,10 +277,10 @@ path도 설정해 줄 수 있지만 default는 dist 디렉터리이다.  </li>
 </ul>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ERROR in ./src/index.js 5:16
 Module parse failed: Unexpected token (5:16)
-You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders| import App from &#39;./App&#39;;
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import App from &#39;./App&#39;;
 |
-&gt; ReactDOM.render(&lt;App /&gt;, document.getElementById(&#39;root&#39;));
-|</code></pre></div>
+&gt; ReactDOM.render(&lt;App /&gt;, document.getElementById(&#39;root&#39;));</code></pre></div>
 <p>에러를 보면 JSX 코드 부분을 webpack에서 처리하려면 적절한 loader가 필요하다고 한다.  </p>
 <h3 id="loader-with-babel" style="position:relative;"><a href="#loader-with-babel" aria-label="loader with babel permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>loader (with babel)</h3>
 <p>loader는 webpack이 javascript만 변환할 수 있기 때문에 다른 자원을 load 할 수 있도록 도와주는 기능이다.<br>
@@ -310,10 +303,11 @@ JSX 문법을 변환하기 위해서는 babel과 특정 preset들이 필요하�
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>다시 실행하면 dist 디렉터리에 bundle.js가 성공적으로 생성되었을 것이다.<br>
+<div class="gatsby-highlight" data-language="npx"><pre class="language-npx"><code class="language-npx">npx webpack</code></pre></div>
+<p>다시 실행하면 dist 디렉터리에 <code class="language-text">bundle.js</code>가 성공적으로 생성되었을 것이다.<br>
 그러면 <code class="language-text">index.html</code>을 생성하여 bundle.js를 불러와 보자.  </p>
 <ul>
 <li>index.html  </li>
@@ -329,14 +323,44 @@ JSX 문법을 변환하기 위해서는 babel과 특정 preset들이 필요하�
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./dist/bundle.js<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 761px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c64e60ddcb123b3270cdb690dc7f35f6/8c857/webpack_build.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABJ0AAASdAHeZh94AAAA3UlEQVQoz63OzU7CQBDA8X0bTxYMT2lQUZ7AJ/HkgZvRRPwCopESbLvU0mK73e7+XbAhmIgXmOSXnczuzKw4PL7l8vqNu4FP7+Gdm+GUez9hLDPOrsYctJ9odUccXQxrI5rnA7zOCw13NjrPeKePeCd9mq4mkjTDlDnqK3UydLFA54tVHkchsZR8xjOkjFCqoNIl6TxZW925d0HwgSpyxDSUBGFIJGN0VVEZ65g1s4W1FlOztWVdFNryX9i/2O3cQPPTuLFpFyLXv7+/K7Ects8QrzPFZF7iJyWTPfgGcFdgBw5S7DgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="webpack_build"
+        title="webpack_build"
+        src="/static/c64e60ddcb123b3270cdb690dc7f35f6/8c857/webpack_build.png"
+        srcset="/static/c64e60ddcb123b3270cdb690dc7f35f6/5a46d/webpack_build.png 300w,
+/static/c64e60ddcb123b3270cdb690dc7f35f6/0a47e/webpack_build.png 600w,
+/static/c64e60ddcb123b3270cdb690dc7f35f6/8c857/webpack_build.png 761w"
+        sizes="(max-width: 761px) 100vw, 761px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>  </p>
 <p><code class="language-text">index.html</code>을 열어보면 React Component가 성공적으로 렌더링 된 것을 확인할 수 있다.  </p>
-<!-- TODO : [ 그림 ]   -->
 <h2 id="plugin" style="position:relative;"><a href="#plugin" aria-label="plugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Plugin ]</h2>
 <p>HtmlWebpackPlugin을 이용하면 따로 작성하지 않아도 Webpack에서 알아서 bundle.js를 불러오는 html을 생성해 준다.    </p>
 <h3 id="설치-1" style="position:relative;"><a href="#%EC%84%A4%EC%B9%98-1" aria-label="설치 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설치</h3>
 <div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> --save-dev html-loader
 <span class="token function">npm</span> <span class="token function">install</span> --save-dev html-webpack-plugin</code></pre></div>
-<h3 id="indexhtml" style="position:relative;"><a href="#indexhtml" aria-label="indexhtml permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>index.html</h3>
+<ul>
+<li>index.html  </li>
+</ul>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -347,7 +371,7 @@ JSX 문법을 변환하기 위해서는 babel과 특정 preset들이 필요하�
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
-<p>앞에서와 달리 script를 연결하지 않고 id가 root인 div 태그만 만들었다.  </p>
+<p>이번에는 script를 연결하지 않고 id가 root인 div 태그만 만들었다.  </p>
 <h3 id="webpackconfigjs" style="position:relative;"><a href="#webpackconfigjs" aria-label="webpackconfigjs permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>webpack.config.js</h3>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"html-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -361,33 +385,29 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     rules<span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
         test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.jsx?</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        loader<span class="token operator">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
+        loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
         options<span class="token operator">:</span> <span class="token punctuation">{</span>
-          presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span> <span class="token string">"@babel/preset-react"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'@babel/preset-env'</span><span class="token punctuation">,</span> <span class="token string">'@babel/preset-react'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
         test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.html$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token punctuation">{</span>
-            loader<span class="token operator">:</span> <span class="token string">"html-loader"</span><span class="token punctuation">,</span>
-            options<span class="token operator">:</span> <span class="token punctuation">{</span>
-              minimize<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-            <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        loader<span class="token operator">:</span> <span class="token string">"html-loader"</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span>
+          minimize<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-      <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-          template<span class="token operator">:</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      template<span class="token operator">:</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <ul>
 <li>webpack에서 html을 처리하기 위해 html-loader를 추가하였다.  </li>
-<li><code class="language-text">HtmlWebpackPlugin</code>을 이용하여 변환된 javascript 파일을 index.html에 연결하였다.  </li>
+<li><code class="language-text">HtmlWebpackPlugin</code>을 이용하여 변환된 javascript 파일을 index.html에 연결한다.  </li>
 </ul>
 <h3 id="실행" style="position:relative;"><a href="#%EC%8B%A4%ED%96%89" aria-label="실행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실행</h3>
 <div class="gatsby-highlight" data-language="npx"><pre class="language-npx"><code class="language-npx">npx webpack</code></pre></div>
