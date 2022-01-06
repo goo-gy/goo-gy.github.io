@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 04 Jan 2022 17:11:23 GMT</lastBuildDate><item><title><![CDATA[[Webpack] Webpack을 이용한 React 개발]]></title><description><![CDATA[언제까지 CRA 쓸거야?]]></description><link>https://goo-gy.github.io/2021-12-31-webpack-react</link><guid isPermaLink="false">https://goo-gy.github.io/2021-12-31-webpack-react</guid><pubDate>Fri, 31 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;webpack이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webpack%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;webpack이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Webpack이란? ]&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 06 Jan 2022 14:59:55 GMT</lastBuildDate><item><title><![CDATA[[VScode] Prettier를 이용한 코드 정렬]]></title><description><![CDATA[Prettier Module을 통해 팀원과 일관성 있는 코드 정렬을 사용하자]]></description><link>https://goo-gy.github.io/2022-01-05-prettier</link><guid isPermaLink="false">https://goo-gy.github.io/2022-01-05-prettier</guid><pubDate>Wed, 05 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;팀원들과 함께 프로젝트를 진행하다 보면 다른 사람이 작성한 코드를 볼 일이 굉장히 많다. 그때 팀원들과 코드 스타일이나 정렬 방법 등이 많이 다르다면 코드를 이해하기 어려울 것이다. 그래서 오늘은 Code formatter인 Prettier와, 프로젝트에서 정렬 방식을 통일하는 방법을 소개하려고 한다.  &lt;/p&gt;
+&lt;h2 id=&quot;prettier&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#prettier&quot; aria-label=&quot;prettier permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Prettier&lt;/h2&gt;
+&lt;p&gt; Prettier는 VScode에서 확장 프로그램으로 제공하는 Code formatter이다. Prettier는 말 그대로 우리가 작성한 코드를 일관된 방식으로 보기 좋게 정렬해 준다.  &lt;/p&gt;
+&lt;h3 id=&quot;vscode-prettier-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vscode-prettier-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;vscode prettier 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VScode Prettier 사용하기&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5c176abab1159e26a5938d7f990566c4/29114/vscodePrettierInstall.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACD0lEQVQoz11S25KTQBTkL3ZjuITbwHALDLdAgJCwW1pb+mDVlqtvvqhV6v+/tmcmyRp9aGbOYehpuo827PcYpwld12G322G/H9DUNUQh0DQN+r6nukFNvfqyynNlWaGgM0Kc0TSteq9V9NjtekKnVpEXYFGMcujhhxxJHCEIQ8TUy9IEURTBsjbQdR2GYfwHE1rbHfHw+IRleYtxPKHqT+j2Iz69PCOqOmxFhTzPsc1SiNgF5yERWjBNg2DewFDQcrEQ0VHJjqMERTeBxynSLIfFc7C8hb2RBBZWb9ZYr9f/EF3VXWstLQoM4wEt+VKIkggPiOIYYRiABwwB82kfIggCOI6jcPubjDF4ngfzQqpN8wmH04JpntGQj2k7gKc5KS5RVZVCQZeW5d/6eoFt22C+C891oF8Jf/76jXk+qkSrqkaxG+H6DL7vK8iPkyRRiEk55/yiyidVOhxewmYJDP1shfbt+w9FKFOW0Yv+AGuzwWq1Un5taC/J5JikaQrXdS99my704LAYjhe8WqAUnpYHmrc9cpqrbTuqUCRJRKMi14DGJ6TAfBYqZa7rwSXf5MrIY6nYv0D78vkFx8OEpqSUKYispOEtC7SVUBBbSjwKIbIEnPyyTfpNy3iFbRqqZ19qTW/fYfv4jGz5iGD8AP70Fd7wHoaYYdUPWG0n3KUD7jOJEfe0v7vBtV5lZ/wBIGhPRqLHxp4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;vscodePrettierInstall&quot;
+        title=&quot;vscodePrettierInstall&quot;
+        src=&quot;/static/5c176abab1159e26a5938d7f990566c4/c1b63/vscodePrettierInstall.png&quot;
+        srcset=&quot;/static/5c176abab1159e26a5938d7f990566c4/5a46d/vscodePrettierInstall.png 300w,
+/static/5c176abab1159e26a5938d7f990566c4/0a47e/vscodePrettierInstall.png 600w,
+/static/5c176abab1159e26a5938d7f990566c4/c1b63/vscodePrettierInstall.png 1200w,
+/static/5c176abab1159e26a5938d7f990566c4/d61c2/vscodePrettierInstall.png 1800w,
+/static/5c176abab1159e26a5938d7f990566c4/29114/vscodePrettierInstall.png 1920w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;VScode 확장 프로그램에서 Prettier를 검색하여 Prettier - Code formatter를 설치한다.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/05418d950d0f75c39118bf653356f44c/29114/vscodePrettierSetting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAAB/UlEQVQoz3WSSY/TQBBG/SfQZIgdx1u8JW6vbTteE2cEGsFhJCTgxgWQgP9//aguJkgzA4enKrfdXa/KrfVdh2Ec0bYtmqZBR8/H45HzYRgwTROv9f2AqqyQ5/kLilTgUpWQVQWtrCRtPjJ13SLNCkRRhDRNOSqCIIDv+xzDMKRIUAyDxzxrUNQnWJ4PrW5PuNzdY1neoOtntE1HmwMIIRDHMUzThOd5cF0XhmEwm83mCXZ5gjM9YOvH0NJ8odZmVo+iPYp2gGXbfKDjOLyholaklDgcDmy52+0YZa2K6a9X0FevYOg6tEOWoR8m1DSzLC+QH2c4rgeRJGznUi5pFHlRIqE1VUjFK6pIGMXwwxhby4I2zmdM5wXjNEM2LZJmgO248MlA2blk0PRn1GSuTNVsFRmJ/IVEkjSHTZ1pP37+wjyfuKWS/mLWjlTJhq6veV4WVRUiQVkUbKNaVKhxqAOuOI7NHWlfv33nAxuyk7KmlieYWwvr9RprmomyLMuSra4tqqgK6fT+OWx4Xi509zq6MjlEPSCM94j3e55NTLnn7bh1W1k9wX3EIUOXv9E+f/qI0zRCFjniwEdSSFRFhrpU0MUVZBSHHMOdC2ujwzaN/6Lp9VuIuw9Ilgf4w3uE91/g9u9g5DPM6oJbMeLm0GOVKAasKL/5B7fJH34DdCJR90BsW7MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;vscodePrettierSetting&quot;
+        title=&quot;vscodePrettierSetting&quot;
+        src=&quot;/static/05418d950d0f75c39118bf653356f44c/c1b63/vscodePrettierSetting.png&quot;
+        srcset=&quot;/static/05418d950d0f75c39118bf653356f44c/5a46d/vscodePrettierSetting.png 300w,
+/static/05418d950d0f75c39118bf653356f44c/0a47e/vscodePrettierSetting.png 600w,
+/static/05418d950d0f75c39118bf653356f44c/c1b63/vscodePrettierSetting.png 1200w,
+/static/05418d950d0f75c39118bf653356f44c/d61c2/vscodePrettierSetting.png 1800w,
+/static/05418d950d0f75c39118bf653356f44c/29114/vscodePrettierSetting.png 1920w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;Prettier를 설치했으면 &lt;code class=&quot;language-text&quot;&gt;ctrl + ,&lt;/code&gt;를 눌러 Settings으로 가자. Settings에서 Prettier를 검색하면 Prettier에 대한 설정을 조작할 수 있다. 하지만 이렇게 보는 것보다 &lt;code class=&quot;language-text&quot;&gt;settings.json&lt;/code&gt;을 직접 수정하는 게 편하다면 오른쪽 위에 표시한 아이콘을 클릭해 json 파일로 넘어가자.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fa586269e07dc8f136fafb9b11d5285c/29114/vscodePrettierJson.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAAB3klEQVQoz42SS4+UQBSF+Rk9AxSP5tFNQwM1NFQBBfRLzSw0Jibqzo2aOBP9/6vjpWxNO4lmFh9Q91KHc6hr9F0HNQyQUkIIgY7Wbdvq9TAojNQbNCPVatTVFrwswTn/Q1lyiEZgt6thVHQRotXUVCzLClEUIY5jrJIU63SL9XqNcOnD9114LoNlWYStsW0bpmkhjEK4rgOjkXuczvc4Hl+SuwlS9IjCCF4QYisGZEIhyXISXILZDIw5BPuLWdSnvhYs+AlK7bX1zSbFnVRYBgH8IELCa2wqgVVaIA5DhOQw8D04F5Fr0dnt0rdhpEWOtutRU/Q8L1CQq1kwiFbYygFFfyDBnKI6WkRzEbzml1MGQ417DOOEvleoqhrprkVAcYMoRtb0KLoDkpyToKs3PI17HdtxKPLj9x84nl9AkkvRdqjUQYt5HkVzPbieTy+6OiZ7BsbnL18xTXs6ZYm6bsDlqIUsy9RfnU/06f/6r+C3h0ccjieavQ4FzVPeDEg2mR4dz/cR0fg4c9z5dJ1/cOm5lMr4+OE99uOA3R1HQpszvoNsasSBD/t2Adc2wawbMPN5GFbzCvn5HfLjW6TTayT3n7Ce3oDxCYusx2I7ozQ3xG1Od8K8MD//rpuFwk9sxUimbGRXdQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;vscodePrettierJson&quot;
+        title=&quot;vscodePrettierJson&quot;
+        src=&quot;/static/fa586269e07dc8f136fafb9b11d5285c/c1b63/vscodePrettierJson.png&quot;
+        srcset=&quot;/static/fa586269e07dc8f136fafb9b11d5285c/5a46d/vscodePrettierJson.png 300w,
+/static/fa586269e07dc8f136fafb9b11d5285c/0a47e/vscodePrettierJson.png 600w,
+/static/fa586269e07dc8f136fafb9b11d5285c/c1b63/vscodePrettierJson.png 1200w,
+/static/fa586269e07dc8f136fafb9b11d5285c/d61c2/vscodePrettierJson.png 1800w,
+/static/fa586269e07dc8f136fafb9b11d5285c/29114/vscodePrettierJson.png 1920w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;setting.json에서 코드 정렬에 관한 부분은 editor와 방금 전에 우리가 설치한 prettier이다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;editor.defaultFormatter&lt;/strong&gt;&lt;br&gt;
+기본 Code formatter로 사용할 것인지 설정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;br&gt;
+true로 설정하면 파일이 저장될 때 자동으로 정렬한다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;#prettier-%EB%AC%B8%EB%B2%95&quot;&gt;#Prettier 문법&lt;/a&gt;에는 자주 사용하는 Prettier 설정을 몇 가지 정리해 두었다. VScode의 setting.json 에서는 &lt;code class=&quot;language-text&quot;&gt;&amp;quot;prettier.tabWidth&amp;quot;: 4&lt;/code&gt; 와 같이 앞에 &quot;prettier.&quot;를 붙여주면 된다.    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;정렬하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0&quot; aria-label=&quot;정렬하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정렬하기&lt;/h3&gt;
+&lt;p&gt;VScode에서 기본적인 정렬 단축키는 (Window 기준으로) &lt;code class=&quot;language-text&quot;&gt;Alt + Shift + f&lt;/code&gt;이다. &lt;code class=&quot;language-text&quot;&gt;&amp;quot;editor.defaultFormatter&amp;quot;: &amp;quot;esbenp.prettier-vscode&amp;quot;&lt;/code&gt;로 설정해 두었다면 Prettier 설정에 따라서 정렬된다. 매번 단축키를 입력하는 것이 귀찮다면 &lt;code class=&quot;language-text&quot;&gt;&amp;quot;editor.formatOnSave&amp;quot;: true&lt;/code&gt;로 설정하자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;팀원들과-정렬-방식이-다르다면&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8C%80%EC%9B%90%EB%93%A4%EA%B3%BC-%EC%A0%95%EB%A0%AC-%EB%B0%A9%EC%8B%9D%EC%9D%B4-%EB%8B%A4%EB%A5%B4%EB%8B%A4%EB%A9%B4&quot; aria-label=&quot;팀원들과 정렬 방식이 다르다면 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;팀원들과 정렬 방식이 다르다면&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9969c8e8f4465a409d46dd0692a1ddc3/29114/commitDiff.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACGklEQVQoz1WS13LbMBBF+RNJRLGiA2wSKVoUiySneJIXO+3/v+VmAY8nycOZu1juAlsYrduC623D9brissyYlgXLtpG9YBhHnB4egr2Rb54XrOuK2X8bThhPI6bpEljWDcdjj6jRBg9aYqga9FKhLXK4LIMlXO7tHLYsoTSHNRrKGjirUFUSyghYp16VfF1tEZ0peBEGm7GYmMA5TTHu9xiTJHCKY1yURNdb9GOHcerQDQ7tQcE1jKCHaoYj+b58vCHinEMIjbo9wDhHlRgU9EhGFeZUYUoPaK3h4xjj0MZRXAVDcYI6KooCCcUYsr9+uiM6UuBATNZhkhITJQ+MoaXqWgps9gl6qrBqNFzNUbUa/anFsa9xIFwtIXSBQ2fx7fMjokdKfio57kmOW5phi3dEjCu1HdjtcBP04NrhQjTnAcezpbZl4HBSQce5oeVeERmqThUlNF2qqCVBbQpq9z/IJyWHFBKFqiBpiZwXYLwkSFkBLlgYTeTn5WeQUmKapWF2GV3gSd+UfEmSEgnSZB/Un/18//I680jQ3MqS0XBLWgZDTprlRdA3/JkLQQvTEEpBKh3wuZyq9sthXISlRY3V6CoDKxlqI6EFtU9tlMkOxf5DII/fw5LfxzX+f3MGrdOotIBTPOTJMkORxojY/TfS9Qey7WdA3H+hvP3Cbv6Od9PLPzxjd3lGPL8gJt17JZLlJdj+jv34hD9FIEOgnFr2BAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;commitDiff&quot;
+        title=&quot;commitDiff&quot;
+        src=&quot;/static/9969c8e8f4465a409d46dd0692a1ddc3/c1b63/commitDiff.png&quot;
+        srcset=&quot;/static/9969c8e8f4465a409d46dd0692a1ddc3/5a46d/commitDiff.png 300w,
+/static/9969c8e8f4465a409d46dd0692a1ddc3/0a47e/commitDiff.png 600w,
+/static/9969c8e8f4465a409d46dd0692a1ddc3/c1b63/commitDiff.png 1200w,
+/static/9969c8e8f4465a409d46dd0692a1ddc3/d61c2/commitDiff.png 1800w,
+/static/9969c8e8f4465a409d46dd0692a1ddc3/29114/commitDiff.png 1920w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;Prettier를 통해서 코드를 보기 좋게 정렬했지만, 나와 팀원의 Prettier 설정이 다르다면 코드를 읽는 것이 익숙하지 않을 것이다. 무엇보다도 그냥 정렬을 했을 뿐인데, github에서 많은 부분이 수정되어 Commit 내용을 알아보기 힘든 불상사가 생길 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;prettier-node-module-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#prettier-node-module-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;prettier node module 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Prettier Node module 사용하기&lt;/h2&gt;
+&lt;p&gt;위와 같은 문제를 해결하기 위해서 우리는 프로젝트에 Prettier 설정을 저장해둘 수 있다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev --save-exact prettier  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;프로젝트에서 Prettier 모듈을 관리하도록 Local에 Prettier를 설치한다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;configuration-file&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#configuration-file&quot; aria-label=&quot;configuration file permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Configuration file&lt;/h3&gt;
+&lt;p&gt;Prettier 공식 페이지 &lt;a href=&quot;https://prettier.io/docs/en/configuration.html&quot;&gt;https://prettier.io/docs/en/configuration.html&lt;/a&gt; 에서 Configuration을 적용하는 방법을 알려주고 있다. 여러 가지 방법이 소개되어 있지만, 프로젝트 폴더에 &lt;code class=&quot;language-text&quot;&gt;.prettierrc&lt;/code&gt; 파일을 생성하여 Prettier 설정을 적용해보자.   &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;.prettierrc&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;tabWidth&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;printWidth&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;singleQuote&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;arrowParens&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;always&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;trailingComma&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;es5&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;semi&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Prettier configuration의 우선순위는 앞에서 살펴본 &lt;code class=&quot;language-text&quot;&gt;setting.json (VScode)&lt;/code&gt; 보다 프로젝트 내의 &lt;code class=&quot;language-text&quot;&gt;.prettierrc&lt;/code&gt;가 더 높기 때문에 팀원들과 통일된 정렬 방법을 사용할 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;prettier-문법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#prettier-%EB%AC%B8%EB%B2%95&quot; aria-label=&quot;prettier 문법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Prettier 문법&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;prettier.arrowParens&lt;/strong&gt;&lt;br&gt;
+javascript의 화살표 함수(arrow function)에서 단일 파라미터에 괄호(parenthesis)를 붙일지 설정한다.&lt;br&gt;
+&quot;always&quot;로 설정하면 괄호를 붙이고 &quot;avoid&quot;로 설정하면 붙이지 않는다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;prettier.tabWidth&lt;/strong&gt;&lt;br&gt;
+tab의 크기를 설정한다. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;prettier.printWidth&lt;/strong&gt;&lt;br&gt;
+한 line에 표시할 코드의 길이를 설정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;prettier.semi&lt;/strong&gt;&lt;br&gt;
+true로 설정하면 statement 끝에 세미콜론을 붙인다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;prettier.singleQuote&lt;/strong&gt;&lt;br&gt;
+true로 설정하면 문자열에 single quote를 사용하고,&lt;br&gt;
+false로 설정하면 문자열에 double quote를 사용한다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;자세한 Option은 Prettier 공식 페이지 &lt;a href=&quot;https://prettier.io/docs/en/options.html&quot;&gt;https://prettier.io/docs/en/options.html&lt;/a&gt; 를 참고하자.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[[Webpack] Webpack을 이용한 React 개발]]></title><description><![CDATA[언제까지 CRA 쓸거야?]]></description><link>https://goo-gy.github.io/2021-12-31-webpack-react</link><guid isPermaLink="false">https://goo-gy.github.io/2021-12-31-webpack-react</guid><pubDate>Fri, 31 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;webpack이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webpack%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;webpack이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Webpack이란? ]&lt;/h2&gt;
 &lt;p&gt;webpack은 여러 개의 모듈(javascript, css, html, image 등)을 하나의 javascript 파일로 묶어주는 모듈 번들러(bundler)이다. React를 통해 개발을 한다면 기능을 여러 컴포넌트로 분리할 것이다. webpack은 이 분리된 자원들을 하나의 javascript로 변환해 준다. 또 webpack은 JSX를 해석해 주는 babel을 적용할 수 있고, 코드 최적화 수행, &lt;code class=&quot;language-text&quot;&gt;console.log()&lt;/code&gt;와 같이 실제 서비스에서는 필요 없는 코드를 자동으로 제거하는 등 여러 기능을 사용할 수 있다.  &lt;/p&gt;
 &lt;h3 id=&quot;webpack-속성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webpack-%EC%86%8D%EC%84%B1&quot; aria-label=&quot;webpack 속성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;webpack 속성&lt;/h3&gt;
 &lt;p&gt;webpack에서 우리가 설정해 주어야 할 중요한 속성은 다음 4가지 정도이다.  &lt;/p&gt;
