@@ -1,4 +1,194 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 06 Jan 2022 14:59:55 GMT</lastBuildDate><item><title><![CDATA[[VScode] Prettier를 이용한 코드 정렬]]></title><description><![CDATA[Prettier Module을 통해 팀원과 일관성 있는 코드 정렬을 사용하자]]></description><link>https://goo-gy.github.io/2022-01-05-prettier</link><guid isPermaLink="false">https://goo-gy.github.io/2022-01-05-prettier</guid><pubDate>Wed, 05 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;팀원들과 함께 프로젝트를 진행하다 보면 다른 사람이 작성한 코드를 볼 일이 굉장히 많다. 그때 팀원들과 코드 스타일이나 정렬 방법 등이 많이 다르다면 코드를 이해하기 어려울 것이다. 그래서 오늘은 Code formatter인 Prettier와, 프로젝트에서 정렬 방식을 통일하는 방법을 소개하려고 한다.  &lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 08 Jan 2022 18:25:50 GMT</lastBuildDate><item><title><![CDATA[[React] Webpack 프로젝트에 Tailwind 적용하기]]></title><description><![CDATA[Webpack 프로젝트에 Tailwind 적용하기]]></description><link>https://goo-gy.github.io/2022-01-09-tailwind</link><guid isPermaLink="false">https://goo-gy.github.io/2022-01-09-tailwind</guid><pubDate>Sun, 09 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이전 프로젝트에서는 기능적인 부분은 쉽게 만들 수 있는  Material-UI와, 불편한 style 방식을 해결하기 위해 styled-components와 함께 사용했다. 하지만 styled-components의 (또는 class)의 Naming과 작은 style 때문에 Component가 너무 많아지는 것이 불편했다. 그래서 다른 디자인 라이브러리를 찾아보던 중 아주 맘에 드는 TailWind를 발견하여 이번 프로젝트에 적용해 보았다.  &lt;/p&gt;
+&lt;h2 id=&quot;tailwind&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tailwind&quot; aria-label=&quot;tailwind permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tailwind&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://tailwindcss.com/&quot;&gt;https://tailwindcss.com/&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;core-concepts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#core-concepts&quot; aria-label=&quot;core concepts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Core Concepts&lt;/h3&gt;
+&lt;p&gt;TailWind의 Core Concept은 다음과 같다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Utility-First Fundamentals  &lt;/li&gt;
+&lt;li&gt;Handling Hover, Focus, and Other States  &lt;/li&gt;
+&lt;li&gt;Responsive Design&lt;/li&gt;
+&lt;li&gt;Dark Mode  &lt;/li&gt;
+&lt;li&gt;Reusing Styles  &lt;/li&gt;
+&lt;li&gt;Custom Styles  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;장점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%A5%EC%A0%90&quot; aria-label=&quot;장점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;장점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Class Naming 불필요  &lt;/li&gt;
+&lt;li&gt;Javascript 분리    &lt;/li&gt;
+&lt;li&gt;커스터마이징  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;먼저 utility class를 사용하기 때문에 class 명을 고민하지 않아도 된다. 그리고 BootStrap의 경우 javascript를 사용해서 스타일 ㄴ하는 경우가 많은데, Tailwind는 css로만 구현한다는 점도 아주 마음에 들었다. 그리고 &lt;a href=&quot;https://tailwindui.com/&quot;&gt;https://tailwindui.com/&lt;/a&gt; 에서 Tailwind로 작성된 다양한 Component를 제공해 주면서도 쉽게 커스터마이징 할 수 있다는 것이 매력적이었다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;단점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A8%EC%A0%90&quot; aria-label=&quot;단점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;단점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;러닝 커브  &lt;/li&gt;
+&lt;li&gt;html (jsx) 코드 길이  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Low 레벨의 스타일링을 할 수 있는 만큼 utility class를 사용하기 위해 공부해야 한다. 하지만 문법도 간단해서 css를 잘 이해하고 있다면 금방 익숙해질 것 같다. 또 다른 단점이라면 html (jsx)의 코드가 길어진다는 점이 있다. &lt;/p&gt;
+&lt;h2 id=&quot;tailwind-시작하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tailwind-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0&quot; aria-label=&quot;tailwind 시작하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tailwind 시작하기&lt;/h2&gt;
+&lt;h3 id=&quot;tailwind-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tailwind-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;tailwind 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tailwind 설치&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://tailwindcss.com/docs/guides/create-react-app&quot;&gt;Installation: Tailwind CSS with Create React App - Tailwind CSS&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -D tailwindcss postcss autoprefixer&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;tailwindcss&lt;/li&gt;
+&lt;li&gt;postcss&lt;/li&gt;
+&lt;li&gt;autoprefixer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tailwind와, 함께 필요한 dependency를 모두 설치해 주자.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;template-설정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#template-%EC%84%A4%EC%A0%95&quot; aria-label=&quot;template 설정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Template 설정&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;npx tailwindcss init -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;실행하면 &lt;code class=&quot;language-text&quot;&gt;tailwind.config.js&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;postcss.config.js&lt;/code&gt;가 생성된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;tailwind.config.js&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  content&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;./src/**/*.{html,js,jsx,ts,tsx}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  theme&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    extend&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;src 디렉터리의 모든 Html 또는 React Component에서 Tailwind css를 사용할 수 있도록 설정한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;코드-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;코드 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;코드 작성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;tailwind.css&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; base&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; utilities&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Tailwind 문법을 import 하도록 css에 작성한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;index.js&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; ReactDOM &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react-dom&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; App &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./App&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./tailwind.css&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+ReactDOM&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;App&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;root&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;React의 시작 Entry인 &lt;code class=&quot;language-text&quot;&gt;index.js&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;tailwind.css&lt;/code&gt;를 import 한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;webpack-loader Error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;Compiled &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; problems&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;X&lt;/span&gt;
+
+&lt;span class=&quot;token constant&quot;&gt;ERROR&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;src&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;tailwind&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;css &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+
+Module parse failed&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Unexpected character &lt;span class=&quot;token string&quot;&gt;&apos;@&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+You may need an appropriate loader to handle &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt; file type&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; currently no loaders are configured to process &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt; file&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; See https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;webpack&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;js&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;org&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;concepts#loaders
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; @tailwind base&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; @tailwind components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; @tailwind utilities&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;프로젝트를 Create-React-App으로 생성했다면 문제 없겠지만, Webpack에서 필요한 loader가 설정되어 있지 않다면 위와 같은 에러를 볼 수 있다. &lt;a href=&quot;#webpack-loader-%EC%84%A4%EC%A0%95&quot;&gt;Webpack loader 설정&lt;/a&gt; 으로 가서 loader를 설정하자&lt;/p&gt;
+&lt;h2 id=&quot;tailwind-문법-사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tailwind-%EB%AC%B8%EB%B2%95-%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;tailwind 문법 사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tailwind 문법 사용&lt;/h2&gt;
+&lt;p&gt;Tailwind 설정을 마쳤다면 다음과 같이 Tailwind css 문법을 사용할 수 있다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;App.js&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;bg-blue-300 p-40&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text-3xl font-bold underline text-center&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+        TailWind Test
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; App&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1199px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7183a922ae6e5bbac1c6d265ef1a4abc/95e27/tailwindStart.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABJ0lEQVQoz63QyUrDQBgH8HkdTy6Ij+TNq/gMQramIHrRB/DgA4hLM60WW1PcUGOoNkguUjENMcGZ+Zul2jTGBWzgxzeT+ebPzJCdsydcOn2YD32cP3q4dj0sbjuYkizMV+4wp30jXpvVLEzLN5hR47l6iwXdBrlwGa7cN3R6AU7sF7S7A3ScEO1eiNMfRWjdB2hYHprdEE3bh+lEIKsHDFKNp2RDZJLxXxgcKhVQ4qpQkc6JRhmqdQ69zkpwVBtiiJf30fFKVCPbWKHFpuyfsh9A3vOhHr7GwmEfHwUVFAL52DipK1smlvRdLG+2UlIcnpw435/3GfhxxZHilcWXtdJApcagUY7kLUsZOfR3ZO2IYeOYY31CyHMg4EcCgyir/0UYF5jk9w5xju+5DW9dTgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tailwindStart.png&quot;
+        title=&quot;tailwindStart.png&quot;
+        src=&quot;/static/7183a922ae6e5bbac1c6d265ef1a4abc/95e27/tailwindStart.png&quot;
+        srcset=&quot;/static/7183a922ae6e5bbac1c6d265ef1a4abc/5a46d/tailwindStart.png 300w,
+/static/7183a922ae6e5bbac1c6d265ef1a4abc/0a47e/tailwindStart.png 600w,
+/static/7183a922ae6e5bbac1c6d265ef1a4abc/95e27/tailwindStart.png 1199w&quot;
+        sizes=&quot;(max-width: 1199px) 100vw, 1199px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;자세한 Tailwind css 문법은 &lt;a href=&quot;https://tailwindcss.com/docs/aspect-ratio&quot;&gt;Tailwind 페이지&lt;/a&gt;의 document를 참고하자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;tailwind-css-intellisense&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tailwind-css-intellisense&quot; aria-label=&quot;tailwind css intellisense permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Tailwind CSS IntelliSense&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;처음부터 Tailwind css에 익숙하진 않을 것이다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8a9f8e248ea2fc106ebddc2ab693737f/c72f7/tailwindIntellisense.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAABJ0AAASdAHeZh94AAABkklEQVQoz12RaW7bMBCFeYg0sS0u4k5Ru7XYpiW7SJsA+RPLCdAD9P6H6FhuGycPHwbkkA8zQ6JxCIfDOA7DbhdC2A+Xxb5tOxCs5xPQCIIM5Jum22534+HQ9z2SLvFGOV8oZRTnccwZixnEmFMWf0BjyF4lpJRKgxAHjzI+zZWxkGR4RVcLiF+gBNMbRThad1DZWKGtz8q8D1We2/47a39ERVjmNxQD0Z5RwmZBcYxxczUzzrVNbJI6JTc/p/b53RVrnpTCV39J61hqSsj/yoQQ5xxSSmmpeCwgJUjUVZvu+JRao6W8zDNjFbwGJ/STwI9gTjAbaRLnFCO5b/rHF+8cPIn6h9aGc0HIJzs0j8qyhAZgEmMtNJB1Y3d8BrOGvXVXnEu+mK+TI/hDn6YYDhijjOZl3bSbum7Kap1mReIziICQisymDyhDXV0Ywejynq0WdPXgtcyscpLDCPBvgKAXOF7C6S1wH1Wvv+XjryicyHAWxzc2Totwutu8ftue7mfwMAHRfiJzxMMZ789weRmmPzZjZ1BGa95kAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tailwindIntellisense.png&quot;
+        title=&quot;tailwindIntellisense.png&quot;
+        src=&quot;/static/8a9f8e248ea2fc106ebddc2ab693737f/c1b63/tailwindIntellisense.png&quot;
+        srcset=&quot;/static/8a9f8e248ea2fc106ebddc2ab693737f/5a46d/tailwindIntellisense.png 300w,
+/static/8a9f8e248ea2fc106ebddc2ab693737f/0a47e/tailwindIntellisense.png 600w,
+/static/8a9f8e248ea2fc106ebddc2ab693737f/c1b63/tailwindIntellisense.png 1200w,
+/static/8a9f8e248ea2fc106ebddc2ab693737f/d61c2/tailwindIntellisense.png 1800w,
+/static/8a9f8e248ea2fc106ebddc2ab693737f/c72f7/tailwindIntellisense.png 1915w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;vscode 확장 프로그램 &lt;strong&gt;Tailwind CSS IntelliSense&lt;/strong&gt;를 사용하면 자동완성 기능으로 좀 더 편리하게 스타일 할 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;webpack-loader-설정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webpack-loader-%EC%84%A4%EC%A0%95&quot; aria-label=&quot;webpack loader 설정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Webpack loader 설정&lt;/h2&gt;
+&lt;p&gt;Webpack을 직접 구성한다면 TailWind를 사용하기 위해 style-loader, css-loader, postcss-loader가 필요하다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;loader 설치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev style-loader css-loader postcss-loader&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;webpack.config.js ( loader 설정 )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;module: &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    rules: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        test: /.css?$/,
+        exclude: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;,
+        use: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;style-loader&quot;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&quot;css-loader&quot;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&quot;postcss-loader&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;,
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;,
+		&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;,
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;,&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;module의 rules에 위와 같이 style-loader, css-loader, postcss-loader를 사용하도록 추가해 준다.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[[VScode] Prettier를 이용한 코드 정렬]]></title><description><![CDATA[Prettier Module을 통해 팀원과 일관성 있는 코드 정렬을 사용하자]]></description><link>https://goo-gy.github.io/2022-01-05-prettier</link><guid isPermaLink="false">https://goo-gy.github.io/2022-01-05-prettier</guid><pubDate>Wed, 05 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;팀원들과 함께 프로젝트를 진행하다 보면 다른 사람이 작성한 코드를 볼 일이 굉장히 많다. 그때 팀원들과 코드 스타일이나 정렬 방법 등이 많이 다르다면 코드를 이해하기 어려울 것이다. 그래서 오늘은 Code formatter인 Prettier와, 프로젝트에서 정렬 방식을 통일하는 방법을 소개하려고 한다.  &lt;/p&gt;
 &lt;h2 id=&quot;prettier&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#prettier&quot; aria-label=&quot;prettier permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Prettier&lt;/h2&gt;
 &lt;p&gt; Prettier는 VScode에서 확장 프로그램으로 제공하는 Code formatter이다. Prettier는 말 그대로 우리가 작성한 코드를 일관된 방식으로 보기 좋게 정렬해 준다.  &lt;/p&gt;
 &lt;h3 id=&quot;vscode-prettier-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vscode-prettier-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;vscode prettier 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VScode Prettier 사용하기&lt;/h3&gt;
