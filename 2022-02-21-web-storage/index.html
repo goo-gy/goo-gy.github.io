@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">[React] Redux 구조조정과 Web storage - googy-blog</title><meta data-react-helmet="true" name="description" content="redux-perist를 이용해 Web storage에 Redux state를 저장하자"/><meta data-react-helmet="true" property="og:title" content="[React] Redux 구조조정과 Web storage - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="redux-perist를 이용해 Web storage에 Redux state를 저장하자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2022-02-21-web-storage"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="[React] Redux 구조조정과 Web storage - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="redux-perist를 이용해 Web storage에 Redux state를 저장하자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, project, web, React"/><meta data-react-helmet="true" name="article:published_time" content="2022-02-21T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2022-02-21T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="project"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "project, web, React",
+          "headline": "[React] Redux 구조조정과 Web storage - googy-blog",
+          "url": "https://goo-gy.github.io/2022-02-21-web-storage",
+          "datePublished": "2022-02-21T00:00:00.000Z",
+          "dateModified": "2022-02-21T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "redux-perist를 이용해 Web storage에 Redux state를 저장하자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa jWOxDX jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.jWOxDX{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#007acc;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=bd980a9f8c3998db92fa9ed41520e21b" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-79c6cb472abad735489b.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-523b933e5cd718e8fe46.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-9f95ad3bf33af9cd770d.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2022-02-21-web-storage/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/project">Project</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/algorithm">Algorithm</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/web">Web</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#007acc" class="reading-progress__ReadingProgressBar-vxjjnv-0 jWOxDX"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/project">project</a><time dateTime="2022-02-21T00:00:00.000Z">21 February, 2022</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">[React] Redux 구조조정과 Web storage</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:58.00000000000001%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAME/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/2gAMAwEAAhADEAAAAc2JIUqkcv/EABoQAAICAwAAAAAAAAAAAAAAAAASAQMCEBP/2gAIAQEAAQUCmuvmgg+S6//EABcRAAMBAAAAAAAAAAAAAAAAAAECEDH/2gAIAQMBAT8Bcqcn/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQIQQf/aAAgBAgEBPwGI7X//xAAaEAACAgMAAAAAAAAAAAAAAAAAEQEyAhBR/9oACAEBAAY/Aqy+stiWgT3/AP/EABwQAAEEAwEAAAAAAAAAAAAAAAEAESExEEFxsf/aAAgBAQABPyEWEFFOG0Le6JnCbP8A/9oADAMBAAIAAwAAABCrP//EABYRAQEBAAAAAAAAAAAAAAAAABEAIf/aAAgBAwEBPxAglt//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EELRh//EAB0QAQACAgIDAAAAAAAAAAAAAAERIQBBUWEQMdH/2gAIAQEAAT8QNEpK3jjIW1KO3zeC2GFCfbvAiQIL15//2Q==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/b907fff43623cb381a74ac018a4f7151/8850c/web-storage.jpg 200w,
+/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg 295w" sizes="(max-width: 295px) 100vw, 295px" /><img loading="lazy" sizes="(max-width: 295px) 100vw, 295px" srcset="/static/b907fff43623cb381a74ac018a4f7151/8850c/web-storage.jpg 200w,
+/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg 295w" src="/static/b907fff43623cb381a74ac018a4f7151/e468a/web-storage.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="들어가기-전에" style="position:relative;"><a href="#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90" aria-label="들어가기 전에 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>들어가기 전에</h2>
+<p>노마드코더 강의를 보면서 Redux 기초부터 toolkit을 사용하는 방법까지 공부해 봤다. 하지만 프로젝트를 진행하기 위해서는 좀 더 체계적인 redux 관리가 필요하다고 생각했다. 그래서 redux-persist를 적용하기 전에 redux 코드를 깔끔하게 정리해 두고 들어가려고 한다.</p>
+<h2 id="redux-구조-정리" style="position:relative;"><a href="#redux-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC" aria-label="redux 구조 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>redux 구조 정리</h2>
+<p>이전에는 <strong>action, reducer, store</strong>를 모두 <code class="language-text">store.js</code> 한 파일에 작성하였다. (<a href="https://goo-gy.github.io/2022-01-26-react-redux">https://goo-gy.github.io/2022-01-26-react-redux</a>). 하지만 redux state가 많아지고 코드가 방대해진다면 관리하기 어렵겠다는 생각이 들었다. 그래서 redux 구조를 다음과 같이 작성하여 action, reducer, store를 분리하였다.</p>
+<details style="font-weight:700">
+	<summary>redux</summary>
+		<ul>
+				<details>
+					<summary>
+						action
+					</summary>
+					<ul>
+						<div>darkMode.js</div>
+						<div>user.js</div>
+					</ul>
+				</details>
+								<details>
+					<summary>
+						reducer
+					</summary>
+					<ul>
+						<div>darkMode.js</div>
+						<div>user.js</div>
+					</ul>
+				</details>
+				<div markdown="1">store.js</div>
+		</ul>
+	</summary>
+</details>
+<p>action은 외부 파일에서 import 하여 사용하기 때문에, reducer 파일에 같이 작성하는 대신 분리해 주었다. 그리고 하나의 reducer로 모든 state를 관리하는 대신, state 종류마다 분리된 reducer를 작성하여 <code class="language-text">redux/reducer/root.js</code>에서 이들을 combine 해주었다.</p>
+<hr>
+<h3 id="action" style="position:relative;"><a href="#action" aria-label="action permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>action</h3>
+<ul>
+<li><strong>redux/action/darkMode.js</strong></li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@reduxjs/toolkit"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> actionDarkMode <span class="token operator">=</span> <span class="token punctuation">{</span>
+  toggle<span class="token operator">:</span> <span class="token function">createAction</span><span class="token punctuation">(</span><span class="token string">"toggle"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  set<span class="token operator">:</span> <span class="token function">createAction</span><span class="token punctuation">(</span><span class="token string">"set"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> actionDarkMode<span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h3 id="reducer" style="position:relative;"><a href="#reducer" aria-label="reducer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>reducer</h3>
+<ul>
+<li><strong>redux/reducer/darkMode.js</strong></li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createReducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@reduxjs/toolkit"</span><span class="token punctuation">;</span>
+<span class="token comment">// local</span>
+<span class="token keyword">import</span> actionDarkMode <span class="token keyword">from</span> <span class="token string">"redux/action/darkMode"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> reducerDarkMode <span class="token operator">=</span> <span class="token function">createReducer</span><span class="token punctuation">(</span>initialState<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>actionDarkMode<span class="token punctuation">.</span>toggle<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">!</span>state<span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>actionDarkMode<span class="token punctuation">.</span>set<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token operator">=></span> action<span class="token punctuation">.</span>payload<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> reducerDarkMode<span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li><strong>redux/reducer/root.js</strong></li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux"</span><span class="token punctuation">;</span>
+<span class="token comment">// local</span>
+<span class="token keyword">import</span> reducerDarkMode <span class="token keyword">from</span> <span class="token string">"./darkMode"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> reducerUser <span class="token keyword">from</span> <span class="token string">"./user"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rootReducer <span class="token operator">=</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  darkMode<span class="token operator">:</span> reducerDarkMode<span class="token punctuation">,</span>
+  user<span class="token operator">:</span> reducerUser<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> rootReducer<span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h3 id="store" style="position:relative;"><a href="#store" aria-label="store permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store</h3>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> persistStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux-persist"</span><span class="token punctuation">;</span>
+<span class="token comment">// local</span>
+<span class="token keyword">import</span> rootReducer <span class="token keyword">from</span> <span class="token string">"redux/reducer/root.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>rootReducer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">persistStore</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> store<span class="token punctuation">;</span></code></pre></div>
+<p>자 이렇게 action, reducer, store을 분리해 보았는데, 정리하자면 다음과 같다.</p>
+<ul>
+<li><strong>여러 종류의 reducer를 분리</strong><br>
+여러 reducer를 다른 파일에 분리하여 작성하면서 한 reducer가 너무 길어지는 것을 방지하고 로직을 변경할 때 충돌이 줄어들었다.</li>
+<li><strong>action, reducer, store 분리</strong><br>
+action, reducer, store를 분리된 파일에 저장하여 코드의 역할이 명확해졌다. action이 필요할 때 reducer나 store가 아닌 action 파일만 import 하면 된다.</li>
+</ul>
+<h2 id="web-storage-사용하기" style="position:relative;"><a href="#web-storage-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="web storage 사용하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web storage 사용하기</h2>
+<p>redux는 기본적으로 새로고침이나 페이지 이동 시에 state가 유지되지 않는다. 하지만 일반적으로 redux state는 여러 컴포넌트에서 사용되기 때문에 저장된 state를 유지할 필요가 있다. 이때 우리는 Data를 크롬 등의 브라우저에 저장해 두고 저장된 값을 읽어 사용하는 Web storage를 사용할 수 있다. Web storage에는 Data가 항상 유지되는 <strong>local storage</strong>와 session이 종료되면 사라지는 <strong>session storage</strong>가 있다.</p>
+<hr>
+<h3 id="local-storage-vanila-js" style="position:relative;"><a href="#local-storage-vanila-js" aria-label="local storage vanila js permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>local storage (vanila-js)</h3>
+<ul>
+<li>저장</li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">window<span class="token punctuation">.</span>localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"darkMode"</span><span class="token punctuation">,</span> <span class="token operator">!</span>darkMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">darkModeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li>조회</li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> savedDarkMode <span class="token operator">=</span> window<span class="token punctuation">.</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"darkMode"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"true"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>savedDarkMode<span class="token punctuation">)</span> <span class="token function">darkModeSet</span><span class="token punctuation">(</span>savedDarkMode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h3 id="session-storage-vanila-js" style="position:relative;"><a href="#session-storage-vanila-js" aria-label="session storage vanila js permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>session storage (vanila-js)</h3>
+<ul>
+<li>저장</li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"darkMode"</span><span class="token punctuation">,</span> <span class="token operator">!</span>darkMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">darkModeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li>조회</li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> savedDarkMode <span class="token operator">=</span> window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"darkMode"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"true"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>savedDarkMode<span class="token punctuation">)</span> <span class="token function">darkModeSet</span><span class="token punctuation">(</span>savedDarkMode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>위처럼 redux state를 업데이트할 때마다, web storage에 저장해 주고, redux state를 가져오기 전에 web storage를 참조할 수 있다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/bf0dcb018d0b2a75f1065ec5906f2ffe/29114/sessionStorage.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAAB9ElEQVQoz42RzWsTQRjG9z9TC+LBswUPbiitF7FCBRX04KEnEUEFK2qhB6VpwNbEJFrbgLS1kaRUlCJaS7AxpknYbDb7mY/N7s/JblpEpO0LD8/7MsNvnpmRGNT7gs3EG4VbGZWbyyo33tW5vljn2qLCeLzMlYTQwPvz5Vd93wv6S/MlxsU8kawgTd6f5t6zKDOzCWKxONFYiucv4qReL5NOLJNdzYPXgZ4NXUtIF8eboXoGuGJ2hSPWaCGdeDjFmbkkp2fSDD1+y9CDJU7eyXD27hqnbq8zOfuVWrVCQ7dwez02f1RJbKgkPzVJbjaYzym8zNVZyKtktjSkq9UikV9lRsXG0S2VsQ2dsQ82FzMdzi94TOd9bKNB1/VEAp89RadQ67BTbQtvB/3+XFK7SPLP71z4toP8eRc5V0JeqSAvKYykNIajFo9WTOq1MmpDwzRNLNPgsJLk3W3k7QLylyJyvkxkrUZEfMpIWmd4zmFq1eZ3sYCmNQOgrusip3hW38fz/NAH8oWOANo8WW/RcQyxWUA8D8uygiT+ANDXfh0b6JiaANm4rhuk/Bf4N/hQ4LmoAGbbOIaGYVoHwG7XDdKG8gPvAx3HORr49GOHZr1GUzcEqHtw5f+VoijHAGY74ZVtJwQKt+wWttMK3Q7dcdoodZU/nOf4jz5VvlwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="sessionStorage"
+        title="sessionStorage"
+        src="/static/bf0dcb018d0b2a75f1065ec5906f2ffe/c1b63/sessionStorage.png"
+        srcset="/static/bf0dcb018d0b2a75f1065ec5906f2ffe/5a46d/sessionStorage.png 300w,
+/static/bf0dcb018d0b2a75f1065ec5906f2ffe/0a47e/sessionStorage.png 600w,
+/static/bf0dcb018d0b2a75f1065ec5906f2ffe/c1b63/sessionStorage.png 1200w,
+/static/bf0dcb018d0b2a75f1065ec5906f2ffe/d61c2/sessionStorage.png 1800w,
+/static/bf0dcb018d0b2a75f1065ec5906f2ffe/29114/sessionStorage.png 1920w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h2 id="redux-persist" style="position:relative;"><a href="#redux-persist" aria-label="redux persist permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>redux persist</h2>
+<p>위와 같이 vanila-js의 방식을 사용하여 Web storage에 값을 저장하고 읽을 수 있다. 하지만, 이렇게 업데이트나 조회할 때마다 Web storage를 수정, 참조하는 코드를 작성하는 대신 redux-persist를 이용하면 훨씬 더 간결하고 쉽게 Web storage를 이용할 수 있다.</p>
+<hr>
+<h3 id="설치" style="position:relative;"><a href="#%EC%84%A4%EC%B9%98" aria-label="설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설치</h3>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> redux-persist</code></pre></div>
+<hr>
+<h3 id="reduxreducerrootjs" style="position:relative;"><a href="#reduxreducerrootjs" aria-label="reduxreducerrootjs permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>redux/reducer/root.js</h3>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> persistReducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux-persist"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> localStorage <span class="token keyword">from</span> <span class="token string">"redux-persist/lib/storage"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> sessionStorage <span class="token keyword">from</span> <span class="token string">"redux-persist/lib/storage/session"</span><span class="token punctuation">;</span>
+<span class="token comment">// local</span>
+<span class="token keyword">import</span> reducerDarkMode <span class="token keyword">from</span> <span class="token string">"./darkMode"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> reducerUser <span class="token keyword">from</span> <span class="token string">"./user"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> persistConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  key<span class="token operator">:</span> <span class="token string">"root"</span><span class="token punctuation">,</span>
+  storage<span class="token operator">:</span> localStorage<span class="token punctuation">,</span>
+  whitelist<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token string">"darkMode"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rootReducer <span class="token operator">=</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  darkMode<span class="token operator">:</span> reducerDarkMode<span class="token punctuation">,</span>
+  user<span class="token operator">:</span> reducerUser<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> persistedReducer <span class="token operator">=</span> <span class="token function">persistReducer</span><span class="token punctuation">(</span>persistConfig<span class="token punctuation">,</span> rootReducer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> persistedReducer<span class="token punctuation">;</span></code></pre></div>
+<p>먼저 redux-persist를 적용하려면 persist에 관한 설정이 필요하다.</p>
+<ul>
+<li><strong>key</strong><br>
+web storage에 저장될 key를 지정한다.</li>
+<li><strong>storage</strong><br>
+사용할 web storage의 종류로 redux-persist에서 제공하는 local storage 또는 session storage를 사용할 수 있다.</li>
+<li><strong>whitelist (blacklist)</strong><br>
+특정 reducer에만 persist를 적용하고 싶다면, whitelist나 blacklist를 설정하면 된다.</li>
+</ul>
+<hr>
+<h3 id="reduxstorejs" style="position:relative;"><a href="#reduxstorejs" aria-label="reduxstorejs permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>redux/store.js</h3>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> persistStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"redux-persist"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// local</span>
+<span class="token keyword">import</span> rootReducer <span class="token keyword">from</span> <span class="token string">"redux/reducer/root.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>rootReducer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">persistStore</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> store<span class="token punctuation">;</span></code></pre></div>
+<p>store에 persistStore를 적용해 주면 된다.</p>
+<h2 id="예제" style="position:relative;"><a href="#%EC%98%88%EC%A0%9C" aria-label="예제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예제</h2>
+<iframe src="https://codesandbox.io/embed/blog-redux-persist-0ykpts?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Blog-redux-persist"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+<p>새로고침을 하더라도 Dark mode가 유지되는 것을 볼 수 있다.</p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/project">project</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/web">web</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/react">React</a></span> on <time dateTime="2022-02-21T00:00:00.000Z">21 February, 2022</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/">Home</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/algorithm">Algorithm</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/web">Web</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2022</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-194826905-2"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'UA-194826905-2'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'UA-194826905-2', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2022-02-21-web-storage";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-523b933e5cd718e8fe46.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-9f95ad3bf33af9cd770d.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-523b933e5cd718e8fe46.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-79c6cb472abad735489b.js" async=""></script></body></html>
