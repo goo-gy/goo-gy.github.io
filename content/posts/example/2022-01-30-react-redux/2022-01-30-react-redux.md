@@ -2,7 +2,7 @@
 layout: post
 title: "[React] React에서 Redux 사용하기"
 excerpt: "Redux 기초부터 Redux Toolkit까지"
-tags: [project, web, node]
+tags: [project, web, react]
 
 path: "/2022-01-26-react-redux"
 featuredImage: "./redux.png"
