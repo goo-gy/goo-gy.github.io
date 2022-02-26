@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 20 Feb 2022 17:17:51 GMT</lastBuildDate><item><title><![CDATA[[React] Redux 구조조정과 Web storage]]></title><description><![CDATA[redux-perist를 이용해 Web storage에 Redux state를 저장하자]]></description><link>https://goo-gy.github.io/2022-02-21-web-storage</link><guid isPermaLink="false">https://goo-gy.github.io/2022-02-21-web-storage</guid><pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 26 Feb 2022 16:44:01 GMT</lastBuildDate><item><title><![CDATA[인덱스 트리(Index Tree)]]></title><description><![CDATA[여러가지 구간 합 알고리즘을 알아보자]]></description><link>https://goo-gy.github.io/2022-02-26-index-tree</link><guid isPermaLink="false">https://goo-gy.github.io/2022-02-26-index-tree</guid><pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;구간-합-알고리즘&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%EA%B0%84-%ED%95%A9-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot; aria-label=&quot;구간 합 알고리즘 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구간 합 알고리즘&lt;/h2&gt;
+&lt;p&gt;인덱스 트리가 해결할 수 있는 가장 대표적인 문제는 구간 합 문제이다. 구간 합을 구하는 전형적인 알고리즘은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;구간을 순회하여 더하기&lt;/li&gt;
+&lt;li&gt;처음부터 index까지의 합을 저장하는 서브 배열 만들기&lt;/li&gt;
+&lt;li&gt;인덱스 트리&lt;/li&gt;
+&lt;li&gt;세그먼트 트리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;구간을-순회하여-더하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%EA%B0%84%EC%9D%84-%EC%88%9C%ED%9A%8C%ED%95%98%EC%97%AC-%EB%8D%94%ED%95%98%EA%B8%B0&quot; aria-label=&quot;구간을 순회하여 더하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구간을 순회하여 더하기&lt;/h3&gt;
+&lt;p&gt;이 방법은 가장 단순한 방법으로 시간복잡도는 &lt;strong&gt;O(N)&lt;/strong&gt;이다. 하지만 구간 합을 K번 구해야 한다면 시간복잡도는 &lt;strong&gt;O(K*N)&lt;/strong&gt;이 된다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;합을-저장하는-서브-배열-만들기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%A9%EC%9D%84-%EC%A0%80%EC%9E%A5%ED%95%98%EB%8A%94-%EC%84%9C%EB%B8%8C-%EB%B0%B0%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0&quot; aria-label=&quot;합을 저장하는 서브 배열 만들기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;합을 저장하는 서브 배열 만들기&lt;/h3&gt;
+&lt;p&gt;이 방법은 구간 합을 여러 번 구해야 할 때 효율적이다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 758px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dad8fd4850aa2b819f8a8727b90f0826/c8e86/subArray.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABAklEQVQoz32Ri07CQBRE51v0L8VCJfqHggnxhVEDXQpIxRaq4rntxWxIIOQwt7PTx85KS9WqwPQLVlDA54H3cSS3dq/0mWHX/Cr4hS3Ujnk/sHFO5Xae1USpct2gPc3V1xQC8wxv2njXzFfKmHNmyx/m9ms5ObYmey6hVo2V6yzylq6LyCtcc1c2LA11phe41bme0BHcMb+6Z2sPMGR+d+8ZvffcGzpAx+gj8DWBPgJvC3QRKDZQeqBb8zK6C+yipYxyhefWUc6u+WtLNv2ODmAbeZVTR17pmY3P+3sp+bIpfaIOPSaU3eW6AynzBf2kzAnvtvXUc93/XMbhZE3ODib5A9Ix+wnsOGptAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;subArray&quot;
+        title=&quot;subArray&quot;
+        src=&quot;/static/dad8fd4850aa2b819f8a8727b90f0826/c8e86/subArray.png&quot;
+        srcset=&quot;/static/dad8fd4850aa2b819f8a8727b90f0826/5a46d/subArray.png 300w,
+/static/dad8fd4850aa2b819f8a8727b90f0826/0a47e/subArray.png 600w,
+/static/dad8fd4850aa2b819f8a8727b90f0826/c8e86/subArray.png 758w&quot;
+        sizes=&quot;(max-width: 758px) 100vw, 758px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+서브 배열을 만들어 처음부터 K의 합을 sub[K]에 저장한다. 그러면 뺼셈 한 번으로 구간 합을 구할 수 있다. 따라서 &lt;strong&gt;O(1)&lt;/strong&gt;로 수행할 수 있고, 구간 합을 K번 구할 때의 시간복잡도는 &lt;strong&gt;O(N + K)&lt;/strong&gt;가 된다.&lt;/p&gt;
+&lt;p&gt;하지만, 배열에 저장된 값이 수시로 업데이트된다면, 업데이트가 일어날 때마다 구간 합을 다시 저장해야 하며 그때마다 &lt;strong&gt;O(N)&lt;/strong&gt;의 작업이 필요하다.&lt;/p&gt;
+&lt;h2 id=&quot;인덱스-트리index-tree&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B8%EB%8D%B1%EC%8A%A4-%ED%8A%B8%EB%A6%ACindex-tree&quot; aria-label=&quot;인덱스 트리index tree permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;인덱스 트리(Index Tree)&lt;/h2&gt;
+&lt;p&gt;인덱스 트리는 처음 트리를 구성할 때 &lt;strong&gt;O(N)&lt;/strong&gt;의 작업이 필요하다. 그러면 이후에 데이터를 조회할 때도 &lt;strong&gt;O(log N)&lt;/strong&gt; 만에 수행할 수 있고, 배열의 데이터가 수정되어도 &lt;strong&gt;O(log N)&lt;/strong&gt;만에 트리를 업데이트할 수 있다. 따라서 앞에서처럼 데이터가 자주 업데이트되는 경우에 유용하게 사용할 수 있다. 인덱스 트리는 구간 합이 아닌 구간 Max, Min 등 다양한 목적으로도 사용할 수 있다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;구현&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%ED%98%84&quot; aria-label=&quot;구현 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구현&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 984px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/66287e583fc2d9ffa96b43bfe2e384d5/0b6f4/indexTree.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAADBElEQVQ4y22SX2wUZRTFz+xUWmKf1BdMdktouiSNCn10S023lN3uNCWo2drtUgGfKhQiEhJfMIEXFjBaVCAItS0txKDGGBNDQsIDRgkYQTEBDARC+fvAi6F0oZTveO7OBAhxJjf3zrm/e+ab7xvgmSuZpMIh9T6xjsTbZxyCUZ7KDfPkW6eJAWmv94eMsf97tX5M9AjO/0Yb9jI7GZs3x2CnoJ8b4mDHPg6qjikw72Ui8zljwajz8r8S7/xBebgnhi0bHLpPyPAXonOMyO4iFgaMJRtYW1/HmmU/E0t/IqxuaHC1TeoZY6zN2GzLhqdW27yW6PpGcVhmu9nYvsM1vQTOfiXFKpngzaPOW3aEXn2dg2kvgjXtn7DJWJux2eaByLA+TiwZtAdijfYnOMDLuRHe6b4Wagsy0kbCWJgNt6HnNmFMbtRd7mfImYd5IRgm2nfQK150Pml747qzX7oC6ZA/QX/xdnpd3+qTvw+57t8ZcmKMtbr3PP22rfSye7WPnQccOscrh4FacNZKvb14gXgBrM5FK+s67LD0u5AJxsOeMSvEPq+ZjiGtWAvTwQG5/Sr2urhyKb2ZjS0biVS/Q+smzhdQ0j7VVT5ZZtk9rNOJl1o3ufmp1Q5vfESkt7Cx4yuWMrsYVx8ofqrlD03lg4MzzA6X+wolYvVnoZYbm+GSfeWeVdqf976Qtr9cCA7NMPP1VH5gJ1HYppeMlPuCceOm8oXtMpx96lUc079WWMfkIfC5WRfiqPm7HuNgVfFDJn9Urv4ngepzCfygunc9k2PKxhh7UDO9HzB5XB7mBe9SzSL/bDyNSbzmn0mkvSvVi3A1lvLPJtrwr2lz23Ddb8ZVv7nq9FzTFvh/qjcRSxnr/5VI4544eZgXcBePMK1/YTJG3Fe+r+fJSna4G2nGlBUPIm06Yh4oT0Xaw4iTwMpdVszAGmYS1uWn8rTikcJ4F2kPI70cadbDdfQqVioKuI3lyn24qfrGY60P1/CucqHC3VC+pecJsbc0O4FV4ntUr1Bd/A/TStn36s38OQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;indexTree&quot;
+        title=&quot;indexTree&quot;
+        src=&quot;/static/66287e583fc2d9ffa96b43bfe2e384d5/0b6f4/indexTree.png&quot;
+        srcset=&quot;/static/66287e583fc2d9ffa96b43bfe2e384d5/5a46d/indexTree.png 300w,
+/static/66287e583fc2d9ffa96b43bfe2e384d5/0a47e/indexTree.png 600w,
+/static/66287e583fc2d9ffa96b43bfe2e384d5/0b6f4/indexTree.png 984w&quot;
+        sizes=&quot;(max-width: 984px) 100vw, 984px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;구간 합을 위한 인덱스 트리는 인접한 두 노드의 합을 부모 노드에 저장하여 트리를 구성한다. 인덱스 트리는 일반적으로 완전 이진 트리를 이용해 구현한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;구간-합-구하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0&quot; aria-label=&quot;구간 합 구하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구간 합 구하기&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 867px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/79d5b858abbdc169062d3867abce5c49/264eb/indexTreeGetSum.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAADnElEQVQ4y21SC1BUZRT+7t3lsSySQ0I1YzHruIs8bIyFZlhmhB64u6Khqeg0TdNAIAslLUMkNPTQsSLpJYOYstqKA2NORDnEiJaVE6NQgUk10vQYAslXgabL7oX79d+L1kzTf+fcc+73f+f853z3B/6zrFbqlr6eWPUJ5fxuYrmfR9x7eeYoibQsYmkNYbPN2v+updXEapG4+mORvI/SskbKqQ6NrGKGKtw+vuXysTUeaoTlDsKLsxh5rUOmzy9RHKLbpmf+LbjEJbo5LAp2qcjzE86dhKOMknUhzdaFatS6fiL/iAqLORSRlBiaU+Uelse2vw/u9Qs7gGmtYK4T//SbnE7k7SdWHBDFGpmQ28DUeNCUbFfDEhcoKP52QvL6BqTyyHZgDWWAkeObdyZx6ytJrK3Wi15zrhXz6It48HXisUlKa0+rQi+1z+1nUIwrZWSHUOjqlaizgEvmBCOTIsNFHD69v2OU7Z1/iHgub4kCn6zQeXDtJh54lSjoo2GLaH3ZDnWDcxc98/CpxOGDhnkCC8wWNE+ab43+LiffrGk28Xb745ON75V24vbonzOzo24eqgmOvFbCvY+QwbAazsB5St+OnDp0bFZwkylmJNYS9mzd53hkx+/aXjj5JjhySI8FCTlfEKlfijzXLqFbE2PdLWrNfS/x7rn11E86UdKeoLzT9jw3eReTF7G++DiWN4biBK82p05NxtOCFdGD0tI+S8W2r7Zuq/lgwXZvG7ChgcjdfS13RdsMH/JNe5MbFCwRGgVfqCtQPuzhVPOep9j6NeLeEHK0BPLy2qfp9AU35rcQzeWXUVn/WcG6d//kcy92V2qdIub4vTgJGh1beA9cjPJroDamwFhxOEP4ORlDtwH9KWgSkjxcy7Qi0Gz6xo74Exb8BkbUl/yaIS5QDDgMhP0QYcfgfMfLH2FRoPpg1qXKzfen90bbMZDowGXYcMqaafglzI6fZLux15aFK7DJ/XdmSmdN6YYfBT5gc8wfgm1V813Zj7aYcmCcNEyJdoJVgysVdg4oV7q7QimjcUEoCBqvygqmEMRf4q09IS0WmKJjwZtY/LikRE9ACQ+IL5Gkz1d1ZiXZNcSrR3uYMh6nY/J1cbUUaPeGgkrMCLsuTL2BKbNY7EXxqwM39o2jcpEYzVN9LOcJNnV4LuxpKlv8fWwhLqBMPgfNl2AMG4UvxDl4MC78efE9hmLpPIpEXGY7jaK0kyhPGYTnbx8C48gZhA3iAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;indexTreeGetSum&quot;
+        title=&quot;indexTreeGetSum&quot;
+        src=&quot;/static/79d5b858abbdc169062d3867abce5c49/264eb/indexTreeGetSum.png&quot;
+        srcset=&quot;/static/79d5b858abbdc169062d3867abce5c49/5a46d/indexTreeGetSum.png 300w,
+/static/79d5b858abbdc169062d3867abce5c49/0a47e/indexTreeGetSum.png 600w,
+/static/79d5b858abbdc169062d3867abce5c49/264eb/indexTreeGetSum.png 867w&quot;
+        sizes=&quot;(max-width: 867px) 100vw, 867px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;left, right를 구간의 시작 노드, 끝 노드로 설정한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;left는 오른쪽 위 노드를, right는 왼쪽 위 노드를 next로 설정한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;각각의 next가 부모 노드가 아니라면 현재 노드 value를 sum에 더한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;left, right를 각각의 next로 이동한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;left &gt;= right일 때까지 2,3,4를 반복한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;left == right라면 해당 노드도 sum에 더한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;데이터-업데이트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8&quot; aria-label=&quot;데이터 업데이트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;데이터 업데이트&lt;/h3&gt;
+&lt;p&gt;배열의 데이터가 수정이 일어나면 모든 트리를 수정할 필요 없이 자신과 연결된 조상 노드들만 업데이트해 주면 된다. 따라서 업데이트도 &lt;strong&gt;O(log N)&lt;/strong&gt; 만에 수행할 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;code&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#code&quot; aria-label=&quot;code permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Code&lt;/h2&gt;
+&lt;p&gt;Index tree를 문제를 풀기 위해 만들어 둔 code snippet을 가져왔다. Index tree를 쓰는 것만으로도 code 규모가 꽤나 크고, 정형화된 변수와 로직이 있기 때문에 class로 제작하였다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;cpp&quot;&gt;&lt;pre class=&quot;language-cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;lt;vector&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;namespace&lt;/span&gt; std&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;IndexTree&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; leafLeft&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; treeSize&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    vector&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; v_tree&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;IndexTree&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; N&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;leafLeft &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; N&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        treeSize &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        v_tree&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;treeSize&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;logicFun&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; num1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; num2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// TODO : set logic&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; num1 &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; num2&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;updateTree&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;index &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;index&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;logicFun&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; index &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;updateTree&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;index &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; order&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; index &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; order &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;index&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;updateTree&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;index &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; begin&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; end&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; L &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; begin &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; R &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; leafLeft &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; end &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token comment&quot;&gt;// TODO: set initial&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;long&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;L &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; R&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; nextL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;L &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; nextR &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;R &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;nextL &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; L &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;logicFun&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;L&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;nextR &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; R &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;logicFun&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;R&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+            L &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; nextL&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            R &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; nextR&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;L &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; R&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;logicFun&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v_tree&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;L&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[React] Redux 구조조정과 Web storage]]></title><description><![CDATA[redux-perist를 이용해 Web storage에 Redux state를 저장하자]]></description><link>https://goo-gy.github.io/2022-02-21-web-storage</link><guid isPermaLink="false">https://goo-gy.github.io/2022-02-21-web-storage</guid><pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
 &lt;p&gt;노마드코더 강의를 보면서 Redux 기초부터 toolkit을 사용하는 방법까지 공부해 봤다. 하지만 프로젝트를 진행하기 위해서는 좀 더 체계적인 redux 관리가 필요하다고 생각했다. 그래서 redux-persist를 적용하기 전에 redux 코드를 깔끔하게 정리해 두고 들어가려고 한다.&lt;/p&gt;
 &lt;h2 id=&quot;redux-구조-정리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#redux-%EA%B5%AC%EC%A1%B0-%EC%A0%95%EB%A6%AC&quot; aria-label=&quot;redux 구조 정리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;redux 구조 정리&lt;/h2&gt;
 &lt;p&gt;이전에는 &lt;strong&gt;action, reducer, store&lt;/strong&gt;를 모두 &lt;code class=&quot;language-text&quot;&gt;store.js&lt;/code&gt; 한 파일에 작성하였다. (&lt;a href=&quot;https://goo-gy.github.io/2022-01-26-react-redux&quot;&gt;https://goo-gy.github.io/2022-01-26-react-redux&lt;/a&gt;). 하지만 redux state가 많아지고 코드가 방대해진다면 관리하기 어렵겠다는 생각이 들었다. 그래서 redux 구조를 다음과 같이 작성하여 action, reducer, store를 분리하였다.&lt;/p&gt;
