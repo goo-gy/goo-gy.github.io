@@ -2,7 +2,7 @@
 layout: post
 title: "인덱스 트리(Index Tree)"
 excerpt: "여러가지 구간 합 알고리즘을 알아보자"
-tags: [algorithm, tree]
+tags: [algorithm, array, tree]
 
 path: "/2022-02-26-index-tree"
 featuredImage: "./indexTree.png"
@@ -136,3 +136,12 @@ public:
     }
 };
 ```
+
+---
+
+### 문제풀이
+
+- [백준 2243: 사탕상자](https://www.acmicpc.net/problem/2243)  
+  코드: [https://github.com/goo-gy/Algorithm/blob/master/baekjoon/2243_indexTree.cpp](https://github.com/goo-gy/Algorithm/blob/master/baekjoon/2243_indexTree.cpp)
+- [백준 2517: 달리기](https://www.acmicpc.net/problem/2517)  
+  코드 : [https://github.com/goo-gy/Algorithm/blob/master/baekjoon/2517_indexTree.cpp](https://github.com/goo-gy/Algorithm/blob/master/baekjoon/2517_indexTree.cpp)
