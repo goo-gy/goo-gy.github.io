@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog</title><meta data-react-helmet="true" name="description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" property="og:title" content="[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2022-01-09-tailwind"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, project, web, node"/><meta data-react-helmet="true" name="article:published_time" content="2022-01-09T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2022-01-09T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="project"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png"/><script data-react-helmet="true" type="application/ld+json">
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog</title><meta data-react-helmet="true" name="description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" property="og:title" content="[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2022-01-09-tailwind"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="Webpack 프로젝트에 Tailwind 적용하기"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, project, web, react"/><meta data-react-helmet="true" name="article:published_time" content="2022-01-09T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2022-01-09T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="project"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png"/><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "https://schema.org/",
           "@type": "Article",
@@ -6,7 +6,7 @@
             "@type": "Person",
             "name": "googy"
           },
-          "keywords": "project, web, node",
+          "keywords": "project, web, react",
           "headline": "[React] Webpack 프로젝트에 Tailwind 적용하기 - googy-blog",
           "url": "https://goo-gy.github.io/2022-01-09-tailwind",
           "datePublished": "2022-01-09T00:00:00.000Z",
@@ -167,35 +167,35 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
 /static/4be498b58cc88603d19e645df32587e2/5591c/tailwind.png 900w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/4be498b58cc88603d19e645df32587e2/dc47e/tailwind.png 200w,
 /static/4be498b58cc88603d19e645df32587e2/9f2d5/tailwind.png 400w,
 /static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png 800w,
-/static/4be498b58cc88603d19e645df32587e2/5591c/tailwind.png 900w" src="/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><p>이전 프로젝트에서는 기능적인 부분은 쉽게 만들 수 있는  Material-UI와, 불편한 style 방식을 해결하기 위해 styled-components와 함께 사용했다. 하지만 styled-components의 (또는 class)의 Naming과 작은 style 때문에 Component가 너무 많아지는 것이 불편했다. 그래서 다른 디자인 라이브러리를 찾아보던 중 아주 맘에 드는 TailWind를 발견하여 이번 프로젝트에 적용해 보았다.  </p>
+/static/4be498b58cc88603d19e645df32587e2/5591c/tailwind.png 900w" src="/static/4be498b58cc88603d19e645df32587e2/90823/tailwind.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><p>이전 프로젝트에서는 기능적인 부분은 쉽게 만들 수 있는 Material-UI와, 불편한 style 방식을 해결하기 위해 styled-components와 함께 사용했다. 하지만 styled-components의 (또는 class)의 Naming과 작은 style 때문에 Component가 너무 많아지는 것이 불편했다. 그래서 다른 디자인 라이브러리를 찾아보던 중 아주 맘에 드는 TailWind를 발견하여 이번 프로젝트에 적용해 보았다.</p>
 <h2 id="tailwind" style="position:relative;"><a href="#tailwind" aria-label="tailwind permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tailwind</h2>
-<p><a href="https://tailwindcss.com/">https://tailwindcss.com/</a>  </p>
+<p><a href="https://tailwindcss.com/">https://tailwindcss.com/</a></p>
 <hr>
 <h3 id="core-concepts" style="position:relative;"><a href="#core-concepts" aria-label="core concepts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Concepts</h3>
-<p>TailWind의 Core Concept은 다음과 같다.  </p>
+<p>TailWind의 Core Concept은 다음과 같다.</p>
 <ul>
-<li>Utility-First Fundamentals  </li>
-<li>Handling Hover, Focus, and Other States  </li>
+<li>Utility-First Fundamentals</li>
+<li>Handling Hover, Focus, and Other States</li>
 <li>Responsive Design</li>
-<li>Dark Mode  </li>
-<li>Reusing Styles  </li>
-<li>Custom Styles  </li>
+<li>Dark Mode</li>
+<li>Reusing Styles</li>
+<li>Custom Styles</li>
 </ul>
 <hr>
 <h3 id="장점" style="position:relative;"><a href="#%EC%9E%A5%EC%A0%90" aria-label="장점 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>장점</h3>
 <ul>
-<li>Class Naming 불필요  </li>
-<li>Javascript 분리    </li>
-<li>커스터마이징  </li>
+<li>Class Naming 불필요</li>
+<li>Javascript 분리</li>
+<li>커스터마이징</li>
 </ul>
-<p>먼저 utility class를 사용하기 때문에 class 명을 고민하지 않아도 된다. 그리고 BootStrap의 경우 javascript를 사용해서 스타일 ㄴ하는 경우가 많은데, Tailwind는 css로만 구현한다는 점도 아주 마음에 들었다. 그리고 <a href="https://tailwindui.com/">https://tailwindui.com/</a> 에서 Tailwind로 작성된 다양한 Component를 제공해 주면서도 쉽게 커스터마이징 할 수 있다는 것이 매력적이었다.  </p>
+<p>먼저 utility class를 사용하기 때문에 class 명을 고민하지 않아도 된다. 그리고 BootStrap의 경우 javascript를 사용해서 스타일 ㄴ하는 경우가 많은데, Tailwind는 css로만 구현한다는 점도 아주 마음에 들었다. 그리고 <a href="https://tailwindui.com/">https://tailwindui.com/</a> 에서 Tailwind로 작성된 다양한 Component를 제공해 주면서도 쉽게 커스터마이징 할 수 있다는 것이 매력적이었다.</p>
 <hr>
 <h3 id="단점" style="position:relative;"><a href="#%EB%8B%A8%EC%A0%90" aria-label="단점 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>단점</h3>
 <ul>
-<li>러닝 커브  </li>
-<li>html (jsx) 코드 길이  </li>
+<li>러닝 커브</li>
+<li>html (jsx) 코드 길이</li>
 </ul>
-<p>Low 레벨의 스타일링을 할 수 있는 만큼 utility class를 사용하기 위해 공부해야 한다. 하지만 문법도 간단해서 css를 잘 이해하고 있다면 금방 익숙해질 것 같다. 또 다른 단점이라면 html (jsx)의 코드가 길어진다는 점이 있다. </p>
+<p>Low 레벨의 스타일링을 할 수 있는 만큼 utility class를 사용하기 위해 공부해야 한다. 하지만 문법도 간단해서 css를 잘 이해하고 있다면 금방 익숙해질 것 같다. 또 다른 단점이라면 html (jsx)의 코드가 길어진다는 점이 있다.</p>
 <h2 id="tailwind-시작하기" style="position:relative;"><a href="#tailwind-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0" aria-label="tailwind 시작하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tailwind 시작하기</h2>
 <h3 id="tailwind-설치" style="position:relative;"><a href="#tailwind-%EC%84%A4%EC%B9%98" aria-label="tailwind 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tailwind 설치</h3>
 <p><a href="https://tailwindcss.com/docs/guides/create-react-app">Installation: Tailwind CSS with Create React App - Tailwind CSS</a></p>
@@ -211,7 +211,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">npx tailwindcss init -p</code></pre></div>
 <p>실행하면 <code class="language-text">tailwind.config.js</code>와 <code class="language-text">postcss.config.js</code>가 생성된다.</p>
 <ul>
-<li><strong>tailwind.config.js</strong>  </li>
+<li><strong>tailwind.config.js</strong></li>
 </ul>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   content<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/**/*.{html,js,jsx,ts,tsx}"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -224,21 +224,21 @@ html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{displ
 <hr>
 <h3 id="코드-작성" style="position:relative;"><a href="#%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1" aria-label="코드 작성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>코드 작성</h3>
 <ul>
-<li><strong>tailwind.css</strong>  </li>
+<li><strong>tailwind.css</strong></li>
 </ul>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@tailwind</span> base<span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@tailwind</span> components<span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@tailwind</span> utilities<span class="token punctuation">;</span></span></code></pre></div>
 <p>Tailwind 문법을 import 하도록 css에 작성한다.</p>
 <ul>
-<li><strong>index.js</strong>  </li>
+<li><strong>index.js</strong></li>
 </ul>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'./tailwind.css'</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">"react-dom"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">"./App"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"./tailwind.css"</span><span class="token punctuation">;</span>
 
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>React의 시작 Entry인 <code class="language-text">index.js</code>에서 <code class="language-text">tailwind.css</code>를 import 한다.</p>
 <hr>
 <ul>
@@ -255,11 +255,11 @@ You may need an appropriate loader to handle <span class="token keyword">this</s
 <span class="token operator">|</span> @tailwind utilities<span class="token punctuation">;</span></code></pre></div>
 <p>프로젝트를 Create-React-App으로 생성했다면 문제 없겠지만, Webpack에서 필요한 loader가 설정되어 있지 않다면 위와 같은 에러를 볼 수 있다. <a href="#webpack-loader-%EC%84%A4%EC%A0%95">Webpack loader 설정</a> 으로 가서 loader를 설정하자</p>
 <h2 id="tailwind-문법-사용" style="position:relative;"><a href="#tailwind-%EB%AC%B8%EB%B2%95-%EC%82%AC%EC%9A%A9" aria-label="tailwind 문법 사용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tailwind 문법 사용</h2>
-<p>Tailwind 설정을 마쳤다면 다음과 같이 Tailwind css 문법을 사용할 수 있다.  </p>
+<p>Tailwind 설정을 마쳤다면 다음과 같이 Tailwind css 문법을 사용할 수 있다.</p>
 <ul>
-<li><strong>App.js</strong>  </li>
+<li><strong>App.js</strong></li>
 </ul>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -300,8 +300,8 @@ You may need an appropriate loader to handle <span class="token keyword">this</s
         loading="lazy"
       />
   </a>
-    </span>  </p>
-<p>자세한 Tailwind css 문법은 <a href="https://tailwindcss.com/docs/aspect-ratio">Tailwind 페이지</a>의 document를 참고하자.  </p>
+    </span></p>
+<p>자세한 Tailwind css 문법은 <a href="https://tailwindcss.com/docs/aspect-ratio">Tailwind 페이지</a>의 document를 참고하자.</p>
 <hr>
 <h3 id="tailwind-css-intellisense" style="position:relative;"><a href="#tailwind-css-intellisense" aria-label="tailwind css intellisense permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Tailwind CSS IntelliSense</strong></h3>
 <p>처음부터 Tailwind css에 익숙하진 않을 것이다.</p>
@@ -335,10 +335,10 @@ You may need an appropriate loader to handle <span class="token keyword">this</s
         loading="lazy"
       />
   </a>
-    </span>  </p>
+    </span></p>
 <p>vscode 확장 프로그램 <strong>Tailwind CSS IntelliSense</strong>를 사용하면 자동완성 기능으로 좀 더 편리하게 스타일 할 수 있다.</p>
 <h2 id="webpack-loader-설정" style="position:relative;"><a href="#webpack-loader-%EC%84%A4%EC%A0%95" aria-label="webpack loader 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Webpack loader 설정</h2>
-<p>Webpack을 직접 구성한다면 TailWind를 사용하기 위해 style-loader, css-loader, postcss-loader가 필요하다.  </p>
+<p>Webpack을 직접 구성한다면 TailWind를 사용하기 위해 style-loader, css-loader, postcss-loader가 필요하다.</p>
 <ul>
 <li>loader 설치</li>
 </ul>
@@ -357,7 +357,7 @@ You may need an appropriate loader to handle <span class="token keyword">this</s
 		<span class="token punctuation">..</span>.
     <span class="token punctuation">]</span>,
 <span class="token punctuation">}</span>,</code></pre></div>
-<p>module의 rules에 위와 같이 style-loader, css-loader, postcss-loader를 사용하도록 추가해 준다.  </p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/project">project</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/web">web</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/node">node</a></span> on <time dateTime="2022-01-09T00:00:00.000Z">09 January, 2022</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+<p>module의 rules에 위와 같이 style-loader, css-loader, postcss-loader를 사용하도록 추가해 준다.</p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/project">project</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/web">web</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/react">react</a></span> on <time dateTime="2022-01-09T00:00:00.000Z">09 January, 2022</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
 /static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
 /static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
 /static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
