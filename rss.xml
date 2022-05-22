@@ -1,4 +1,212 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 14 Mar 2022 09:58:47 GMT</lastBuildDate><item><title><![CDATA[Docker로 MySQL 컨테이너 만들기]]></title><description><![CDATA[야 너두 Docker 할 수 있어]]></description><link>https://goo-gy.github.io/2022-03-11-docker</link><guid isPermaLink="false">https://goo-gy.github.io/2022-03-11-docker</guid><pubDate>Fri, 11 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;docker를-사용하는-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;docker를 사용하는 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Docker를 사용하는 이유&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 May 2022 18:02:49 GMT</lastBuildDate><item><title><![CDATA[Dockerfile과 docker-compose 활용하기]]></title><description><![CDATA[Dockerfile과 docker-compose를 활용하여 더 쉽게 개발환경을 구성하자]]></description><link>https://goo-gy.github.io/2022-05-11-docker-compose</link><guid isPermaLink="false">https://goo-gy.github.io/2022-05-11-docker-compose</guid><pubDate>Mon, 23 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;database-구축하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#database-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0&quot; aria-label=&quot;database 구축하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Database 구축하기&lt;/h2&gt;
+&lt;p&gt;서비스를 개발하려면 Database는 필수적이다. 하지만 Database 구축하고 관리하는 것은 쉽지 않다. Docker를 이용해서 간편하게 Database를 구축하고 관리할 수 있다. 오늘은 Docker를 이용해 MySQL container를 올리는 방법과 dockerfile, docker-compose 등을 이용해 여러 추가 작업까지 해주는 방법을 알아볼 것이다. Docker에 대해서 잘 모르는 분은 이전 포스팅 &lt;a href=&quot;https://goo-gy.github.io/2022-03-11-docker&quot;&gt;Docker로 MySQL 컨테이너 만들기&lt;/a&gt;를 읽고 오면 어렵지 않게 이해할 수 있을 것이다.  &lt;/p&gt;
+&lt;h2 id=&quot;mysql-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mysql-image&quot; aria-label=&quot;mysql image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MySQL image&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://hub.docker.com/_/mysql&quot;&gt;https://hub.docker.com/_/mysql&lt;/a&gt;&lt;br&gt;
+먼저 Docker hub의 MySQL image 문서에서 필요한 정보를 얻을 수 있으니 한 번 읽어보자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;mysql-container-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mysql-container-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;mysql container 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MySQL container 생성&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;docker run --name &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;container name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; -p &lt;span class=&quot;token number&quot;&gt;3306&lt;/span&gt;:3306 -e &lt;span class=&quot;token assign-left variable&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;password&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; -d mysql:8.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;가장 간단한 방법으로 위 명령어로 MySQL conatiner를 올릴 수 있다. &lt;code class=&quot;language-text&quot;&gt;-p&lt;/code&gt; 옵션으로 포트포워딩을 해주고, &lt;code class=&quot;language-text&quot;&gt;-e&lt;/code&gt; 옵션으로 Password로 사용할 환경변수를 설정해 줄 수 있다. 이렇게 명령어 한 줄로 mysql container를 올려두면, 우리의 서비스에서 이 Database를 사용할 수 있다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;mysql-image-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mysql-image-1&quot; aria-label=&quot;mysql image 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MySQL image&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/30395f2b19ec253460fa0feb4bcccd4b/8d68c/db_init.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 16.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABJ0AAASdAHeZh94AAAAd0lEQVQI152OyQ7DMAhE/f8f2ioJxhteah8m4KhSz0UaAY9B4FIWvI4L75NwXB4n8a6lNvwTruoihwSOGSEVRD1gNbGxBNIZcQT5AK/Zh0fGrDevV4+xORdcLrI/M0OuHX18IG1s1dZVA0W5fWy95V99WZGKuRZuD/TnqEeHwPwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;db_init.png&quot;
+        title=&quot;db_init.png&quot;
+        src=&quot;/static/30395f2b19ec253460fa0feb4bcccd4b/c1b63/db_init.png&quot;
+        srcset=&quot;/static/30395f2b19ec253460fa0feb4bcccd4b/5a46d/db_init.png 300w,
+/static/30395f2b19ec253460fa0feb4bcccd4b/0a47e/db_init.png 600w,
+/static/30395f2b19ec253460fa0feb4bcccd4b/c1b63/db_init.png 1200w,
+/static/30395f2b19ec253460fa0feb4bcccd4b/8d68c/db_init.png 1234w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+문서를 살펴보면 위와 같은 내용을 확인할 수 있다. container가 처음으로 시작될 때, &lt;code class=&quot;language-text&quot;&gt;/docker-entrypoint-initdb.d&lt;/code&gt; 경로에 있는  &lt;code class=&quot;language-text&quot;&gt;.sh&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;.sql&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;.sql.gz&lt;/code&gt; 파일을 실행시킨다고 한다. Dockerfile을 이용해서 해당 경로에 파일을 복사하는 작업을 수행해 보자.    &lt;/p&gt;
+&lt;h2 id=&quot;dockerfile&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dockerfile&quot; aria-label=&quot;dockerfile permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;dockerfile&lt;/h2&gt;
+&lt;p&gt;개발환경을 구축할 때 우리는 이미 MySQL이라는 Image를 통해 편하게 MySQL 서비스를 올릴 수 있었지만, Database에는 아무것도 들어있지 않다.
+&lt;strong&gt;Dockerfile을 활용하면, Docker Image를 커스터마이징 해서 추가적인 작업을 할 수 있다.&lt;/strong&gt;
+그러면 개발 환경을 구성할 때 매번 MySQL에 접속해서 Database를 생성하는 작업을 하지 않아도 되도록,
+Dockerfile을 이용해서 &lt;code class=&quot;language-text&quot;&gt;/docker-entrypoint-initdb.d&lt;/code&gt; 경로에 Database를 생성하는 &lt;code class=&quot;language-text&quot;&gt;createDB.sql&lt;/code&gt; 파일을 작성하자. (그러면 mysql container가 알아서 실행해 줄 것이다.)  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;sql-query-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sql-query-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;sql query 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SQL query 작성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;createDB.sql&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;DATABASE&lt;/span&gt; chat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;MySQL 컨테이너가 실행되면 실행할 SQL query를 작성해두었다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;dockerfile-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dockerfile-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;dockerfile 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;dockerfile 작성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;dockerfile&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; mysql&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;8.0
+
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; createDB.sql /docker&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;entrypoint&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;initdb.d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;먼저 mysql:8.0 컨테이너로부터 시작한다.
+추가적으로 컨테이너가 생성될 때 &lt;code class=&quot;language-text&quot;&gt;createDB.sql&lt;/code&gt; 파일을 &lt;code class=&quot;language-text&quot;&gt;/docker-entrypoint-initdb.d&lt;/code&gt; 경로에 복사한다.
+복사 작업 외에도 Container가 실행될 때 명령어를 실행하는 등의 여러 가지 작업을 할 수 있다.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;FROM&lt;/strong&gt;&lt;br&gt;
+추가적인 작업을 할 Base image를 지정한다. (Github에서 fork/clone 하여 작업하는 것과 유사하다.)  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;COPY&lt;/strong&gt;&lt;br&gt;
+Container에 파일을 복사한다. (현재 경로보다 상위 Directory에 있는 파일을 복사할 수는 없다.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RUN&lt;/strong&gt;&lt;br&gt;
+컨테이너를 Build 할 때 (Image 단에서) 실행할 명령어를 지정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CMD&lt;/strong&gt;&lt;br&gt;
+컨테이너가 시작될 때 실행하는 명령어를 지정한다.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WORKDIR&lt;/strong&gt;&lt;br&gt;
+명령이 실행될 경로를 지정한다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;dockerfile의 더 자세한 문법은 &lt;a href=&quot;https://docs.docker.com/engine/reference/builder/&quot;&gt;https://docs.docker.com/engine/reference/builder/&lt;/a&gt;을 참고하자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;빌드-및-실행&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B9%8C%EB%93%9C-%EB%B0%8F-%EC%8B%A4%ED%96%89&quot; aria-label=&quot;빌드 및 실행 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;빌드 및 실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;docker build --tag &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;image name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dockerfile을 Build 하는 것은 Docker image를 만드는 작업이다. 따라서 &lt;code class=&quot;language-text&quot;&gt;--tag&lt;/code&gt; 옵션을 통해 Image 이름을 지정해 주자.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 856px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1163e90e94aac696963db913b09b8028/ad12c/docker_build.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 21.999999999999996%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABJ0AAASdAHeZh94AAAAwElEQVQY01WP4ZLCIAyE+x4lUBAI1FqLVuzd3Knv/1J7sb0Z9cfOFzKbLGl0t4PmGab/gskLzHCDSbP0zmtfx9MnbRQFaMf/dXzVRGjIWKgwgfofqPQNlX/RWgZ1/mV8H/5Q2Pj0Wl7fjXUeIY+I0x2pXEQVucgv8xU6VRBfJPAE5TLoGSRSXRSmjS5tgbu8Lm9KKXg87hjHA2JQYDbCgGHoYbTCYdhjWSo4elFArTMSB3jvME3H1UOqlXNbECn8AVt8cy0/yQ3TAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;docker_build.png&quot;
+        title=&quot;docker_build.png&quot;
+        src=&quot;/static/1163e90e94aac696963db913b09b8028/ad12c/docker_build.png&quot;
+        srcset=&quot;/static/1163e90e94aac696963db913b09b8028/5a46d/docker_build.png 300w,
+/static/1163e90e94aac696963db913b09b8028/0a47e/docker_build.png 600w,
+/static/1163e90e94aac696963db913b09b8028/ad12c/docker_build.png 856w&quot;
+        sizes=&quot;(max-width: 856px) 100vw, 856px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;docker images
+docker run --name &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;container name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; -p &lt;span class=&quot;token number&quot;&gt;3306&lt;/span&gt;:3306 -e &lt;span class=&quot;token assign-left variable&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;password&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; -d &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;image name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Build 했다면 Docker image가 제대로 생성되었는지 확인하고 새로 만든 이미지로 실행하자. &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;확인&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%99%95%EC%9D%B8&quot; aria-label=&quot;확인 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;확인&lt;/h3&gt;
+&lt;p&gt;Docker build부터 실행까지 모두 완료했으니 이제 접속해서 원하는 작업이 완료되었는지 확인해 보자.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;docker &lt;span class=&quot;token builtin class-name&quot;&gt;exec&lt;/span&gt; -it &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;container name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; /bin/bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1031px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3e72e515a6d1457b0f4375cb4873d0b1/23592/check_db.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAABXElEQVQoz51SSXKDMBDkHd4xixGIRSBs8JZyxf//Ukc9jg5OTCrJYWpGhdTTC4ExLc6XKy7XFte3Gq3p0PcW4zDgfDphcH2/32McR5RlCa1LFEWBuq5RVRXyPEeSpO6bRhzHCAZ38f1+x+12xuFg0LatXGTXWkMpJUC7NMVqtcJ8PsdisZDuZ39eLpcI+r4XFrazsLZH13VQbiuZECx126MowmazkQcE/akCbm9MI6yauhEpTdM4Vg85rDRJMJvNvgG+WhAQSDtPCMy5rEoB1c4TSq7rxzL6RqaURyAP9hU0oETxaLeTR/5xWXmGhQMuBPwhPUQYhtMMsyyDyhTYCZo4eUxru90iciXnKJaeumCyz7uTgJREzxhArnKs1+snWX72afqalMw0KY0pkhnl/CbNSYYH98scT0fx0RgjHk1t/02Jh2RGjzjTu/8APf021lrEDjBxpv9F8qv6AL4jVk69DAcZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;check_db.png&quot;
+        title=&quot;check_db.png&quot;
+        src=&quot;/static/3e72e515a6d1457b0f4375cb4873d0b1/23592/check_db.png&quot;
+        srcset=&quot;/static/3e72e515a6d1457b0f4375cb4873d0b1/5a46d/check_db.png 300w,
+/static/3e72e515a6d1457b0f4375cb4873d0b1/0a47e/check_db.png 600w,
+/static/3e72e515a6d1457b0f4375cb4873d0b1/23592/check_db.png 1031w&quot;
+        sizes=&quot;(max-width: 1031px) 100vw, 1031px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;앞서 작성한 SQL이 실행되어 &lt;strong&gt;&apos;chat&apos;&lt;/strong&gt; Database가 생성된 것을 확인할 수 있다.  &lt;/p&gt;
+&lt;h2 id=&quot;docker-compose&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker-compose&quot; aria-label=&quot;docker compose permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;docker-compose&lt;/h2&gt;
+&lt;p&gt;dockerfile을 작성하여 Database를 생성하는 작업을 자동화해주었다. 하지만 아직 run 명령어에서 여러 가지 설정도 해주어야 하는 불편함이 있다. docker-compose를 이용해서 더 간단한 명령어로 MySQL container를 구축해 보자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;env&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#env&quot; aria-label=&quot;env permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;.env&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;.env&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=1234qwer&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;비밀번호와 같이 민감한 정보들은 docker-compose.yml 파일에 바로 작성하는 대신 &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;에 저장하여 사용하자.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;docker-composeyml&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker-composeyml&quot; aria-label=&quot;docker composeyml permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;docker-compose.yml&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;docker-compose.yml&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3.0&quot;&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;chat_db&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; chat_db_container
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3306:3306&quot;&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;DB_PASSWORD&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;version&lt;br&gt;
+docker-compose에서 사용할 version을 지정한다. &lt;/li&gt;
+&lt;li&gt;services&lt;br&gt;
+compose에서 등록할 service들을 지정한다. 각 service에서 아래와 같은 설정들을 지정할 수 있다.  &lt;/li&gt;
+&lt;li&gt;image&lt;br&gt;
+Base image를 지정한다.  &lt;/li&gt;
+&lt;li&gt;build&lt;br&gt;
+image를 지정하는 대신 dockerfile을 build 하여 사용할 수도 있다.&lt;br&gt;
+생성될 Image name은 따로 지정하지 않는다면 &lt;code class=&quot;language-text&quot;&gt;directory이름_service이름&lt;/code&gt;으로 결정된다.  &lt;/li&gt;
+&lt;li&gt;environment&lt;br&gt;
+환경변수를 지정한다.  &lt;/li&gt;
+&lt;li&gt;ports&lt;br&gt;
+포트포워딩을 설정한다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt; 내용을 살펴보면 우리가 MySQL container를 실행할 때 사용했던 Option들을 지정해 줄 수 있다. 더 자세한 문법은 &lt;a href=&quot;https://docs.docker.com/compose/compose-file/&quot;&gt;https://docs.docker.com/compose/compose-file/&lt;/a&gt;를 참고하자.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;실행&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%ED%96%89&quot; aria-label=&quot;실행 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;docker-compose up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;dockerfile&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt;을 잘 구성하여 배포하면, 다른 개발자들은 이렇게 간단한 명령어로 쉽게 개발환경을 구축할 수 있다. 그리고 비밀번호와 같이 민감한 정보들을 &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;에 저장하여 활용할 수 있었다.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;docker-compose-명령어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker-compose-%EB%AA%85%EB%A0%B9%EC%96%B4&quot; aria-label=&quot;docker compose 명령어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;docker-compose 명령어&lt;/h3&gt;
+&lt;p&gt;마지막으로 docker-compose의 몇 가지 명령어를 살펴보자.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;up&lt;/strong&gt;&lt;br&gt;
+Container 생성/시작&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;down&lt;/strong&gt;&lt;br&gt;
+Container 중지/삭제&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;start&lt;/strong&gt;&lt;br&gt;
+Container 시작&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;stop&lt;/strong&gt;&lt;br&gt;
+Container 중지&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;logs&lt;/strong&gt;&lt;br&gt;
+Container 로그 출력  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;docker-compose 명령어는 &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt;이 있는 경로에서 실행하거나 &lt;code class=&quot;language-text&quot;&gt;-f&lt;/code&gt; 옵션을 통해 docker-compose 파일을 지정해야 한다.  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Docker로 MySQL 컨테이너 만들기]]></title><description><![CDATA[야 너두 Docker 할 수 있어]]></description><link>https://goo-gy.github.io/2022-03-11-docker</link><guid isPermaLink="false">https://goo-gy.github.io/2022-03-11-docker</guid><pubDate>Fri, 11 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;docker를-사용하는-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;docker를 사용하는 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Docker를 사용하는 이유&lt;/h2&gt;
 &lt;p&gt;개발을 시작할 때 팀원들은 나와 다른 운영체제를 사용하고 있을 수 있다. 하지만 여러 하드웨어에서 개발하더라도 개발이 진행되는 OS나 아키텍처를 통일할 필요가 있다. 기존에는 virtual machine을 통해 가상의 환경을 만들고 작업하였지만, 이 가상환경도 구성하는 데 굉장히 오래 걸리고 부하가 크다는 단점이 있다. 하지만 Docker를 사용하면 쉽고 빠르게, 가벼운 가상환경을 구축할 수 있다.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&quot;virtual-machine-vs-container&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#virtual-machine-vs-container&quot; aria-label=&quot;virtual machine vs container permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Virtual Machine vs Container&lt;/h3&gt;
