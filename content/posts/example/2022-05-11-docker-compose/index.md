@@ -7,7 +7,7 @@ tags: [project, docker, node.js]
 path: "/2022-05-11-docker-compose"
 featuredImage: "./docker-mysql.png"
 created: 2022-05-23
-updated: 2022-05-23
+updated: 2022-05-26
 ---
 
 
@@ -200,5 +200,9 @@ docker-compose up -d
   Container 중지
 - **logs**  
   Container 로그 출력  
+- **config**  
+  Docker-compose 설정 확인  
+  (env 변수 등을 활용할 때 제대로 적용되었는지 확인해 볼 수 있다.)
+  
 
 docker-compose 명령어는 `docker-compose.yml`이 있는 경로에서 실행하거나 `-f` 옵션을 통해 docker-compose 파일을 지정해야 한다.  
