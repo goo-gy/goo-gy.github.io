@@ -13,7 +13,7 @@ updated: 2022-05-26
 
 ## Database 구축하기
 
-서비스를 개발하려면 Database는 필수적이다. 하지만 Database 구축하고 관리하는 것은 쉽지 않다. Docker를 이용해서 간편하게 Database를 구축하고 관리할 수 있다. 오늘은 Docker를 이용해 MySQL container를 올리는 방법과 dockerfile, docker-compose 등을 이용해 여러 추가 작업까지 해주는 방법을 알아볼 것이다. Docker에 대해서 잘 모르는 분은 이전 포스팅 [Docker로 MySQL 컨테이너 만들기](https://goo-gy.github.io/2022-03-11-docker)를 읽고 오면 어렵지 않게 이해할 수 있을 것이다.  
+서비스를 개발하려면 Database는 필수적이다. 하지만 Database 구축하고 관리하는 것은 쉽지 않다. 하지만 Docker를 이용하면 간편하게 Database를 구축하고 관리할 수 있다. 오늘은 Docker를 이용해 MySQL container를 올리는 방법과 dockerfile, docker-compose 등을 이용해 여러 추가 작업까지 해주는 방법을 알아볼 것이다. Docker에 대해서 잘 모르는 분은 이전 포스팅 [Docker로 MySQL 컨테이너 만들기](https://goo-gy.github.io/2022-03-11-docker)를 먼저 읽고 오면 어렵지 않게 이해할 수 있을 것이다.  
 
 
 ## MySQL image  
