@@ -1,4 +1,341 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 26 Jul 2022 08:31:36 GMT</lastBuildDate><item><title><![CDATA[Git-flow 이해하기]]></title><description><![CDATA[Git-flow 모델을 사용해보자]]></description><link>https://goo-gy.github.io/2022-07-24-git-flow</link><guid isPermaLink="false">https://goo-gy.github.io/2022-07-24-git-flow</guid><pubDate>Sun, 24 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 06 Jan 2023 01:12:53 GMT</lastBuildDate><item><title><![CDATA[채팅 서비스를 위한 인프라]]></title><description><![CDATA[Nginx, Kafka를 이용해 채팅서버를 다중화 해보자]]></description><link>https://goo-gy.github.io/2023-01-05-chat-infra</link><guid isPermaLink="false">https://goo-gy.github.io/2023-01-05-chat-infra</guid><pubDate>Thu, 05 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;요구사항&lt;/li&gt;
+&lt;li&gt;웹 채팅 서비스&lt;/li&gt;
+&lt;li&gt;Web Socket&lt;/li&gt;
+&lt;li&gt;Message Queue&lt;/li&gt;
+&lt;li&gt;구성도&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;요구사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD&quot; aria-label=&quot;요구사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;요구사항&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/goo-gy/letters-react&quot;&gt;https://github.com/goo-gy/letters-react&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/goo-gy/letter-chat-server&quot;&gt;https://github.com/goo-gy/letter-chat-server&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Letters라는 웹 어플리케이션에서 채팅 기능을 제공하려고 한다.&lt;/li&gt;
+&lt;li&gt;서버의 수를 늘려서 Scale-out 하고 싶다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;웹-채팅-서비스&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%B9-%EC%B1%84%ED%8C%85-%EC%84%9C%EB%B9%84%EC%8A%A4&quot; aria-label=&quot;웹 채팅 서비스 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;웹 채팅 서비스&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0c61ea0093e48c0329bd1812621556f9/2ed8b/1_chat.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 57.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUA/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwEC/9oADAMBAAIQAxAAAAGqgy6UvVNpP//EABsQAQABBQEAAAAAAAAAAAAAAAEDAAIEEBEi/9oACAEBAAEFAogLl4GTJUR61//EABYRAAMAAAAAAAAAAAAAAAAAAAMQMv/aAAgBAwEBPwEUr//EABkRAAEFAAAAAAAAAAAAAAAAAAABAhIxUf/aAAgBAgEBPwF1kkw//8QAGRAAAgMBAAAAAAAAAAAAAAAAARAAESIz/9oACAEBAAY/Ajq1zhf/xAAaEAEAAgMBAAAAAAAAAAAAAAABABEQQXGB/9oACAEBAAE/IaQPEZULoiDbxhZf/9oADAMBAAIAAwAAABB83//EABkRAAEFAAAAAAAAAAAAAAAAAAABESExUf/aAAgBAwEBPxCmBl0//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxAF/8QAHRAAAgIBBQAAAAAAAAAAAAAAAREAIUEQMVFxwf/aAAgBAQABPxAwm1YwuMHSEDmo2J0D5AFDYIMvOv8A/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;1_chat.jpg&quot;
+        title=&quot;1_chat.jpg&quot;
+        src=&quot;/static/0c61ea0093e48c0329bd1812621556f9/e5166/1_chat.jpg&quot;
+        srcset=&quot;/static/0c61ea0093e48c0329bd1812621556f9/f93b5/1_chat.jpg 300w,
+/static/0c61ea0093e48c0329bd1812621556f9/b4294/1_chat.jpg 600w,
+/static/0c61ea0093e48c0329bd1812621556f9/e5166/1_chat.jpg 1200w,
+/static/0c61ea0093e48c0329bd1812621556f9/2ed8b/1_chat.jpg 1648w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 631px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/27281cfcc719fc308fd8ad60f6aa0805/4597d/2_http-protocol.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTElEQVQY02MoWnFIYsIJjemnlWae1+venlLSsnrbwf///7989erixYsXLlw4e+bsgwcP/v/79/jJs9C4JH1nYyVdUxkNg8ikdIbSjeeklj5WW/FIec1L49lnMsvbt+w/AdT8+/dvIPnv378/f/78+vULyH7x8mVybqltaLKVi6+upVN2SRVD2fxtSlXLHHs36restahbOHnuil2HTgOVvn379tatW/fA4MWLF0CRx0+ehiakqTn5qOiZSasbRiVnMNx79GTNxq21eSlzZs9avHb7jMUbTpy/CrTyzZs3r169evny5bNnz16/fv33798PHz9On7egZeLUps7u+vbueYuXMQCNBDrs2vUbQDkg+8fPX3///vsPBkDxHz9+AN0M8wJI8Pu3ry9fvgBKAdkMf/+BAEQOwoAAIBto7ZMnT4Bufv78OVwQov4vGAAACPYUhy1orIMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2_http-protocol.png&quot;
+        title=&quot;2_http-protocol.png&quot;
+        src=&quot;/static/27281cfcc719fc308fd8ad60f6aa0805/4597d/2_http-protocol.png&quot;
+        srcset=&quot;/static/27281cfcc719fc308fd8ad60f6aa0805/5a46d/2_http-protocol.png 300w,
+/static/27281cfcc719fc308fd8ad60f6aa0805/0a47e/2_http-protocol.png 600w,
+/static/27281cfcc719fc308fd8ad60f6aa0805/4597d/2_http-protocol.png 631w&quot;
+        sizes=&quot;(max-width: 631px) 100vw, 631px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.w3schools.in/http/intro&quot;&gt;https://www.w3schools.in/http/intro&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;What is Hypertext Transfer Protocol (HTTP)?
+하지만 HTTP 통신은 클라이언트가 보낸 요청(Request)에 대해서만 응답(Response)을 보내줄 수 있고, 채팅 서비스에 필요한 서버 → Client로 먼저 데이터를 보내는 기능이 없습니다. 이를 해결하기 위해 우리는 WebSocket이라는 것을 사용할 수 있습니다.&lt;/p&gt;
+&lt;h2 id=&quot;web-socket&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#web-socket&quot; aria-label=&quot;web socket permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Web Socket&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 589px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3465192eb5e36afbd0da910f3cb16138/b1665/3_http-websocket.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 93.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsTAAALEwEAmpwYAAACd0lEQVQ4y5VUyW7bMBDV//9E+wHNoYcWbW4FUjRNl0PaArZTxDKkaKEkbuImcVGGWpyktw5owpbmvXnzOHQyTZOz3g5OcMWpHI2F78GH6VmEMBllOZOMStiVGLyLCQl8xsHBnmXl4S41ZgyAdf+ClTT7u/vD4Xi4O2LMpvl9AkWcDaMBBGRNAAMuO9OtSB9gQUL84eM2KKf7ERgTyQfWKC3GENki0eFb/fPylO9JTPZBsgGXEtLCTA9Pdtfll7f3pz9d0hXi6mLfY7MIhQo374+Xr37trqsIdoG1+ubdPankIgTYv39IL1//3n2tEt6aHx9zyJglxi3bkc8XKUVqeQKVbz+VXSGX5iGqI796cyS1SkIITS5Bth38yu0CqZ+4ILoC+rLnBKDAlV7dbmty2qO24s47772zzkh7zoNgrEclrU60Lfom77UYjBqBOoLBujnPS6k7TBDCuOnPyJggLJjlnBNCUsJxx0jbr5U5UcMwQiilEOpQ3ZGOz+CwKO+plkKVFWpa3GFKWU+6DZyf0N/bsnlgIHs5HiPsdsozmOg4PFDdw3KTtZqZFaz6wTkYhSCVKkuUP1QtYlvliDaIBkImKeISYqJUd2IFQx1gtd4ppUFY22KKt55nsC47j+lkNEzppDV0v9i0yk53iCCxyIZhNNI9l62J8lJFwT76NkVjxZNhnEjRa60N+AkHw7DYKs9gOoONWpVzZs6GxVOdk4wZsqxI07xF5EXPFcgmTokgBByX4b2gcgWTpgeroKwZhsVtxccXQ9IKVKKHokqz8pQVdd2iimyyOx3C0wWGywDz/LxnTvRo4xVXCv4roh0LezL9f4St1CNU4UmR5KBBWAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;3_http-websocket.png&quot;
+        title=&quot;3_http-websocket.png&quot;
+        src=&quot;/static/3465192eb5e36afbd0da910f3cb16138/b1665/3_http-websocket.png&quot;
+        srcset=&quot;/static/3465192eb5e36afbd0da910f3cb16138/5a46d/3_http-websocket.png 300w,
+/static/3465192eb5e36afbd0da910f3cb16138/b1665/3_http-websocket.png 589w&quot;
+        sizes=&quot;(max-width: 589px) 100vw, 589px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.scaleway.com/iot-hub-what-use-case-for-websockets/&quot;&gt;https://blog.scaleway.com/iot-hub-what-use-case-for-websockets/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WebSocket을 이용하면 한번 Socket 연결을 맺고 나면, 양 측에서 언제든지 메세지를 보낼 수 있습니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;web-socket-in-java-spring&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#web-socket-in-java-spring&quot; aria-label=&quot;web socket in java spring permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Web Socket in Java Spring&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Web Socket&lt;/li&gt;
+&lt;li&gt;SockJS&lt;/li&gt;
+&lt;li&gt;Stomp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;stomp&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#stomp&quot; aria-label=&quot;stomp permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Stomp&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@RestController&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@CrossOrigin&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ChatController&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SimpMessagingTemplate&lt;/span&gt; simpMessagingTemplate&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@MessageMapping&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/chat&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// /pub/chat&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;publishChat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;ChatDto&lt;/span&gt; chatDto&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        simpMessagingTemplate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;convertAndSend&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/sub/chat/&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; chatDto&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getChannel&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; chatDto&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;다중-서버&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A4%EC%A4%91-%EC%84%9C%EB%B2%84&quot; aria-label=&quot;다중 서버 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;다중 서버&lt;/h2&gt;
+&lt;p&gt;하지만 한 서버가 수많은 클라이언트와 소켓 연결을 맺는 부하를 감당하기는 어렵기 때문에 Scale-out하여 여러 대의 서버를 사용하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4710ced460f0c6b22de3000af0e98f13/2c89e/4_multi-server.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAACA//aAAwDAQACEAMQAAAB13WFO4UNP//EABkQAAIDAQAAAAAAAAAAAAAAAAECAxESE//aAAgBAQABBQJq6vrC3lies5KxRm4//8QAFhEAAwAAAAAAAAAAAAAAAAAAAhBB/9oACAEDAQE/ARq//8QAFREBAQAAAAAAAAAAAAAAAAAAEFH/2gAIAQIBAT8Bh//EABsQAAICAwEAAAAAAAAAAAAAAAABAjEREiJR/9oACAEBAAY/Ao3k4sW1kUNqyLfh/8QAHBAAAgICAwAAAAAAAAAAAAAAAAERITFBUWFx/9oACAEBAAE/Ic50QXqcZPEbFkHTGnwmxjBLaSf/2gAMAwEAAgADAAAAENQv/8QAGBEBAAMBAAAAAAAAAAAAAAAAARARccH/2gAIAQMBAT8QZe+Ef//EABcRAQEBAQAAAAAAAAAAAAAAAAEAETH/2gAIAQIBAT8QxWPb/8QAHBABAQACAwEBAAAAAAAAAAAAAREAITFBcVGB/9oACAEBAAE/EOZiNIn73iKlaR73lpghrxe8TaG0nOP5IQemW8OX1mf/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;4_multi-server.jpg&quot;
+        title=&quot;4_multi-server.jpg&quot;
+        src=&quot;/static/4710ced460f0c6b22de3000af0e98f13/e5166/4_multi-server.jpg&quot;
+        srcset=&quot;/static/4710ced460f0c6b22de3000af0e98f13/f93b5/4_multi-server.jpg 300w,
+/static/4710ced460f0c6b22de3000af0e98f13/b4294/4_multi-server.jpg 600w,
+/static/4710ced460f0c6b22de3000af0e98f13/e5166/4_multi-server.jpg 1200w,
+/static/4710ced460f0c6b22de3000af0e98f13/2c89e/4_multi-server.jpg 1568w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;위와 같이 채팅 서버가 다중화 되어 있는 경우, 같은 서버에 연결된 클라이언트 끼리는 서로 통신할 수 있지만, 다른 서버에 연결되어 있다면, 서로의 채팅을 전달할 수 없습니다.&lt;/p&gt;
+&lt;h2 id=&quot;message-queue&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#message-queue&quot; aria-label=&quot;message queue permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Message Queue&lt;/h2&gt;
+&lt;p&gt;위 처럼 여러 서버 간에 데이터를 실시간으로 동기화 하기 위해서 Message Queue를 사용할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d6bf98857c3d40b50e82bb8b2c24d7d/6382b/5_chat-kafka.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHsokKW4X//xAAbEAABBAMAAAAAAAAAAAAAAAACAAEDMwQjMv/aAAgBAQABBQIOBfW0syCrHpX/xAAXEQADAQAAAAAAAAAAAAAAAAABAhAx/9oACAEDAQE/AUwT/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8BZ//EAB0QAAECBwAAAAAAAAAAAAAAAAABEAISITNRosH/2gAIAQEABj8CwUWfpY2aFv/EABsQAAICAwEAAAAAAAAAAAAAAAExABEQUYGh/9oACAEBAAE/IdJDI3DVNqnBLMcR/Z48f//aAAwDAQACAAMAAAAQZw//xAAWEQADAAAAAAAAAAAAAAAAAAABEJH/2gAIAQMBAT8QKS//xAAXEQEAAwAAAAAAAAAAAAAAAAABECFh/9oACAECAQE/EBS7H//EAB8QAQACAQMFAAAAAAAAAAAAAAEAESExQWFRkaHB8P/aAAgBAQABPxAhgW6kc5gQhtDRbPbpAFYvSyeB7z5eWM//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;5_chat-kafka.jpg&quot;
+        title=&quot;5_chat-kafka.jpg&quot;
+        src=&quot;/static/1d6bf98857c3d40b50e82bb8b2c24d7d/e5166/5_chat-kafka.jpg&quot;
+        srcset=&quot;/static/1d6bf98857c3d40b50e82bb8b2c24d7d/f93b5/5_chat-kafka.jpg 300w,
+/static/1d6bf98857c3d40b50e82bb8b2c24d7d/b4294/5_chat-kafka.jpg 600w,
+/static/1d6bf98857c3d40b50e82bb8b2c24d7d/e5166/5_chat-kafka.jpg 1200w,
+/static/1d6bf98857c3d40b50e82bb8b2c24d7d/d9c39/5_chat-kafka.jpg 1800w,
+/static/1d6bf98857c3d40b50e82bb8b2c24d7d/6382b/5_chat-kafka.jpg 1867w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;rabbitmq-vs-kafka&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#rabbitmq-vs-kafka&quot; aria-label=&quot;rabbitmq vs kafka permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;RabbitMQ vs Kafka&lt;/h3&gt;
+&lt;p&gt;대표적인 Message Queue의 예로 RabbitMQ와 Kafka를 들 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RabbitMQ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Message Broker&lt;/li&gt;
+&lt;li&gt;처리하고 삭제&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kafka&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Event Broker (Message broker의 역할을 할 수 있다.)&lt;/li&gt;
+&lt;li&gt;처리해도 데이터 유지, Offset으로 관리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;둘 다 장단점이 있겠지만, Kafka가 더 범용적인 목적으로 사용할 수 있을 것 같아 Kafka를 공부하여 사용해 보았습니다.&lt;/p&gt;
+&lt;h2 id=&quot;구성도&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%EC%84%B1%EB%8F%84&quot; aria-label=&quot;구성도 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구성도&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;React&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker-compose&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nginx&lt;/li&gt;
+&lt;li&gt;Java Spring&lt;/li&gt;
+&lt;li&gt;Kafka&lt;/li&gt;
+&lt;li&gt;Zookeeper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nginx, Spring server, Kafka, Zookeeper를 docker-compose로 함께 배포하면서 같은 서브넷에서 서로 통신할 수 있도록 구성하였습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a2cf1bf133faff4a348c8c7c82544f36/d3208/6_container-network.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/2gAMAwEAAhADEAAAAdiBC4F//8QAGBAAAgMAAAAAAAAAAAAAAAAAAREAEyL/2gAIAQEAAQUCDr0w5//EABcRAAMBAAAAAAAAAAAAAAAAAAECEDH/2gAIAQMBAT8BTBP/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAbEAACAQUAAAAAAAAAAAAAAAAAEQISISIxQv/aAAgBAQAGPwLFEqXvouj/xAAaEAABBQEAAAAAAAAAAAAAAAAAESExUWGB/9oACAEBAAE/IWknTQIxwlsZKP/aAAwDAQACAAMAAAAQ9A//xAAYEQACAwAAAAAAAAAAAAAAAAAAARExYf/aAAgBAwEBPxCxiG5P/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/EHFn/8QAGxAAAQUBAQAAAAAAAAAAAAAAEQABITFhcfD/2gAIAQEAAT8QbQigsFzqFM3hEx8U1mxZwdX/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;6_container-network.jpg&quot;
+        title=&quot;6_container-network.jpg&quot;
+        src=&quot;/static/a2cf1bf133faff4a348c8c7c82544f36/e5166/6_container-network.jpg&quot;
+        srcset=&quot;/static/a2cf1bf133faff4a348c8c7c82544f36/f93b5/6_container-network.jpg 300w,
+/static/a2cf1bf133faff4a348c8c7c82544f36/b4294/6_container-network.jpg 600w,
+/static/a2cf1bf133faff4a348c8c7c82544f36/e5166/6_container-network.jpg 1200w,
+/static/a2cf1bf133faff4a348c8c7c82544f36/d9c39/6_container-network.jpg 1800w,
+/static/a2cf1bf133faff4a348c8c7c82544f36/d3208/6_container-network.jpg 1967w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nginx Container만 포트포워딩하여 로드밸런서를 통해서만 진입할 수 있도록 구성&lt;/li&gt;
+&lt;li&gt;로드밸런서, Kafka, Zookeeper를 다중화 하면 좋겠지만, 테스트 환경에서는 단일 노드로 구성&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;docker-compose&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker-compose&quot; aria-label=&quot;docker compose permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;docker-compose&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3.0&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;zookeeper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; letters_zookeeper
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; bitnami/zookeeper&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3.6&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ALLOW_ANONYMOUS_LOGIN=yes
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ALLOW_PLAINTEXT_LISTENER=yes
+    &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;ipv4_address&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.10
+  &lt;span class=&quot;token key atrule&quot;&gt;kafka&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; letters_kafka
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; bitnami/kafka&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3.0&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; KAFKA_BROKER_ID=1
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; KAFKA_CFG_LISTENERS=PLAINTEXT&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9092&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//192.168.0.11&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9092&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2181&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ALLOW_PLAINTEXT_LISTENER=yes
+    &lt;span class=&quot;token comment&quot;&gt;#      - KAFKA_CREATE_TOPICS=chat:1:1&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; zookeeper
+    &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;ipv4_address&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.11
+  &lt;span class=&quot;token key atrule&quot;&gt;backend&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; letters_backend
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+    &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;ipv4_address&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.20
+  &lt;span class=&quot;token key atrule&quot;&gt;backend2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; letters_backend2
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+    &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;ipv4_address&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.21
+  &lt;span class=&quot;token key atrule&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; letters_nginx
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ./nginx
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;80:80&quot;&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;ipv4_address&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.30
+
+&lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;default_bridge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;ipam&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; default
+      &lt;span class=&quot;token key atrule&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;subnet&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 192.168.0.0/16&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;nginx&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nginx&quot; aria-label=&quot;nginx permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Nginx&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;upstream chat_servers {
+    server 192.168.0.20:8080 weight=1 max_fails=3 fail_timeout=15s;
+    server 192.168.0.21:8080 weight=1 max_fails=3 fail_timeout=15s;
+    keepalive 1024;
+    keepalive_requests 10240;
+    keepalive_timeout 120;
+}
+
+server {
+    location /letters-chat-server/ {
+        proxy_pass http://chat_servers/letters-chat-server/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &amp;quot;Upgrade&amp;quot;;
+        proxy_set_header Host $http_host;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Git-flow 이해하기]]></title><description><![CDATA[Git-flow 모델을 사용해보자]]></description><link>https://goo-gy.github.io/2022-07-24-git-flow</link><guid isPermaLink="false">https://goo-gy.github.io/2022-07-24-git-flow</guid><pubDate>Sun, 24 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
 &lt;p&gt;Git-flow는 Git 브랜치 관리 모델 중 하나이다. 하나의 프로젝트에서 팀원들이 원활하게 협업하기 위해서 브랜치를 활용하는데, 이 Git 브랜치를 쉽게 관리할 수 있도록 패턴을 적용한 것이 Git-flow 모델이다.  &lt;/p&gt;
 &lt;p&gt;Git-flow를 처음 배우면 작업들이 어디서 시작되어 어디로 합쳐지는지, 왜 그런 방식을 사용하는지 많이 헷갈리는 것 같다. Git-flow를 처음 접하는 팀원들이 Git-flow를 이해하고 혼자서 따라 해 볼 수 있도록 이렇게 포스팅을 작성하게 되었다.  &lt;/p&gt;
 &lt;h2 id=&quot;git-flow&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#git-flow&quot; aria-label=&quot;git flow permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Git-flow&lt;/h2&gt;
