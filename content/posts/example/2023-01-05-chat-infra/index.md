@@ -35,8 +35,7 @@ updated: 2023-01-05
 
 [https://www.w3schools.in/http/intro](https://www.w3schools.in/http/intro)
 
-What is Hypertext Transfer Protocol (HTTP)?
-하지만 HTTP 통신은 클라이언트가 보낸 요청(Request)에 대해서만 응답(Response)을 보내줄 수 있고, 채팅 서비스에 필요한 서버 → Client로 먼저 데이터를 보내는 기능이 없습니다. 이를 해결하기 위해 우리는 WebSocket이라는 것을 사용할 수 있습니다.
+HTTP 통신은 클라이언트가 보낸 요청(Request)에 대해서만 응답(Response)을 보내줄 수 있고, 채팅 서비스에 필요한 서버 → Client로 먼저 데이터를 보내는 기능이 없습니다. 이를 해결하기 위해 우리는 WebSocket이라는 것을 사용할 수 있습니다.
 
 ## Web Socket
 
@@ -74,7 +73,7 @@ public class ChatController {
 
 ## 다중 서버
 
-하지만 한 서버가 수많은 클라이언트와 소켓 연결을 맺는 부하를 감당하기는 어렵기 때문에 Scale-out하여 여러 대의 서버를 사용하게 됩니다.
+한 서버가 수많은 클라이언트와 소켓 연결을 맺는 부하를 감당하기는 어렵기 때문에 Scale-out하여 여러 대의 서버를 사용하게 됩니다.
 
 ![4_multi-server.jpg](4_multi-server.jpg)
 
