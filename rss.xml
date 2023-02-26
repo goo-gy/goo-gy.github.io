@@ -1,4 +1,449 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Feb 2023 03:14:26 GMT</lastBuildDate><item><title><![CDATA[채팅 서비스를 위한 인프라]]></title><description><![CDATA[Nginx, Kafka를 이용해 채팅서버를 다중화 해보자]]></description><link>https://goo-gy.github.io/2023-01-05-chat-infra</link><guid isPermaLink="false">https://goo-gy.github.io/2023-01-05-chat-infra</guid><pubDate>Thu, 05 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed]]></title><description><![CDATA[Daily Develop]]></description><link>https://goo-gy.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Feb 2023 04:04:09 GMT</lastBuildDate><item><title><![CDATA[[Spring JPA 시작하기] DB 설계]]></title><description><![CDATA[JPA로 DB를 설계해보자]]></description><link>https://goo-gy.github.io/2023-02-17-spring-jpa-entity</link><guid isPermaLink="false">https://goo-gy.github.io/2023-02-17-spring-jpa-entity</guid><pubDate>Sat, 25 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;-개요-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EA%B0%9C%EC%9A%94-&quot; aria-label=&quot; 개요  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 개요 ]&lt;/h2&gt;
+&lt;p&gt;JPA에서는 Java Class만 작성하면 자동으로 Database의 Schema를 만들어주는 DDL을 제공해 준다. 이번 포스팅에서는 작은 프로젝트에서 JPA를 활용하여 DB를 설계하고 구현해 볼 예정이다. JPA 기본 문법에 대해서 자세히 적는 대신 설계 방향과 여러 가지 옵션을 활용하는 방법을 중심으로 알아볼 예정이다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;요구-사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD&quot; aria-label=&quot;요구 사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;요구 사항&lt;/h3&gt;
+&lt;p&gt;우리가 Spring JPA를 이용해서 어떤 게시글 서비스를 만든다고 가정해 보자. 그러면 우리는 기본적으로 &lt;strong&gt;사용자(Member), 게시글(Posting), 댓글(Comment)&lt;/strong&gt;에 대한 정보가 필요할 것이다. 게시글 검색을 더 활성화시키기 위해 &lt;strong&gt;Hashtag(#)&lt;/strong&gt;도 추가해 볼 수 있다.&lt;/p&gt;
+&lt;p&gt;그리고 다음과 같은 추가적인 요구사항을 만족하는 서비스를 만들어 보자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;사용자에게 Email, password를 이용하는 로그인 인증과 카카오 로그인을 지원한다.&lt;/li&gt;
+&lt;li&gt;모든 DB 테이블에서 생성 시간, 수정 시간을 관리하고, 삭제할 때는 실제 Data를 삭제하는 대신 삭제 표시만 남겨둔다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;-공통-데이터-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EA%B3%B5%ED%86%B5-%EB%8D%B0%EC%9D%B4%ED%84%B0-&quot; aria-label=&quot; 공통 데이터  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 공통 데이터 ]&lt;/h2&gt;
+&lt;p&gt;그러면 이제 하나씩 JPA를 이용해서 구현해 보자&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;mappedsuperclass&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mappedsuperclass&quot; aria-label=&quot;mappedsuperclass permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MappedSuperclass&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@MappedSuperclass&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@CreationTimestamp&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;LocalDateTime&lt;/span&gt; createdTime&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@UpdateTimestamp&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;LocalDateTime&lt;/span&gt; updatedTime&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ColumnDefault&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Boolean&lt;/span&gt; deleted&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;요구사항에서 삭제 여부, 생성 시간, 수정 시간을 모든 테이블에서 동일하게 관리하기로 하였다.&lt;/li&gt;
+&lt;li&gt;이런 필드들을 모든 Entity에 직접 작성하는 대신 &lt;code class=&quot;language-text&quot;&gt;@MappedSuperclass&lt;/code&gt;를 지정한 클래스에 모아두고 이 클래스를 상속받기만 하면 자동으로 해당 컬럼들이 테이블에 반영된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;-상속관계-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%83%81%EC%86%8D%EA%B4%80%EA%B3%84-&quot; aria-label=&quot; 상속관계  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 상속관계 ]&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ae3bc8ea4fa9a58481b8453b50b36fa1/cd138/member_uml.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACwElEQVQoz42QWU9TURSF921jgygOROqLEggi0CKFDkiYFCiWCAjS3lZuRwqtSsdbyliKKAiIqWBLL52MgqJoIgaj8dXEGBP/gC++GOOLL/4BzXG3CSZGYzzJykn2+fZaex+Av5wCpQ52V52BvbI2gbjT7G/u895sNLqWStsNNgVth3q9g9olaYH/PoWtOgrKGgFKGnKk6oHPTRYPqWUGiajT9K5O74Ams4f3T8N4PJ4Rx3GQSqWgSNVLwREZQK4op8Hg/NTaP0QquvqIpNv6VmllodXq4wkkSkgmkxCNRn/1/2G4o/wWLRys6YDD9V3ZuPKTatr+Qa6xfcQJV2oZB5w2uSkQFGXYRCLxu2GJxg2EEAiFo5iYgBTq2aMH8CV8MVN3Bufg9fbmnvevtrI9U/Pw/MVLGB0ZgXBkBZKJNJ+EpQiXYYt7HACN9iA1fHuNb+O2qYVwLGs5GhOOTc/uP6fWCtUaOnc5HNnHrcaEq7G4cGFxMae7R31IyxjybkW4A1wilcfOhARZbQ6q8WKQf6LXB3Dq0hVwhe7C1OoGphQBCJTQcnkKqiwBKGQmQEw7sf4Dvn/7CirXVWhiQ2C/cQcCK2tA3uCKVBsokVf0jUPGsMrg71A6rz1t81xfU7lmNqXG4Y0q4/B9id6/XqJxFZTil1QyLNVgm+TVWMeRH5Y3D05vqdyz9zp985sKy+jDSoN/HeuPkZWmXYPt7BxpZ+dJvS1IZKZRIjePEqlxhJTSbkUZ7QaRzotmE3x8Q56lMZyc9c4R3I4oLGNEhny6r0zrUUMFMxTo8C2Q7pFFUtMfINV94+SkdYLIERTrvApUOpSHIXycHMQ6VlOHwbW2SSJFkx0+fZdfYHtApPWUo/MAyiRhhszYbKpgfGZ8NB0778hFwXG1E428FNYA18ovpT02nNoo0Wf4TA/KWtzjPPoTVRshgZ16s/MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;member_uml.png&quot;
+        title=&quot;member_uml.png&quot;
+        src=&quot;/static/ae3bc8ea4fa9a58481b8453b50b36fa1/c1b63/member_uml.png&quot;
+        srcset=&quot;/static/ae3bc8ea4fa9a58481b8453b50b36fa1/5a46d/member_uml.png 300w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/0a47e/member_uml.png 600w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/c1b63/member_uml.png 1200w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/cd138/member_uml.png 1220w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Member의 인증 방식에는 Email, Password를 이용한 로그인과, 카카오 인증을 활용하는 방법을 지원하기로 했다. 그래서 Java에서는 Member를 상속받는 LoginMember, KakaoMember 클래스를 만들었다. Java에서는 이 모델을 클래스를 상속함으로써 구현하였지만, Database 상에서는 이런 상속 개념이 없다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@Inheritance&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;InheritanceType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;JOINED&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@DiscriminatorColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;auth_type&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;대신 &lt;code class=&quot;language-text&quot;&gt;@Inheritance&lt;/code&gt;를 사용하여 상속받는 클래스가 Database 스키마에서 어떻게 구성될지 결정할 수 있다.&lt;/p&gt;
+&lt;!-- `@DiscriminatorColumn` 옵션을 지정해주면 테이블에 지정한 이름으로 컬럼이 생기며, 상속 관계를 위해 어느 테이블과 Join 해야할 지 알 수 있다. --&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;LoginMember&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@NotNull&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; email&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; password&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;@Inheritance 옵션에는 다음과 같이 3가지가 있는데 하나씩 알아보자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;SINGLE_TABLE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;JOINED&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;TABLE_PER_CLASS&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;single-table&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#single-table&quot; aria-label=&quot;single table permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Single Table&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1018px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAA20lEQVQoz52S5w6CQBCEfQ1FNJRTkI5IUYqxvv8TjbtrNMZIIvyYXMntd7M3N5kvbHxrNjfhegk2fiprfalEn3NNt/CrdtIHjJJStHIirN2Exhh+mMMLMpnzuV/QXqAf7gRoKR+KoGodCvylgUADQZRjX58JWsC0PdirQOByAcGHOyRge7wjTisBMIihrHFAarnpbjg0FyTb/dvlSKCBMC5QHU7Y7moKJSanJSWfwrJHtDzVDGm1bq9w6euwu6LqyHUmwGco6n+gpptSxME47Irej93xnoRD6nP4AIy7ADaIEB7lAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;single_table.png&quot;
+        title=&quot;single_table.png&quot;
+        src=&quot;/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png&quot;
+        srcset=&quot;/static/f3afe0dcb1add83b11aa36cd893a0648/5a46d/single_table.png 300w,
+/static/f3afe0dcb1add83b11aa36cd893a0648/0a47e/single_table.png 600w,
+/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png 1018w&quot;
+        sizes=&quot;(max-width: 1018px) 100vw, 1018px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Single table 전략은 Member를 상속받는 모든 자식 Entity의 필드를 Member 테이블 하나에 넣어두고 필요한 것만 사용하는 전략이다. (나머지는 Null)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Join 없이 데이터를 가져올 수 있기 때문에 성능이 빠르다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;해당되지 않는 Entity에 대한 컬럼도 한 테이블에 있기 때문에, 자식 Entity에 해당하는 컬럼은 항상 Nullabe로 설정된다.&lt;/li&gt;
+&lt;li&gt;자식 Entity에 많은 데이터가 있을 경우 저장 공간 낭비가 심하고, 조회 성능도 느려질 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;자식 Entity들의 데이터가 적을 때 사용하면 좋을 것 같다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;joined&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#joined&quot; aria-label=&quot;joined permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Joined&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1043px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABMUlEQVQoz52SSXaDMAyGuUbCbDCTwQYeCXRKs+H+R1IlEVKmLpqFnmxL/vxbkuV4MRzZ2REQJyWkuQEb964vn0Zx240O71l/A0PIVAO6HkCmBsE1qOoCWdGAH2avAAWr03WPSqunyVRDIF4AnuwQclT49T1CqS8gYgWRLBn6L+CceEYgfe/zNkL/dud1JFFhZlbALdjagpZ7ERcMmmAKEiwBqfSCdJW/XFvLA/InO2B1pII66gUJe6qph55yfIxN+WKndKWQIAV2sjRXrhl1k9TMOSkqpViSaY6RuY9Hdl8mBfSdph9BmfdpTMyAvuWHHLykuztU7Q3PGijKDvLqyqWgu/sa4mEYFWCagUdjtgSbMM1dDG338RijKUaPkohj4KoWcmG/MQLkquVyzGO0HaEfJrE2GUXAUcoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;joined.png&quot;
+        title=&quot;joined.png&quot;
+        src=&quot;/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png&quot;
+        srcset=&quot;/static/26ae7d7f56e25d72528df0d835bf0060/5a46d/joined.png 300w,
+/static/26ae7d7f56e25d72528df0d835bf0060/0a47e/joined.png 600w,
+/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png 1043w&quot;
+        sizes=&quot;(max-width: 1043px) 100vw, 1043px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Joined 전략은 Member를 상속받는 Entity가 별도의 테이블을 구성하고, Member 테이블과 조인하여 사용하는 전략이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;불필요한 Null 데이터를 저장하지 않으므로, 저장 공간 면에서 효율적이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Join으로 인해 성능이 저하된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Joined 전략이 상속 관계와 가장 유사한 구조를 가지고 있어, 이해하기도 관리하기도 쉽다.
+그리고 하위 테이블의 데이터를 잘 사용하지 않는 경우 나중에 다룰 &lt;code class=&quot;language-text&quot;&gt;Lazy Load&lt;/code&gt;로 보완할 수 있기 때문에
+Joined 옵션을 사용하기로 했다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;table-per-class&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#table-per-class&quot; aria-label=&quot;table per class permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Table Per Class&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1155px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAAA7klEQVQoz31S7Y6CMBD0NRRBWigtFkolfp65XHL6/q+07qzphTPoj83Q7u7sdJbFuqgJkeUV5RtDqnIcrZxXay2YYqMs6XpLRdn8y6V+4CIRoqAynkI8kQ97qpueGjfwXSeDkPf9nobdmWwbybgg+VK3f2QzhB03HViFl+LWj4JJURcOfI5SZ7c7chz4Rm6WULPCy/VXVKAQAaVPQiX3x/OPEGFobYNgluv3Cq/fd2kyXAwyYFFaWmaK4njh/I364fgkbD4Qwgf44fiZio1PCqcewt84fskQYwfxcvbJ0029bvZ1y/gDgFANxLDpUh4WOcdbdziiuwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;table_per_class.png&quot;
+        title=&quot;table_per_class.png&quot;
+        src=&quot;/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png&quot;
+        srcset=&quot;/static/f98a4da2d623d174cbd49f2056bb52e8/5a46d/table_per_class.png 300w,
+/static/f98a4da2d623d174cbd49f2056bb52e8/0a47e/table_per_class.png 600w,
+/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png 1155w&quot;
+        sizes=&quot;(max-width: 1155px) 100vw, 1155px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Table per class 전략도 Member를 상속받는 Entity가 별도의 테이블을 생성하지만,
+공통되는 Member의 필드들을 각 테이블에 따로 넣는 전략이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터를 완전히 분리하여 단순하고 관리하기 쉽다.&lt;/li&gt;
+&lt;li&gt;단순 조회 성능이 빠르다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;부모 Entity를 중심으로 데이터를 가져올 때 굉장히 비효율적이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 전략은 자식 Entity로 명확하게 조회할 때는 괜찮지만, 부모 Entity인 Member 객체로 조회할 때는 login__member, kakao__member 테이블을 모두 union 연산하여 탐색하기 때문에 굉장히 비효율적이다.&lt;/p&gt;
+&lt;h2 id=&quot;-연관관계-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-&quot; aria-label=&quot; 연관관계  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ 연관관계 ]&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;@OneToOne&lt;/li&gt;
+&lt;li&gt;@ManyToOne&lt;/li&gt;
+&lt;li&gt;@OneToMany&lt;/li&gt;
+&lt;li&gt;@ManyToMany&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;JPA에서는 위와 같이 연관관계를 위한 4가지 @Annotaion을 제공한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;manytoone&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#manytoone&quot; aria-label=&quot;manytoone permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;@ManyToOne&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1027px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAABAklEQVQoz22R63KDIBCF8xyNlygiChqISU2M6WU60/d/pNNdEMe0/cGw7B6+PSy7fSqQZBV4f0lKv/+OYz3NJQrR+jPX49pqdrEoZAc73OiCRlkZSHVEKY2HxAacHy4z6sb6emsGqNZRXq/QJ2Dvrl7IF4L4hLxoglPSFMJA2xmyPS86h8a8+rvMeAJy92n+Qm9HHwsZXLI4LxSyQw2lHTl8BPde06GqQ7xPN0A+8FMv4xvcMHmHLJbKrg5DU43H+zdB7wTqF2D/H1DgQMPm+ZxIzM8NwCM5UyuQm463D1ynT+ju7GE8wz9PjgMNcdj5M5JMbvJiyddIqMYjCEutH8f1H/yXx9F/BVN6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;member-posting.png&quot;
+        title=&quot;member-posting.png&quot;
+        src=&quot;/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png&quot;
+        srcset=&quot;/static/7c20e014d81ffe3c3e81db578e04357e/5a46d/member-posting.png 300w,
+/static/7c20e014d81ffe3c3e81db578e04357e/0a47e/member-posting.png 600w,
+/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png 1027w&quot;
+        sizes=&quot;(max-width: 1027px) 100vw, 1027px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Posting&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; title&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; content&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ManyToOne&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@JoinColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;owner_id&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; nullable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Member&lt;/span&gt; owner&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Posting 과 Member의 관계는 N:1이다.&lt;br&gt;
+이럴 때 @ManyToOne을 사용한다. DB 상에서는 당연히 Many 쪽에서 Foreign Key를 가지기 때문에 @ManyToOne을 지정한 곳에 @JoinColumn으로 Foreign Key 이름을 지정해 준다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;onetomany&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#onetomany&quot; aria-label=&quot;onetomany permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;@OneToMany&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@Inheritance&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;InheritanceType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;JOINED&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@DiscriminatorColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;auth_type&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@OneToMany&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mappedBy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;owner&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Posting&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; postingList&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;반대로 Member - Posting은 1:N이다.&lt;br&gt;
+DB 상의 Member 테이블에서는 Foreign key를 가지고 있지 않지만, 객체에서는 PostingList 정보가 필요할 수 있기 때문에 @OneToMany를 사용하여 필드로 불러올 수 있다. 이런 경우를 양방향 연관관계라고 한다. 여기서 &lt;code class=&quot;language-text&quot;&gt;mappedBy&lt;/code&gt; 옵션에는 상대방 Entity에서 자신을 지칭하는 필드명으로 지정해야 한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;manytomany&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#manytomany&quot; aria-label=&quot;manytomany permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;@ManyToMany&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Hashtag&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@NotNull&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; word&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Posting&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; title&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; content&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ManyToOne&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@JoinColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;owner_id&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; nullable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Member&lt;/span&gt; owner&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ManyToMany&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@JoinTable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;posting_hashtag&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Hashtag&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; hashtagList&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1067px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 29.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAAA6klEQVQY002Ra3KDMAyEOUcTCCV+Ycc2r4aknWRy/0ttZYE9/NjRjFb6LMmVMgGXb41zI1BfJMesr3NXdKqvrOw1rSr1OZ9iFYYVuh+gSM4vUCaSKdkUypEXIbUvoBPBEyiODxg74ipv3C91oLxCtdxfnEiGUJ6MiLbr0QkLF1ZYUn+b6cERvZs533YGPt4ZknrSEMoMaGhTBqbXkpGhTat5JeN/YYYPJBUrO0Pbqaz6s76xPj88ZSccwxk4LX9I0N5NBAv76NvKKdY7YLuXLPeyNPUwPQpwG4RWzsXHpnKv/SOOOnr5s465f0HvrEnXXNThAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;posting-hashtag.png&quot;
+        title=&quot;posting-hashtag.png&quot;
+        src=&quot;/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png&quot;
+        srcset=&quot;/static/61b66ae5e83d12ed71e30b26d2f2c5e8/5a46d/posting-hashtag.png 300w,
+/static/61b66ae5e83d12ed71e30b26d2f2c5e8/0a47e/posting-hashtag.png 600w,
+/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png 1067w&quot;
+        sizes=&quot;(max-width: 1067px) 100vw, 1067px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;N:M 관계에서는 편리하게 @ManyToMany 옵션을 사용하면 자동으로 위와 같은 관계 테이블이 생성된다. 하지만 이런 경우 연관 관계를 표시하는 데이터에는 추가적인 정보를 저장할 수 없다. 따라서 실무에서는 대부분 두 테이블의 연결을 관리하는 별도의 Entity를 정의하여 사용한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;nm-직접-정의하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nm-%EC%A7%81%EC%A0%91-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;nm 직접 정의하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;N:M 직접 정의하기&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PostingHashtag&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;strategy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IDENTITY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Long&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ManyToOne&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@JoinColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;posting_id&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Posting&lt;/span&gt; posting&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@ManyToOne&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@JoinColumn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;hashtag_id&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Hashtag&lt;/span&gt; hashtag&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Posting과 Hashtag를 연결하는 PostingHastag Entity를 만들고, 각 Entity의 id를 Foreign key로 가지도록 @ManyToOne으로 연결해 주었다. 이렇게 N:M 관계를 위한 연결 Entity를 만들면 연결 정보에 추가적인 정보를 담을 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Posting&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;BaseEntity&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@OneToMany&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mappedBy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;posting&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;PostingHashtag&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; taggingList&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Posting에서는 연결된 Hashtag 정보를 조회하기 위해서 @OneToMany 로 연결하였다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1091px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAAA/klEQVQY001R2Y6CQBDkN3YVEYa5AIdbMepuYsz+/x/VTrWB+NCpTB/VVdPJLlU4HA3STGN/KMH3J2a5xbFwW/2zxvjeF1swn7Cx7RdY30HpZsOvXQHjAqb5hm5YUJ8m+HqIuVaGiVUzIlcVStPITJqZN2ETZmnQNgga14kyFwlcuEPZAdqcYPwYiWdRTLIqLilj3lW9BPMJZU/nB0J/QVHWsqmMxMxb32NY/mDrCYo108oSiqjDhOvtKcScI3H2JtQY5/tWZEHb1VbA4/eF8+VHFNionrb5V3TTDVf5Corgm65EIY/CB3E9EIeIufLRipfttMS+9TDrIdYDMf4BPeauLTuyRA8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;posting-hashtag_custom.png&quot;
+        title=&quot;posting-hashtag_custom.png&quot;
+        src=&quot;/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png&quot;
+        srcset=&quot;/static/ea82e32a11a11b18a8da0b4a006bdf77/5a46d/posting-hashtag_custom.png 300w,
+/static/ea82e32a11a11b18a8da0b4a006bdf77/0a47e/posting-hashtag_custom.png 600w,
+/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png 1091w&quot;
+        sizes=&quot;(max-width: 1091px) 100vw, 1091px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;-schema-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-schema-&quot; aria-label=&quot; schema  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[ Schema ]&lt;/h2&gt;
+&lt;p&gt;앞에서 다룬 내용을 기반으로 Comment까지 마저 추가하면 다음과 같은 DB Schema를 구성할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/86c863b92312aefcea3848067b714f18/53ac9/db-schema.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 57.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABS0lEQVQoz51T7XKCQAzkNVpE5ePg4O6gCKgddepM3/+Z0mxsGD/on/7IMLdJNps1Rqt1Qf+JOMkp2Rhq/EC58VTajjappUiT94VLzX9h0/GLQrenomxpm9UUaQLfpcZ7gucAnhWOyQKTWVH8oBDAUqOuV1aB16qkebU20pObhgm94HjPhABqt5OJpmrnAhDdlDTkuyPnOrJuoJTfqPH9hd/jDcube0JLu+lEVf0hhCBeb0sJ1KB4PFzFfPiFN3LT5zcLGWZMPHxfZZIc9xdyYRQyDAARcF3Zt+PvFiCrBK9dzwKC/CDARCE8gXw0JxzqCQbpykoOXL0G9hanUqdeR5AZdmdetRfZaPL9STyBXximlvh2Ejtgi+LP1xCBAIcJYvXF8Wo4BeB6DplxFIYrFTzE2F5q4yR7JVQPH8/k9f7gzzCd538GPFtS+AMpcTYcw89QjQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;db-schema.png&quot;
+        title=&quot;db-schema.png&quot;
+        src=&quot;/static/86c863b92312aefcea3848067b714f18/c1b63/db-schema.png&quot;
+        srcset=&quot;/static/86c863b92312aefcea3848067b714f18/5a46d/db-schema.png 300w,
+/static/86c863b92312aefcea3848067b714f18/0a47e/db-schema.png 600w,
+/static/86c863b92312aefcea3848067b714f18/c1b63/db-schema.png 1200w,
+/static/86c863b92312aefcea3848067b714f18/53ac9/db-schema.png 1287w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[채팅 서비스를 위한 인프라]]></title><description><![CDATA[Nginx, Kafka를 이용해 채팅서버를 다중화 해보자]]></description><link>https://goo-gy.github.io/2023-01-05-chat-infra</link><guid isPermaLink="false">https://goo-gy.github.io/2023-01-05-chat-infra</guid><pubDate>Thu, 05 Jan 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;요구사항&lt;/li&gt;
 &lt;li&gt;웹 채팅 서비스&lt;/li&gt;

@@ -1,0 +1,640 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.01877a06b072953c14c7.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.31.1"/><title data-react-helmet="true">[Spring JPA 시작하기] DB 설계 - googy-blog</title><meta data-react-helmet="true" name="description" content="JPA로 DB를 설계해보자"/><meta data-react-helmet="true" property="og:title" content="[Spring JPA 시작하기] DB 설계 - googy-blog"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="JPA로 DB를 설계해보자"/><meta data-react-helmet="true" property="og:url" content="https://goo-gy.github.io/2023-02-17-spring-jpa-entity"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="googy"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="googy"/><meta data-react-helmet="true" name="twitter:title" content="[Spring JPA 시작하기] DB 설계 - googy-blog"/><meta data-react-helmet="true" name="twitter:description" content="JPA로 DB를 설계해보자"/><meta data-react-helmet="true" name="keywords" content="bloggers, geeks, nerds, people, everyone, project, spring, JPA"/><meta data-react-helmet="true" name="article:published_time" content="2023-02-25T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2023-02-25T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="project"/><meta data-react-helmet="true" property="og:image" content="https://goo-gy.github.io/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png"/><meta data-react-helmet="true" name="twitter:image" content="https://goo-gy.github.io/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "googy"
+          },
+          "keywords": "project, spring, JPA",
+          "headline": "[Spring JPA 시작하기] DB 설계 - googy-blog",
+          "url": "https://goo-gy.github.io/2023-02-17-spring-jpa-entity",
+          "datePublished": "2023-02-25T00:00:00.000Z",
+          "dateModified": "2023-02-25T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://goo-gy.github.io/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "googy-blog"
+          },
+          "description": "JPA로 DB를 설계해보자",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://goo-gy.github.io"
+          }
+        }
+      </script><style data-styled="bzOPpS kHKWRw fOuWxu biTeGs jLOYBk fVqyTA cROOCp gWrDHi MQpwo llwmof fYiJFa jWOxDX jZNSfz hRYAD faXnX lhFcmu GDWrm gxbgsT bXjWFc iHPqjx jtkVLk jqyLKa cCerLd bVnRow jqxPBx bYZhdV iKTLAq gTfYTh iHGPyz kXzLbm lfACiL lbetsi YZAaE hLhzMS gpDhwt ctpkkx etXHUJ dLTgSL cXOFUh bqPxdl" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-705724203 */
+html{line-height:1.15;-webkit-text-size-adjust:100%;} body{margin:0;} main{display:block;} h1{font-size:2em;margin:0.67em 0;} hr{box-sizing:content-box;height:0;overflow:visible;} pre{font-family:monospace,monospace;font-size:1em;} a{background-color:transparent;} abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} b,strong{font-weight:bolder;} code,kbd,samp{font-family:monospace,monospace;font-size:1em;} small{font-size:80%;} sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;} sub{bottom:-0.25em;} sup{top:-0.5em;} img{border-style:none;} button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;} button,input{overflow:visible;} button,select{text-transform:none;} button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;} button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;} button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;} fieldset{padding:0.35em 0.75em 0.625em;} legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;} progress{vertical-align:baseline;} textarea{overflow:auto;} [type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;} [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;} [type="search"]{-webkit-appearance:textfield;outline-offset:-2px;} [type="search"]::-webkit-search-decoration{-webkit-appearance:none;} ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;} details{display:block;} summary{display:list-item;} template{display:none;} [hidden]{display:none;} html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{max-width:100% !important;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;}
+/* sc-component-id: style__NavContainer-sc-1ck1w82-0 */
+.bzOPpS{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1ck1w82-1 */
+.kHKWRw{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.kHKWRw{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1ck1w82-2 */
+.jLOYBk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jLOYBk{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1ck1w82-3 */
+.fVqyTA{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.fVqyTA{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.cROOCp{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1ck1w82-4 */
+.gWrDHi{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1ck1w82-5 */
+.MQpwo{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .MQpwo:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1ck1w82-6 */
+.llwmof{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1ck1w82-7 */
+.fYiJFa{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .fYiJFa:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-sc-1eqkae8-0 */
+.biTeGs{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.biTeGs{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-sc-1eqkae8-1 */
+.fOuWxu{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1oqvjzu-0 */
+.gpDhwt{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1oqvjzu-1 */
+.ctpkkx{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.ctpkkx{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1oqvjzu-2 */
+.cXOFUh{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1oqvjzu-3 */
+.bqPxdl{margin:0;opacity:.8;font-size:.8em;} .bqPxdl a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .bqPxdl a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1oqvjzu-4 */
+.etXHUJ ul{list-style-type:none;margin:0;padding:0;} .etXHUJ li{display:inline-block;margin-right:25px;} .etXHUJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuLink-sc-1oqvjzu-6 */
+.dLTgSL{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-sc-1hwup8p-0 */
+.lhFcmu .toc-list{list-style-type:none;margin:0;padding:0;} .lhFcmu .toc-list .toc-list{padding-left:17px;padding-top:10px;} .lhFcmu .toc-list-item{line-height:1.2em;padding-bottom:10px;} .lhFcmu .toc-list-item:last-child{padding-bottom:0;} .lhFcmu .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;} .lhFcmu .is-active-link{color:#404040;font-weight:700;}
+/* sc-component-id: reading-progress__ReadingProgressBar-vxjjnv-0 */
+.jWOxDX{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#007acc;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-sc-16w9pwh-0 */
+.YZAaE{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-sc-16w9pwh-1 */
+.hLhzMS{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .hLhzMS:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1v6bq9n-0 */
+.kXzLbm{max-width:55px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-sc-19adui4-0 */
+.iHGPyz{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-sc-19adui4-1 */
+.lbetsi{margin:10px 0 13px;} .lbetsi a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-sc-19adui4-2 */
+.lfACiL{margin:10px;}
+/* sc-component-id: post__PostContainer-h8gzap-0 */
+.jZNSfz{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.jZNSfz{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-h8gzap-1 */
+.hRYAD{min-width:255px;max-width:225px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;} @media (max-width:1300px){.hRYAD{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;max-width:100%;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-h8gzap-2 */
+.gxbgsT{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .gxbgsT li > a,.gxbgsT p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .gxbgsT pre{margin:30px 0;} .gxbgsT blockquote{border-left:4px rgba(130,240,220,0.9) solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .gxbgsT h3::before,.gxbgsT h4::before,.gxbgsT h5::before,.gxbgsT h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .gxbgsT h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .gxbgsT code[class*="language-text"]{padding:5px;} .gxbgsT p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .gxbgsT hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .gxbgsT .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .gxbgsT .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-h8gzap-3 */
+.faXnX{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-h8gzap-4 */
+.bXjWFc{padding:40px;} @media (max-width:576px){.bXjWFc{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-h8gzap-5 */
+.jqyLKa{border-radius:0;} @media (max-width:1300px){.jqyLKa{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-h8gzap-6 */
+.cCerLd{padding:40px;} @media (max-width:576px){.cCerLd{padding:20px;}}
+/* sc-component-id: post__PostMeta-h8gzap-7 */
+.iHPqjx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-h8gzap-8 */
+.jtkVLk{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-h8gzap-9 */
+.bVnRow{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .bVnRow p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-h8gzap-10 */
+.jqxPBx{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-h8gzap-11 */
+.bYZhdV{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-h8gzap-12 */
+.iKTLAq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.iKTLAq{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-h8gzap-13 */
+.gTfYTh{width:50%;margin:auto;} @media (max-width:576px){.gTfYTh{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-h8gzap-14 */
+.GDWrm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.GDWrm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=bd980a9f8c3998db92fa9ed41520e21b" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=bd980a9f8c3998db92fa9ed41520e21b"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-79c6cb472abad735489b.js"/><link as="script" rel="preload" href="/framework-cd3e1e804d552fa282ef.js"/><link as="script" rel="preload" href="/app-830394e903ae36c61d9c.js"/><link as="script" rel="preload" href="/styles-7d4153d260c0197f0043.js"/><link as="script" rel="preload" href="/1bfc9850-3de49fcd9cce71919e67.js"/><link as="script" rel="preload" href="/commons-9f95ad3bf33af9cd770d.js"/><link as="script" rel="preload" href="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"/><link as="fetch" rel="preload" href="/page-data/2023-02-17-spring-jpa-entity/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1116962356.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994268275.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2206391224.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2275848304.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/545095672.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1ck1w82-0 bzOPpS"><div class="common__Container-sc-1d5kp8-0 style__Nav-sc-1ck1w82-1 kHKWRw"><a class="logo__HomeLink-sc-1eqkae8-1 fOuWxu" href="/"><div class="logo__LogoImage-sc-1eqkae8-0 biTeGs gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy-blog" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/ad39b/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/183c2/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/91664/nehalist-gatsby.png" alt="googy-blog" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1ck1w82-2 jLOYBk"><ul class="style__NavMenu-sc-1ck1w82-3 fVqyTA"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/">Home</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/project">Project</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/algorithm">Algorithm</a></li><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><a class="style__NavLink-sc-1ck1w82-5 MQpwo" href="/tag/web">Web</a></li></ul><div class="style__SearchContainer-sc-1ck1w82-6 llwmof"><ul class="style__NavMenu-sc-1ck1w82-3 cROOCp"><li class="style__NavMenuItem-sc-1ck1w82-4 gWrDHi"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1ck1w82-7 fYiJFa"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#007acc" class="reading-progress__ReadingProgressBar-vxjjnv-0 jWOxDX"></div><div class="common__Container-sc-1d5kp8-0 post__PostContainer-h8gzap-0 jZNSfz"><div class="post__LeftSidebar-h8gzap-1 hRYAD"><div class="post__TocWrapper-h8gzap-3 faXnX"><nav class="toc__StyledNav-sc-1hwup8p-0 lhFcmu toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-h8gzap-14 GDWrm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button><div class="post__PostContent-h8gzap-2 gxbgsT"><article class="post"><header class="post__PostHeader-h8gzap-4 bXjWFc"><section class="post__PostMeta-h8gzap-7 iHPqjx"><a href="/tag/project">project</a><time dateTime="2023-02-25T00:00:00.000Z">25 February, 2023</time></section><h1 class="post__PostTitle-h8gzap-8 jtkVLk">[Spring JPA 시작하기] DB 설계</h1></header><div class="post__FeaturedImage-h8gzap-5 jqyLKa gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:57%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABS0lEQVQoz51T7XKCQAzkNVpE5ePg4O6gCKgddepM3/+Z0mxsGD/on/7IMLdJNps1Rqt1Qf+JOMkp2Rhq/EC58VTajjappUiT94VLzX9h0/GLQrenomxpm9UUaQLfpcZ7gucAnhWOyQKTWVH8oBDAUqOuV1aB16qkebU20pObhgm94HjPhABqt5OJpmrnAhDdlDTkuyPnOrJuoJTfqPH9hd/jDcube0JLu+lEVf0hhCBeb0sJ1KB4PFzFfPiFN3LT5zcLGWZMPHxfZZIc9xdyYRQyDAARcF3Zt+PvFiCrBK9dzwKC/CDARCE8gXw0JxzqCQbpykoOXL0G9hanUqdeR5AZdmdetRfZaPL9STyBXximlvh2Ejtgi+LP1xCBAIcJYvXF8Wo4BeB6DplxFIYrFTzE2F5q4yR7JVQPH8/k9f7gzzCd538GPFtS+AMpcTYcw89QjQAAAABJRU5ErkJggg==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/86c863b92312aefcea3848067b714f18/dc47e/db-schema.png 200w,
+/static/86c863b92312aefcea3848067b714f18/9f2d5/db-schema.png 400w,
+/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png 800w,
+/static/86c863b92312aefcea3848067b714f18/77647/db-schema.png 1200w,
+/static/86c863b92312aefcea3848067b714f18/f1b1a/db-schema.png 1287w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/86c863b92312aefcea3848067b714f18/dc47e/db-schema.png 200w,
+/static/86c863b92312aefcea3848067b714f18/9f2d5/db-schema.png 400w,
+/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png 800w,
+/static/86c863b92312aefcea3848067b714f18/77647/db-schema.png 1200w,
+/static/86c863b92312aefcea3848067b714f18/f1b1a/db-schema.png 1287w" src="/static/86c863b92312aefcea3848067b714f18/90823/db-schema.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-h8gzap-6 cCerLd post"><h2 id="-개요-" style="position:relative;"><a href="#-%EA%B0%9C%EC%9A%94-" aria-label=" 개요  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 개요 ]</h2>
+<p>JPA에서는 Java Class만 작성하면 자동으로 Database의 Schema를 만들어주는 DDL을 제공해 준다. 이번 포스팅에서는 작은 프로젝트에서 JPA를 활용하여 DB를 설계하고 구현해 볼 예정이다. JPA 기본 문법에 대해서 자세히 적는 대신 설계 방향과 여러 가지 옵션을 활용하는 방법을 중심으로 알아볼 예정이다.</p>
+<hr>
+<h3 id="요구-사항" style="position:relative;"><a href="#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD" aria-label="요구 사항 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>요구 사항</h3>
+<p>우리가 Spring JPA를 이용해서 어떤 게시글 서비스를 만든다고 가정해 보자. 그러면 우리는 기본적으로 <strong>사용자(Member), 게시글(Posting), 댓글(Comment)</strong>에 대한 정보가 필요할 것이다. 게시글 검색을 더 활성화시키기 위해 <strong>Hashtag(#)</strong>도 추가해 볼 수 있다.</p>
+<p>그리고 다음과 같은 추가적인 요구사항을 만족하는 서비스를 만들어 보자.</p>
+<ul>
+<li>사용자에게 Email, password를 이용하는 로그인 인증과 카카오 로그인을 지원한다.</li>
+<li>모든 DB 테이블에서 생성 시간, 수정 시간을 관리하고, 삭제할 때는 실제 Data를 삭제하는 대신 삭제 표시만 남겨둔다.</li>
+</ul>
+<h2 id="-공통-데이터-" style="position:relative;"><a href="#-%EA%B3%B5%ED%86%B5-%EB%8D%B0%EC%9D%B4%ED%84%B0-" aria-label=" 공통 데이터  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 공통 데이터 ]</h2>
+<p>그러면 이제 하나씩 JPA를 이용해서 구현해 보자</p>
+<hr>
+<h3 id="mappedsuperclass" style="position:relative;"><a href="#mappedsuperclass" aria-label="mappedsuperclass permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MappedSuperclass</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@MappedSuperclass</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@CreationTimestamp</span>
+    <span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> createdTime<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@UpdateTimestamp</span>
+    <span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> updatedTime<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ColumnDefault</span><span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Boolean</span> deleted<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<ul>
+<li>요구사항에서 삭제 여부, 생성 시간, 수정 시간을 모든 테이블에서 동일하게 관리하기로 하였다.</li>
+<li>이런 필드들을 모든 Entity에 직접 작성하는 대신 <code class="language-text">@MappedSuperclass</code>를 지정한 클래스에 모아두고 이 클래스를 상속받기만 하면 자동으로 해당 컬럼들이 테이블에 반영된다.</li>
+</ul>
+<h2 id="-상속관계-" style="position:relative;"><a href="#-%EC%83%81%EC%86%8D%EA%B4%80%EA%B3%84-" aria-label=" 상속관계  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 상속관계 ]</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ae3bc8ea4fa9a58481b8453b50b36fa1/cd138/member_uml.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACwElEQVQoz42QWU9TURSF921jgygOROqLEggi0CKFDkiYFCiWCAjS3lZuRwqtSsdbyliKKAiIqWBLL52MgqJoIgaj8dXEGBP/gC++GOOLL/4BzXG3CSZGYzzJykn2+fZaex+Av5wCpQ52V52BvbI2gbjT7G/u895sNLqWStsNNgVth3q9g9olaYH/PoWtOgrKGgFKGnKk6oHPTRYPqWUGiajT9K5O74Ams4f3T8N4PJ4Rx3GQSqWgSNVLwREZQK4op8Hg/NTaP0QquvqIpNv6VmllodXq4wkkSkgmkxCNRn/1/2G4o/wWLRys6YDD9V3ZuPKTatr+Qa6xfcQJV2oZB5w2uSkQFGXYRCLxu2GJxg2EEAiFo5iYgBTq2aMH8CV8MVN3Bufg9fbmnvevtrI9U/Pw/MVLGB0ZgXBkBZKJNJ+EpQiXYYt7HACN9iA1fHuNb+O2qYVwLGs5GhOOTc/uP6fWCtUaOnc5HNnHrcaEq7G4cGFxMae7R31IyxjybkW4A1wilcfOhARZbQ6q8WKQf6LXB3Dq0hVwhe7C1OoGphQBCJTQcnkKqiwBKGQmQEw7sf4Dvn/7CirXVWhiQ2C/cQcCK2tA3uCKVBsokVf0jUPGsMrg71A6rz1t81xfU7lmNqXG4Y0q4/B9id6/XqJxFZTil1QyLNVgm+TVWMeRH5Y3D05vqdyz9zp985sKy+jDSoN/HeuPkZWmXYPt7BxpZ+dJvS1IZKZRIjePEqlxhJTSbkUZ7QaRzotmE3x8Q56lMZyc9c4R3I4oLGNEhny6r0zrUUMFMxTo8C2Q7pFFUtMfINV94+SkdYLIERTrvApUOpSHIXycHMQ6VlOHwbW2SSJFkx0+fZdfYHtApPWUo/MAyiRhhszYbKpgfGZ8NB0778hFwXG1E428FNYA18ovpT02nNoo0Wf4TA/KWtzjPPoTVRshgZ16s/MAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="member_uml.png"
+        title="member_uml.png"
+        src="/static/ae3bc8ea4fa9a58481b8453b50b36fa1/c1b63/member_uml.png"
+        srcset="/static/ae3bc8ea4fa9a58481b8453b50b36fa1/5a46d/member_uml.png 300w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/0a47e/member_uml.png 600w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/c1b63/member_uml.png 1200w,
+/static/ae3bc8ea4fa9a58481b8453b50b36fa1/cd138/member_uml.png 1220w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>Member의 인증 방식에는 Email, Password를 이용한 로그인과, 카카오 인증을 활용하는 방법을 지원하기로 했다. 그래서 Java에서는 Member를 상속받는 LoginMember, KakaoMember 클래스를 만들었다. Java에서는 이 모델을 클래스를 상속함으로써 구현하였지만, Database 상에서는 이런 상속 개념이 없다.</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@Inheritance</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">InheritanceType</span><span class="token punctuation">.</span>JOINED<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@DiscriminatorColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"auth_type"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>대신 <code class="language-text">@Inheritance</code>를 사용하여 상속받는 클래스가 Database 스키마에서 어떻게 구성될지 결정할 수 있다.</p>
+<!-- `@DiscriminatorColumn` 옵션을 지정해주면 테이블에 지정한 이름으로 컬럼이 생기며, 상속 관계를 위해 어느 테이블과 Join 해야할 지 알 수 있다. -->
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginMember</span> <span class="token keyword">extends</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> password<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>@Inheritance 옵션에는 다음과 같이 3가지가 있는데 하나씩 알아보자.</p>
+<ul>
+<li><code class="language-text">SINGLE_TABLE</code></li>
+<li><code class="language-text">JOINED</code></li>
+<li><code class="language-text">TABLE_PER_CLASS</code></li>
+</ul>
+<hr>
+<h3 id="single-table" style="position:relative;"><a href="#single-table" aria-label="single table permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Single Table</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1018px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAA20lEQVQoz52S5w6CQBCEfQ1FNJRTkI5IUYqxvv8TjbtrNMZIIvyYXMntd7M3N5kvbHxrNjfhegk2fiprfalEn3NNt/CrdtIHjJJStHIirN2Exhh+mMMLMpnzuV/QXqAf7gRoKR+KoGodCvylgUADQZRjX58JWsC0PdirQOByAcGHOyRge7wjTisBMIihrHFAarnpbjg0FyTb/dvlSKCBMC5QHU7Y7moKJSanJSWfwrJHtDzVDGm1bq9w6euwu6LqyHUmwGco6n+gpptSxME47Irej93xnoRD6nP4AIy7ADaIEB7lAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="single_table.png"
+        title="single_table.png"
+        src="/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png"
+        srcset="/static/f3afe0dcb1add83b11aa36cd893a0648/5a46d/single_table.png 300w,
+/static/f3afe0dcb1add83b11aa36cd893a0648/0a47e/single_table.png 600w,
+/static/f3afe0dcb1add83b11aa36cd893a0648/3dde1/single_table.png 1018w"
+        sizes="(max-width: 1018px) 100vw, 1018px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>Single table 전략은 Member를 상속받는 모든 자식 Entity의 필드를 Member 테이블 하나에 넣어두고 필요한 것만 사용하는 전략이다. (나머지는 Null)</p>
+<ul>
+<li>
+<p>장점</p>
+<ul>
+<li>Join 없이 데이터를 가져올 수 있기 때문에 성능이 빠르다.</li>
+</ul>
+</li>
+<li>
+<p>단점</p>
+<ul>
+<li>해당되지 않는 Entity에 대한 컬럼도 한 테이블에 있기 때문에, 자식 Entity에 해당하는 컬럼은 항상 Nullabe로 설정된다.</li>
+<li>자식 Entity에 많은 데이터가 있을 경우 저장 공간 낭비가 심하고, 조회 성능도 느려질 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p>자식 Entity들의 데이터가 적을 때 사용하면 좋을 것 같다.</p>
+<hr>
+<h3 id="joined" style="position:relative;"><a href="#joined" aria-label="joined permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Joined</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1043px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABMUlEQVQoz52SSXaDMAyGuUbCbDCTwQYeCXRKs+H+R1IlEVKmLpqFnmxL/vxbkuV4MRzZ2REQJyWkuQEb964vn0Zx240O71l/A0PIVAO6HkCmBsE1qOoCWdGAH2avAAWr03WPSqunyVRDIF4AnuwQclT49T1CqS8gYgWRLBn6L+CceEYgfe/zNkL/dud1JFFhZlbALdjagpZ7ERcMmmAKEiwBqfSCdJW/XFvLA/InO2B1pII66gUJe6qph55yfIxN+WKndKWQIAV2sjRXrhl1k9TMOSkqpViSaY6RuY9Hdl8mBfSdph9BmfdpTMyAvuWHHLykuztU7Q3PGijKDvLqyqWgu/sa4mEYFWCagUdjtgSbMM1dDG338RijKUaPkohj4KoWcmG/MQLkquVyzGO0HaEfJrE2GUXAUcoAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="joined.png"
+        title="joined.png"
+        src="/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png"
+        srcset="/static/26ae7d7f56e25d72528df0d835bf0060/5a46d/joined.png 300w,
+/static/26ae7d7f56e25d72528df0d835bf0060/0a47e/joined.png 600w,
+/static/26ae7d7f56e25d72528df0d835bf0060/620ae/joined.png 1043w"
+        sizes="(max-width: 1043px) 100vw, 1043px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>Joined 전략은 Member를 상속받는 Entity가 별도의 테이블을 구성하고, Member 테이블과 조인하여 사용하는 전략이다.</p>
+<ul>
+<li>
+<p>장점</p>
+<ul>
+<li>불필요한 Null 데이터를 저장하지 않으므로, 저장 공간 면에서 효율적이다.</li>
+</ul>
+</li>
+<li>
+<p>단점</p>
+<ul>
+<li>Join으로 인해 성능이 저하된다.</li>
+</ul>
+</li>
+</ul>
+<p>Joined 전략이 상속 관계와 가장 유사한 구조를 가지고 있어, 이해하기도 관리하기도 쉽다.
+그리고 하위 테이블의 데이터를 잘 사용하지 않는 경우 나중에 다룰 <code class="language-text">Lazy Load</code>로 보완할 수 있기 때문에
+Joined 옵션을 사용하기로 했다.</p>
+<hr>
+<h3 id="table-per-class" style="position:relative;"><a href="#table-per-class" aria-label="table per class permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table Per Class</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1155px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 36.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAAA7klEQVQoz31S7Y6CMBD0NRRBWigtFkolfp65XHL6/q+07qzphTPoj83Q7u7sdJbFuqgJkeUV5RtDqnIcrZxXay2YYqMs6XpLRdn8y6V+4CIRoqAynkI8kQ97qpueGjfwXSeDkPf9nobdmWwbybgg+VK3f2QzhB03HViFl+LWj4JJURcOfI5SZ7c7chz4Rm6WULPCy/VXVKAQAaVPQiX3x/OPEGFobYNgluv3Cq/fd2kyXAwyYFFaWmaK4njh/I364fgkbD4Qwgf44fiZio1PCqcewt84fskQYwfxcvbJ0029bvZ1y/gDgFANxLDpUh4WOcdbdziiuwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="table_per_class.png"
+        title="table_per_class.png"
+        src="/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png"
+        srcset="/static/f98a4da2d623d174cbd49f2056bb52e8/5a46d/table_per_class.png 300w,
+/static/f98a4da2d623d174cbd49f2056bb52e8/0a47e/table_per_class.png 600w,
+/static/f98a4da2d623d174cbd49f2056bb52e8/b7936/table_per_class.png 1155w"
+        sizes="(max-width: 1155px) 100vw, 1155px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>Table per class 전략도 Member를 상속받는 Entity가 별도의 테이블을 생성하지만,
+공통되는 Member의 필드들을 각 테이블에 따로 넣는 전략이다.</p>
+<ul>
+<li>
+<p>장점</p>
+<ul>
+<li>데이터를 완전히 분리하여 단순하고 관리하기 쉽다.</li>
+<li>단순 조회 성능이 빠르다.</li>
+</ul>
+</li>
+<li>
+<p>단점</p>
+<ul>
+<li>부모 Entity를 중심으로 데이터를 가져올 때 굉장히 비효율적이다.</li>
+</ul>
+</li>
+</ul>
+<p>이 전략은 자식 Entity로 명확하게 조회할 때는 괜찮지만, 부모 Entity인 Member 객체로 조회할 때는 login__member, kakao__member 테이블을 모두 union 연산하여 탐색하기 때문에 굉장히 비효율적이다.</p>
+<h2 id="-연관관계-" style="position:relative;"><a href="#-%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84-" aria-label=" 연관관계  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ 연관관계 ]</h2>
+<ul>
+<li>@OneToOne</li>
+<li>@ManyToOne</li>
+<li>@OneToMany</li>
+<li>@ManyToMany</li>
+</ul>
+<p>JPA에서는 위와 같이 연관관계를 위한 4가지 @Annotaion을 제공한다.</p>
+<hr>
+<h3 id="manytoone" style="position:relative;"><a href="#manytoone" aria-label="manytoone permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@ManyToOne</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1027px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 36.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAABAklEQVQoz22R63KDIBCF8xyNlygiChqISU2M6WU60/d/pNNdEMe0/cGw7B6+PSy7fSqQZBV4f0lKv/+OYz3NJQrR+jPX49pqdrEoZAc73OiCRlkZSHVEKY2HxAacHy4z6sb6emsGqNZRXq/QJ2Dvrl7IF4L4hLxoglPSFMJA2xmyPS86h8a8+rvMeAJy92n+Qm9HHwsZXLI4LxSyQw2lHTl8BPde06GqQ7xPN0A+8FMv4xvcMHmHLJbKrg5DU43H+zdB7wTqF2D/H1DgQMPm+ZxIzM8NwCM5UyuQm463D1ynT+ju7GE8wz9PjgMNcdj5M5JMbvJiyddIqMYjCEutH8f1H/yXx9F/BVN6AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="member-posting.png"
+        title="member-posting.png"
+        src="/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png"
+        srcset="/static/7c20e014d81ffe3c3e81db578e04357e/5a46d/member-posting.png 300w,
+/static/7c20e014d81ffe3c3e81db578e04357e/0a47e/member-posting.png 600w,
+/static/7c20e014d81ffe3c3e81db578e04357e/f2d92/member-posting.png 1027w"
+        sizes="(max-width: 1027px) 100vw, 1027px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Posting</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> content<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ManyToOne</span>
+    <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"owner_id"</span><span class="token punctuation">,</span> nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Member</span> owner<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Posting 과 Member의 관계는 N:1이다.<br>
+이럴 때 @ManyToOne을 사용한다. DB 상에서는 당연히 Many 쪽에서 Foreign Key를 가지기 때문에 @ManyToOne을 지정한 곳에 @JoinColumn으로 Foreign Key 이름을 지정해 준다.</p>
+<hr>
+<h3 id="onetomany" style="position:relative;"><a href="#onetomany" aria-label="onetomany permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@OneToMany</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@Inheritance</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">InheritanceType</span><span class="token punctuation">.</span>JOINED<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@DiscriminatorColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"auth_type"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>mappedBy <span class="token operator">=</span> <span class="token string">"owner"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Posting</span><span class="token punctuation">></span></span> postingList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>반대로 Member - Posting은 1:N이다.<br>
+DB 상의 Member 테이블에서는 Foreign key를 가지고 있지 않지만, 객체에서는 PostingList 정보가 필요할 수 있기 때문에 @OneToMany를 사용하여 필드로 불러올 수 있다. 이런 경우를 양방향 연관관계라고 한다. 여기서 <code class="language-text">mappedBy</code> 옵션에는 상대방 Entity에서 자신을 지칭하는 필드명으로 지정해야 한다.</p>
+<hr>
+<h3 id="manytomany" style="position:relative;"><a href="#manytomany" aria-label="manytomany permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@ManyToMany</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Hashtag</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> word<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Posting</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> content<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ManyToOne</span>
+    <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"owner_id"</span><span class="token punctuation">,</span> nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Member</span> owner<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ManyToMany</span>
+    <span class="token annotation punctuation">@JoinTable</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"posting_hashtag"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Hashtag</span><span class="token punctuation">></span></span> hashtagList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1067px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 29.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAAA6klEQVQY002Ra3KDMAyEOUcTCCV+Ycc2r4aknWRy/0ttZYE9/NjRjFb6LMmVMgGXb41zI1BfJMesr3NXdKqvrOw1rSr1OZ9iFYYVuh+gSM4vUCaSKdkUypEXIbUvoBPBEyiODxg74ipv3C91oLxCtdxfnEiGUJ6MiLbr0QkLF1ZYUn+b6cERvZs533YGPt4ZknrSEMoMaGhTBqbXkpGhTat5JeN/YYYPJBUrO0Pbqaz6s76xPj88ZSccwxk4LX9I0N5NBAv76NvKKdY7YLuXLPeyNPUwPQpwG4RWzsXHpnKv/SOOOnr5s465f0HvrEnXXNThAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="posting-hashtag.png"
+        title="posting-hashtag.png"
+        src="/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png"
+        srcset="/static/61b66ae5e83d12ed71e30b26d2f2c5e8/5a46d/posting-hashtag.png 300w,
+/static/61b66ae5e83d12ed71e30b26d2f2c5e8/0a47e/posting-hashtag.png 600w,
+/static/61b66ae5e83d12ed71e30b26d2f2c5e8/abe2a/posting-hashtag.png 1067w"
+        sizes="(max-width: 1067px) 100vw, 1067px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>N:M 관계에서는 편리하게 @ManyToMany 옵션을 사용하면 자동으로 위와 같은 관계 테이블이 생성된다. 하지만 이런 경우 연관 관계를 표시하는 데이터에는 추가적인 정보를 저장할 수 없다. 따라서 실무에서는 대부분 두 테이블의 연결을 관리하는 별도의 Entity를 정의하여 사용한다.</p>
+<hr>
+<h3 id="nm-직접-정의하기" style="position:relative;"><a href="#nm-%EC%A7%81%EC%A0%91-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0" aria-label="nm 직접 정의하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>N:M 직접 정의하기</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PostingHashtag</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ManyToOne</span>
+    <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"posting_id"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Posting</span> posting<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@ManyToOne</span>
+    <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"hashtag_id"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Hashtag</span> hashtag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Posting과 Hashtag를 연결하는 PostingHastag Entity를 만들고, 각 Entity의 id를 Foreign key로 가지도록 @ManyToOne으로 연결해 주었다. 이렇게 N:M 관계를 위한 연결 Entity를 만들면 연결 정보에 추가적인 정보를 담을 수 있다.</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Posting</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>mappedBy <span class="token operator">=</span> <span class="token string">"posting"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">PostingHashtag</span><span class="token punctuation">></span></span> taggingList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Posting에서는 연결된 Hashtag 정보를 조회하기 위해서 @OneToMany 로 연결하였다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1091px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 30.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAAA/klEQVQY001R2Y6CQBDkN3YVEYa5AIdbMepuYsz+/x/VTrWB+NCpTB/VVdPJLlU4HA3STGN/KMH3J2a5xbFwW/2zxvjeF1swn7Cx7RdY30HpZsOvXQHjAqb5hm5YUJ8m+HqIuVaGiVUzIlcVStPITJqZN2ETZmnQNgga14kyFwlcuEPZAdqcYPwYiWdRTLIqLilj3lW9BPMJZU/nB0J/QVHWsqmMxMxb32NY/mDrCYo108oSiqjDhOvtKcScI3H2JtQY5/tWZEHb1VbA4/eF8+VHFNionrb5V3TTDVf5Corgm65EIY/CB3E9EIeIufLRipfttMS+9TDrIdYDMf4BPeauLTuyRA8AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="posting-hashtag_custom.png"
+        title="posting-hashtag_custom.png"
+        src="/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png"
+        srcset="/static/ea82e32a11a11b18a8da0b4a006bdf77/5a46d/posting-hashtag_custom.png 300w,
+/static/ea82e32a11a11b18a8da0b4a006bdf77/0a47e/posting-hashtag_custom.png 600w,
+/static/ea82e32a11a11b18a8da0b4a006bdf77/01645/posting-hashtag_custom.png 1091w"
+        sizes="(max-width: 1091px) 100vw, 1091px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h2 id="-schema-" style="position:relative;"><a href="#-schema-" aria-label=" schema  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[ Schema ]</h2>
+<p>앞에서 다룬 내용을 기반으로 Comment까지 마저 추가하면 다음과 같은 DB Schema를 구성할 수 있다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/86c863b92312aefcea3848067b714f18/53ac9/db-schema.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABS0lEQVQoz51T7XKCQAzkNVpE5ePg4O6gCKgddepM3/+Z0mxsGD/on/7IMLdJNps1Rqt1Qf+JOMkp2Rhq/EC58VTajjappUiT94VLzX9h0/GLQrenomxpm9UUaQLfpcZ7gucAnhWOyQKTWVH8oBDAUqOuV1aB16qkebU20pObhgm94HjPhABqt5OJpmrnAhDdlDTkuyPnOrJuoJTfqPH9hd/jDcube0JLu+lEVf0hhCBeb0sJ1KB4PFzFfPiFN3LT5zcLGWZMPHxfZZIc9xdyYRQyDAARcF3Zt+PvFiCrBK9dzwKC/CDARCE8gXw0JxzqCQbpykoOXL0G9hanUqdeR5AZdmdetRfZaPL9STyBXximlvh2Ejtgi+LP1xCBAIcJYvXF8Wo4BeB6DplxFIYrFTzE2F5q4yR7JVQPH8/k9f7gzzCd538GPFtS+AMpcTYcw89QjQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="db-schema.png"
+        title="db-schema.png"
+        src="/static/86c863b92312aefcea3848067b714f18/c1b63/db-schema.png"
+        srcset="/static/86c863b92312aefcea3848067b714f18/5a46d/db-schema.png 300w,
+/static/86c863b92312aefcea3848067b714f18/0a47e/db-schema.png 600w,
+/static/86c863b92312aefcea3848067b714f18/c1b63/db-schema.png 1200w,
+/static/86c863b92312aefcea3848067b714f18/53ac9/db-schema.png 1287w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p></section><footer class="post__PostFooter-h8gzap-9 bVnRow"><p>Published under <span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/project">project</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/spring">spring</a>, </span><span><a class="post__FooterTagLink-h8gzap-10 jqxPBx" href="/tag/jpa">JPA</a></span> on <time dateTime="2023-02-25T00:00:00.000Z">25 February, 2023</time>.</p></footer></article></div></div><section class="post__PostAddition-h8gzap-11 bYZhdV"><div class="common__Container-sc-1d5kp8-0 post__PostAdditionContent-h8gzap-12 iKTLAq"><div class="post__BioWrapper-h8gzap-13 gTfYTh"><section class="bio__StyledBio-sc-19adui4-0 iHGPyz"><div class="avatar__StyledAvatar-sc-1v6bq9n-0 kXzLbm gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:55px;height:55px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQ4y82TOQvCUBCEExPPQlTEI/EoDGgr2AoqIoq34oG9lZ3/v3AeTGARCzcIceCD3bxkeDtsLCtm2SBh/ZM8kBT9AEyjjGXUAw8wYt8BK9AXpgmN4Q0UaWI0Aw3WO+BqbpkDV9Zr9nNQ47MFyGsNL6wnoACWoCIMXW2OR+CAAAzBHqRAScTwVYbhSxt+bPQUJj5jUBtuQZ21GTnNusU81YZn7uG7fO3IjlgbT2QarlOZcahveAJNMWqoIGqGZqwuGIszs+h3Lrna8CAWWarKFVL/em2Q/XCeYRTxy4549lu9AB1JD7YATtV/AAAAAElFTkSuQmCC" alt="googy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" /><img loading="lazy" width="55" height="55" srcset="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png 1x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/4747d/nehalist-gatsby.png 1.5x,
+/static/bd980a9f8c3998db92fa9ed41520e21b/3b7ca/nehalist-gatsby.png 2x" src="/static/bd980a9f8c3998db92fa9ed41520e21b/eaa90/nehalist-gatsby.png" alt="googy" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-sc-19adui4-2 lfACiL">googy</h3><p class="bio__AuthorDescription-sc-19adui4-1 lbetsi">I'm <strong>Googy</strong>.
+      If you like to see other work, visit <a href="https://github.com/goo-gy" target="_blank">My GitHub</a>!</p><ul class="social-channel-list__StyledSocialChannels-sc-16w9pwh-0 YZAaE"><li class="social-channel-list__StyledSocialChannel-sc-16w9pwh-1 hLhzMS"><a href="https://github.com/goo-gy" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1oqvjzu-0 gpDhwt"><div class="common__Container-sc-1d5kp8-0 style__FooterContainer-sc-1oqvjzu-1 ctpkkx"><nav class="style__StyledNav-sc-1oqvjzu-4 etXHUJ"><ul><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/">Home</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/project">Project</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/algorithm">Algorithm</a></li><li><a class="style__FooterMenuLink-sc-1oqvjzu-6 dLTgSL" href="/tag/web">Web</a></li></ul></nav><div><p class="style__Copyright-sc-1oqvjzu-2 cXOFUh"><strong>googy-blog</strong> © <!-- -->2023</p><p class="style__DesignBy-sc-1oqvjzu-3 bqPxdl">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-194826905-2"></script><script>
+    window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
+      'UA-194826905-2'
+    );
+    window.GATSBY_GTAG_PLUGIN_ANONYMIZE = true;
+
+    var options = {
+      send_page_view: false
+    };
+    if (true) {
+      options.anonymize_ip = true;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'UA-194826905-2', options);
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2023-02-17-spring-jpa-entity";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-845f39e382901b6152de.js"],"app":["/app-830394e903ae36c61d9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-404-tsx-7c60f8995aafae9af341.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-archive-tsx-57945304544f85d915e6.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-pages-tags-tsx-236629933f531bd14001.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-page-tsx-b86d67b07e827c8a8c9c.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-posts-tsx-5991e70a58543638a446.js"],"component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx":["/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-tag-tsx-c2071567154139543e29.js"]};/*]]>*/</script><script src="/polyfill-845f39e382901b6152de.js" nomodule=""></script><script src="/component---node-modules-nehalist-gatsby-theme-nehalem-src-templates-post-tsx-596654ab8186c5a57984.js" async=""></script><script src="/commons-9f95ad3bf33af9cd770d.js" async=""></script><script src="/1bfc9850-3de49fcd9cce71919e67.js" async=""></script><script src="/styles-7d4153d260c0197f0043.js" async=""></script><script src="/app-830394e903ae36c61d9c.js" async=""></script><script src="/framework-cd3e1e804d552fa282ef.js" async=""></script><script src="/webpack-runtime-79c6cb472abad735489b.js" async=""></script></body></html>
